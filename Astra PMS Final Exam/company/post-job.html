@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post New Job - PMS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- ============================= HEADER START (Top bar / Navbar / Sidebar include) ============================= -->
+
+  <div class="app-wrapper">
+    <div id="sidebarContainer"></div>
+    <div id="mobileSidebarContainer"></div>
+    <div class="main-content" id="mainContent">
+      <div id="navbarContainer"></div>
+<!-- ============================= HEADER END ============================= -->
+
+<!-- ============================= BODY START (Main Page Content) ============================= -->
+
+      <div class="page-content">
+        <div class="page-breadcrumb mb-4"><h4>Post New Job</h4><p>Create a new job posting for campus recruitment.</p></div>
+        <div class="content-card" style="max-width:800px">
+          <div class="card-body-custom">
+            <form id="postJobForm">
+              <div class="mb-3"><label class="form-label-custom">Job Title</label><input type="text" class="form-control form-control-custom" id="jobTitle" required></div>
+              <div class="row">
+                <div class="col-md-6 mb-3"><label class="form-label-custom">Job Type</label>
+                  <select class="form-select form-control-custom" id="jobType" required>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Contract">Contract</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3"><label class="form-label-custom">Location</label><input type="text" class="form-control form-control-custom" id="jobLocation" required></div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-3"><label class="form-label-custom">Salary Package</label><input type="text" class="form-control form-control-custom" id="jobSalary" placeholder="₹6-8 LPA" required></div>
+                <div class="col-md-4 mb-3"><label class="form-label-custom">Min CGPA</label><input type="number" step="0.1" class="form-control form-control-custom" id="jobCgpa" required></div>
+                <div class="col-md-4 mb-3"><label class="form-label-custom">Openings</label><input type="number" class="form-control form-control-custom" id="jobOpenings" value="1" required></div>
+              </div>
+              <div class="mb-3"><label class="form-label-custom">Eligible Branches (comma separated)</label><input type="text" class="form-control form-control-custom" id="jobBranches" placeholder="Computer Science, Information Technology" required></div>
+              <div class="mb-3"><label class="form-label-custom">Required Skills (comma separated)</label><input type="text" class="form-control form-control-custom" id="jobSkills" placeholder="Java, Python, SQL" required></div>
+              <div class="mb-3"><label class="form-label-custom">Job Description</label><textarea class="form-control form-control-custom" id="jobDescription" rows="4" required></textarea></div>
+              <div class="mb-3"><label class="form-label-custom">Application Deadline</label><input type="date" class="form-control form-control-custom" id="jobDeadline" required></div>
+              <button type="button" class="btn btn-primary-custom" onclick="Company.postJob()"><i class="bi bi-plus-lg me-1"></i>Post Job</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+<!-- ============================= BODY END ============================= -->
+
+<!-- ============================= FOOTER START ============================= -->
+<div id="footerContainer"></div>
+<!-- ============================= FOOTER END ============================= -->
+
+    </div>
+  </div>
+  <div id="modalContainer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/company.js"></script>
+  <script>
+    if (App.requireAuth('company', 'login.html')) {
+      Components.initLayout('company', 'post-job.html', App.currentUser);
+    }
+  </script>
+</body>
+</html>
