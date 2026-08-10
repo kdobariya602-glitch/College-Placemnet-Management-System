@@ -36,7 +36,11 @@ namespace Astra_PMS_Final_Exam.student
         void fillgrid()
         {
             getcon();
+<<<<<<< HEAD
             da = new SqlDataAdapter("select * from Company_reg_tbl", con);
+=======
+            da = new SqlDataAdapter("select * from Student_reg_tbl", con);
+>>>>>>> 0b3b662 (Save local changes)
             ds = new DataSet();
             da.Fill(ds);
             GridView1.DataSource = ds;

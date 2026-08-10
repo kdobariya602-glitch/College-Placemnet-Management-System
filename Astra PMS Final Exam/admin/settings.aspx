@@ -90,12 +90,14 @@
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/admin.js"></script>
   <script>
-    if (App.requireAuth('admin', 'login.aspx')) {
-      Components.initLayout('admin', 'settings.aspx', App.currentUser);
-      document.getElementById('settingsName').textContent = App.currentUser.name;
-      document.getElementById('settingsEmail').textContent = App.currentUser.email;
-      document.getElementById('settingsAvatar').textContent = App.getInitials(App.currentUser.name);
-    }
+    //if (App.requireAuth('admin', 'login.aspx')) {
+    //  Components.initLayout('admin', 'settings.aspx', App.currentUser);
+    //  document.getElementById('settingsName').textContent = App.currentUser.name;
+    //  document.getElementById('settingsEmail').textContent = App.currentUser.email;
+    //  document.getElementById('settingsAvatar').textContent = App.getInitials(App.currentUser.name);
+      //}
+      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
+      Admin.initDashboard();
   </script>
 </asp:Content>
 

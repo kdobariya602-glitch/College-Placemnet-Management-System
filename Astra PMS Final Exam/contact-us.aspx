@@ -159,67 +159,100 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfaq2">Where exactly is the Placement Office located?</button>
                     </h2>
                     <div id="cfaq2" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
-                        <div class="accordion-body">Second floor of the TPC Block, opposite the Central Library on the main campus.</div>
+                        <div class="accordion-body">
+                            Second floor of the TPC Block, opposite the Central Library on the main campus.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <div style="width: 90%; margin: 30px auto; overflow-x: auto;">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" HorizontalAlign="Center" Width="967px">
+            <Columns>
+                <asp:TemplateField HeaderText="Full_Name">
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Full_Name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Email_Address">
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Email_Address") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Phone_Number">
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("Phone_Number") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="City">
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("City") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Message">
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Eval("Message") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
 
-             <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered modal-lg">
-                  <div class="modal-content" style="border-radius: 20px; border: 0;">
-                      <div class="modal-body p-4 p-md-5">
-                          <div class="text-center mb-3">
-                              <svg width="52" height="52" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                  <rect x="1" y="1" width="46" height="46" rx="14" fill="#0d1b3e" />
-                                  <path d="M24 9L34.5 31.5H30L28 27H20L18 31.5H13.5L24 9Z" fill="#ffffff" />
-                                  <rect x="20.8" y="22.5" width="6.4" height="2.6" fill="#0d1b3e" />
-                                  <circle cx="34" cy="13.5" r="3.2" fill="#f5a524" />
-                              </svg>
-                          </div>
-                          <h5 class="ap-display mb-1 text-center">Login to your portal</h5>
-                          <p class="text-center mb-4" style="color: var(--ap-text-soft); font-size: .88rem;">Choose your role to continue</p>
-                          <div class="row g-3">
-                              <div class="col-md-4">
-                                  <div class="ap-contact-card text-center h-100 d-flex flex-column">
-                                      <div class="ap-role-icon student mx-auto"><i class="bi bi-mortarboard"></i></div>
-                                      <div class="fw-bold mb-3">Student</div>
-                                      <div class="d-flex gap-2 mt-auto">
-                                          <%--<a href="student/login.aspx" class="ap-btn ap-btn-primary ap-btn-sm flex-fill">Login</a>--%>
-                                          <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/assets/images/Login2.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/student/login.aspx" OnClientClick="window.location.href='/student/login.aspx'; return false;" />
-                                          <%--<a href="student/register.aspx" class="ap-btn ap-btn-primary ap-btn-sm flex-fill">Register</a>--%>
-                                          <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/assets/images/Register1.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/student/register.aspx" OnClientClick="window.location.href='/student/register.aspx'; return false;" />
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="ap-contact-card text-center h-100 d-flex flex-column">
-                                      <div class="ap-role-icon admin mx-auto"><i class="bi bi-shield-lock"></i></div>
-                                      <div class="fw-bold mb-3">Admin</div>
-                                      <div class="d-grid gap-2 mt-auto">
-                                          <%--<a href="admin/login.aspx" class="ap-btn ap-btn-primary ap-btn-sm">Login</a>--%>
-                                          <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/assets/images/Login3.png" CssClass="w-100" Style="height: 38px; width: 60%; border-radius: 999px; object-fit: contain;" PostBackUrl="/admin/login.aspx" OnClientClick="window.location.href='/admin/login.aspx'; return false;" />
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="ap-contact-card text-center h-100 d-flex flex-column">
-                                      <div class="ap-role-icon company mx-auto"><i class="bi bi-building"></i></div>
-                                      <div class="fw-bold mb-3">Company</div>
-                                      <div class="d-flex gap-2 mt-auto">
-                                          <%--<a href="company/login.aspx" class="ap-btn ap-btn-primary ap-btn-sm flex-fill">Login</a>--%>
-                                          <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/assets/images/Login2.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/company/login.aspx" OnClientClick="window.location.href='/company/login.aspx'; return false;" />
-                                          <%--<a href="company/register.aspx" class="ap-btn ap-btn-primary ap-btn-sm flex-fill">Register</a>--%>
-                                          <asp:ImageButton ID="ImageButton7" runat="server" ImageUrl="~/assets/images/Register1.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/company/register.aspx" OnClientClick="window.location.href='/company/register.aspx'; return false;" />
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="border-radius: 20px; border: 0;">
+                <div class="modal-body p-4 p-md-5">
+                    <div class="text-center mb-3">
+                        <svg width="52" height="52" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="46" height="46" rx="14" fill="#0d1b3e" />
+                            <path d="M24 9L34.5 31.5H30L28 27H20L18 31.5H13.5L24 9Z" fill="#ffffff" />
+                            <rect x="20.8" y="22.5" width="6.4" height="2.6" fill="#0d1b3e" />
+                            <circle cx="34" cy="13.5" r="3.2" fill="#f5a524" />
+                        </svg>
+                    </div>
+                    <h5 class="ap-display mb-1 text-center">Login to your portal</h5>
+                    <p class="text-center mb-4" style="color: var(--ap-text-soft); font-size: .88rem;">Choose your role to continue</p>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="ap-contact-card text-center h-100 d-flex flex-column">
+                                <div class="ap-role-icon student mx-auto"><i class="bi bi-mortarboard"></i></div>
+                                <div class="fw-bold mb-3">Student</div>
+                                <div class="d-flex gap-2 mt-auto">
+                                    <%--<a href="student/login.aspx" class="ap-btn ap-btn-primary ap-btn-sm flex-fill">Login</a>--%>
+                                    <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/assets/images/Login2.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/student/login.aspx" OnClientClick="window.location.href='/student/login.aspx'; return false;" />
+                                    <%--<a href="student/register.aspx" class="ap-btn ap-btn-primary ap-btn-sm flex-fill">Register</a>--%>
+                                    <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/assets/images/Register1.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/student/register.aspx" OnClientClick="window.location.href='/student/register.aspx'; return false;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ap-contact-card text-center h-100 d-flex flex-column">
+                                <div class="ap-role-icon admin mx-auto"><i class="bi bi-shield-lock"></i></div>
+                                <div class="fw-bold mb-3">Admin</div>
+                                <div class="d-grid gap-2 mt-auto">
+                                    <%--<a href="admin/login.aspx" class="ap-btn ap-btn-primary ap-btn-sm">Login</a>--%>
+                                    <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/assets/images/Login3.png" CssClass="w-100" Style="height: 38px; width: 60%; border-radius: 999px; object-fit: contain;" PostBackUrl="/admin/login.aspx" OnClientClick="window.location.href='/admin/login.aspx'; return false;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ap-contact-card text-center h-100 d-flex flex-column">
+                                <div class="ap-role-icon company mx-auto"><i class="bi bi-building"></i></div>
+                                <div class="fw-bold mb-3">Company</div>
+                                <div class="d-flex gap-2 mt-auto">
+                                    <%--<a href="company/login.aspx" class="ap-btn ap-btn-primary ap-btn-sm flex-fill">Login</a>--%>
+                                    <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/assets/images/Login2.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/company/login.aspx" OnClientClick="window.location.href='/company/login.aspx'; return false;" />
+                                    <%--<a href="company/register.aspx" class="ap-btn ap-btn-primary ap-btn-sm flex-fill">Register</a>--%>
+                                    <asp:ImageButton ID="ImageButton7" runat="server" ImageUrl="~/assets/images/Register1.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/company/register.aspx" OnClientClick="window.location.href='/company/register.aspx'; return false;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- ============================= BODY END ============================= -->

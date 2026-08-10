@@ -78,6 +78,10 @@
     <Content Include="admin\selected.aspx" />
     <Content Include="admin\settings.aspx" />
     <Content Include="admin\students.aspx" />
+    <Content Include="App_Data\Admin_db.mdf" />
+    <Content Include="App_Data\Admin_db_log.ldf">
+      <DependentUpon>Admin_db.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\Astra_Pms_db.mdf" />
     <Content Include="App_Data\Astra_Pms_db_log.ldf">
       <DependentUpon>Astra_Pms_db.mdf</DependentUpon>
@@ -153,6 +157,7 @@
     <Content Include="assets\images\Register1.png" />
     <Content Include="assets\images\Register2.png" />
     <Content Include="assets\images\Sign in.png" />
+    <Content Include="assets\images\signin.jpeg" />
     <Content Include="assets\images\student-login-register.png" />
     <Content Include="assets\images\team1.jpg" />
     <Content Include="assets\images\team10.jpg" />

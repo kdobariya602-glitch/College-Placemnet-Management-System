@@ -77,12 +77,15 @@
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/admin.js"></script>
   <script>
-    if (App.requireAuth('admin', 'login.aspx')) {
-      Components.initLayout('admin', 'drives.aspx', App.currentUser);
-      const sel = document.getElementById('driveCompany');
-      getData().companies.forEach(c => { sel.innerHTML += `<option value="${c.id}">${c.name}</option>`; });
-      Admin.renderDrivesTable();
-    }
+    //if (App.requireAuth('admin', 'login.aspx')) {
+    //  Components.initLayout('admin', 'drives.aspx', App.currentUser);
+    //  const sel = document.getElementById('driveCompany');
+    //  getData().companies.forEach(c => { sel.innerHTML += `<option value="${c.id}">${c.name}</option>`; });
+    //  Admin.renderDrivesTable();
+      //}
+
+      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
+      Admin.initDashboard();
   </script>
 </asp:Content>
 

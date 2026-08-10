@@ -195,10 +195,19 @@ const Components = {
     if (mobileEl) mobileEl.innerHTML = this.renderMobileSidebar(module, activePage);
     if (modalEl) modalEl.innerHTML = this.renderConfirmModal();
 
-    document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      App.logout('login.aspx');
-    });
+    //document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+    //  e.preventDefault();
+    //  App.logout('login.aspx');
+      //});
+
+      document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (module === 'admin') {
+              window.location.href = 'logout.aspx';
+          } else {
+              App.logout('login.aspx');
+          }
+      });
 
     App.initSidebar();
     App.initSearch();

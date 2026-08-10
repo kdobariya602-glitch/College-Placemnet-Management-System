@@ -40,7 +40,7 @@
                             <label class="form-label-custom">Password</label><asp:TextBox runat="server" ID="password" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" Text="student123" required="required"></asp:TextBox></div>
                         <div class="text-end mb-3"><a href="#" class="small text-danger" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a></div>      
                         <%-- <button type="button" id="signInBtn" class="btn btn-primary-custom w-100 py-2 mb-3">Sign In</button> --%>
-                        <asp:ImageButton ID="signInBtn" runat="server" ClientIDMode="Static" ImageUrl="~/assets/images/Sign in.png" CssClass="w-100 mb-3" Style="height: 45px; border-radius: 99px;" OnClientClick="return false;" />
+                        <asp:ImageButton ID="signInBtn" runat="server" ClientIDMode="Static" ImageUrl="~/assets/images/signin.jpeg" CssClass="w-100 mb-3" Style="height: 40px; border-radius: 12px;" OnClientClick="return false;" />
                     </div>
                     <p class="text-center text-muted small">Don't have an account? <a href="register.aspx" class="text-danger">Register</a></p>
                     <p class="text-center text-muted small mb-0"><a href="../index.aspx"><i class="bi bi-arrow-left me-1"></i>Back to Home</a></p>

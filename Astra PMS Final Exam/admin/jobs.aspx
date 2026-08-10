@@ -47,10 +47,12 @@
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/admin.js"></script>
   <script>
-    if (App.requireAuth('admin', 'login.aspx')) {
-      Components.initLayout('admin', 'jobs.aspx', App.currentUser);
-      Admin.renderJobsTable();
-    }
+    //if (App.requireAuth('admin', 'login.aspx')) {
+    //  Components.initLayout('admin', 'jobs.aspx', App.currentUser);
+    //  Admin.renderJobsTable();
+      //}
+      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
+      Admin.initDashboard();
   </script>
 </asp:Content>
 

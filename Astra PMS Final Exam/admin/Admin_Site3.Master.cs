@@ -11,7 +11,10 @@ namespace Astra_PMS_Final_Exam.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["admin"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
         }
     }
 }

@@ -68,7 +68,7 @@
               <a href="#" class="small text-danger" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
             </div>
 <%--            <button type="button" id="signInBtn" class="btn btn-primary-custom w-100 py-2 mb-3">Sign In</button>--%>
-              <asp:ImageButton ID="signInBtn" runat="server" ClientIDMode="Static" ImageUrl="~/assets/images/Sign in.png" CssClass="w-100" Style="height: 45px; border-radius: 99px;" OnClientClick="return false;"/>
+              <asp:ImageButton ID="signInBtn" runat="server" ClientIDMode="Static" ImageUrl="~/assets/images/signin.jpeg" CssClass="w-100" Style="height: 40px; border-radius: 12px;" OnClick="signInBtn_Click"/>
           </div>
           <p class="text-center text-muted small mb-0">
             <a href="../index.aspx"><i class="bi bi-arrow-left me-1"></i>Back to Home</a>
@@ -92,17 +92,17 @@
             <div class="mb-3">
               <label class="form-label-custom">Registered Email</label>
               <!-- <input type="email" class="form-control form-control-custom" id="resetEmail" placeholder="Enter your registered email" required> -->
-              <asp:TextBox runat="server" ID="resetEmail" ClientIDMode="Static" TextMode="Email" CssClass="form-control form-control-custom" placeholder="Enter your registered email" required="required"></asp:TextBox>
+              <asp:TextBox runat="server" ID="resetEmail" ClientIDMode="Static" TextMode="Email" CssClass="form-control form-control-custom" placeholder="Enter your registered email"></asp:TextBox>
             </div>
             <div class="mb-3">
               <label class="form-label-custom">New Password</label>
               <!-- <input type="password" class="form-control form-control-custom" id="resetNewPassword" placeholder="Enter new password" minlength="6" required> -->
-              <asp:TextBox runat="server" ID="resetNewPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" placeholder="Enter new password" minlength="6" required="required"></asp:TextBox>
+              <asp:TextBox runat="server" ID="resetNewPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" placeholder="Enter new password" minlength="6"></asp:TextBox>
             </div>
             <div class="mb-3">
               <label class="form-label-custom">Confirm New Password</label>
               <!-- <input type="password" class="form-control form-control-custom" id="resetConfirmPassword" placeholder="Confirm new password" minlength="6" required> -->
-              <asp:TextBox runat="server" ID="resetConfirmPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" placeholder="Confirm new password" minlength="6" required="required"></asp:TextBox>
+              <asp:TextBox runat="server" ID="resetConfirmPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" placeholder="Confirm new password" minlength="6"></asp:TextBox>
             </div>
             <button type="button" id="resetBtn" class="btn btn-primary-custom w-100 py-2">Reset Password</button>
           </div>
@@ -115,14 +115,6 @@
   <script src="../assets/js/data.js"></script>
   <script src="../assets/js/app.js"></script>
   <script>
-      document.getElementById('signInBtn').addEventListener('click', () => {
-          if (App.login(document.getElementById('email').value, document.getElementById('password').value, 'admin')) {
-              App.showToast('Login successful!');
-              setTimeout(() => window.location.href = 'dashboard.aspx', 800);
-          } else {
-              App.showToast('Invalid credentials', 'error');
-          }
-      });
 
       document.getElementById('resetBtn').addEventListener('click', () => {
           const email = document.getElementById('resetEmail').value.trim();
