@@ -1,0 +1,30 @@
+<!--
+  Reusable Layout Component Structure
+  Used by Components.initLayout() in assets/js/components.js
+  
+  Required DOM containers on each dashboard page:
+  - #sidebarContainer     → Sidebar navigation
+  - #mobileSidebarContainer → Mobile offcanvas sidebar
+  - #navbarContainer      → Top navbar with search, notifications, profile
+  - #footerContainer       → App footer
+  - #modalContainer        → Confirm delete modal
+  
+  Layout wrapper:
+  <div class="app-wrapper">
+    <!-- HEADER PART -->
+    <div id="sidebarContainer"></div>
+    <div id="mobileSidebarContainer"></div>
+    <div class="main-content" id="mainContent">
+      <div id="navbarContainer"></div>
+    <!-- END HEADER PART -->
+
+    <!-- BODY PART -->
+      <div class="page-content">...</div>
+    <!-- END BODY PART -->
+
+    <!-- FOOTER PART -->
+      <div id="footerContainer"></div>
+    <!-- END FOOTER PART -->
+    </div>
+  </div>
+-->

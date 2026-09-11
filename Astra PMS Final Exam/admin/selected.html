@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Students - PMS Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- ============================= HEADER START (Top bar / Navbar / Sidebar include) ============================= -->
+
+  <div class="app-wrapper">
+    <div id="sidebarContainer"></div>
+    <div id="mobileSidebarContainer"></div>
+    <div class="main-content" id="mainContent">
+      <div id="navbarContainer"></div>
+<!-- ============================= HEADER END ============================= -->
+
+<!-- ============================= BODY START (Main Page Content) ============================= -->
+
+      <div class="page-content">
+        <div class="page-breadcrumb mb-4">
+          <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li><li class="breadcrumb-item active">Selected Students</li></ol></nav>
+          <h4>Selected Students</h4>
+          <p>Students who have been successfully placed.</p>
+        </div>
+        <div class="row g-3 mb-4">
+          <div class="col-md-4"><div class="dashboard-card stat-card"><div class="stat-icon purple"><i class="bi bi-trophy"></i></div><div><div class="stat-value" id="selectedCount">0</div><div class="stat-label">Total Selected</div></div></div></div>
+        </div>
+        <div class="content-card">
+          <div class="card-body-custom p-0">
+            <div class="table-responsive">
+              <table class="table table-custom">
+                <thead><tr><th></th><th>Student</th><th>Company</th><th>Job Title</th><th>Applied Date</th><th>Status</th></tr></thead>
+                <tbody id="selectedTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+<!-- ============================= BODY END ============================= -->
+
+<!-- ============================= FOOTER START ============================= -->
+<div id="footerContainer"></div>
+<!-- ============================= FOOTER END ============================= -->
+
+    </div>
+  </div>
+  <div id="modalContainer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script>
+    if (App.requireAuth('admin', 'login.html')) {
+      Components.initLayout('admin', 'selected.html', App.currentUser);
+      Admin.renderSelectedTable();
+      document.getElementById('selectedCount').textContent = getData().applications.filter(a => a.status === 'selected').length;
+    }
+  </script>
+</body>
+</html>
