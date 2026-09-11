@@ -1,0 +1,149 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Public_Site1.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Astra_PMS_Final_Exam.admin.login" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+  
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="../assets/css/style.css" rel="stylesheet">
+    <!-- ============================= BODY START (Main Page Content) ============================= -->
+
+  <div class="auth-wrapper" style="background:linear-gradient(135deg, rgba(13,27,62,.45), rgba(21,68,173,.45)), url('../assets/images/admin-login.png') center/cover no-repeat;">
+    <div class="auth-card">
+      <div class="row g-0">
+        <div class="col-lg-5 auth-brand d-none d-lg-flex" style="background:linear-gradient(135deg, rgba(21,68,173,.55), rgba(13,27,62,.65)), url('../assets/images/admin-login.png') center/cover no-repeat;">
+          <div>
+            <div class="auth-logo"><svg width="32" height="32" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="14" fill="#0d1b3e"/>
+              <path d="M24 9L34.5 31.5H30L28 27H20L18 31.5H13.5L24 9Z" fill="#ffffff"/>
+              <rect x="20.8" y="22.5" width="6.4" height="2.6" fill="#0d1b3e"/>
+              <circle cx="34" cy="13.5" r="3.2" fill="#f5a524"/>
+            </svg></div>
+            <h1>Placement Management System</h1>
+            <p class="opacity-75 mb-4">Admin Portal — Manage placements, students, companies, and drives from one dashboard.</p>
+            <div class="d-flex gap-3">
+              <div><i class="bi bi-shield-check fs-4"></i><br><small>Secure</small></div>
+              <div><i class="bi bi-graph-up fs-4"></i><br><small>Analytics</small></div>
+              <div><i class="bi bi-people fs-4"></i><br><small>Manage All</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 auth-form">
+          <div class="text-center mb-4 d-lg-none">
+            <div class="auth-logo mx-auto"><svg width="32" height="32" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="46" height="46" rx="14" fill="#0d1b3e"/>
+              <path d="M24 9L34.5 31.5H30L28 27H20L18 31.5H13.5L24 9Z" fill="#ffffff"/>
+              <rect x="20.8" y="22.5" width="6.4" height="2.6" fill="#0d1b3e"/>
+              <circle cx="34" cy="13.5" r="3.2" fill="#f5a524"/>
+            </svg></div>
+            <h4 class="fw-bold">Admin Login</h4>
+          </div>
+          <h4 class="fw-bold mb-1 d-none d-lg-block">Welcome Back</h4>
+          <p class="text-muted mb-4 d-none d-lg-block">Sign in to your admin account</p>
+          <div id="loginForm">
+            <div class="mb-3">
+              <label class="form-label-custom">Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope text-muted"></i></span>
+                <!-- <input type="email" class="form-control form-control-custom border-start-0" id="email" placeholder="admin@university.edu" value="admin@university.edu" required> -->
+                <asp:TextBox runat="server" ID="email" ClientIDMode="Static" TextMode="Email" CssClass="form-control form-control-custom border-start-0" placeholder="admin@university.edu" Text="admin@university.edu" required="required"></asp:TextBox>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label-custom">Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock text-muted"></i></span>
+                <!-- <input type="password" class="form-control form-control-custom border-start-0" id="password" placeholder="Enter password" value="admin123" required> -->
+                <asp:TextBox runat="server" ID="password" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom border-start-0" placeholder="Enter password" Text="admin123" required="required"></asp:TextBox>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="form-check">
+                <!-- <input class="form-check-input" type="checkbox" id="remember"> -->
+<asp:CheckBox runat="server" ID="remember" ClientIDMode="Static" CssClass="form-check-input" />
+                <label class="form-check-label small" for="remember">Remember me</label>
+              </div>
+              <a href="#" class="small text-danger" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
+            </div>
+<%--            <button type="button" id="signInBtn" class="btn btn-primary-custom w-100 py-2 mb-3">Sign In</button>--%>
+              <asp:ImageButton ID="signInBtn" runat="server" ClientIDMode="Static" ImageUrl="~/assets/images/signin.jpeg" CssClass="w-100" Style="height: 40px; border-radius: 12px;" OnClick="signInBtn_Click"/>
+          </div>
+          <p class="text-center text-muted small mb-0">
+            <a href="../index.aspx"><i class="bi bi-arrow-left me-1"></i>Back to Home</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-key me-2"></i>Reset Password</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close" data-bs-dismiss="modal" aria-label="Close" OnClientClick="return false;" Text="" />
+        </div>
+        <div class="modal-body">
+          <p class="text-muted small">Enter your registered email and a new password.</p>
+          <div id="forgotPasswordForm">
+            <div class="mb-3">
+              <label class="form-label-custom">Registered Email</label>
+              <!-- <input type="email" class="form-control form-control-custom" id="resetEmail" placeholder="Enter your registered email" required> -->
+              <asp:TextBox runat="server" ID="resetEmail" ClientIDMode="Static" TextMode="Email" CssClass="form-control form-control-custom" placeholder="Enter your registered email"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+              <label class="form-label-custom">New Password</label>
+              <!-- <input type="password" class="form-control form-control-custom" id="resetNewPassword" placeholder="Enter new password" minlength="6" required> -->
+              <asp:TextBox runat="server" ID="resetNewPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" placeholder="Enter new password" minlength="6"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+              <label class="form-label-custom">Confirm New Password</label>
+              <!-- <input type="password" class="form-control form-control-custom" id="resetConfirmPassword" placeholder="Confirm new password" minlength="6" required> -->
+              <asp:TextBox runat="server" ID="resetConfirmPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" placeholder="Confirm new password" minlength="6"></asp:TextBox>
+            </div>
+            <!-- <button type="button" id="resetBtn" class="btn btn-primary-custom w-100 py-2">Reset Password</button> -->
+<asp:Button runat="server" ID="resetBtn" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-primary-custom w-100 py-2" OnClientClick="return false;" Text="Reset Password" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script>
+
+      document.getElementById('resetBtn').addEventListener('click', () => {
+          const email = document.getElementById('resetEmail').value.trim();
+          const newPassword = document.getElementById('resetNewPassword').value;
+          const confirmPassword = document.getElementById('resetConfirmPassword').value;
+
+          if (newPassword !== confirmPassword) {
+              App.showToast('Passwords do not match', 'error');
+              return;
+          }
+
+          if (App.resetPassword(email, newPassword, 'admin')) {
+              App.showToast('Password reset successful! Please sign in.');
+              bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal')).hide();
+              document.getElementById('resetEmail').value = '';
+              document.getElementById('resetNewPassword').value = '';
+              document.getElementById('resetConfirmPassword').value = '';
+              document.getElementById('email').value = email;
+              document.getElementById('password').value = '';
+          } else {
+              App.showToast('No account found with this email', 'error');
+          }
+      });
+  </script>
+
+<!-- ============================= BODY END ============================= -->
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
+</asp:Content>

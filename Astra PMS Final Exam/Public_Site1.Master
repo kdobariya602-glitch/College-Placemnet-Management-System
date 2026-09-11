@@ -1,0 +1,763 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Public_Site1.master.cs" Inherits="Astra_PMS_Final_Exam.Public_Site1" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Astra University Training &amp; Placement Cell — connecting students with leading recruiters." />
+    <title>Home | Astra University</title>
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="assets/css/astra-public.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="astra-public">
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <!-- ============================= HEADER START (Top bar / Navbar / Sidebar include) ============================= -->
+
+
+                <div class="ap-strip">
+                    <div class="container d-flex flex-wrap justify-content-center justify-content-md-between align-items-center">
+                        <div><i class="bi bi-mortarboard"></i>&nbsp; Training &amp; Placement Cell <span class="divider">|</span> <i class="bi bi-geo-alt"></i>Astra University Campus</div>
+                        <div class="d-none d-md-block"><i class="bi bi-telephone"></i>1800-123-1104 <span class="divider">|</span> <a href="contact-us.aspx">Get in touch &rarr;</a></div>
+                    </div>
+                </div>
+
+                <nav class="ap-nav">
+                    <div class="container ap-nav-inner">
+                        <a class="ap-brand" href="index.aspx">
+                            <svg width="40" height="40" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="46" height="46" rx="14" fill="#0d1b3e" />
+                                <path d="M24 9L34.5 31.5H30L28 27H20L18 31.5H13.5L24 9Z" fill="#ffffff" />
+                                <rect x="20.8" y="22.5" width="6.4" height="2.6" fill="#0d1b3e" />
+                                <circle cx="34" cy="13.5" r="3.2" fill="#f5a524" />
+                            </svg>
+                            <span class="word"><b>Astra University</b><small>Training &amp; Placement Cell</small></span>
+                        </a>
+                        <div class="ap-links d-none d-lg-flex">
+                            <a href="index.aspx">Home</a>
+                            <a href="placement-policy.aspx">Placement Policies</a>
+                            <a href="placement-team.aspx">Placement Team</a>
+                            <a href="placement-events.aspx">Placement Events</a>
+                            <a href="our-recruiters.aspx">Our Recruiters</a>
+                            <a href="contact-us.aspx">Contact Us</a>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <%--<button class="ap-btn ap-btn-primary ap-btn-sm d-none d-md-inline-flex" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i>Login</button>--%>
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/assets/images/Login1.png" CssClass="d-none d-md-inline-flex" Style="height: 55px; width: 100%; border-radius: 999px;" data-bs-toggle="modal" data-bs-target="#loginModal" OnClientClick="return false;" />
+                            <%--<button class="ap-mobile-toggle d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#apMobileNav"><i class="bi bi-list" style="font-size: 1.4rem;"></i></button>--%>
+                        </div>
+                    </div>
+                </nav>
+                <!-- ============================= HEADER END ============================= -->
+
+            </asp:ContentPlaceHolder>
+
+            <!-- Login/Register modal moved OUTSIDE ContentPlaceHolder2 so every page renders it,
+                 not just pages that don't override the body placeholder. -->
+            <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content" style="border-radius: 20px; border: 0;">
+                        <div class="modal-body p-4 p-md-5">
+                            <div class="text-center mb-3">
+                                <svg width="52" height="52" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="46" height="46" rx="14" fill="#0d1b3e" />
+                                    <path d="M24 9L34.5 31.5H30L28 27H20L18 31.5H13.5L24 9Z" fill="#ffffff" />
+                                    <rect x="20.8" y="22.5" width="6.4" height="2.6" fill="#0d1b3e" />
+                                    <circle cx="34" cy="13.5" r="3.2" fill="#f5a524" />
+                                </svg>
+                            </div>
+                            <h5 class="ap-display mb-1 text-center">Login to your portal</h5>
+                            <p class="text-center mb-4" style="color: var(--ap-text-soft); font-size: .88rem;">Choose your role to continue</p>
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="ap-contact-card text-center h-100 d-flex flex-column">
+                                        <div class="ap-role-icon student mx-auto"><i class="bi bi-mortarboard"></i></div>
+                                        <div class="fw-bold mb-3">Student</div>
+                                        <div class="d-flex gap-2 mt-auto">
+                                            <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/assets/images/Login2.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/student/login.aspx" OnClientClick="window.location.href='/student/login.aspx'; return false;" />
+                                            <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/assets/images/Register1.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/student/register.aspx" OnClientClick="window.location.href='/student/register.aspx'; return false;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="ap-contact-card text-center h-100 d-flex flex-column">
+                                        <div class="ap-role-icon admin mx-auto"><i class="bi bi-shield-lock"></i></div>
+                                        <div class="fw-bold mb-3">Admin</div>
+                                        <div class="d-grid gap-2 mt-auto">
+                                            <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/assets/images/Login3.png" CssClass="w-100" Style="height: 38px; width: 60%; border-radius: 999px; object-fit: contain;" PostBackUrl="/admin/login.aspx" OnClientClick="window.location.href='/admin/login.aspx'; return false;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="ap-contact-card text-center h-100 d-flex flex-column">
+                                        <div class="ap-role-icon admin mx-auto"><i class="bi bi-person-badge"></i></div>
+                                        <div class="fw-bold mb-3">TPO</div>
+                                        <div class="d-grid gap-2 mt-auto">
+                                            <asp:ImageButton ID="ImageButton8" runat="server" ImageUrl="~/assets/images/Login3.png" CssClass="w-100" Style="height: 38px; width: 60%; border-radius: 999px; object-fit: contain;" PostBackUrl="/tpo/login.aspx" OnClientClick="window.location.href='/tpo/login.aspx'; return false;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="ap-contact-card text-center h-100 d-flex flex-column">
+                                        <div class="ap-role-icon company mx-auto"><i class="bi bi-building"></i></div>
+                                        <div class="fw-bold mb-3">Company</div>
+                                        <div class="d-flex gap-2 mt-auto">
+                                            <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/assets/images/Login2.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/company/login.aspx" OnClientClick="window.location.href='/company/login.aspx'; return false;" />
+                                            <asp:ImageButton ID="ImageButton7" runat="server" ImageUrl="~/assets/images/Register1.png" CssClass="flex-fill" Style="height: 38px; width: 50%; border-radius: 999px; object-fit: contain;" PostBackUrl="/company/register.aspx" OnClientClick="window.location.href='/company/register.aspx'; return false;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                <!-- ============================= BODY START (Main Page Content) ============================= -->
+
+
+                <%-- <div class="offcanvas offcanvas-end ap-offcanvas" tabindex="-1" id="apMobileNav">
+                    <div class="offcanvas-header">
+                        <span class="fw-bold">Menu</span>
+                <%--                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>--%>
+                <%--</div>
+                    <div class="offcanvas-body">
+                        <div class="ap-links">
+                            <a href="index.aspx" class="d-block py-2 fs-5">Home</a>
+                            <a href="placement-policy.aspx" class="d-block py-2 fs-5">Placement Policies</a>
+                            <a href="placement-team.aspx" class="d-block py-2 fs-5">Placement Team</a>
+                            <a href="placement-events.aspx" class="d-block py-2 fs-5">Placement Events</a>
+                            <a href="our-recruiters.aspx" class="d-block py-2 fs-5">Our Recruiters</a>
+                            <a href="contact-us.aspx" class="d-block py-2 fs-5">Contact Us</a>
+                        </div>
+                        <hr class="border-secondary my-3">
+                <%--                        <button class="ap-btn ap-btn-primary w-100" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="offcanvas"><i class="bi bi-box-arrow-in-right"></i>Login</button>--%>
+                <%-- <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="assets/images/Login1" /> --%>
+
+                    </div>
+                </div>
+
+
+                <section class="ap-hero has-photo">
+                    <div class="ap-hero-bg" style="background-image: url('assets/images/home1.jpg');"></div>
+                    <div class="ap-grid-dots"></div>
+                    <svg class="ap-route" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M-20 380 C 220 380, 220 200, 420 200 S 620 60, 820 60 S 1020 220, 1240 180" stroke="#38bdf8" stroke-width="2" fill="none" stroke-dasharray="2 10" stroke-linecap="round" opacity=".6" />
+                        <circle cx="420" cy="200" r="5" fill="#38bdf8" />
+                        <circle cx="820" cy="60" r="5" fill="#f5a524" />
+                        <circle cx="1240" cy="180" r="5" fill="#38bdf8" />
+                    </svg>
+                    <div class="container ap-hero-inner">
+                        <div class="row align-items-center g-5">
+                            <div class="col-lg-9 ap-reveal">
+                                <span class="ap-hero-badge"><i class="bi bi-broadcast"></i>2026&ndash;27 Placement Season is Live</span>
+                                <h1 class="mt-3 mb-3">Empowering Careers Through Excellence in Placements</h1>
+                                <p class="lead">Astra University's Training &amp; Placement Cell bridges classroom learning and industry careers &mdash; through structured training, verified employability, and partnerships with over 250 recruiting organisations.</p>
+                                <div class="d-flex flex-wrap gap-3 mt-4">
+                                    <a href="placement-events.aspx" class="ap-btn ap-btn-primary">View Placement Drives <i class="bi bi-arrow-right"></i></a>
+                                    <a href="our-recruiters.aspx" class="ap-btn ap-btn-ghost">Our Recruiters</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ap-trusted-strip" style="padding: 1.75rem 0; background: #fff; border-bottom: 1px solid var(--ap-line); overflow: hidden;">
+                    <div class="container">
+                        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 gap-lg-5">
+                            <span style="font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ap-text-soft); white-space: nowrap;">Trusted by</span>
+                            <img src="assets/images/Companies/microsoft.jpg" alt="Microsoft logo" loading="lazy" style="height: 26px; opacity: 1;">
+                            <img src="assets/images/Companies/Google.jpg" alt="Google logo" loading="lazy" style="height: 26px; opacity: 1;">
+                            <img src="assets/images/Companies/amazon.jpg" alt="Amazon logo" loading="lazy" style="height: 26px; opacity: 1;">
+                            <img src="assets/images/Companies/ibm.jpg" alt="IBM logo" loading="lazy" style="height: 26px; opacity: 1;">
+                            <img src="assets/images/Companies/capgemini.jpg" alt="Capgemini logo" loading="lazy" style="height: 26px; opacity: 1;">
+                            <img src="assets/images/Companies/salesforce.jpg" alt="Salesforce logo" loading="lazy" style="height: 26px; opacity: 1;">
+                            <img src="assets/images/Companies/infosys.jpg" alt="Infosys logo" loading="lazy" style="height: 26px; opacity: 1;">
+                            <img src="assets/images/Companies/wipro.jpg" alt="Wipro logo" loading="lazy" style="height: 26px; opacity: 1;">
+                            <img src="assets/images/Companies/cisco.jpg" alt="Cisco logo" loading="lazy" style="height: 26px; opacity: 1;">
+                        </div>
+                    </div>
+                </section>
+
+                <div class="ap-stats-band">
+                    <div class="container">
+                        <div class="row g-0">
+                            <div class="col-6 col-md-4 col-lg-2 ap-stat">
+                                <div class="num" data-count="4820">0</div>
+                                <div class="label">Students Placed</div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2 ap-stat">
+                                <div class="num" data-count="260">0</div>
+                                <div class="label">Companies Visited</div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2 ap-stat">
+                                <div class="num" data-count="5340">0</div>
+                                <div class="label">Placement Offers</div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2 ap-stat">
+                                <div class="num" data-count="42" data-suffix=" LPA">0</div>
+                                <div class="label">Highest Package</div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2 ap-stat">
+                                <div class="num" data-count="7.8" data-decimals="1" data-suffix=" LPA">0</div>
+                                <div class="label">Average Package</div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2 ap-stat">
+                                <div class="num" data-count="1650">0</div>
+                                <div class="label">Internship Offers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <section class="ap-section">
+                    <div class="container">
+                        <div class="text-center mx-auto mb-5 ap-reveal" style="max-width: 640px;">
+                            <span class="ap-eyebrow">Why Astra</span>
+                            <h2 class="mt-3 mb-2">Why Choose Astra Placement Cell</h2>
+                            <p class="ap-kicker mx-auto">A complete employability pipeline &mdash; not just a placement office.</p>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-3 ap-reveal">
+                                <div class="ap-card ap-feature">
+                                    <div class="ap-card-body">
+                                        <div class="ap-icon-tile"><i class="bi bi-briefcase"></i></div>
+                                        <h5>Industry Collaboration</h5>
+                                        <p>MoUs with 250+ organisations for internships, live projects and campus drives.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 ap-reveal">
+                                <div class="ap-card ap-feature">
+                                    <div class="ap-card-body">
+                                        <div class="ap-icon-tile"><i class="bi bi-mortarboard"></i></div>
+                                        <h5>Placement Training</h5>
+                                        <p>Structured 6-month readiness programme across aptitude, coding and communication.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 ap-reveal">
+                                <div class="ap-card ap-feature">
+                                    <div class="ap-card-body">
+                                        <div class="ap-icon-tile"><i class="bi bi-signpost-2"></i></div>
+                                        <h5>Career Guidance</h5>
+                                        <p>One-on-one counselling to help students map roles to their strengths.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 ap-reveal">
+                                <div class="ap-card ap-feature">
+                                    <div class="ap-card-body">
+                                        <div class="ap-icon-tile"><i class="bi bi-camera-video"></i></div>
+                                        <h5>Mock Interviews</h5>
+                                        <p>Recorded mock rounds with feedback from alumni and HR practitioners.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 ap-reveal">
+                                <div class="ap-card ap-feature">
+                                    <div class="ap-card-body">
+                                        <div class="ap-icon-tile"><i class="bi bi-file-earmark-person"></i></div>
+                                        <h5>Resume Building</h5>
+                                        <p>Role-specific resume clinics reviewed by the corporate relations team.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 ap-reveal">
+                                <div class="ap-card ap-feature">
+                                    <div class="ap-card-body">
+                                        <div class="ap-icon-tile"><i class="bi bi-people"></i></div>
+                                        <h5>Soft Skills</h5>
+                                        <p>Group discussions, communication labs and personality development workshops.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 ap-reveal">
+                                <div class="ap-card ap-feature">
+                                    <div class="ap-card-body">
+                                        <div class="ap-icon-tile"><i class="bi bi-cpu"></i></div>
+                                        <h5>Technical Assessments</h5>
+                                        <p>Domain-wise practice tests aligned to recruiter evaluation patterns.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 ap-reveal">
+                                <div class="ap-card ap-feature">
+                                    <div class="ap-card-body">
+                                        <div class="ap-icon-tile"><i class="bi bi-laptop"></i></div>
+                                        <h5>Internship Opportunities</h5>
+                                        <p>Pre-placement internships that convert into confirmed full-time offers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="ap-section" style="background: var(--ap-surface-alt);">
+                    <div class="container">
+                        <div class="text-center mx-auto mb-5 ap-reveal" style="max-width: 640px;">
+                            <span class="ap-eyebrow">The Journey</span>
+                            <h2 class="mt-3 mb-2">Placement Process</h2>
+                            <p class="ap-kicker mx-auto">Eight checkpoints from registration to your offer letter.</p>
+                        </div>
+                        <div class="row g-4 ap-route-line">
+                            <div class="col-6 col-md-3 ap-route-stop ap-reveal">
+                                <div class="ap-route-dot">01</div>
+                                <h6>Student Registration</h6>
+                                <p>Register on the TPC portal with academic and personal details.</p>
+                            </div>
+                            <div class="col-6 col-md-3 ap-route-stop ap-reveal">
+                                <div class="ap-route-dot">02</div>
+                                <h6>Resume Verification</h6>
+                                <p>Coordinators verify and approve your resume before drives.</p>
+                            </div>
+                            <div class="col-6 col-md-3 ap-route-stop ap-reveal">
+                                <div class="ap-route-dot">03</div>
+                                <h6>Training Sessions</h6>
+                                <p>Attend mandatory aptitude, coding and soft-skill training.</p>
+                            </div>
+                            <div class="col-6 col-md-3 ap-route-stop ap-reveal">
+                                <div class="ap-route-dot">04</div>
+                                <h6>Aptitude Test</h6>
+                                <p>Clear the recruiter's shortlisting aptitude round.</p>
+                            </div>
+                            <div class="col-6 col-md-3 ap-route-stop ap-reveal">
+                                <div class="ap-route-dot">05</div>
+                                <h6>Technical Interview</h6>
+                                <p>Domain interview with the recruiting panel.</p>
+                            </div>
+                            <div class="col-6 col-md-3 ap-route-stop ap-reveal">
+                                <div class="ap-route-dot">06</div>
+                                <h6>HR Interview</h6>
+                                <p>Final round assessing fit, communication and intent.</p>
+                            </div>
+                            <div class="col-6 col-md-3 ap-route-stop ap-reveal">
+                                <div class="ap-route-dot">07</div>
+                                <h6>Offer Letter</h6>
+                                <p>Receive and review the official offer letter.</p>
+                            </div>
+                            <div class="col-6 col-md-3 ap-route-stop ap-reveal">
+                                <div class="ap-route-dot">08</div>
+                                <h6>Successful Placement</h6>
+                                <p>Confirm acceptance and begin onboarding formalities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="ap-section">
+                    <div class="container">
+                        <div class="text-center mx-auto mb-5 ap-reveal" style="max-width: 640px;">
+                            <span class="ap-eyebrow">Alumni Voices</span>
+                            <h2 class="mt-3 mb-2">Success Stories</h2>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-4 ap-reveal">
+                                <div class="ap-quote-card">
+                                    <span class="ap-quote-mark">&ldquo;</span>
+                                    <p style="color: var(--ap-text-soft); font-size: .94rem;">The mock interviews genuinely mirrored the real thing — I walked in prepared, not nervous.</p>
+                                    <div class="d-flex align-items-center gap-3 mt-4">
+                                        <div class="ap-avatar d-flex align-items-center justify-content-center" style="background: var(--ap-surface-alt); color: var(--ap-blue); font-weight: 700;">AM</div>
+                                        <div>
+                                            <div class="fw-semibold">Aarav Mehta</div>
+                                            <div class="role">B.Tech, Computer Science</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-3 pt-3" style="border-top: 1px solid var(--ap-line);">
+                                        <span class="fw-semibold" style="font-size: .85rem;">Capgemini</span>
+                                        <span class="ap-package-chip">7.2 LPA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ap-reveal">
+                                <div class="ap-quote-card">
+                                    <span class="ap-quote-mark">&ldquo;</span>
+                                    <p style="color: var(--ap-text-soft); font-size: .94rem;">Corporate relations connected me directly with the hiring manager during the pre-placement talk.</p>
+                                    <div class="d-flex align-items-center gap-3 mt-4">
+                                        <div class="ap-avatar d-flex align-items-center justify-content-center" style="background: var(--ap-surface-alt); color: var(--ap-blue); font-weight: 700;">SR</div>
+                                        <div>
+                                            <div class="fw-semibold">Sneha Rao</div>
+                                            <div class="role">MBA, Marketing</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-3 pt-3" style="border-top: 1px solid var(--ap-line);">
+                                        <span class="fw-semibold" style="font-size: .85rem;">IndiaMART</span>
+                                        <span class="ap-package-chip">9.5 LPA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ap-reveal">
+                                <div class="ap-quote-card">
+                                    <span class="ap-quote-mark">&ldquo;</span>
+                                    <p style="color: var(--ap-text-soft); font-size: .94rem;">The resume clinic rewrote how I presented my internship projects — it made all the difference.</p>
+                                    <div class="d-flex align-items-center gap-3 mt-4">
+                                        <div class="ap-avatar d-flex align-items-center justify-content-center" style="background: var(--ap-surface-alt); color: var(--ap-blue); font-weight: 700;">KS</div>
+                                        <div>
+                                            <div class="fw-semibold">Kunal Shah</div>
+                                            <div class="role">B.Tech, Mechanical</div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-3 pt-3" style="border-top: 1px solid var(--ap-line);">
+                                        <span class="fw-semibold" style="font-size: .85rem;">Yokohama Tyres</span>
+                                        <span class="ap-package-chip">6.8 LPA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="ap-section" style="background: var(--ap-surface-alt);">
+                    <div class="container">
+                        <div class="d-flex flex-wrap justify-content-between align-items-end mb-5 ap-reveal">
+                            <div>
+                                <span class="ap-eyebrow">Recruiters</span>
+                                <h2 class="mt-3 mb-0">Top Recruiters</h2>
+                            </div>
+                            <a href="our-recruiters.aspx" class="ap-btn ap-btn-outline">View All Recruiters <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/microsoft.jpg" alt="Microsoft logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/Google.jpg" alt="Google logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/amazon.jpg" alt="Amazon logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/ibm.jpg" alt="IBM logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/capgemini.jpg" alt="Capgemini logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/Tech mahindra.jpg" alt="Tech Mahindra logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/oracle.jpg" alt="Oracle logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/sap.jpg" alt="SAP logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/adobe.jpg" alt="Adobe logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/deloitte.jpg" alt="Deloitte logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/infosys.jpg" alt="Infosys logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/salesforce.jpg" alt="Salesforce logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/wipro.jpg" alt="Wipro logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/cognizant.jpg" alt="Cognizant logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/cisco.jpg" alt="Cisco logo" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-2 ap-reveal">
+                                <div class="ap-logo-tile">
+                                    <img src="assets/images/Companies/Hcl tech.jpg" alt="HCL logo" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="ap-section" style="background: var(--ap-surface-alt);">
+                    <div class="container">
+                        <div class="row g-5">
+                            <div class="col-lg-4 ap-reveal">
+                                <span class="ap-eyebrow">Calendar</span>
+                                <h2 class="mt-3 mb-3">Upcoming Placement Drives</h2>
+                                <p class="ap-kicker">Registered students receive drive-specific instructions by email 48 hours in advance.</p>
+                                <a href="placement-events.aspx" class="ap-btn ap-btn-primary mt-2">View Full Calendar <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                            <div class="col-lg-8 ap-reveal">
+                                <div class="ap-card">
+                                    <div class="ap-card-body py-2">
+                                        <div class="ap-drive-item ap-reveal">
+                                            <div class="ap-drive-logo">CG</div>
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex flex-wrap justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="fw-bold">Capgemini</div>
+                                                        <div style="color: var(--ap-text-soft); font-size: .88rem;">Software Engineer</div>
+                                                    </div>
+                                                    <span class="ap-status-pill ap-status-open">Registration Open</span>
+                                                </div>
+                                                <div class="d-flex flex-wrap gap-3 mt-2" style="font-size: .82rem; color: var(--ap-text-faint);">
+                                                    <span><i class="bi bi-mortarboard"></i>B.Tech CSE/IT, 60%+</span>
+                                                    <span><i class="bi bi-calendar-event"></i>02 Aug 2026</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ap-drive-item ap-reveal">
+                                            <div class="ap-drive-logo">TM</div>
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex flex-wrap justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="fw-bold">Tech Mahindra</div>
+                                                        <div style="color: var(--ap-text-soft); font-size: .88rem;">Associate Consultant</div>
+                                                    </div>
+                                                    <span class="ap-status-pill ap-status-soon">Opening Soon</span>
+                                                </div>
+                                                <div class="d-flex flex-wrap gap-3 mt-2" style="font-size: .82rem; color: var(--ap-text-faint);">
+                                                    <span><i class="bi bi-mortarboard"></i>All branches, 65%+</span>
+                                                    <span><i class="bi bi-calendar-event"></i>10 Aug 2026</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ap-drive-item ap-reveal">
+                                            <div class="ap-drive-logo">IM</div>
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex flex-wrap justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="fw-bold">IndiaMART</div>
+                                                        <div style="color: var(--ap-text-soft); font-size: .88rem;">Business Development Executive</div>
+                                                    </div>
+                                                    <span class="ap-status-pill ap-status-open">Registration Open</span>
+                                                </div>
+                                                <div class="d-flex flex-wrap gap-3 mt-2" style="font-size: .82rem; color: var(--ap-text-faint);">
+                                                    <span><i class="bi bi-mortarboard"></i>MBA, any specialisation</span>
+                                                    <span><i class="bi bi-calendar-event"></i>14 Aug 2026</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ap-drive-item ap-reveal">
+                                            <div class="ap-drive-logo">YT</div>
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex flex-wrap justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="fw-bold">Yokohama Tyres</div>
+                                                        <div style="color: var(--ap-text-soft); font-size: .88rem;">Graduate Engineer Trainee</div>
+                                                    </div>
+                                                    <span class="ap-status-pill ap-status-closed">Registration Closed</span>
+                                                </div>
+                                                <div class="d-flex flex-wrap gap-3 mt-2" style="font-size: .82rem; color: var(--ap-text-faint);">
+                                                    <span><i class="bi bi-mortarboard"></i>B.Tech Mechanical/EE, 60%+</span>
+                                                    <span><i class="bi bi-calendar-event"></i>20 Aug 2026</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="ap-section">
+                    <div class="container">
+                        <div class="d-flex flex-wrap justify-content-between align-items-end mb-5 ap-reveal">
+                            <div>
+                                <span class="ap-eyebrow">Moments</span>
+                                <h2 class="mt-3 mb-0">Gallery Preview</h2>
+                            </div>
+                            <a href="placement-events.aspx" class="ap-btn ap-btn-outline">View All Events</a>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6 col-md-3 ap-reveal">
+                                <div class="ap-gallery-item" data-lightbox="assets/images/events/event1.jpeg">
+                                    <img src="assets/images/events/event1.jpeg" alt="Placement Event">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 ap-reveal">
+                                <div class="ap-gallery-item" data-lightbox="assets/images/events/event2.jpeg">
+                                    <img src="assets/images/events/event2.jpeg" alt="Placement Event">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 ap-reveal">
+                                <div class="ap-gallery-item" data-lightbox="assets/images/events/event3.jpeg">
+                                    <img src="assets/images/events/event3.jpeg" alt="Placement Event">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 ap-reveal">
+                                <div class="ap-gallery-item" data-lightbox="assets/images/events/event4.jpeg">
+                                    <img src="assets/images/events/event4.jpeg" alt="Placement Event">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="ap-section" style="background: var(--ap-surface-alt);">
+                    <div class="container" style="max-width: 820px;">
+                        <div class="text-center mb-5 ap-reveal">
+                            <span class="ap-eyebrow">Support</span>
+                            <h2 class="mt-3 mb-0">Frequently Asked Questions</h2>
+                        </div>
+                        <div class="accordion ap-accordion ap-reveal" id="homeFaq">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq0">Who is eligible for on-campus placements?</button>
+                                </h2>
+                                <div id="faq0" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                                    <div class="accordion-body">Students with no active academic backlogs and meeting the minimum CGPA specified in the Placement Policy for their programme.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Can I sit for a company after accepting another offer?</button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                                    <div class="accordion-body">No. Once an offer is accepted through the TPC portal, the Offer Acceptance Policy restricts further participation, except for pre-approved dream companies.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">How do I register for a placement drive?</button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                                    <div class="accordion-body">Log in to the Student Panel, complete your profile, and click Apply on the specific drive under Upcoming Drives.</div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Are internships counted separately from placements?</button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                                    <div class="accordion-body">Yes. Internship offers are tracked independently, though many convert into full-time offers after evaluation.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================= BODY END ============================= -->
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                <!-- ============================= FOOTER START ============================= -->
+                <footer class="ap-footer">
+                    <div class="container">
+                        <div class="row g-4">
+                            <div class="col-lg-4">
+                                <a class="ap-brand mb-3 d-inline-flex" href="index.aspx">
+                                    <svg width="36" height="36" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="1" y="1" width="46" height="46" rx="14" fill="#132a5e" />
+                                        <path d="M24 9L34.5 31.5H30L28 27H20L18 31.5H13.5L24 9Z" fill="#ffffff" />
+                                        <rect x="20.8" y="22.5" width="6.4" height="2.6" fill="#132a5e" />
+                                        <circle cx="34" cy="13.5" r="3.2" fill="#f5a524" />
+                                    </svg>
+                                    <span class="word"><b style="color: #fff;">Astra University</b><small style="color: rgba(255,255,255,.5);">Training &amp; Placement Cell</small></span>
+                                </a>
+                                <p style="font-size: .88rem; max-width: 320px;">Connecting talented graduates with the country's leading recruiters through structured training, mentorship and industry partnerships.</p>
+                                <div class="ap-social mt-3">
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#"><i class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-facebook"></i></a>
+                                    <a href="#"><i class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <h6>Quick Links</h6>
+                                <a href="index.aspx">Home</a>
+                                <a href="placement-policy.aspx">Placement Policies</a>
+                                <a href="placement-team.aspx">Placement Team</a>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <h6>More</h6>
+                                <a href="placement-events.aspx">Placement Events</a>
+                                <a href="our-recruiters.aspx">Our Recruiters</a>
+                                <a href="contact-us.aspx">Contact Us</a>
+                            </div>
+                            <div class="col-lg-4">
+                                <h6>Stay Updated</h6>
+                                <p style="font-size: .88rem;">Get placement drive alerts and recruiter announcements in your inbox.</p>
+                                <div class="d-flex ap-newsletter" data-ap-form="Subscribed — you'll hear from us soon.">
+                                    <input type="email" id="apNewsletterEmail" required placeholder="you@astra.edu.in" class="form-control border-0">
+                                    <button type="button" class="ap-btn ap-btn-primary px-3"><i class="bi bi-send"></i></button>
+                                </div>
+                                <div class="mt-3" style="font-size: .85rem;">
+                                    <div><i class="bi bi-envelope"></i>&nbsp; tpc@astrauniversity.edu.in</div>
+                                    <div><i class="bi bi-telephone"></i>&nbsp; 1800-123-1104</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ap-footer-bottom d-flex flex-wrap justify-content-between gap-2">
+                            <div>&copy; 2026 Astra University &mdash; Training &amp; Placement Cell. All rights reserved.</div>
+                            <div><a href="placement-policy.aspx" style="display: inline;">Placement Policy</a> &nbsp;&middot;&nbsp; <a href="contact-us.aspx" style="display: inline;">Contact</a></div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- ============================= FOOTER END ============================= -->
+
+
+
+                <div class="ap-lightbox" id="apLightbox" style="position: fixed; inset: 0; background: rgba(11,18,32,.92); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 2rem;">
+                    <button data-lightbox-close style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 0; color: #fff; font-size: 1.8rem;">&times;</button>
+                    <div style="max-width: 900px; width: 100%;">
+                        <img src="" alt="" style="width: 100%; border-radius: 14px;">
+                        <p class="ap-lightbox-cap text-center text-white mt-3"></p>
+                    </div>
+                </div>
+                <style>
+                    .ap-lightbox.show {
+                        display: flex !important;
+                    }
+                </style>
+
+                <div class="ap-toast" id="apToast"><i class="bi bi-check-circle-fill"></i><span>Done</span></div>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="assets/js/astra-public.js"></script>
+
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
