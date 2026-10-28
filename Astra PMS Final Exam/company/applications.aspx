@@ -6,14 +6,23 @@
 
       <div class="page-content">
         <div class="page-breadcrumb mb-4"><h4>View Applications</h4><p>Review applications from students for your job posts.</p></div>
-        <div class="filter-bar">
-          <select class="form-select form-select-sm" style="width:auto" id="appStatusFilter">
+        <div class="filter-bar d-flex gap-2 flex-wrap">
+          <!-- <select class="form-select form-select-sm" style="width:auto" id="appStatusFilter">
             <option value="">All Status</option>
             <option value="pending">Pending</option>
             <option value="shortlisted">Shortlisted</option>
             <option value="selected">Selected</option>
             <option value="rejected">Rejected</option>
-          </select>
+          </select> -->
+<asp:DropDownList runat="server" ID="appStatusFilter" ClientIDMode="Static" CssClass="form-select form-select-sm" Style="width:auto">
+                    <asp:ListItem Text="All Status" Value=""></asp:ListItem>
+                    <asp:ListItem Text="Pending" Value="pending"></asp:ListItem>
+                    <asp:ListItem Text="Shortlisted" Value="shortlisted"></asp:ListItem>
+                    <asp:ListItem Text="Selected" Value="selected"></asp:ListItem>
+                    <asp:ListItem Text="Rejected" Value="rejected"></asp:ListItem>
+                </asp:DropDownList>
+          <select class="form-select form-select-sm" style="width:auto" id="appJobFilter"><option value="">All Jobs</option></select>
+          <select class="form-select form-select-sm" style="width:auto" id="appBranchFilter"><option value="">All Branches</option></select>
         </div>
         <div class="content-card">
           <div class="card-body-custom p-0">
@@ -43,6 +52,7 @@
   <script>
     if (App.requireAuth('company', 'login.aspx')) {
       Components.initLayout('company', 'applications.aspx', App.currentUser);
+      Company.initApplicationsFilters();
       Company.renderApplications();
     }
   </script>

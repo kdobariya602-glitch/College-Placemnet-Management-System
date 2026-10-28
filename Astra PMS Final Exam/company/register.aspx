@@ -78,11 +78,7 @@
                             ClientIDMode="Static"
                             ImageUrl="~/assets/images/Register2.png"
                             CssClass="w-100"
-<<<<<<< HEAD
-                            Style="height: 35px; border-radius: 99px;"
-=======
                             Style="height: 35px; border-radius: 12px;"
->>>>>>> 0b3b662 (Save local changes)
                             OnClick="registerBtn_Click" />
                     </div>
                     <p class="text-center text-muted small">Already have an account? <a href="login.aspx" class="text-danger">Login here</a></p>

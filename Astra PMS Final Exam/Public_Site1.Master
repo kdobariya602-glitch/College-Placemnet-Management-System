@@ -76,7 +76,7 @@
                             <h5 class="ap-display mb-1 text-center">Login to your portal</h5>
                             <p class="text-center mb-4" style="color: var(--ap-text-soft); font-size: .88rem;">Choose your role to continue</p>
                             <div class="row g-3">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="ap-contact-card text-center h-100 d-flex flex-column">
                                         <div class="ap-role-icon student mx-auto"><i class="bi bi-mortarboard"></i></div>
                                         <div class="fw-bold mb-3">Student</div>
@@ -86,7 +86,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="ap-contact-card text-center h-100 d-flex flex-column">
                                         <div class="ap-role-icon admin mx-auto"><i class="bi bi-shield-lock"></i></div>
                                         <div class="fw-bold mb-3">Admin</div>
@@ -95,7 +95,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <div class="ap-contact-card text-center h-100 d-flex flex-column">
+                                        <div class="ap-role-icon admin mx-auto"><i class="bi bi-person-badge"></i></div>
+                                        <div class="fw-bold mb-3">TPO</div>
+                                        <div class="d-grid gap-2 mt-auto">
+                                            <asp:ImageButton ID="ImageButton8" runat="server" ImageUrl="~/assets/images/Login3.png" CssClass="w-100" Style="height: 38px; width: 60%; border-radius: 999px; object-fit: contain;" PostBackUrl="/tpo/login.aspx" OnClientClick="window.location.href='/tpo/login.aspx'; return false;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="ap-contact-card text-center h-100 d-flex flex-column">
                                         <div class="ap-role-icon company mx-auto"><i class="bi bi-building"></i></div>
                                         <div class="fw-bold mb-3">Company</div>

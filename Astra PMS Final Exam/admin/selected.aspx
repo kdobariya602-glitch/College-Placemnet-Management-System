@@ -39,13 +39,10 @@
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/admin.js"></script>
   <script>
-    //if (App.requireAuth('admin', 'login.aspx')) {
-    //  Components.initLayout('admin', 'selected.aspx', App.currentUser);
-    //  Admin.renderSelectedTable();
-    //  document.getElementById('selectedCount').textContent = getData().applications.filter(a => a.status === 'selected').length;
-      //}
-      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      Admin.initDashboard();
+      Components.initLayout('admin', 'selected.aspx', App.currentUser);
+      Admin.renderSelectedTable();
+      const selCountEl = document.getElementById('selectedCount');
+      if (selCountEl) selCountEl.textContent = getData().applications.filter(a => a.status === 'selected').length;
   </script>
 </asp:Content>
 

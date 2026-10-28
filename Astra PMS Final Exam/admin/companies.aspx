@@ -11,9 +11,10 @@
             <h4>Company Management</h4>
             <p>Manage recruiting companies and their profiles.</p>
           </div>
-          <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#companyModal" onclick="document.getElementById('companyForm').reset();document.getElementById('companyId').value='';document.getElementById('companyModalTitle').textContent='Add Company'">
+          <!-- <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#companyModal" onclick="document.getElementById('companyForm').reset();document.getElementById('companyId').value='';document.getElementById('companyModalTitle').textContent='Add Company'">
             <i class="bi bi-plus-lg me-1"></i>Add Company
-          </button>
+          </button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#companyModal" OnClientClick="document.getElementById(&#x27;companyForm&#x27;).reset();document.getElementById(&#x27;companyId&#x27;).value=&#x27;&#x27;;document.getElementById(&#x27;companyModalTitle&#x27;).textContent=&#x27;Add Company&#x27;; return false;" Text="Add Company" />
         </div>
         <div class="content-card">
           <div class="card-body-custom p-0">
@@ -41,7 +42,8 @@
 
   <div class="modal fade" id="companyModal" tabindex="-1">
     <div class="modal-dialog"><div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title" id="companyModalTitle">Add Company</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-header"><h5 class="modal-title" id="companyModalTitle">Add Company</h5><!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+<asp:Button runat="server" ID="btnCtrl2" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close" data-bs-dismiss="modal" OnClientClick="return false;" Text="" /></div>
       <div class="modal-body">
         <form id="companyForm">
           <input type="hidden" id="companyId">
@@ -60,7 +62,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">Cancel</button>
+        <!-- <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">Cancel</button> -->
+<asp:Button runat="server" ID="btnCtrl3" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-outline-custom" data-bs-dismiss="modal" OnClientClick="return false;" Text="Cancel" />
         <!-- <button type="button" class="btn btn-primary-custom" onclick="Admin.saveCompany()">Save</button> -->
         <asp:Button runat="server" ID="saveCompanyBtn" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-primary-custom" OnClientClick="Admin.saveCompany(); return false;" Text="Save" />
       </div>
@@ -79,8 +82,8 @@
     //  Admin.renderCompaniesTable();
       //}
 
-      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      Admin.initDashboard();
+      Components.initLayout('admin', 'companies.aspx', App.currentUser);
+      Admin.renderCompaniesTable();
   </script>
 </asp:Content>
 

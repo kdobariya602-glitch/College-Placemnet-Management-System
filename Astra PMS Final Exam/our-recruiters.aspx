@@ -8,7 +8,8 @@
     <div class="offcanvas offcanvas-end ap-offcanvas" tabindex="-1" id="apMobileNav">
         <div class="offcanvas-header">
             <span class="fw-bold">Menu</span>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close btn-close-white" data-bs-dismiss="offcanvas" OnClientClick="return false;" Text="" />
         </div>
         <div class="offcanvas-body">
             <div class="ap-links">
@@ -67,8 +68,10 @@
                     <h2 class="mt-3 mb-0">Featured Companies</h2>
                 </div>
                 <div class="ap-filter-bar" data-filter-group="recruiters">
-                    <button class="ap-filter-btn active" data-filter-value="all">All Companies</button>
-                    <button class="ap-filter-btn" data-filter-value="it">IT &amp; Software</button>
+                    <!-- <button class="ap-filter-btn active" data-filter-value="all">All Companies</button> -->
+<asp:Button runat="server" ID="btnCtrl2" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="ap-filter-btn active" data-filter-value="all" OnClientClick="return false;" Text="All Companies" />
+                    <!-- <button class="ap-filter-btn" data-filter-value="it">IT &amp; Software</button> -->
+<asp:Button runat="server" ID="btnCtrl3" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="ap-filter-btn" data-filter-value="it" OnClientClick="return false;" Text="IT &amp; Software" />
                 </div>
             </div>
 

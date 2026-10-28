@@ -66,17 +66,13 @@
   <script src="../assets/js/charts.js"></script>
   <script src="../assets/js/admin.js"></script>
   <script>
-    //if (App.requireAuth('admin', 'login.aspx')) {
-    //  Components.initLayout('admin', 'reports.aspx', App.currentUser);
-    //  const s = getStats();
-    //  document.getElementById('rStudents').textContent = s.totalStudents;
-    //  document.getElementById('rPlaced').textContent = s.totalPlacements;
-    //  document.getElementById('rApps').textContent = s.totalApplications;
-    //  document.getElementById('rRate').textContent = s.placementPercentage + '%';
-    //  Charts.renderReportsCharts();
-      //}
-      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      Admin.initDashboard();
+      Components.initLayout('admin', 'reports.aspx', App.currentUser);
+      const s = getStats();
+      document.getElementById('rStudents').textContent = s.totalStudents;
+      document.getElementById('rPlaced').textContent = s.totalPlacements;
+      document.getElementById('rApps').textContent = s.totalApplications;
+      document.getElementById('rRate').textContent = s.placementPercentage + '%';
+      Charts.renderReportsCharts();
   </script>
 </asp:Content>
 

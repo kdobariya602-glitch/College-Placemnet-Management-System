@@ -54,7 +54,6 @@
       //if (App.requireAuth('admin', 'login.aspx')) {
       //    Components.initLayout('admin', 'messages.aspx', App.currentUser);
       //}
-      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      Admin.initDashboard();
+      Components.initLayout('admin', 'messages.aspx', App.currentUser);
   </script>
 </asp:Content>

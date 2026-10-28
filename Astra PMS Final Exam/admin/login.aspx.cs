@@ -32,7 +32,9 @@ namespace Astra_PMS_Final_Exam.admin
         protected void signInBtn_Click(object sender, ImageClickEventArgs e)
         {
             getcon();
-            cmd = new SqlCommand("select * from Admin_Login_tbl where Email='" + email.Text + "' and Password='" + password.Text + "'", con);
+            cmd = new SqlCommand("select * from Admin_Login_tbl where Email=@Email and Password=@Password", con);
+            cmd.Parameters.AddWithValue("@Email", email.Text);
+            cmd.Parameters.AddWithValue("@Password", password.Text);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -40,14 +42,47 @@ namespace Astra_PMS_Final_Exam.admin
             if (dr.Read())
             {
                 Session["admin"] = email.Text;
-                Response.Redirect("dashboard.aspx");
+
+                // Best-effort display name for the client-side UI layer (sidebar/navbar avatar).
+                // This does not affect authentication, which remains fully DB-driven above.
+                string displayName = "Admin";
+                try
+                {
+                    if (HasColumn(dr, "Name") && dr["Name"] != DBNull.Value)
+                    {
+                        displayName = dr["Name"].ToString();
+                    }
+                }
+                catch { /* ignore, fall back to default */ }
+
+                dr.Close();
+                con.Close();
+
+                string safeName = displayName.Replace("'", "\\'");
+                string safeEmail = email.Text.Replace("'", "\\'");
+
+                Response.Write("<script>" +
+                    "try{sessionStorage.setItem('pms_session', JSON.stringify({id:'admin1', name:'" + safeName + "', email:'" + safeEmail + "', role:'admin'}));}catch(e){}" +
+                    "window.location.href='dashboard.aspx';" +
+                    "</script>");
+                Response.End();
             }
             else
             {
-
+                dr.Close();
+                con.Close();
                 Response.Write("<script>alert('Invalid credentials');</script>");
             }
 
+        }
+
+        static bool HasColumn(SqlDataReader r, string columnName)
+        {
+            for (int i = 0; i < r.FieldCount; i++)
+            {
+                if (r.GetName(i).Equals(columnName, StringComparison.OrdinalIgnoreCase)) return true;
+            }
+            return false;
         }
     }
 }

@@ -11,15 +11,37 @@
           <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon purple"><i class="bi bi-star"></i></div><div><div class="stat-value" id="statShortlisted">0</div><div class="stat-label">Shortlisted</div></div></div></div>
           <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon green"><i class="bi bi-trophy"></i></div><div><div class="stat-value" id="statSelected">0</div><div class="stat-label">Selected</div></div></div></div>
         </div>
+        <div class="row g-3 mb-4">
+          <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon yellow"><i class="bi bi-hourglass-split"></i></div><div><div class="stat-value" id="statPendingApproval">0</div><div class="stat-label">Pending Approval</div></div></div></div>
+          <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon teal"><i class="bi bi-briefcase-fill"></i></div><div><div class="stat-value" id="statActiveJobs">0</div><div class="stat-label">Approved Jobs</div></div></div></div>
+          <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon red"><i class="bi bi-x-circle"></i></div><div><div class="stat-value" id="statRejected">0</div><div class="stat-label">Rejected</div></div></div></div>
+          <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon orange"><i class="bi bi-calendar-event"></i></div><div><div class="stat-value" id="statInterviews">0</div><div class="stat-label">Interviews</div></div></div></div>
+        </div>
+        <div class="row g-3 mb-4">
+          <div class="col-sm-6 col-lg-4"><div class="dashboard-card stat-card"><div class="stat-icon blue"><i class="bi bi-person-check"></i></div><div><div class="stat-value" id="statHired">0</div><div class="stat-label">Total Hired</div></div></div></div>
+          <div class="col-sm-6 col-lg-4"><div class="dashboard-card stat-card"><div class="stat-icon green"><i class="bi bi-person-badge"></i></div><div><div class="stat-value" id="statPlaced">0</div><div class="stat-label">Placed</div></div></div></div>
+        </div>
         <div class="row g-3">
           <div class="col-lg-8">
-            <div class="content-card">
+            <div class="content-card mb-3">
               <div class="card-header-custom"><h5>Recent Applications</h5><a href="applications.aspx" class="btn btn-sm btn-outline-custom">View All</a></div>
               <div class="card-body-custom" id="recentApplications"></div>
             </div>
+            <div class="content-card mb-3">
+              <div class="card-header-custom"><h5>Recent Jobs</h5><a href="manage-jobs.aspx" class="btn btn-sm btn-outline-custom">View All</a></div>
+              <div class="card-body-custom" id="recentJobs"></div>
+            </div>
+            <div class="content-card mb-3">
+              <div class="card-header-custom"><h5>Upcoming Interviews</h5><a href="interview-schedule.aspx" class="btn btn-sm btn-outline-custom">View All</a></div>
+              <div class="card-body-custom" id="upcomingInterviews"></div>
+            </div>
+            <div class="content-card">
+              <div class="card-header-custom"><h5>Recent Selections</h5><a href="selected.aspx" class="btn btn-sm btn-outline-custom">View All</a></div>
+              <div class="card-body-custom" id="recentSelections"></div>
+            </div>
           </div>
           <div class="col-lg-4">
-            <div class="content-card">
+            <div class="content-card mb-3">
               <div class="card-header-custom"><h5>Quick Actions</h5></div>
               <div class="card-body-custom">
                 <div class="d-grid gap-2">
@@ -28,6 +50,14 @@
                   <a href="shortlist.aspx" class="btn btn-outline-custom text-start"><i class="bi bi-star me-2"></i>Shortlisted</a>
                 </div>
               </div>
+            </div>
+            <div class="content-card mb-3">
+              <div class="card-header-custom"><h5>Application Status Overview</h5></div>
+              <div class="card-body-custom" id="statusOverview"></div>
+            </div>
+            <div class="content-card">
+              <div class="card-header-custom"><h5>Hiring Overview</h5></div>
+              <div class="card-body-custom" id="hiringOverview"></div>
             </div>
           </div>
         </div>

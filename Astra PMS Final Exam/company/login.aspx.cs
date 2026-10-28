@@ -13,5 +13,10 @@ namespace Astra_PMS_Final_Exam.company
         {
 
         }
+
+        protected void signInBtn_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
     }
 }

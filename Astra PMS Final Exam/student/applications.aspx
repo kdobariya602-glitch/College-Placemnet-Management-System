@@ -6,11 +6,33 @@
 
       <div class="page-content">
         <div class="page-breadcrumb mb-4"><h4>My Applications</h4><p>Track the status of all your job applications.</p></div>
+        <div class="content-card mb-3">
+          <div class="card-body-custom">
+            <div class="row g-2">
+              <div class="col-md-4"><input type="text" class="form-control form-control-custom" id="appSearch" placeholder="Search by job or company..." oninput="Student.renderApplications()"></div>
+              <div class="col-md-3">
+                <select class="form-select form-control-custom" id="appFilterCompany" onchange="Student.renderApplications()"><option value="">All Companies</option></select>
+              </div>
+              <div class="col-md-3">
+                <select class="form-select form-control-custom" id="appFilterJob" onchange="Student.renderApplications()"><option value="">All Jobs</option></select>
+              </div>
+              <div class="col-md-2">
+                <select class="form-select form-control-custom" id="appFilterStatus" onchange="Student.renderApplications()">
+                  <option value="">All Status</option>
+                  <option value="pending">Applied / Under Review</option>
+                  <option value="shortlisted">Shortlisted</option>
+                  <option value="selected">Selected</option>
+                  <option value="rejected">Rejected</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="content-card">
           <div class="card-body-custom p-0">
             <div class="table-responsive">
               <table class="table table-custom">
-                <thead><tr><th>Job Title</th><th>Company</th><th>Status</th><th>Applied Date</th><th>Interview Date</th></tr></thead>
+                <thead><tr><th>Application ID</th><th>Job Title</th><th>Company</th><th>Status</th><th>Applied Date</th><th>Interview Date</th><th>Next Step</th><th></th></tr></thead>
                 <tbody id="applicationsTableBody"></tbody>
               </table>
             </div>

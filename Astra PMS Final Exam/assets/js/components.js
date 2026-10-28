@@ -5,42 +5,90 @@
 const Components = {
   adminNav: [
     { href: 'dashboard.aspx', icon: 'bi-speedometer2', label: 'Dashboard' },
+    { href: 'students.aspx', icon: 'bi-people', label: 'Manage Students' },
+    { href: 'manage-tpo.aspx', icon: 'bi-person-badge', label: 'Manage TPO' },
+    { href: 'companies.aspx', icon: 'bi-building', label: 'Manage Companies' },
+    { href: 'drives.aspx', icon: 'bi-calendar-event', label: 'Manage Placement Drives' },
+    { href: 'applications.aspx', icon: 'bi-file-earmark-text', label: 'Manage Applications' },
+    { href: 'selected.aspx', icon: 'bi-trophy', label: 'Manage Placements' },
+    { href: 'departments.aspx', icon: 'bi-diagram-3', label: 'Departments' },
+    { href: 'courses.aspx', icon: 'bi-mortarboard', label: 'Courses' },
+    { href: 'batches.aspx', icon: 'bi-collection', label: 'Batches' },
+    { href: 'skills.aspx', icon: 'bi-stars', label: 'Skills' },
+    { href: 'job-roles.aspx', icon: 'bi-briefcase', label: 'Job Roles' },
+    { href: 'notices.aspx', icon: 'bi-megaphone', label: 'Notices' },
+    { href: 'notifications.aspx', icon: 'bi-bell', label: 'Notifications' },
+    { href: 'reports.aspx', icon: 'bi-bar-chart-line', label: 'Reports' },
+    { href: 'profile.aspx', icon: 'bi-person', label: 'Profile' },
+    { href: 'settings.aspx', icon: 'bi-gear', label: 'System Settings' },
+    { href: 'change-password.aspx', icon: 'bi-shield-lock', label: 'Change Password' },
+    { href: '#', icon: 'bi-box-arrow-right', label: 'Logout', action: 'logout' }
+  ],
+
+  tpoNav: [
+    { href: 'dashboard.aspx', icon: 'bi-speedometer2', label: 'Dashboard' },
     { href: 'students.aspx', icon: 'bi-people', label: 'Student Management' },
+    { href: 'student-details.aspx', icon: 'bi-person-vcard', label: 'Student Details' },
     { href: 'companies.aspx', icon: 'bi-building', label: 'Company Management' },
-    { href: 'jobs.aspx', icon: 'bi-briefcase', label: 'Job Management' },
+    { href: 'company-details.aspx', icon: 'bi-building-check', label: 'Company Details' },
     { href: 'drives.aspx', icon: 'bi-calendar-event', label: 'Placement Drives' },
+    { href: 'create-drive.aspx', icon: 'bi-calendar-plus', label: 'Create Placement Drive' },
     { href: 'applications.aspx', icon: 'bi-file-earmark-text', label: 'Applications' },
-    { href: 'selected.aspx', icon: 'bi-trophy', label: 'Selected Students' },
-    { href: 'reports.aspx', icon: 'bi-bar-chart-line', label: 'Reports & Analytics' },
-    { href: 'messages.aspx', icon: 'bi-envelope', label: 'Contact Messages' },
-    { href: 'settings.aspx', icon: 'bi-gear', label: 'Settings' }
+    { href: 'shortlisted-students.aspx', icon: 'bi-star', label: 'Shortlisted Students' },
+    { href: 'interview-schedule.aspx', icon: 'bi-calendar-check', label: 'Interview Schedule' },
+    { href: 'selected.aspx', icon: 'bi-trophy', label: 'Selection Results' },
+    { href: 'placed-students.aspx', icon: 'bi-person-check', label: 'Placed Students' },
+    { href: 'placement-history.aspx', icon: 'bi-clock-history', label: 'Placement History' },
+    { href: 'notices.aspx', icon: 'bi-megaphone', label: 'Notices' },
+    { href: 'notifications.aspx', icon: 'bi-bell', label: 'Notifications' },
+    { href: 'reports.aspx', icon: 'bi-bar-chart-line', label: 'Placement Reports' },
+    { href: 'reports-company.aspx', icon: 'bi-building-gear', label: 'Company-wise Reports' },
+    { href: 'reports-student.aspx', icon: 'bi-person-lines-fill', label: 'Student-wise Reports' },
+    { href: 'settings.aspx', icon: 'bi-shield-lock', label: 'Change Password' },
+    { href: '#', icon: 'bi-box-arrow-right', label: 'Logout', action: 'logout' }
   ],
 
   studentNav: [
     { href: 'dashboard.aspx', icon: 'bi-speedometer2', label: 'Dashboard' },
     { href: 'profile.aspx', icon: 'bi-person', label: 'My Profile' },
-    { href: 'jobs.aspx', icon: 'bi-briefcase', label: 'Available Jobs' },
+    { href: 'academic-details.aspx', icon: 'bi-mortarboard', label: 'Academic Details' },
+    { href: 'resume.aspx', icon: 'bi-file-earmark-person', label: 'Resume' },
+    { href: 'drives.aspx', icon: 'bi-calendar-event', label: 'Placement Drives' },
+    { href: 'eligible-drives.aspx', icon: 'bi-check2-circle', label: 'Eligible Drives' },
     { href: 'applications.aspx', icon: 'bi-file-earmark-text', label: 'My Applications' },
-    { href: 'placement-status.aspx', icon: 'bi-trophy', label: 'Placement Status' }
+    { href: 'application-status.aspx', icon: 'bi-bar-chart-steps', label: 'Application Status' },
+    { href: 'interview-schedule.aspx', icon: 'bi-calendar-check', label: 'Interview Schedule' },
+    { href: 'selection-status.aspx', icon: 'bi-trophy', label: 'Selection Status' },
+    { href: 'placement-history.aspx', icon: 'bi-clock-history', label: 'Placement History' },
+    { href: 'notifications.aspx', icon: 'bi-bell', label: 'Notifications' },
+    { href: 'announcements.aspx', icon: 'bi-megaphone', label: 'Announcements' },
+    { href: 'change-password.aspx', icon: 'bi-shield-lock', label: 'Change Password' },
+    { href: '#', icon: 'bi-box-arrow-right', label: 'Logout', action: 'logout' }
   ],
 
   companyNav: [
     { href: 'dashboard.aspx', icon: 'bi-speedometer2', label: 'Dashboard' },
     { href: 'profile.aspx', icon: 'bi-building', label: 'Company Profile' },
-    { href: 'post-job.aspx', icon: 'bi-plus-circle', label: 'Post New Job' },
-    { href: 'manage-jobs.aspx', icon: 'bi-briefcase', label: 'Manage Jobs' },
-    { href: 'applications.aspx', icon: 'bi-file-earmark-text', label: 'View Applications' },
-    { href: 'shortlist.aspx', icon: 'bi-star', label: 'Shortlist Students' },
+    { href: 'post-job.aspx', icon: 'bi-plus-circle', label: 'Post Placement Drive' },
+    { href: 'manage-jobs.aspx', icon: 'bi-briefcase', label: 'Manage Placement Drives' },
+    { href: 'applications.aspx', icon: 'bi-file-earmark-text', label: 'Applicants' },
+    { href: 'shortlist.aspx', icon: 'bi-star', label: 'Shortlisted Students' },
+    { href: 'interview-schedule.aspx', icon: 'bi-calendar-check', label: 'Interview Schedule' },
+    { href: 'interview-results.aspx', icon: 'bi-clipboard-check', label: 'Interview Results' },
     { href: 'selected.aspx', icon: 'bi-trophy', label: 'Selected Students' },
-    { href: 'notifications.aspx', icon: 'bi-bell', label: 'Notifications' }
+    { href: 'rejected.aspx', icon: 'bi-x-circle', label: 'Rejected Students' },
+    { href: 'placement-history.aspx', icon: 'bi-clock-history', label: 'Placement History' },
+    { href: 'notifications.aspx', icon: 'bi-bell', label: 'Notifications' },
+    { href: 'change-password.aspx', icon: 'bi-shield-lock', label: 'Change Password' },
+    { href: '#', icon: 'bi-box-arrow-right', label: 'Logout', action: 'logout' }
   ],
 
   renderSidebar(module, activePage) {
     const navItems = this[module + 'Nav'] || [];
-    const brandText = module === 'admin' ? 'PMS Admin' : module === 'student' ? 'Student Portal' : 'Company Portal';
+    const brandText = module === 'admin' ? 'PMS Admin' : module === 'tpo' ? 'TPO Portal' : module === 'student' ? 'Student Portal' : 'Company Portal';
 
     const navHtml = navItems.map(item => `
-      <a href="${item.href}" class="nav-link ${activePage === item.href ? 'active' : ''}">
+      <a href="${item.href}" class="nav-link ${activePage === item.href ? 'active' : ''}" ${item.action ? `data-nav-action="${item.action}"` : ''}>
         <i class="bi ${item.icon}"></i>
         <span>${item.label}</span>
       </a>`).join('');
@@ -64,8 +112,12 @@ const Components = {
   },
 
   renderNavbar(user, module) {
-    const notifications = getData().notifications.filter(n => 
-      (n.userType === module || n.userId === user?.id) && !n.read
+    // Company notifications are per-company (access control): a company must only see
+    // its own notifications, not every company's. Other modules keep their existing behavior.
+    const notifications = getData().notifications.filter(n =>
+      module === 'company'
+        ? (n.userType === 'company' && n.userId === user?.id && !n.read)
+        : ((n.userType === module || n.userId === user?.id) && !n.read)
     ).slice(0, 5);
 
     const notifHtml = notifications.length ? notifications.map(n => `
@@ -88,7 +140,7 @@ const Components = {
         </button>
         <div class="navbar-search position-relative d-none d-md-block">
           <i class="bi bi-search search-icon"></i>
-          <input type="text" class="form-control" id="globalSearch" placeholder="Search...">
+          <input type="text" class="form-control" id="globalSearch" placeholder="Search..." autocomplete="off">
         </div>
         <div class="navbar-actions">
           <div class="dropdown">
@@ -111,7 +163,7 @@ const Components = {
             <ul class="dropdown-menu dropdown-menu-end">
               <li><h6 class="dropdown-header">${user?.email || ''}</h6></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="${module === 'admin' ? 'settings.aspx' : 'profile.aspx'}"><i class="bi bi-person me-2"></i>Profile</a></li>
+              <li><a class="dropdown-item" href="${module === 'tpo' ? 'settings.aspx' : 'profile.aspx'}"><i class="bi bi-person me-2"></i>Profile</a></li>
               <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
             </ul>
           </div>
@@ -129,7 +181,7 @@ const Components = {
   renderMobileSidebar(module, activePage) {
     const navItems = this[module + 'Nav'] || [];
     const navHtml = navItems.map(item => `
-      <a href="${item.href}" class="nav-link ${activePage === item.href ? 'active' : ''}">
+      <a href="${item.href}" class="nav-link ${activePage === item.href ? 'active' : ''}" ${item.action ? `data-nav-action="${item.action}"` : ''}>
         <i class="bi ${item.icon} me-2"></i>${item.label}
       </a>`).join('');
 
@@ -195,21 +247,33 @@ const Components = {
     if (mobileEl) mobileEl.innerHTML = this.renderMobileSidebar(module, activePage);
     if (modalEl) modalEl.innerHTML = this.renderConfirmModal();
 
-    //document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-    //  e.preventDefault();
-    //  App.logout('login.aspx');
-      //});
+    const doLogout = (e) => {
+      e.preventDefault();
+      if (module === 'admin' || module === 'tpo') {
+        window.location.href = 'logout.aspx';
+      } else {
+        App.logout('login.aspx');
+      }
+    };
 
-      document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (module === 'admin') {
-              window.location.href = 'logout.aspx';
-          } else {
-              App.logout('login.aspx');
-          }
-      });
+    document.getElementById('logoutBtn')?.addEventListener('click', doLogout);
+    document.querySelectorAll('[data-nav-action="logout"]').forEach(el => el.addEventListener('click', doLogout));
 
     App.initSidebar();
     App.initSearch();
+
+    // Admin/TPO sidebars have a long menu list inside a fixed, independently-
+    // scrollable panel. On every page load the panel is rebuilt and its scroll
+    // resets to the top, so clicking a link further down the list used to hide
+    // the very item you just clicked (you had to scroll the sidebar down again
+    // to see it / reach the next one). Auto-scroll the sidebar so the active
+    // link is always in view right after navigation.
+    if (module === 'admin' || module === 'tpo') {
+      const activeDesktop = sidebarEl?.querySelector('.nav-link.active');
+      if (activeDesktop) activeDesktop.scrollIntoView({ block: 'center' });
+
+      const activeMobile = mobileEl?.querySelector('.nav-link.active');
+      if (activeMobile) activeMobile.scrollIntoView({ block: 'center' });
+    }
   }
 };

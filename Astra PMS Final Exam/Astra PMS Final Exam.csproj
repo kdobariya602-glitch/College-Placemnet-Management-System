@@ -68,16 +68,52 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\applications.aspx" />
+    <Content Include="admin\batches.aspx" />
+    <Content Include="admin\change-password.aspx" />
     <Content Include="admin\companies.aspx" />
+    <Content Include="admin\courses.aspx" />
     <Content Include="admin\dashboard.aspx" />
+    <Content Include="admin\departments.aspx" />
     <Content Include="admin\drives.aspx" />
+    <Content Include="admin\job-roles.aspx" />
     <Content Include="admin\jobs.aspx" />
     <Content Include="admin\login.aspx" />
+    <Content Include="admin\logout.aspx" />
+    <Content Include="admin\profile.aspx" />
+    <Content Include="admin\manage-tpo.aspx" />
     <Content Include="admin\messages.aspx" />
+    <Content Include="admin\notices.aspx" />
+    <Content Include="admin\notifications.aspx" />
     <Content Include="admin\reports.aspx" />
     <Content Include="admin\selected.aspx" />
     <Content Include="admin\settings.aspx" />
+    <Content Include="admin\skills.aspx" />
     <Content Include="admin\students.aspx" />
+    <Content Include="tpo\applications.aspx" />
+    <Content Include="tpo\companies.aspx" />
+    <Content Include="tpo\company-details.aspx" />
+    <Content Include="tpo\create-drive.aspx" />
+    <Content Include="tpo\dashboard.aspx" />
+    <Content Include="tpo\drives.aspx" />
+    <Content Include="tpo\interview-schedule.aspx" />
+    <Content Include="tpo\jobs.aspx" />
+    <Content Include="tpo\login.aspx" />
+    <Content Include="tpo\logout.aspx" />
+    <Content Include="tpo\messages.aspx" />
+    <Content Include="tpo\notices.aspx" />
+    <Content Include="tpo\notifications.aspx" />
+    <Content Include="tpo\placed-students.aspx" />
+    <Content Include="tpo\placement-history.aspx" />
+    <Content Include="tpo\reports.aspx" />
+    <Content Include="tpo\reports-company.aspx" />
+    <Content Include="tpo\reports-statistics.aspx" />
+    <Content Include="tpo\reports-student.aspx" />
+    <Content Include="tpo\selected.aspx" />
+    <Content Include="tpo\settings.aspx" />
+    <Content Include="tpo\shortlisted-students.aspx" />
+    <Content Include="tpo\student-details.aspx" />
+    <Content Include="tpo\students.aspx" />
+    <Content Include="tpo\TPO_Site.Master" />
     <Content Include="App_Data\Admin_db.mdf" />
     <Content Include="App_Data\Admin_db_log.ldf">
       <DependentUpon>Admin_db.mdf</DependentUpon>
@@ -186,36 +222,49 @@
     <Content Include="assets\js\components.js" />
     <Content Include="assets\js\data.js" />
     <Content Include="assets\js\student.js" />
+    <Content Include="company\applicant-details.aspx" />
     <Content Include="company\applications.aspx" />
+    <Content Include="company\change-password.aspx" />
     <Content Include="company\dashboard.aspx" />
+    <Content Include="company\interview-results.aspx" />
+    <Content Include="company\interview-schedule.aspx" />
     <Content Include="company\login.aspx" />
     <Content Include="company\manage-jobs.aspx" />
     <Content Include="company\notifications.aspx" />
+    <Content Include="company\placement-history.aspx" />
     <Content Include="company\post-job.aspx" />
     <Content Include="company\profile.aspx" />
     <Content Include="company\register.aspx" />
+    <Content Include="company\rejected.aspx" />
     <Content Include="company\selected.aspx" />
     <Content Include="company\shortlist.aspx" />
-    <Content Include="components\footer.html" />
-    <Content Include="components\layout.html" />
-    <Content Include="components\navbar.html" />
-    <Content Include="components\sidebar.html" />
     <Content Include="contact-us.aspx" />
     <Content Include="index.aspx" />
     <Content Include="our-recruiters.aspx" />
     <Content Include="placement-events.aspx" />
     <Content Include="placement-policy.aspx" />
     <Content Include="placement-team.aspx" />
+    <Content Include="student\academic-details.aspx" />
+    <Content Include="student\announcements.aspx" />
+    <Content Include="student\application-status.aspx" />
     <Content Include="student\applications.aspx" />
     <Content Include="student\apply.aspx" />
+    <Content Include="student\change-password.aspx" />
     <Content Include="student\dashboard.aspx" />
+    <Content Include="student\drives.aspx" />
     <Content Include="student\edit-profile.aspx" />
+    <Content Include="student\eligible-drives.aspx" />
+    <Content Include="student\interview-schedule.aspx" />
     <Content Include="student\job-details.aspx" />
     <Content Include="student\jobs.aspx" />
     <Content Include="student\login.aspx" />
+    <Content Include="student\notifications.aspx" />
+    <Content Include="student\placement-history.aspx" />
     <Content Include="student\placement-status.aspx" />
     <Content Include="student\profile.aspx" />
     <Content Include="student\register.aspx" />
+    <Content Include="student\resume.aspx" />
+    <Content Include="student\selection-status.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -233,12 +282,33 @@
     <Compile Include="admin\applications.aspx.designer.cs">
       <DependentUpon>applications.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\batches.aspx.cs">
+      <DependentUpon>batches.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\batches.aspx.designer.cs">
+      <DependentUpon>batches.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\change-password.aspx.cs">
+      <DependentUpon>change-password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\change-password.aspx.designer.cs">
+      <DependentUpon>change-password.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\companies.aspx.cs">
       <DependentUpon>companies.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\companies.aspx.designer.cs">
       <DependentUpon>companies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\courses.aspx.cs">
+      <DependentUpon>courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\courses.aspx.designer.cs">
+      <DependentUpon>courses.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
@@ -247,12 +317,26 @@
     <Compile Include="admin\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\departments.aspx.cs">
+      <DependentUpon>departments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\departments.aspx.designer.cs">
+      <DependentUpon>departments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\drives.aspx.cs">
       <DependentUpon>drives.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\drives.aspx.designer.cs">
       <DependentUpon>drives.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\job-roles.aspx.cs">
+      <DependentUpon>job-roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\job-roles.aspx.designer.cs">
+      <DependentUpon>job-roles.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\jobs.aspx.cs">
       <DependentUpon>jobs.aspx</DependentUpon>
@@ -268,12 +352,47 @@
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manage-tpo.aspx.cs">
+      <DependentUpon>manage-tpo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage-tpo.aspx.designer.cs">
+      <DependentUpon>manage-tpo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\messages.aspx.cs">
       <DependentUpon>messages.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\messages.aspx.designer.cs">
       <DependentUpon>messages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\notices.aspx.cs">
+      <DependentUpon>notices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\notices.aspx.designer.cs">
+      <DependentUpon>notices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\notifications.aspx.cs">
+      <DependentUpon>notifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\notifications.aspx.designer.cs">
+      <DependentUpon>notifications.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\reports.aspx.cs">
       <DependentUpon>reports.aspx</DependentUpon>
@@ -296,6 +415,13 @@
     <Compile Include="admin\settings.aspx.designer.cs">
       <DependentUpon>settings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\skills.aspx.cs">
+      <DependentUpon>skills.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\skills.aspx.designer.cs">
+      <DependentUpon>skills.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\students.aspx.cs">
       <DependentUpon>students.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -303,12 +429,201 @@
     <Compile Include="admin\students.aspx.designer.cs">
       <DependentUpon>students.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tpo\TPO_Site.Master.cs">
+      <DependentUpon>TPO_Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\TPO_Site.Master.designer.cs">
+      <DependentUpon>TPO_Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\applications.aspx.cs">
+      <DependentUpon>applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\applications.aspx.designer.cs">
+      <DependentUpon>applications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\companies.aspx.cs">
+      <DependentUpon>companies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\companies.aspx.designer.cs">
+      <DependentUpon>companies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\drives.aspx.cs">
+      <DependentUpon>drives.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\drives.aspx.designer.cs">
+      <DependentUpon>drives.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\jobs.aspx.cs">
+      <DependentUpon>jobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\jobs.aspx.designer.cs">
+      <DependentUpon>jobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\messages.aspx.cs">
+      <DependentUpon>messages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\messages.aspx.designer.cs">
+      <DependentUpon>messages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\reports.aspx.cs">
+      <DependentUpon>reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\reports.aspx.designer.cs">
+      <DependentUpon>reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\selected.aspx.cs">
+      <DependentUpon>selected.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\selected.aspx.designer.cs">
+      <DependentUpon>selected.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\settings.aspx.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\settings.aspx.designer.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\students.aspx.cs">
+      <DependentUpon>students.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\students.aspx.designer.cs">
+      <DependentUpon>students.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\student-details.aspx.cs">
+      <DependentUpon>student-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\student-details.aspx.designer.cs">
+      <DependentUpon>student-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\company-details.aspx.cs">
+      <DependentUpon>company-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\company-details.aspx.designer.cs">
+      <DependentUpon>company-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\create-drive.aspx.cs">
+      <DependentUpon>create-drive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\create-drive.aspx.designer.cs">
+      <DependentUpon>create-drive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\shortlisted-students.aspx.cs">
+      <DependentUpon>shortlisted-students.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\shortlisted-students.aspx.designer.cs">
+      <DependentUpon>shortlisted-students.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\interview-schedule.aspx.cs">
+      <DependentUpon>interview-schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\interview-schedule.aspx.designer.cs">
+      <DependentUpon>interview-schedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\placed-students.aspx.cs">
+      <DependentUpon>placed-students.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\placed-students.aspx.designer.cs">
+      <DependentUpon>placed-students.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\placement-history.aspx.cs">
+      <DependentUpon>placement-history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\placement-history.aspx.designer.cs">
+      <DependentUpon>placement-history.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\notices.aspx.cs">
+      <DependentUpon>notices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\notices.aspx.designer.cs">
+      <DependentUpon>notices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\notifications.aspx.cs">
+      <DependentUpon>notifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\notifications.aspx.designer.cs">
+      <DependentUpon>notifications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\reports-company.aspx.cs">
+      <DependentUpon>reports-company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\reports-company.aspx.designer.cs">
+      <DependentUpon>reports-company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\reports-student.aspx.cs">
+      <DependentUpon>reports-student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\reports-student.aspx.designer.cs">
+      <DependentUpon>reports-student.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\reports-statistics.aspx.cs">
+      <DependentUpon>reports-statistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\reports-statistics.aspx.designer.cs">
+      <DependentUpon>reports-statistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpo\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpo\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\applicant-details.aspx.cs">
+      <DependentUpon>applicant-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\applicant-details.aspx.designer.cs">
+      <DependentUpon>applicant-details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="company\applications.aspx.cs">
       <DependentUpon>applications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="company\applications.aspx.designer.cs">
       <DependentUpon>applications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\change-password.aspx.cs">
+      <DependentUpon>change-password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\change-password.aspx.designer.cs">
+      <DependentUpon>change-password.aspx</DependentUpon>
     </Compile>
     <Compile Include="company\Company_Site4.Master.cs">
       <DependentUpon>Company_Site4.Master</DependentUpon>
@@ -323,6 +638,20 @@
     </Compile>
     <Compile Include="company\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\interview-results.aspx.cs">
+      <DependentUpon>interview-results.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\interview-results.aspx.designer.cs">
+      <DependentUpon>interview-results.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\interview-schedule.aspx.cs">
+      <DependentUpon>interview-schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\interview-schedule.aspx.designer.cs">
+      <DependentUpon>interview-schedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="company\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -345,6 +674,13 @@
     <Compile Include="company\notifications.aspx.designer.cs">
       <DependentUpon>notifications.aspx</DependentUpon>
     </Compile>
+    <Compile Include="company\placement-history.aspx.cs">
+      <DependentUpon>placement-history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\placement-history.aspx.designer.cs">
+      <DependentUpon>placement-history.aspx</DependentUpon>
+    </Compile>
     <Compile Include="company\post-job.aspx.cs">
       <DependentUpon>post-job.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -365,6 +701,13 @@
     </Compile>
     <Compile Include="company\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\rejected.aspx.cs">
+      <DependentUpon>rejected.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\rejected.aspx.designer.cs">
+      <DependentUpon>rejected.aspx</DependentUpon>
     </Compile>
     <Compile Include="company\selected.aspx.cs">
       <DependentUpon>selected.aspx</DependentUpon>
@@ -432,6 +775,27 @@
     <Compile Include="Public_Site1.Master.designer.cs">
       <DependentUpon>Public_Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="student\academic-details.aspx.cs">
+      <DependentUpon>academic-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\academic-details.aspx.designer.cs">
+      <DependentUpon>academic-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\announcements.aspx.cs">
+      <DependentUpon>announcements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\announcements.aspx.designer.cs">
+      <DependentUpon>announcements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\application-status.aspx.cs">
+      <DependentUpon>application-status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\application-status.aspx.designer.cs">
+      <DependentUpon>application-status.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\applications.aspx.cs">
       <DependentUpon>applications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -446,6 +810,13 @@
     <Compile Include="student\apply.aspx.designer.cs">
       <DependentUpon>apply.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\change-password.aspx.cs">
+      <DependentUpon>change-password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\change-password.aspx.designer.cs">
+      <DependentUpon>change-password.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -453,12 +824,33 @@
     <Compile Include="student\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\drives.aspx.cs">
+      <DependentUpon>drives.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\drives.aspx.designer.cs">
+      <DependentUpon>drives.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\edit-profile.aspx.cs">
       <DependentUpon>edit-profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="student\edit-profile.aspx.designer.cs">
       <DependentUpon>edit-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\eligible-drives.aspx.cs">
+      <DependentUpon>eligible-drives.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\eligible-drives.aspx.designer.cs">
+      <DependentUpon>eligible-drives.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\interview-schedule.aspx.cs">
+      <DependentUpon>interview-schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\interview-schedule.aspx.designer.cs">
+      <DependentUpon>interview-schedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\job-details.aspx.cs">
       <DependentUpon>job-details.aspx</DependentUpon>
@@ -481,6 +873,20 @@
     <Compile Include="student\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="student\notifications.aspx.cs">
+      <DependentUpon>notifications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\notifications.aspx.designer.cs">
+      <DependentUpon>notifications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\placement-history.aspx.cs">
+      <DependentUpon>placement-history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\placement-history.aspx.designer.cs">
+      <DependentUpon>placement-history.aspx</DependentUpon>
+    </Compile>
     <Compile Include="student\placement-status.aspx.cs">
       <DependentUpon>placement-status.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -501,6 +907,20 @@
     </Compile>
     <Compile Include="student\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\resume.aspx.cs">
+      <DependentUpon>resume.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\resume.aspx.designer.cs">
+      <DependentUpon>resume.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student\selection-status.aspx.cs">
+      <DependentUpon>selection-status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student\selection-status.aspx.designer.cs">
+      <DependentUpon>selection-status.aspx</DependentUpon>
     </Compile>
     <Compile Include="student\Student_Site2.Master.cs">
       <DependentUpon>Student_Site2.Master</DependentUpon>

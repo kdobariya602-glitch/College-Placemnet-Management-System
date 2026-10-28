@@ -42,6 +42,15 @@ namespace Astra_PMS_Final_Exam
         protected global::System.Web.UI.WebControls.ImageButton signInBtn;
 
         /// <summary>
+        /// closeModalBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button closeModalBtn;
+
+        /// <summary>
         /// resetEmail control.
         /// </summary>
         /// <remarks>

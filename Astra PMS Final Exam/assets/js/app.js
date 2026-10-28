@@ -156,12 +156,26 @@ const App = {
       shortlisted: 'badge-shortlisted',
       selected: 'badge-selected',
       active: 'badge-active',
+      inactive: 'badge-rejected',
       closed: 'badge-closed',
+      draft: 'badge-pending',
       upcoming: 'badge-shortlisted',
-      completed: 'badge-approved'
+      completed: 'badge-approved',
+      scheduled: 'badge-shortlisted',
+      rescheduled: 'badge-pending',
+      cancelled: 'badge-rejected',
+      'offer received': 'badge-shortlisted',
+      joined: 'badge-approved',
+      'not joined': 'badge-pending',
+      applied: 'badge-pending',
+      'under review': 'badge-pending',
+      'interview scheduled': 'badge-shortlisted',
+      placed: 'badge-approved'
     };
-    const cls = map[status] || 'badge-pending';
-    return `<span class="badge badge-status ${cls}">${status.charAt(0).toUpperCase() + status.slice(1)}</span>`;
+    const key = String(status).toLowerCase();
+    const cls = map[key] || 'badge-pending';
+    const label = status.replace(/(^|\s)\S/g, c => c.toUpperCase());
+    return `<span class="badge badge-status ${cls}">${label}</span>`;
   },
 
   filterTable(selectId, tableBodyId, filterKey) {
@@ -287,6 +301,145 @@ const App = {
   logout(redirectUrl) {
     this.clearSession();
     window.location.href = redirectUrl;
+  },
+
+  /**
+   * Bridges a DB-authenticated student (from Student_reg_tbl via login.aspx.cs /
+   * change-password.aspx.cs) into the JS/localStorage layer used by every other
+   * student page (applications, interviews, notifications, eligibility, etc).
+   *
+   * Student_reg_tbl (SQL Server) stays the single source of truth for identity +
+   * credentials. This only upserts the *extended* profile fields the JS layer
+   * needs (branch/cgpa/skills/etc) into localStorage, keyed by email since the
+   * DB table has no separate numeric id. DB-backed fields are always refreshed
+   * from the server payload; JS-only extended fields (course, semester, gender,
+   * dob, address, photoUrl) already saved locally are preserved so edit-profile
+   * changes aren't clobbered on every login.
+   *
+   * Kept centralized here (not duplicated per-page) so the future page-by-page
+   * SQL migration only needs to change this one bridge function.
+   */
+  syncStudentSession(dbUser) {
+    const data = getData();
+    const email = (dbUser.email || '').trim();
+    let student = data.students.find(s => (s.email || '').toLowerCase() === email.toLowerCase());
+
+    if (!student) {
+      student = {
+        id: email,
+        name: dbUser.name,
+        email: email,
+        password: dbUser.password || '',
+        phone: dbUser.phone || '',
+        gender: '',
+        dob: '',
+        address: '',
+        branch: dbUser.branch || '',
+        course: dbUser.branch || '',
+        semester: '',
+        cgpa: dbUser.cgpa || 0,
+        year: dbUser.year || '',
+        skills: dbUser.skills || [],
+        status: 'active',
+        placed: false,
+        company: null,
+        photoUrl: '',
+        registeredAt: new Date().toISOString().split('T')[0]
+      };
+      data.students.push(student);
+    } else {
+      // Refresh DB-owned fields only; leave JS-only extended fields untouched.
+      student.id = email; // normalize legacy sample-data ids (e.g. STU001) to email
+      student.name = dbUser.name;
+      student.email = email;
+      if (dbUser.password) student.password = dbUser.password;
+      student.phone = dbUser.phone || student.phone;
+      student.branch = dbUser.branch || student.branch;
+      student.cgpa = (typeof dbUser.cgpa === 'number') ? dbUser.cgpa : student.cgpa;
+      student.year = dbUser.year || student.year;
+      if (Array.isArray(dbUser.skills) && dbUser.skills.length) student.skills = dbUser.skills;
+    }
+
+    saveData(data);
+    const sessionUser = { ...student, role: 'student' };
+    this.setSession(sessionUser);
+    return sessionUser;
+  },
+
+  /**
+   * Centralized eligibility engine (spec section 24).
+   * Same logic must be reused everywhere eligibility is checked:
+   * Jobs, Job Details, Eligible Drives, Apply.
+   * Returns { eligible, reasons[], deadlinePassed, alreadyApplied }.
+   */
+  checkJobEligibility(user, job, data) {
+    data = data || getData();
+    const reasons = [];
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const deadline = job.deadline ? new Date(job.deadline) : null;
+    const deadlinePassed = !!deadline && deadline < today;
+    const jobActive = job.status === 'active';
+    const alreadyApplied = data.applications.some(a => a.studentId === user.id && a.jobId === job.id);
+
+    if (!jobActive) reasons.push('This job is no longer active.');
+    if (deadlinePassed) reasons.push('The application deadline has passed.');
+    if (typeof job.cgpaMin === 'number' && user.cgpa < job.cgpaMin) {
+      reasons.push(`Minimum CGPA required is ${job.cgpaMin} (yours: ${user.cgpa}).`);
+    }
+    if (Array.isArray(job.branches) && job.branches.length && !job.branches.includes(user.branch)) {
+      reasons.push(`Open to ${job.branches.join(', ')} only.`);
+    }
+    if (job.course && user.course && job.course !== user.course) {
+      reasons.push(`Open to ${job.course} students only.`);
+    }
+    if (job.batch && user.year && job.batch !== user.year) {
+      reasons.push(`Open to ${job.batch} batch only.`);
+    }
+    if (typeof job.maxBacklogs === 'number' && typeof user.backlogs === 'number' && user.backlogs > job.maxBacklogs) {
+      reasons.push(`Maximum ${job.maxBacklogs} backlog(s) allowed (yours: ${user.backlogs}).`);
+    }
+    if (Array.isArray(job.skills) && job.skills.length) {
+      const userSkills = (user.skills || []).map(s => String(s).toLowerCase());
+      const hasMatchingSkill = job.skills.some(sk => userSkills.includes(String(sk).toLowerCase()));
+      if (!hasMatchingSkill) {
+        reasons.push(`Requires at least one of these skills: ${job.skills.join(', ')}.`);
+      }
+    }
+
+    return {
+      eligible: reasons.length === 0,
+      reasons,
+      deadlinePassed,
+      jobActive,
+      alreadyApplied
+    };
+  },
+
+  /** Centralized drive eligibility, reused by drives.aspx / eligible-drives.aspx / apply flow. */
+  checkDriveEligibility(user, drive, data) {
+    data = data || getData();
+    const relatedJobs = data.jobs.filter(j => j.companyId === drive.companyId);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const regDeadline = drive.registrationDeadline ? new Date(drive.registrationDeadline) : null;
+    const regDeadlinePassed = !!regDeadline && regDeadline < today;
+    const driveActive = drive.status === 'upcoming';
+
+    let eligible;
+    if (relatedJobs.length) {
+      eligible = relatedJobs.some(j => this.checkJobEligibility(user, j, data).eligible);
+    } else {
+      const cgpaMatch = (drive.eligibility || '').match(/([\d.]+)/);
+      const minCgpa = cgpaMatch ? parseFloat(cgpaMatch[1]) : 0;
+      const branchOk = (drive.eligibility || '').includes('All Branches') ||
+        (drive.eligibility || '').toLowerCase().includes(String(user.branch).toLowerCase());
+      eligible = user.cgpa >= minCgpa && branchOk;
+    }
+
+    return {
+      eligible: eligible && driveActive && !regDeadlinePassed,
+      driveActive,
+      regDeadlinePassed
+    };
   }
 };
 

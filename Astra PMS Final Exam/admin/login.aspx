@@ -62,7 +62,8 @@
             </div>
             <div class="d-flex justify-content-between align-items-center mb-4">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="remember">
+                <!-- <input class="form-check-input" type="checkbox" id="remember"> -->
+<asp:CheckBox runat="server" ID="remember" ClientIDMode="Static" CssClass="form-check-input" />
                 <label class="form-check-label small" for="remember">Remember me</label>
               </div>
               <a href="#" class="small text-danger" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
@@ -84,7 +85,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"><i class="bi bi-key me-2"></i>Reset Password</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close" data-bs-dismiss="modal" aria-label="Close" OnClientClick="return false;" Text="" />
         </div>
         <div class="modal-body">
           <p class="text-muted small">Enter your registered email and a new password.</p>
@@ -104,7 +106,8 @@
               <!-- <input type="password" class="form-control form-control-custom" id="resetConfirmPassword" placeholder="Confirm new password" minlength="6" required> -->
               <asp:TextBox runat="server" ID="resetConfirmPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" placeholder="Confirm new password" minlength="6"></asp:TextBox>
             </div>
-            <button type="button" id="resetBtn" class="btn btn-primary-custom w-100 py-2">Reset Password</button>
+            <!-- <button type="button" id="resetBtn" class="btn btn-primary-custom w-100 py-2">Reset Password</button> -->
+<asp:Button runat="server" ID="resetBtn" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-primary-custom w-100 py-2" OnClientClick="return false;" Text="Reset Password" />
           </div>
         </div>
       </div>

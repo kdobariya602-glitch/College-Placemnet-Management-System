@@ -97,56 +97,82 @@
             </div>
         </div>
     </div>
-    <div style="width:90%; margin:30px auto; overflow-x:auto;">
+    <!-- Note: this GridView mirrors company/register.aspx's GridView1 pattern
+         (same public, unauthenticated listing style) at the user's explicit
+         request to match company's implementation exactly. -->
+    <div style="width: 90%; margin: 30px auto; overflow-x: auto;">
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" HorizontalAlign="Center" Width="1127px">
-    <Columns>
-        <asp:TemplateField HeaderText="Full_Name">
-            <ItemTemplate>
-                <asp:Label ID="Label1" runat="server" Text='<%# Eval("Full_Name") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Email">
-            <ItemTemplate>
-                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Phone">
-            <ItemTemplate>
-                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Phone") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Branch">
-            <ItemTemplate>
-                <asp:Label ID="Label4" runat="server" Text='<%# Eval("Branch") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Cgpa">
-            <ItemTemplate>
-                <asp:Label ID="Label5" runat="server" Text='<%# Eval("Cgpa") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Graduation_Year">
-            <ItemTemplate>
-                <asp:Label ID="Label6" runat="server" Text='<%# Eval("Graduation_Year") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Skills">
-            <ItemTemplate>
-                <asp:Label ID="Label7" runat="server" Text='<%# Eval("Skills") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>
-    </Columns>
-</asp:GridView>
-        </div>
-                   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-                   <script src="../assets/js/data.js"></script>
-                   <script src="../assets/js/app.js"></script>
-                   <%--<script src="../assets/js/student.js"></script>--%>
+        <asp:GridView ID="GridView1" runat="server"
+            AutoGenerateColumns="False"
+            HorizontalAlign="Center"
+            Width="100%"
+            CellPadding="10"
+            CellSpacing="5"
+            GridLines="Both">
+            <Columns>
+                <asp:TemplateField HeaderText="Full_Name">
+                    <ItemStyle Width="130px" />
+                    <HeaderStyle Width="130px" />
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Full_Name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Email">
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Password">
+                    <ItemStyle Width="130px" />
+                    <HeaderStyle Width="130px" />
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("Password") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Phone">
+                    <ItemStyle Width="130px" />
+                    <HeaderStyle Width="130px" />
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("Phone") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Branch">
+                    <ItemStyle Width="130px" />
+                    <HeaderStyle Width="130px" />
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Eval("Branch") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Cgpa">
+                    <ItemStyle Width="130px" />
+                    <HeaderStyle Width="130px" />
+                    <ItemTemplate>
+                        <asp:Label ID="Label6" runat="server" Text='<%# Eval("Cgpa") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Graduation_Year">
+                    <ItemStyle Width="130px" />
+                    <HeaderStyle Width="130px" />
+                    <ItemTemplate>
+                        <asp:Label ID="Label7" runat="server" Text='<%# Eval("Graduation_Year") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Skills">
+                    <ItemStyle Width="130px" />
+                    <HeaderStyle Width="130px" />
+                    <ItemTemplate>
+                        <asp:Label ID="Label8" runat="server" Text='<%# Eval("Skills") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/data.js"></script>
+        <script src="../assets/js/app.js"></script>
+        <%--<script src="../assets/js/student.js"></script>--%>
 
-                   <!-- ============================= BODY END ============================= -->
+        <!-- ============================= BODY END ============================= -->
 
-               </div>
     </div>
 </asp:Content>
 

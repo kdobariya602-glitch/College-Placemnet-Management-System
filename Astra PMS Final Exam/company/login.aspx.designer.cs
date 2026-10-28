@@ -42,6 +42,15 @@ namespace Astra_PMS_Final_Exam.company
         protected global::System.Web.UI.WebControls.ImageButton signInBtn;
 
         /// <summary>
+        /// btnCtrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCtrl;
+
+        /// <summary>
         /// resetEmail control.
         /// </summary>
         /// <remarks>
@@ -67,5 +76,14 @@ namespace Astra_PMS_Final_Exam.company
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox resetConfirmPassword;
+
+        /// <summary>
+        /// resetBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button resetBtn;
     }
 }

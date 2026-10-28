@@ -44,6 +44,39 @@
         </div>
 
         <div class="row g-3 mb-4">
+          <div class="col-sm-6 col-xl-4">
+            <div class="dashboard-card stat-card">
+              <div class="stat-icon red"><i class="bi bi-calendar-event"></i></div>
+              <div><div class="stat-value" id="statDrives">0</div><div class="stat-label">Placement Drives</div></div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-4">
+            <div class="dashboard-card stat-card">
+              <div class="stat-icon blue"><i class="bi bi-file-earmark-text"></i></div>
+              <div><div class="stat-value" id="statApplications">0</div><div class="stat-label">Total Applications</div></div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-4">
+            <div class="dashboard-card stat-card">
+              <div class="stat-icon green"><i class="bi bi-trophy"></i></div>
+              <div><div class="stat-value" id="statSelected">0</div><div class="stat-label">Selected Students</div></div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-4">
+            <div class="dashboard-card stat-card">
+              <div class="stat-icon purple"><i class="bi bi-person-badge"></i></div>
+              <div><div class="stat-value" id="statTpos">0</div><div class="stat-label">TPO Officers</div></div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-4">
+            <div class="dashboard-card stat-card">
+              <div class="stat-icon orange"><i class="bi bi-hourglass-split"></i></div>
+              <div><div class="stat-value" id="statShortlisted">0</div><div class="stat-label">Shortlisted</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3 mb-4">
           <div class="col-lg-8">
             <div class="content-card">
               <div class="card-header-custom"><h5><i class="bi bi-graph-up me-2 text-danger"></i>Monthly Placement Trends</h5></div>

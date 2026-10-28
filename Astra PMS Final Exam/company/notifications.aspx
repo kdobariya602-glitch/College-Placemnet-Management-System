@@ -7,6 +7,23 @@
 
       <div class="page-content">
         <div class="page-breadcrumb mb-4"><h4>Notifications</h4><p>Stay updated on applications and recruitment activities.</p></div>
+        <div class="filter-bar d-flex gap-2 flex-wrap align-items-center mb-3">
+          <select class="form-select form-select-sm" style="width:auto" id="notifTypeFilter">
+            <option value="">All Types</option>
+            <option value="New Application">New Application</option>
+            <option value="Application Update">Application Status</option>
+            <option value="Shortlisted">Student Shortlisted</option>
+            <option value="Interview Scheduled">Interview Scheduled</option>
+            <option value="Interview Rescheduled">Interview Rescheduled</option>
+            <option value="Interview Cancelled">Interview Cancelled</option>
+            <option value="Selected!">Student Selected</option>
+            <option value="Offer Update">Placement Confirmed</option>
+          </select>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="notifUnreadOnly">
+            <label class="form-check-label small" for="notifUnreadOnly">Unread only</label>
+          </div>
+        </div>
         <div class="content-card">
           <div class="card-body-custom" id="notificationsList"></div>
         </div>
@@ -28,6 +45,7 @@
   <script>
     if (App.requireAuth('company', 'login.aspx')) {
       Components.initLayout('company', 'notifications.aspx', App.currentUser);
+      Company.initNotificationFilters();
       Company.renderNotifications();
     }
   </script>

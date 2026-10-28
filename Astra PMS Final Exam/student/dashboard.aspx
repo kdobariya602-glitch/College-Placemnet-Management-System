@@ -9,11 +9,13 @@
           <p>Track your placement journey and upcoming opportunities.</p>
         </div>
         <div class="row g-3 mb-4">
-          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon blue"><i class="bi bi-file-earmark-text"></i></div><div><div class="stat-value" id="statApplied">0</div><div class="stat-label">Applied Jobs</div></div></div></div>
-          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon orange"><i class="bi bi-calendar-check"></i></div><div><div class="stat-value" id="statInterviews">0</div><div class="stat-label">Interviews Scheduled</div></div></div></div>
-          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon purple"><i class="bi bi-building"></i></div><div><div class="stat-value" id="statSelected">0</div><div class="stat-label">Selected Companies</div></div></div></div>
-          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon green"><i class="bi bi-trophy"></i></div><div><div class="stat-value" id="statPlacement">—</div><div class="stat-label">Placement Status</div></div></div></div>
-          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon red"><i class="bi bi-calendar-event"></i></div><div><div class="stat-value" id="statDrives">0</div><div class="stat-label">Upcoming Drives</div></div></div></div>
+          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon teal"><i class="bi bi-check2-circle"></i></div><div><div class="stat-value" id="statEligibleDrives">0</div><div class="stat-label">Eligible Drives</div></div></div></div>
+          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon blue"><i class="bi bi-file-earmark-text"></i></div><div><div class="stat-value" id="statApplied">0</div><div class="stat-label">Applications</div></div></div></div>
+          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon yellow"><i class="bi bi-hourglass-split"></i></div><div><div class="stat-value" id="statActiveApplications">0</div><div class="stat-label">Active Applications</div></div></div></div>
+          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon purple"><i class="bi bi-star"></i></div><div><div class="stat-value" id="statShortlisted">0</div><div class="stat-label">Shortlisted</div></div></div></div>
+          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon orange"><i class="bi bi-calendar-check"></i></div><div><div class="stat-value" id="statInterviews">0</div><div class="stat-label">Interviews</div></div></div></div>
+          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon green"><i class="bi bi-trophy"></i></div><div><div class="stat-value" id="statSelected">0</div><div class="stat-label">Selected</div></div></div></div>
+          <div class="col-sm-6 col-xl"><div class="dashboard-card stat-card"><div class="stat-icon red"><i class="bi bi-award"></i></div><div><div class="stat-value" id="statPlacement">—</div><div class="stat-label">Placement Status</div></div></div></div>
         </div>
         <div class="row g-3">
           <div class="col-lg-8">

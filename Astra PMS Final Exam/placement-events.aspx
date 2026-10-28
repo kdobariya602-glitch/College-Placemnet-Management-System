@@ -9,7 +9,8 @@
     <div class="offcanvas offcanvas-end ap-offcanvas" tabindex="-1" id="apMobileNav">
         <div class="offcanvas-header">
             <span class="fw-bold">Menu</span>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close btn-close-white" data-bs-dismiss="offcanvas" OnClientClick="return false;" Text="" />
         </div>
         <div class="offcanvas-body">
             <div class="ap-links">
@@ -141,7 +142,8 @@
     </section>
 
     <div class="ap-lightbox" id="apLightbox" style="position: fixed; inset: 0; background: rgba(11,18,32,.92); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 2rem;">
-        <button data-lightbox-close="true" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 0; color: #fff; font-size: 1.8rem;">&times;</button>
+        <!-- <button data-lightbox-close="true" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 0; color: #fff; font-size: 1.8rem;">&times;</button> -->
+<asp:Button runat="server" ID="btnCtrl2" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="" data-lightbox-close="true" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 0; color: #fff; font-size: 1.8rem;" OnClientClick="return false;" Text="&times;" />
         <div style="max-width: 900px; width: 100%;">
             <img src="" alt="" style="width: 100%; border-radius: 14px;">
             <p class="ap-lightbox-cap text-center text-white mt-3"></p>

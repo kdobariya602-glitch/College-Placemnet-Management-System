@@ -11,14 +11,20 @@
             <h4>Placement Drive Management</h4>
             <p>Schedule and manage campus placement drives.</p>
           </div>
-          <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#driveModal"><i class="bi bi-plus-lg me-1"></i>Schedule Drive</button>
+          <!-- <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#driveModal"><i class="bi bi-plus-lg me-1"></i>Schedule Drive</button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#driveModal" OnClientClick="return false;" Text="Schedule Drive" />
         </div>
         <div class="filter-bar">
-          <select class="form-select form-select-sm" style="width:auto" id="driveStatusFilter">
+          <!-- <select class="form-select form-select-sm" style="width:auto" id="driveStatusFilter">
             <option value="">All Status</option>
             <option value="upcoming">Upcoming</option>
             <option value="completed">Completed</option>
-          </select>
+          </select> -->
+<asp:DropDownList runat="server" ID="driveStatusFilter" ClientIDMode="Static" CssClass="form-select form-select-sm">
+                    <asp:ListItem Text="All Status" Value=""></asp:ListItem>
+                    <asp:ListItem Text="Upcoming" Value="upcoming"></asp:ListItem>
+                    <asp:ListItem Text="Completed" Value="completed"></asp:ListItem>
+                </asp:DropDownList>
         </div>
         <div class="content-card">
           <div class="card-body-custom p-0">
@@ -45,16 +51,19 @@
 
   <div class="modal fade" id="driveModal" tabindex="-1">
     <div class="modal-dialog"><div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title">Schedule Placement Drive</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-header"><h5 class="modal-title">Schedule Placement Drive</h5><!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+<asp:Button runat="server" ID="btnCtrl2" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close" data-bs-dismiss="modal" OnClientClick="return false;" Text="" /></div>
       <div class="modal-body">
         <form id="driveForm">
           <!-- <div class="mb-3"><label class="form-label-custom">Drive Name</label><input type="text" class="form-control form-control-custom" id="driveName" required></div> -->
           <div class="mb-3"><label class="form-label-custom">Drive Name</label><asp:TextBox runat="server" ID="driveName" ClientIDMode="Static" TextMode="SingleLine" CssClass="form-control form-control-custom" required="required"></asp:TextBox></div>
           <div class="mb-3"><label class="form-label-custom">Company</label>
-            <select class="form-select form-control-custom" id="driveCompany" required></select>
+            <!-- <select class="form-select form-control-custom" id="driveCompany" required></select> -->
+<asp:DropDownList runat="server" ID="driveCompany" ClientIDMode="Static" CssClass="form-select form-control-custom"></asp:DropDownList>
           </div>
           <div class="row">
-            <div class="col-6 mb-3"><label class="form-label-custom">Date</label><input type="date" class="form-control form-control-custom" id="driveDate" required></div>
+            <div class="col-6 mb-3"><label class="form-label-custom">Date</label><!-- <input type="date" class="form-control form-control-custom" id="driveDate" required> -->
+<asp:TextBox runat="server" ID="driveDate" ClientIDMode="Static" TextMode="Date" CssClass="form-control form-control-custom" required="required"></asp:TextBox></div>
             <!-- <div class="col-6 mb-3"><label class="form-label-custom">Venue</label><input type="text" class="form-control form-control-custom" id="driveVenue" required></div> -->
             <div class="col-6 mb-3"><label class="form-label-custom">Venue</label><asp:TextBox runat="server" ID="driveVenue" ClientIDMode="Static" TextMode="SingleLine" CssClass="form-control form-control-custom" required="required"></asp:TextBox></div>
           </div>
@@ -63,7 +72,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">Cancel</button>
+        <!-- <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">Cancel</button> -->
+<asp:Button runat="server" ID="btnCtrl3" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-outline-custom" data-bs-dismiss="modal" OnClientClick="return false;" Text="Cancel" />
         <!-- <button type="button" class="btn btn-primary-custom" onclick="Admin.saveDrive()">Schedule</button> -->
         <asp:Button runat="server" ID="saveDriveBtn" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-primary-custom" OnClientClick="Admin.saveDrive(); return false;" Text="Schedule" />
       </div>
@@ -77,15 +87,10 @@
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/admin.js"></script>
   <script>
-    //if (App.requireAuth('admin', 'login.aspx')) {
-    //  Components.initLayout('admin', 'drives.aspx', App.currentUser);
-    //  const sel = document.getElementById('driveCompany');
-    //  getData().companies.forEach(c => { sel.innerHTML += `<option value="${c.id}">${c.name}</option>`; });
-    //  Admin.renderDrivesTable();
-      //}
-
-      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      Admin.initDashboard();
+      Components.initLayout('admin', 'drives.aspx', App.currentUser);
+      const sel = document.getElementById('driveCompany');
+      if (sel) { getData().companies.forEach(c => { sel.innerHTML += `<option value="${c.id}">${c.name}</option>`; }); }
+      Admin.renderDrivesTable();
   </script>
 </asp:Content>
 

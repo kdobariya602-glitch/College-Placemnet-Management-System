@@ -9,7 +9,8 @@
     <div class="offcanvas offcanvas-end ap-offcanvas" tabindex="-1" id="apMobileNav">
         <div class="offcanvas-header">
             <span class="fw-bold">Menu</span>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close btn-close-white" data-bs-dismiss="offcanvas" OnClientClick="return false;" Text="" />
         </div>
         <div class="offcanvas-body">
             <div class="ap-links">
@@ -140,7 +141,8 @@
             <div class="accordion ap-accordion ap-reveal" id="contactFaq">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfaq0">How quickly will I get a response?</button>
+                        <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfaq0">How quickly will I get a response?</button> -->
+<asp:Button runat="server" ID="btnCtrl2" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#cfaq0" OnClientClick="return false;" Text="How quickly will I get a response?" />
                     </h2>
                     <div id="cfaq0" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
                         <div class="accordion-body">Our team responds to portal and email inquiries within one working day.</div>
@@ -148,7 +150,8 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfaq1">Can recruiters schedule a drive through this form?</button>
+                        <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfaq1">Can recruiters schedule a drive through this form?</button> -->
+<asp:Button runat="server" ID="btnCtrl3" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#cfaq1" OnClientClick="return false;" Text="Can recruiters schedule a drive through this form?" />
                     </h2>
                     <div id="cfaq1" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
                         <div class="accordion-body">Yes — select 'Recruiter' and share your requirements; Corporate Relations will follow up to finalise the schedule.</div>
@@ -156,7 +159,8 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfaq2">Where exactly is the Placement Office located?</button>
+                        <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cfaq2">Where exactly is the Placement Office located?</button> -->
+<asp:Button runat="server" ID="btnCtrl4" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#cfaq2" OnClientClick="return false;" Text="Where exactly is the Placement Office located?" />
                     </h2>
                     <div id="cfaq2" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
                         <div class="accordion-body">

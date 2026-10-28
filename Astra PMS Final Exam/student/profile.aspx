@@ -19,6 +19,9 @@
               <div class="card-body-custom">
                 <div class="profile-info-item"><i class="bi bi-envelope"></i><div><small class="text-muted">Email</small><div id="infoEmail">—</div></div></div>
                 <div class="profile-info-item"><i class="bi bi-phone"></i><div><small class="text-muted">Phone</small><div id="infoPhone">—</div></div></div>
+                <div class="profile-info-item"><i class="bi bi-person"></i><div><small class="text-muted">Gender</small><div id="infoGender">—</div></div></div>
+                <div class="profile-info-item"><i class="bi bi-cake"></i><div><small class="text-muted">Date of Birth</small><div id="infoDob">—</div></div></div>
+                <div class="profile-info-item"><i class="bi bi-geo-alt"></i><div><small class="text-muted">Address</small><div id="infoAddress">—</div></div></div>
                 <div class="profile-info-item"><i class="bi bi-mortarboard"></i><div><small class="text-muted">Branch</small><div id="infoBranch">—</div></div></div>
               </div>
             </div>
@@ -27,9 +30,12 @@
             <div class="content-card">
               <div class="card-header-custom"><h5>Academic & Placement</h5></div>
               <div class="card-body-custom">
+                <div class="profile-info-item"><i class="bi bi-journal-bookmark"></i><div><small class="text-muted">Course</small><div id="infoCourse">—</div></div></div>
+                <div class="profile-info-item"><i class="bi bi-people"></i><div><small class="text-muted">Batch</small><div id="infoBatch">—</div></div></div>
                 <div class="profile-info-item"><i class="bi bi-graph-up"></i><div><small class="text-muted">CGPA</small><div id="infoCgpa">—</div></div></div>
                 <div class="profile-info-item"><i class="bi bi-calendar"></i><div><small class="text-muted">Graduation Year</small><div id="infoYear">—</div></div></div>
                 <div class="profile-info-item"><i class="bi bi-trophy"></i><div><small class="text-muted">Placement Status</small><div id="infoStatus">—</div></div></div>
+                <div class="profile-info-item"><i class="bi bi-file-earmark-text"></i><div><small class="text-muted">Resume</small><div id="infoResume"><a href="resume.aspx">Manage Resume</a></div></div></div>
               </div>
             </div>
           </div>

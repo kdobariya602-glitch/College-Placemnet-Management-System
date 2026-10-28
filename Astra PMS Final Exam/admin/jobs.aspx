@@ -11,11 +11,16 @@
           <p>View and manage all job postings across companies.</p>
         </div>
         <div class="filter-bar">
-          <select class="form-select form-select-sm" style="width:auto" id="jobStatusFilter">
+          <!-- <select class="form-select form-select-sm" style="width:auto" id="jobStatusFilter">
             <option value="">All Status</option>
             <option value="active">Active</option>
             <option value="closed">Closed</option>
-          </select>
+          </select> -->
+<asp:DropDownList runat="server" ID="jobStatusFilter" ClientIDMode="Static" CssClass="form-select form-select-sm">
+                    <asp:ListItem Text="All Status" Value=""></asp:ListItem>
+                    <asp:ListItem Text="Active" Value="active"></asp:ListItem>
+                    <asp:ListItem Text="Closed" Value="closed"></asp:ListItem>
+                </asp:DropDownList>
         </div>
         <div class="content-card">
           <div class="card-body-custom p-0">
@@ -51,8 +56,8 @@
     //  Components.initLayout('admin', 'jobs.aspx', App.currentUser);
     //  Admin.renderJobsTable();
       //}
-      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      Admin.initDashboard();
+      Components.initLayout('admin', 'jobs.aspx', App.currentUser);
+      Admin.renderJobsTable();
   </script>
 </asp:Content>
 

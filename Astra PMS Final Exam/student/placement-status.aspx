@@ -8,6 +8,21 @@
       <div class="page-content">
         <div class="page-breadcrumb mb-4"><h4>Placement Status</h4><p>Monitor your overall placement progress and timeline.</p></div>
         <div id="placementStatus" class="mb-4"></div>
+        <div class="content-card mb-4" id="placementDetailsCard" style="display:none;">
+          <div class="card-header-custom"><h5>Placement Details</h5></div>
+          <div class="card-body-custom">
+            <div class="row g-3">
+              <div class="col-md-6 profile-info-item"><i class="bi bi-building"></i><div><small class="text-muted">Company</small><div id="pdCompany">—</div></div></div>
+              <div class="col-md-6 profile-info-item"><i class="bi bi-briefcase"></i><div><small class="text-muted">Job</small><div id="pdJob">—</div></div></div>
+              <div class="col-md-6 profile-info-item"><i class="bi bi-currency-rupee"></i><div><small class="text-muted">Package</small><div id="pdPackage">—</div></div></div>
+              <div class="col-md-6 profile-info-item"><i class="bi bi-trophy"></i><div><small class="text-muted">Offer Status</small><div id="pdOfferStatus">—</div></div></div>
+              <div class="col-md-6 profile-info-item"><i class="bi bi-calendar-check"></i><div><small class="text-muted">Placement Date</small><div id="pdPlacementDate">—</div></div></div>
+              <div class="col-md-6 profile-info-item"><i class="bi bi-calendar-event"></i><div><small class="text-muted">Joining Date</small><div id="pdJoiningDate">—</div></div></div>
+              <div class="col-md-6 profile-info-item"><i class="bi bi-file-earmark-text"></i><div><small class="text-muted">Offer Letter</small><div id="pdOfferLetter">—</div></div></div>
+              <div class="col-md-6 profile-info-item"><i class="bi bi-chat-left-text"></i><div><small class="text-muted">Remarks</small><div id="pdRemarks">—</div></div></div>
+            </div>
+          </div>
+        </div>
         <div class="content-card mb-4">
           <div class="card-header-custom"><h5>Placement Progress</h5></div>
           <div class="card-body-custom">
@@ -34,10 +49,10 @@
 
   <div id="modalContainer"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/js/data.js"></script>
-  <script src="/assets/js/app.js"></script>
-  <script src="/assets/js/components.js"></script>
-  <script src="/assets/js/student.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/student.js"></script>
   <script>
     if (App.requireAuth('student', 'login.aspx')) {
       Components.initLayout('student', 'placement-status.aspx', App.currentUser);

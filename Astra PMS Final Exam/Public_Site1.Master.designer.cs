@@ -96,6 +96,15 @@ namespace Astra_PMS_Final_Exam
         protected global::System.Web.UI.WebControls.ImageButton ImageButton7;
 
         /// <summary>
+        /// ImageButton8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton8;
+
+        /// <summary>
         /// ContentPlaceHolder2 control.
         /// </summary>
         /// <remarks>

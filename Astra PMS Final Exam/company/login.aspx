@@ -34,7 +34,7 @@
             <div class="mb-3"><label class="form-label-custom">Password</label><asp:TextBox runat="server" ID="password" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" Text="company123" required="required"></asp:TextBox></div>
             <div class="text-end mb-3"><a href="#" class="small text-danger" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a></div>
 <%--            <button type="button" id="signInBtn" class="btn btn-primary-custom w-100 py-2 mb-3">Sign In</button>--%>
-              <asp:ImageButton ID="signInBtn" runat="server" ClientIDMode="Static" ImageUrl="~/assets/images/signin.jpeg" CssClass="w-100" Style="height: 40px; border-radius: 12px;" OnClientClick="return false;"/>
+              <asp:ImageButton ID="signInBtn" runat="server" ClientIDMode="Static" ImageUrl="~/assets/images/signin.jpeg" CssClass="w-100" Style="height: 40px; border-radius: 12px;" OnClientClick="return false;" OnClick="signInBtn_Click"/>
           </div>
 <p class="text-center text-muted small">Don't have an account? <a href="register.aspx" class="text-danger">Register</a></p>
 <p class="text-center text-muted small mb-0"><a href="../index.aspx"><i class="bi bi-arrow-left me-1"></i>Back to Home</a></p> 
@@ -48,7 +48,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"><i class="bi bi-key me-2"></i>Reset Password</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close" data-bs-dismiss="modal" aria-label="Close" OnClientClick="return false;" Text="" />
         </div>
         <div class="modal-body">
           <p class="text-muted small">Enter your registered email and a new password.</p>
@@ -68,7 +69,8 @@
               <!-- <input type="password" class="form-control form-control-custom" id="resetConfirmPassword" placeholder="Confirm new password" minlength="6" required> -->
               <asp:TextBox runat="server" ID="resetConfirmPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control form-control-custom" placeholder="Confirm new password" minlength="6" required="required"></asp:TextBox>
             </div>
-            <button type="button" id="resetBtn" class="btn btn-primary-custom w-100 py-2">Reset Password</button>
+            <!-- <button type="button" id="resetBtn" class="btn btn-primary-custom w-100 py-2">Reset Password</button> -->
+<asp:Button runat="server" ID="resetBtn" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-primary-custom w-100 py-2" OnClientClick="return false;" Text="Reset Password" />
           </div>
         </div>
       </div>

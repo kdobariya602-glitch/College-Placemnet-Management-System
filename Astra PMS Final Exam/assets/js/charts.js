@@ -17,13 +17,28 @@ const Charts = {
 
     if (this.placementChart) this.placementChart.destroy();
 
+    const data = getData();
+    const monthKey = (dateStr) => {
+      const d = new Date(dateStr);
+      return isNaN(d) ? null : `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    };
+    const monthLabel = (key) => {
+      const [y, m] = key.split('-');
+      return new Date(y, m - 1, 1).toLocaleString('en-US', { month: 'short' });
+    };
+
+    const months = [...new Set(data.applications.map(a => monthKey(a.appliedAt)).filter(Boolean))].sort();
+    const applicationsByMonth = months.map(k => data.applications.filter(a => monthKey(a.appliedAt) === k).length);
+    const placementsByMonth = months.map(k => data.applications.filter(a => monthKey(a.appliedAt) === k && a.status === 'selected').length);
+    const labels = months.length ? months.map(monthLabel) : ['No Data'];
+
     this.placementChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+        labels: labels,
         datasets: [{
           label: 'Placements',
-          data: [2, 5, 8, 12, 18, 25, 32],
+          data: placementsByMonth.length ? placementsByMonth : [0],
           borderColor: '#1a56db',
           backgroundColor: 'rgba(26, 86, 219, 0.1)',
           borderWidth: 2,
@@ -33,7 +48,7 @@ const Charts = {
           pointRadius: 4
         }, {
           label: 'Applications',
-          data: [15, 28, 42, 55, 68, 85, 102],
+          data: applicationsByMonth.length ? applicationsByMonth : [0],
           borderColor: '#14b8a6',
           backgroundColor: 'rgba(20, 184, 166, 0.05)',
           borderWidth: 2,
@@ -106,18 +121,23 @@ const Charts = {
     const ctx = document.getElementById(canvasId);
     if (!ctx) return;
 
+    const data = getData();
+    const branches = [...new Set(data.students.map(s => s.branch))];
+    const registeredCounts = branches.map(b => data.students.filter(s => s.branch === b).length);
+    const placedCounts = branches.map(b => data.students.filter(s => s.branch === b && s.placed).length);
+
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['CS', 'IT', 'ECE', 'ME', 'CE'],
+        labels: branches,
         datasets: [{
           label: 'Placed',
-          data: [12, 8, 4, 3, 2],
+          data: placedCounts,
           backgroundColor: '#1a56db',
           borderRadius: 6
         }, {
           label: 'Registered',
-          data: [45, 32, 28, 22, 18],
+          data: registeredCounts,
           backgroundColor: '#e5e7eb',
           borderRadius: 6
         }]

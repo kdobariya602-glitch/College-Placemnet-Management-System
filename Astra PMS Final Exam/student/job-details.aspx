@@ -14,8 +14,13 @@
               <div>
                 <h3 id="jobTitle">Job Title</h3>
                 <p class="text-muted mb-0" id="jobCompany">Company</p>
+                <div class="mt-2">Status: <span id="jobStatus"></span></div>
               </div>
               <a href="#" class="btn btn-primary-custom btn-lg" id="applyBtn">Apply Now</a>
+            </div>
+            <div class="mb-4">
+              <h6>Eligibility Result</h6>
+              <div id="eligibilityResult"></div>
             </div>
             <div class="row g-3 mb-4">
               <div class="col-md-3"><div class="dashboard-card text-center py-3"><i class="bi bi-geo-alt text-danger fs-4"></i><div class="small text-muted mt-1">Location</div><strong id="jobLocation">—</strong></div></div>
@@ -25,11 +30,19 @@
             </div>
             <h5 class="mb-3">Job Description</h5>
             <p id="jobDescription" class="text-muted mb-4"></p>
-            <div class="row g-4">
+            <div class="row g-4 mb-4">
               <div class="col-md-4"><h6>Minimum CGPA</h6><p id="jobCgpa">—</p></div>
               <div class="col-md-4"><h6>Openings</h6><p id="jobOpenings">—</p></div>
               <div class="col-md-4"><h6>Eligible Branches</h6><p id="jobBranches">—</p></div>
               <div class="col-12"><h6>Required Skills</h6><div id="jobSkills"></div></div>
+            </div>
+            <hr />
+            <h5 class="mb-3">About the Company</h5>
+            <div class="row g-3">
+              <div class="col-md-4"><h6>Industry</h6><p id="companyIndustry">—</p></div>
+              <div class="col-md-4"><h6>Location</h6><p id="companyLocation">—</p></div>
+              <div class="col-md-4"><h6>Website</h6><p id="companyWebsite">—</p></div>
+              <div class="col-12"><h6>About</h6><p id="companyDescription" class="text-muted mb-0">—</p></div>
             </div>
           </div>
         </div>

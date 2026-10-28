@@ -9,7 +9,8 @@
     <div class="offcanvas offcanvas-end ap-offcanvas" tabindex="-1" id="apMobileNav">
         <div class="offcanvas-header">
             <span class="fw-bold">Menu</span>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close btn-close-white" data-bs-dismiss="offcanvas" OnClientClick="return false;" Text="" />
         </div>
         <div class="offcanvas-body">
             <div class="ap-links">

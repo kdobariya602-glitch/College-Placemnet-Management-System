@@ -52,21 +52,28 @@
           <div class="card-body-custom">
             <div class="accordion" id="settingsAccordion">
               <div class="accordion-item border-0 mb-2">
-                <h2 class="accordion-header"><button class="accordion-button rounded" type="button" data-bs-toggle="collapse" data-bs-target="#notifSettings">Notification Settings</button></h2>
+                <h2 class="accordion-header"><!-- <button class="accordion-button rounded" type="button" data-bs-toggle="collapse" data-bs-target="#notifSettings">Notification Settings</button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="accordion-button rounded" data-bs-toggle="collapse" data-bs-target="#notifSettings" OnClientClick="return false;" Text="Notification Settings" /></h2>
                 <div id="notifSettings" class="accordion-collapse collapse show" data-bs-parent="#settingsAccordion">
                   <div class="accordion-body">
-                    <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked id="emailNotif"><label class="form-check-label" for="emailNotif">Email Notifications</label></div>
-                    <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked id="appNotif"><label class="form-check-label" for="appNotif">Application Alerts</label></div>
-                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked id="driveNotif"><label class="form-check-label" for="driveNotif">Drive Reminders</label></div>
+                    <div class="form-check form-switch mb-2"><!-- <input class="form-check-input" type="checkbox" checked id="emailNotif"> -->
+<asp:CheckBox runat="server" ID="emailNotif" ClientIDMode="Static" CssClass="form-check-input" Checked="true" /><label class="form-check-label" for="emailNotif">Email Notifications</label></div>
+                    <div class="form-check form-switch mb-2"><!-- <input class="form-check-input" type="checkbox" checked id="appNotif"> -->
+<asp:CheckBox runat="server" ID="appNotif" ClientIDMode="Static" CssClass="form-check-input" Checked="true" /><label class="form-check-label" for="appNotif">Application Alerts</label></div>
+                    <div class="form-check form-switch"><!-- <input class="form-check-input" type="checkbox" checked id="driveNotif"> -->
+<asp:CheckBox runat="server" ID="driveNotif" ClientIDMode="Static" CssClass="form-check-input" Checked="true" /><label class="form-check-label" for="driveNotif">Drive Reminders</label></div>
                   </div>
                 </div>
               </div>
               <div class="accordion-item border-0">
-                <h2 class="accordion-header"><button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#displaySettings">Display Settings</button></h2>
+                <h2 class="accordion-header"><!-- <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#displaySettings">Display Settings</button> -->
+<asp:Button runat="server" ID="btnCtrl2" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="accordion-button collapsed rounded" data-bs-toggle="collapse" data-bs-target="#displaySettings" OnClientClick="return false;" Text="Display Settings" /></h2>
                 <div id="displaySettings" class="accordion-collapse collapse" data-bs-parent="#settingsAccordion">
                   <div class="accordion-body">
-                    <div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked id="compactSidebar"><label class="form-check-label" for="compactSidebar">Compact Sidebar</label></div>
-                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="darkMode"><label class="form-check-label" for="darkMode">Dark Mode (Coming Soon)</label></div>
+                    <div class="form-check form-switch mb-2"><!-- <input class="form-check-input" type="checkbox" checked id="compactSidebar"> -->
+<asp:CheckBox runat="server" ID="compactSidebar" ClientIDMode="Static" CssClass="form-check-input" Checked="true" /><label class="form-check-label" for="compactSidebar">Compact Sidebar</label></div>
+                    <div class="form-check form-switch"><!-- <input class="form-check-input" type="checkbox" id="darkMode"> -->
+<asp:CheckBox runat="server" ID="darkMode" ClientIDMode="Static" CssClass="form-check-input" /><label class="form-check-label" for="darkMode">Dark Mode (Coming Soon)</label></div>
                   </div>
                 </div>
               </div>
@@ -90,14 +97,15 @@
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/admin.js"></script>
   <script>
-    //if (App.requireAuth('admin', 'login.aspx')) {
-    //  Components.initLayout('admin', 'settings.aspx', App.currentUser);
-    //  document.getElementById('settingsName').textContent = App.currentUser.name;
-    //  document.getElementById('settingsEmail').textContent = App.currentUser.email;
-    //  document.getElementById('settingsAvatar').textContent = App.getInitials(App.currentUser.name);
-      //}
-      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      Admin.initDashboard();
+      Components.initLayout('admin', 'settings.aspx', App.currentUser);
+      if (App.currentUser) {
+        var elName = document.getElementById('settingsName');
+        var elEmail = document.getElementById('settingsEmail');
+        var elAvatar = document.getElementById('settingsAvatar');
+        if (elName) elName.textContent = App.currentUser.name;
+        if (elEmail) elEmail.textContent = App.currentUser.email;
+        if (elAvatar) elAvatar.textContent = App.getInitials(App.currentUser.name);
+      }
   </script>
 </asp:Content>
 

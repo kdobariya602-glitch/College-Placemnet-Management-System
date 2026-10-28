@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +11,11 @@ namespace Astra_PMS_Final_Exam.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["admin"] == null)
+            {
+                Response.Redirect("login.aspx");
+                return;
+            }
             if (!IsPostBack)
             {
                 BindMessages();

@@ -10,7 +10,8 @@
     <div class="offcanvas offcanvas-end ap-offcanvas" tabindex="-1" id="apMobileNav">
         <div class="offcanvas-header">
             <span class="fw-bold">Menu</span>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            <!-- <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button> -->
+<asp:Button runat="server" ID="btnCtrl" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn-close btn-close-white" data-bs-dismiss="offcanvas" OnClientClick="return false;" Text="" />
         </div>
         <div class="offcanvas-body">
             <div class="ap-links">
@@ -200,7 +201,8 @@
             <div class="accordion ap-accordion ap-reveal" id="policyFaq">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq0">What happens if I miss a mandatory training session?</button>
+                        <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq0">What happens if I miss a mandatory training session?</button> -->
+<asp:Button runat="server" ID="btnCtrl2" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pfaq0" OnClientClick="return false;" Text="What happens if I miss a mandatory training session?" />
                     </h2>
                     <div id="pfaq0" class="accordion-collapse collapse" data-bs-parent="#policyFaq">
                         <div class="accordion-body">Two consecutive unexcused absences make you ineligible for the next placement drive, unless a medical exemption is approved in advance.</div>
@@ -208,7 +210,8 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq1">Can I reject an accepted offer?</button>
+                        <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq1">Can I reject an accepted offer?</button> -->
+<asp:Button runat="server" ID="btnCtrl3" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pfaq1" OnClientClick="return false;" Text="Can I reject an accepted offer?" />
                     </h2>
                     <div id="pfaq1" class="accordion-collapse collapse" data-bs-parent="#policyFaq">
                         <div class="accordion-body">Only with written approval from the Placement Director, and typically only under the Dream Company Policy provisions.</div>
@@ -216,7 +219,8 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq2">Are internship conversions treated as new offers?</button>
+                        <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq2">Are internship conversions treated as new offers?</button> -->
+<asp:Button runat="server" ID="btnCtrl4" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#pfaq2" OnClientClick="return false;" Text="Are internship conversions treated as new offers?" />
                     </h2>
                     <div id="pfaq2" class="accordion-collapse collapse" data-bs-parent="#policyFaq">
                         <div class="accordion-body">Yes, but they follow the same one-offer acceptance rule as any other placement offer.</div>
