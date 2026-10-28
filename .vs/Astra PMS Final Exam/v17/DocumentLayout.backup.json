@@ -3,57 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\",
   "Documents": [
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\student\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\company\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\company\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|c:\\users\\hp\\source\\repos\\astra pms final exam\\astra pms final exam\\contact-us.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\contact-us.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|c:\\users\\hp\\source\\repos\\astra pms final exam\\astra pms final exam\\student\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\student\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\Web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\Web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\student\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\student\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\admin\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\admin\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\company\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\company\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\company\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\company\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\company\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\student\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\student\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\student\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\company\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\company\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\company\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\company\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\astra pms final exam\\student\\student_site2.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\student\\student_site2.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-=======
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|c:\\users\\hp\\source\\repos\\astra pms final exam\\astra pms final exam\\company\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\company\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\student\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|c:\\users\\hp\\source\\repos\\astra pms final exam\\astra pms final exam\\assets\\images\\login1.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\assets\\images\\login1.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\Student_Site2.Master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\student\\Student_Site2.Master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|c:\\users\\hp\\source\\repos\\astra pms final exam\\astra pms final exam\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:astra pms final exam\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
->>>>>>> 0b3b662 (Save local changes)
+      "AbsoluteMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{371A7737-EFFC-40D9-8AB3-AF4782A323F0}|Astra PMS Final Exam\\Astra PMS Final Exam.csproj|solutionrelative:Astra PMS Final Exam\\company\\profile.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,68 +58,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< HEAD
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "register.aspx",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx",
-              "RelativeDocumentMoniker": "Astra PMS Final Exam\\company\\register.aspx",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx",
-              "RelativeToolTip": "Astra PMS Final Exam\\company\\register.aspx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-08-08T07:46:05.849Z",
-=======
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "login.aspx",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\login.aspx",
-              "RelativeDocumentMoniker": "Astra PMS Final Exam\\company\\login.aspx",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\login.aspx",
-              "RelativeToolTip": "Astra PMS Final Exam\\company\\login.aspx",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\admin\\login.aspx",
+              "RelativeDocumentMoniker": "Astra PMS Final Exam\\admin\\login.aspx",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\admin\\login.aspx",
+              "RelativeToolTip": "Astra PMS Final Exam\\admin\\login.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-08-10T13:17:10.973Z",
->>>>>>> 0b3b662 (Save local changes)
+              "WhenOpened": "2026-08-11T06:06:03.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 4,
-=======
               "DocumentIndex": 1,
-              "Title": "Login1.png",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\assets\\images\\Login1.png",
-              "RelativeDocumentMoniker": "Astra PMS Final Exam\\assets\\images\\Login1.png",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\assets\\images\\Login1.png",
-              "RelativeToolTip": "Astra PMS Final Exam\\assets\\images\\Login1.png",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2026-08-10T13:17:00.014Z",
+              "Title": "contact-us.aspx",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\contact-us.aspx",
+              "RelativeDocumentMoniker": "Astra PMS Final Exam\\contact-us.aspx",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\contact-us.aspx",
+              "RelativeToolTip": "Astra PMS Final Exam\\contact-us.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-08-11T04:41:32.962Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
->>>>>>> 0b3b662 (Save local changes)
+              "DocumentIndex": 4,
               "Title": "index.aspx",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\index.aspx",
               "RelativeDocumentMoniker": "Astra PMS Final Exam\\index.aspx",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\index.aspx",
               "RelativeToolTip": "Astra PMS Final Exam\\index.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-08-10T04:58:13.592Z",
+              "WhenOpened": "2026-08-08T05:15:24.07Z",
               "EditorCaption": ""
-<<<<<<< HEAD
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "register.aspx.cs",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\register.aspx.cs",
               "RelativeDocumentMoniker": "Astra PMS Final Exam\\student\\register.aspx.cs",
@@ -137,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "register.aspx",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\register.aspx",
               "RelativeDocumentMoniker": "Astra PMS Final Exam\\student\\register.aspx",
@@ -150,79 +127,94 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "register.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx.cs",
-              "RelativeDocumentMoniker": "Astra PMS Final Exam\\company\\register.aspx.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx.cs",
-              "RelativeToolTip": "Astra PMS Final Exam\\company\\register.aspx.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAIwDQAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-08T08:35:33.387Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "login.aspx",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\login.aspx",
-              "RelativeDocumentMoniker": "Astra PMS Final Exam\\company\\login.aspx",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\login.aspx",
-              "RelativeToolTip": "Astra PMS Final Exam\\company\\login.aspx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-08-08T09:43:29.512Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "login.aspx",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\login.aspx",
-              "RelativeDocumentMoniker": "Astra PMS Final Exam\\student\\login.aspx",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\login.aspx",
-              "RelativeToolTip": "Astra PMS Final Exam\\student\\login.aspx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-08-08T05:17:13.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Student_Site2.Master",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\Student_Site2.Master",
-              "RelativeDocumentMoniker": "Astra PMS Final Exam\\student\\Student_Site2.Master",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\Student_Site2.Master",
-              "RelativeToolTip": "Astra PMS Final Exam\\student\\Student_Site2.Master",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-08-08T05:17:04.502Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Web.config",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\Web.config",
               "RelativeDocumentMoniker": "Astra PMS Final Exam\\Web.config",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\Web.config",
               "RelativeToolTip": "Astra PMS Final Exam\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAIwAYAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2026-08-08T08:59:10.748Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "register.aspx",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx",
+              "RelativeDocumentMoniker": "Astra PMS Final Exam\\company\\register.aspx",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx",
+              "RelativeToolTip": "Astra PMS Final Exam\\company\\register.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-08-08T07:46:05.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "register.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx.cs",
+              "RelativeDocumentMoniker": "Astra PMS Final Exam\\company\\register.aspx.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\register.aspx.cs",
+              "RelativeToolTip": "Astra PMS Final Exam\\company\\register.aspx.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAA5wDQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-08T08:35:33.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "login.aspx",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\login.aspx",
+              "RelativeDocumentMoniker": "Astra PMS Final Exam\\company\\login.aspx",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\login.aspx",
+              "RelativeToolTip": "Astra PMS Final Exam\\company\\login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-08-08T09:43:29.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "login.aspx",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\login.aspx",
+              "RelativeDocumentMoniker": "Astra PMS Final Exam\\student\\login.aspx",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\login.aspx",
+              "RelativeToolTip": "Astra PMS Final Exam\\student\\login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-08-08T05:17:13.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Student_Site2.Master",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\Student_Site2.Master",
+              "RelativeDocumentMoniker": "Astra PMS Final Exam\\student\\Student_Site2.Master",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\student\\Student_Site2.Master",
+              "RelativeToolTip": "Astra PMS Final Exam\\student\\Student_Site2.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-08-08T05:17:04.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "profile.aspx",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\profile.aspx",
               "RelativeDocumentMoniker": "Astra PMS Final Exam\\company\\profile.aspx",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\Astra PMS Final Exam\\Astra PMS Final Exam\\company\\profile.aspx",
               "RelativeToolTip": "Astra PMS Final Exam\\company\\profile.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
               "WhenOpened": "2026-08-08T09:32:50.413Z",
               "EditorCaption": ""
-=======
->>>>>>> 0b3b662 (Save local changes)
             }
           ]
         }
