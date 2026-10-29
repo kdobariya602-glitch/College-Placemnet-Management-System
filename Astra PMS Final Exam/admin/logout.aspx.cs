@@ -4,21 +4,33 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
 
 namespace Astra_PMS_Final_Exam.admin
 {
     public partial class logout : System.Web.UI.Page
     {
+        SqlConnection con; //for connection
+        SqlDataAdapter da; //for container
+        DataSet ds; //for select
+        SqlCommand cmd; //for insert, update, delete
+        string fnm, nm;
+        int i;
+
+        string s = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
+
+        void getcon()
+        {
+            con = new SqlConnection(s);
+            con.Open();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["admin"] = null;
             Session.Clear();
-            Session.Abandon();
-
-            // Clear the client-side display session (sidebar/navbar identity) alongside
-            // the server-side auth session. Does not affect DB-driven authentication.
-            Response.Write("<script>try{sessionStorage.removeItem('pms_session');}catch(e){}window.location.href='login.aspx';</script>");
-            Response.End();
+            Response.Redirect("login.aspx");
         }
     }
 }

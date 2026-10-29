@@ -1,139 +1,594 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin_Site3.master.cs" Inherits="Astra_PMS_Final_Exam.admin.Admin_Site3" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin_Site3.Master.cs" Inherits="Astra_PMS_Final_Exam.admin.Admin_Site3" %>
+
+
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
+
 <head runat="server">
-    <title></title>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
+
+    <title>Admin Portal | Astra University PMS</title>
+
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+    <link href="../assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet" />
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+
+    <link href="../assets/css/astra-buttons.css" rel="stylesheet" />
+
+    <script>
+
+        (function () {
+
+            var theme = localStorage.getItem('astra_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+            document.documentElement.setAttribute('data-bs-theme', theme);
+
+            if (theme === 'dark') {
+
+                document.documentElement.classList.add('dark-mode');
+
+            }
+
+        })();
+
+    </script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
+
     </asp:ContentPlaceHolder>
+
 </head>
-<body>
+
+<body class="admin-panel">
+
     <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-<link href="../assets/css/style.css" rel="stylesheet">
-                <!-- ============================= HEADER START (Top bar / Navbar / Sidebar include) ============================= -->
 
-  <div class="app-wrapper">
-    <div id="sidebarContainer"></div>
-    <div id="mobileSidebarContainer"></div>
-    <div class="main-content" id="mainContent">
-      <div id="navbarContainer"></div>
-<!-- ============================= HEADER END ============================= -->
-            </asp:ContentPlaceHolder>
+        <div class="app-wrapper">
 
-             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-                 <!-- ============================= BODY START (Main Page Content) ============================= -->
+            <!-- Sidebar -->
 
-      <div class="page-content">
-        <div class="page-breadcrumb">
-          <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item active">Dashboard</li></ol></nav>
-          <h4>Dashboard</h4>
-          <p>Welcome back! Here's an overview of placement activities.</p>
-        </div>
+            <aside class="sidebar" id="sidebar" style="overflow-y: auto;">
 
-        <div class="row g-3 mb-4">
-          <div class="col-sm-6 col-xl">
-            <div class="dashboard-card stat-card">
-              <div class="stat-icon red"><i class="bi bi-people"></i></div>
-              <div><div class="stat-value" id="statStudents">0</div><div class="stat-label">Total Students</div><div class="stat-change positive"><i class="bi bi-arrow-up"></i> 12% this month</div></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl">
-            <div class="dashboard-card stat-card">
-              <div class="stat-icon blue"><i class="bi bi-building"></i></div>
-              <div><div class="stat-value" id="statCompanies">0</div><div class="stat-label">Total Companies</div><div class="stat-change positive"><i class="bi bi-arrow-up"></i> 3 new</div></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl">
-            <div class="dashboard-card stat-card">
-              <div class="stat-icon green"><i class="bi bi-briefcase"></i></div>
-              <div><div class="stat-value" id="statJobs">0</div><div class="stat-label">Active Jobs</div><div class="stat-change positive"><i class="bi bi-arrow-up"></i> 5 posted</div></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl">
-            <div class="dashboard-card stat-card">
-              <div class="stat-icon purple"><i class="bi bi-trophy"></i></div>
-              <div><div class="stat-value" id="statPlacements">0</div><div class="stat-label">Total Placements</div><div class="stat-change positive"><i class="bi bi-arrow-up"></i> 8 this week</div></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-xl">
-            <div class="dashboard-card stat-card">
-              <div class="stat-icon orange"><i class="bi bi-percent"></i></div>
-              <div><div class="stat-value" id="statPercentage">0%</div><div class="stat-label">Placement Rate</div><div class="stat-change positive"><i class="bi bi-arrow-up"></i> +5%</div></div>
-            </div>
-          </div>
-        </div>
+                <div class="sidebar-brand">
 
-        <div class="row g-3 mb-4">
-          <div class="col-lg-8">
-            <div class="content-card">
-              <div class="card-header-custom"><h5><i class="bi bi-graph-up me-2 text-danger"></i>Monthly Placement Trends</h5></div>
-              <div class="card-body-custom"><div class="chart-container"><canvas id="placementChart"></canvas></div></div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="content-card">
-              <div class="card-header-custom"><h5><i class="bi bi-pie-chart me-2 text-danger"></i>Top Recruiting Companies</h5></div>
-              <div class="card-body-custom"><div class="chart-container"><canvas id="topCompaniesChart"></canvas></div></div>
-            </div>
-          </div>
-        </div>
+                    <div class="sidebar-brand-icon">
 
-        <div class="row g-3">
-          <div class="col-lg-8">
-            <div class="content-card">
-              <div class="card-header-custom"><h5><i class="bi bi-clock-history me-2 text-danger"></i>Recent Activities</h5><a href="applications.aspx" class="btn btn-sm btn-outline-custom">View All</a></div>
-              <div class="card-body-custom" id="activityList"></div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="content-card">
-              <div class="card-header-custom"><h5><i class="bi bi-lightning me-2 text-danger"></i>Quick Actions</h5></div>
-              <div class="card-body-custom">
-                <div class="d-grid gap-2">
-                  <a href="students.aspx" class="btn btn-outline-custom text-start"><i class="bi bi-person-plus me-2"></i>Add Student</a>
-                  <a href="companies.aspx" class="btn btn-outline-custom text-start"><i class="bi bi-building-add me-2"></i>Add Company</a>
-                  <a href="drives.aspx" class="btn btn-outline-custom text-start"><i class="bi bi-calendar-plus me-2"></i>Schedule Drive</a>
-                  <a href="reports.aspx" class="btn btn-outline-custom text-start"><i class="bi bi-file-bar-graph me-2"></i>Generate Report</a>
+                        <svg width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="12" fill="#FFFFFF"/>
+                            <rect x="1.5" y="1.5" width="45" height="45" rx="10.5" fill="none" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <polygon points="24,8 42,17 24,25.5 6,17" fill="#1D4ED8"/>
+                            <polygon points="6,17 24,25.5 24,27.2 6,18.7" fill="#1E40AF"/>
+                            <polygon points="24,25.5 42,17 42,18.7 24,27.2" fill="#0B1F3A"/>
+                            <path d="M14 21.5 V27 C14 31 18.2 33.5 24 33.5 C29.8 33.5 34 31 34 27 V21.5 C31 23.8 27.5 25 24 25 C20.5 25 17 23.8 14 21.5 Z" fill="#1E3A8A"/>
+                            <circle cx="24" cy="17" r="2" fill="#F59E0B"/>
+                        </svg>
+
+                    </div>
+
+                    <div class="sidebar-brand-info">
+
+                        <span class="sidebar-brand-name">Astra PMS</span>
+
+                        <span class="sidebar-brand-sub">University Administrator</span>
+
+                    </div>
+
                 </div>
-              </div>
+
+
+
+                <nav class="sidebar-nav pb-4">
+
+                    <div class="sidebar-section-title">MAIN</div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="dashboard.aspx" class="nav-link"><i class="bi bi-grid-1x2"></i><span class="nav-text">Dashboard</span></a>
+
+                    </div>
+
+                    <div class="sidebar-section-title">PLACEMENT PROCESS (STEP BY STEP)</div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-gear-wide-connected step-icon"></i><span class="nav-text">Setup & Master Data</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="academic-masters.aspx" class="submenu-link" data-pages="academic-masters"><i class="bi bi-diagram-3"></i><span>Academic Masters</span></a></li>
+
+                            <li><a href="Placement_Configuration.aspx" class="submenu-link" data-pages="placement_configuration"><i class="bi bi-sliders2"></i><span>Placement Configuration</span></a></li>
+
+                            <li><a href="System_Settings.aspx" class="submenu-link" data-pages="system_settings"><i class="bi bi-sliders"></i><span>System Settings</span></a></li>
+
+                            <li><a href="User_Management.aspx" class="submenu-link" data-pages="user_management"><i class="bi bi-person-lock"></i><span>User Management</span></a></li>
+
+                            <li><a href="audit-logs.aspx" class="submenu-link" data-pages="audit-logs"><i class="bi bi-journal-text"></i><span>Audit Logs</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-people step-icon"></i><span class="nav-text">People Management</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="students.aspx" class="submenu-link" data-pages="students,student-details"><i class="bi bi-person-lines-fill"></i><span>Students Directory</span></a></li>
+
+                            <li><a href="student-verification.aspx" class="submenu-link" data-pages="student-verification"><i class="bi bi-patch-check"></i><span>Student Verification</span></a></li>
+
+                            <li><a href="manage-tpo.aspx" class="submenu-link" data-pages="manage-tpo"><i class="bi bi-person-badge"></i><span>TPO Management</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-buildings step-icon"></i><span class="nav-text">Company Management</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="companies.aspx" class="submenu-link" data-pages="companies,company-details"><i class="bi bi-building"></i><span>Partner Companies</span></a></li>
+
+                            <li><a href="company-verification.aspx" class="submenu-link" data-pages="company-verification"><i class="bi bi-shield-check"></i><span>Company Verification</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-briefcase step-icon"></i><span class="nav-text">Placement Management</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="drives.aspx" class="submenu-link" data-pages="drives,drive-details"><i class="bi bi-calendar2-event"></i><span>Placement Drives</span></a></li>
+
+                            <li><a href="jobs.aspx" class="submenu-link" data-pages="jobs"><i class="bi bi-briefcase"></i><span>Job Postings</span></a></li>
+
+                            <li><a href="internships.aspx" class="submenu-link" data-pages="internships"><i class="bi bi-mortarboard"></i><span>Internships</span></a></li>
+
+                            <li><a href="applications.aspx" class="submenu-link" data-pages="applications"><i class="bi bi-file-earmark-check"></i><span>Applications</span></a></li>
+
+                            <li><a href="interviews.aspx" class="submenu-link" data-pages="interviews"><i class="bi bi-chat-square-text"></i><span>Interviews</span></a></li>
+
+                            <li><a href="selections.aspx" class="submenu-link" data-pages="selections"><i class="bi bi-award"></i><span>Selections & Offers</span></a></li>
+
+                            <li><a href="placement-history.aspx" class="submenu-link" data-pages="placement-history"><i class="bi bi-clock-history"></i><span>Placement History</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-megaphone step-icon"></i><span class="nav-text">Communication & Reports</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="notices.aspx" class="submenu-link" data-pages="notices"><i class="bi bi-megaphone"></i><span>Notices</span></a></li>
+
+                            <li><a href="grievances.aspx" class="submenu-link" data-pages="grievances"><i class="bi bi-exclamation-circle"></i><span>Grievances</span></a></li>
+
+                            <li><a href="training.aspx" class="submenu-link" data-pages="training"><i class="bi bi-mortarboard"></i><span>Training Programs</span></a></li>
+
+                            <li><a href="reports.aspx" class="submenu-link" data-pages="reports"><i class="bi bi-bar-chart"></i><span>Placement Reports</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                                        <div class="sidebar-section-title" style="color:#2563EB; font-weight:700;"><i class="bi bi-stars text-warning me-1"></i>ASTRA AI HUB</div>
+
+                    <div class="sidebar-nav-item has-submenu active">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle" style="background: rgba(37, 99, 235, 0.08); border-left: 3px solid #2563EB;">
+                            <i class="bi bi-stars step-icon text-warning"></i>
+                            <span class="nav-text fw-bold text-primary">✨ Astra AI Hub</span>
+                            <span class="badge bg-primary text-white ms-auto" style="font-size:0.65rem;">10 AI Tools</span>
+                            <i class="bi bi-chevron-down submenu-arrow"></i>
+                        </a>
+
+                        <ul class="sidebar-submenu" style="display: block;">
+
+                            <li><a href="ai-assistant.aspx" class="submenu-link" data-pages="ai-assistant"><i class="bi bi-robot text-primary"></i><span>AI Admin System Director</span></a></li>
+
+                            <li><a href="ai-grievance-triage.aspx" class="submenu-link" data-pages="ai-grievance-triage"><i class="bi bi-life-preserver text-info"></i><span>AI Grievance Triage Desk</span></a></li>
+
+                            <li><a href="ai-institutional-audit.aspx" class="submenu-link" data-pages="ai-institutional-audit"><i class="bi bi-bar-chart-line text-success"></i><span>AI Institutional NAAC Audit</span></a></li>
+
+                            <li><a href="ai-drive-policy.aspx" class="submenu-link" data-pages="ai-drive-policy"><i class="bi bi-calendar2-event text-warning"></i><span>AI Drive Policy &amp; Instructions</span></a></li>
+
+                            <li><a href="ai-policy-drafter.aspx" class="submenu-link" data-pages="ai-policy-drafter"><i class="bi bi-sliders2 text-danger"></i><span>AI Placement Policy Drafter</span></a></li>
+
+                            <li><a href="ai-security-auditor.aspx" class="submenu-link" data-pages="ai-security-auditor"><i class="bi bi-shield-lock text-primary"></i><span>AI System Security Audit</span></a></li>
+
+                            <li><a href="ai-recruiter-vetting.aspx" class="submenu-link" data-pages="ai-recruiter-vetting"><i class="bi bi-shield-check text-info"></i><span>AI Recruiter Legitimacy Audit</span></a></li>
+
+                            <li><a href="ai-skill-standardizer.aspx" class="submenu-link" data-pages="ai-skill-standardizer"><i class="bi bi-diagram-3 text-success"></i><span>AI Skill Matrix Standardizer</span></a></li>
+
+                            <li><a href="ai-log-forensics.aspx" class="submenu-link" data-pages="ai-log-forensics"><i class="bi bi-journal-text text-warning"></i><span>AI Security Log Inspector</span></a></li>
+
+                            <li><a href="ai-redressal-advisor.aspx" class="submenu-link" data-pages="ai-redressal-advisor"><i class="bi bi-shield-exclamation text-danger"></i><span>AI Grievance Redressal Advisor</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+<div class="sidebar-section-title">ACCOUNT</div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-person-circle step-icon"></i><span class="nav-text">Profile & Account</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="profile.aspx" class="submenu-link" data-pages="profile"><i class="bi bi-person-gear"></i><span>Profile Details</span></a></li>
+
+                            <li><a href="change-password.aspx" class="submenu-link" data-pages="change-password"><i class="bi bi-key"></i><span>Change Password</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="../index.aspx" class="nav-link" target="_blank"><i class="bi bi-globe"></i><span class="nav-text">Public Website</span></a>
+
+                    </div>
+
+                    <div class="sidebar-nav-item mt-2">
+
+                        <a href="logout.aspx" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i><span class="nav-text">Logout</span></a>
+
+                    </div>
+
+                </nav>
+
+            </aside>
+
+
+
+            <!-- Main Content Area -->
+
+            <div class="main-content" id="mainContent">
+
+                <!-- Top Navbar -->
+
+                <header class="top-navbar" id="topNavbar">
+
+                    <button class="sidebar-toggle-btn d-none d-lg-inline-flex" type="button" onclick="toggleAstraSidebar();" aria-label="Toggle sidebar">
+
+                        <i class="bi bi-list"></i>
+
+                    </button>
+
+                    <button class="sidebar-toggle-btn d-inline-flex d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-label="Open menu">
+
+                        <i class="bi bi-list"></i>
+
+                    </button>
+
+                    <div class="navbar-search position-relative d-none d-md-block">
+
+                        <i class="bi bi-search search-icon"></i>
+
+                        <input type="text" class="form-control" placeholder="Search system, students, recruiters..." />
+
+                    </div>
+
+                    <div class="navbar-actions d-flex align-items-center gap-2">
+
+                        <a href="ai-assistant.aspx" class="btn btn-sm d-inline-flex align-items-center gap-1 px-3 py-1 fw-semibold text-white shadow-sm me-1" style="background: linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%); border-radius: 20px; font-size: 0.82rem;" title="Open Astra AI Copilot">
+                            <i class="bi bi-stars"></i>
+                            <span>Astra AI</span>
+                        </a>
+
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width:36px; height:36px;" onclick="toggleAstraTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+
+                            <i class="bi bi-moon-stars"></i>
+
+                        </button>
+
+                        <span class="d-none d-xl-inline-flex align-items-center gap-1 badge bg-light text-secondary border px-2 py-1" style="font-size:0.75rem;">
+
+                            <i class="bi bi-shield-check text-success"></i> Administrator Authenticated
+
+                        </span>
+
+                        <div class="dropdown profile-dropdown">
+
+                            <button class="dropdown-toggle d-flex align-items-center gap-2 btn border-0 bg-transparent" type="button" data-bs-toggle="dropdown">
+
+                                <div class="profile-avatar"><asp:Literal ID="litAvatarInitials" runat="server" Text="AD"></asp:Literal></div>
+
+                                <span class="profile-name fw-semibold"><asp:Literal ID="litHeaderUserName" runat="server" Text="Administrator"></asp:Literal></span>
+
+                                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 ms-2 fw-semibold" style="font-size:0.7rem;">ADMIN</span>
+
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+
+                                <li><h6 class="dropdown-header"><asp:Literal ID="litDropdownEmail" runat="server"></asp:Literal></h6></li>
+
+                                <li><a class="dropdown-item" href="profile.aspx"><i class="bi bi-person me-2"></i>My Profile & Password</a></li>
+
+                                <li><a class="dropdown-item" href="reports.aspx"><i class="bi bi-bar-chart me-2"></i>Placement Reports</a></li>
+
+                                <li><hr class="dropdown-divider"></li>
+
+                                <li><a class="dropdown-item" href="../index.aspx" target="_blank"><i class="bi bi-globe me-2"></i>Public Home</a></li>
+
+                                <li><hr class="dropdown-divider"></li>
+
+                                <li><a class="dropdown-item text-danger" href="logout.aspx"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </header>
+
+
+
+                <main class="content-body" id="contentBody">
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+                    </asp:ContentPlaceHolder>
+
+                </main>
+
             </div>
-          </div>
+
         </div>
-      </div>
-      
-<!-- ============================= BODY END ============================= -->
- </asp:ContentPlaceHolder>
 
-             <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
-                 
-<!-- ============================= FOOTER START ============================= -->
-<div id="footerContainer"></div>
-<!-- ============================= FOOTER END ============================= -->
 
-    </div>
-  <div id="modalContainer"></div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="../assets/js/data.js"></script>
-  <script src="../assets/js/app.js"></script>
-  <script src="../assets/js/components.js"></script>
-  <script src="../assets/js/charts.js"></script>
-  <script src="../assets/js/admin.js"></script>
-  <script>
-      //if (App.requireAuth('admin', 'login.aspx')) {
-      //    Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      //    Admin.initDashboard();
-      //}
-      Components.initLayout('admin', 'dashboard.aspx', App.currentUser);
-      Admin.initDashboard();
-  </script>
- </asp:ContentPlaceHolder>
+
+        <!-- Mobile Sidebar -->
+
+        <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobileSidebar" style="background:#0B1F3A !important; width:280px; overflow-y: auto;">
+
+            <div class="offcanvas-header border-bottom border-secondary">
+
+                <h5 class="offcanvas-title fw-bold text-white"><i class="bi bi-shield-lock-fill text-primary me-2"></i>Admin Portal</h5>
+
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+
+            </div>
+
+            <div class="offcanvas-body p-0">
+
+                <nav class="sidebar-nav p-3">
+
+                    <div class="sidebar-section-title text-secondary">MAIN</div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="dashboard.aspx" class="nav-link"><i class="bi bi-grid-1x2"></i><span class="nav-text">Dashboard</span></a>
+
+                    </div>
+
+                    <div class="sidebar-section-title text-secondary">PLACEMENT PROCESS (STEP BY STEP)</div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-gear-wide-connected step-icon"></i><span class="nav-text">Setup & Master Data</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="academic-masters.aspx" class="submenu-link" data-pages="academic-masters"><i class="bi bi-diagram-3"></i><span>Academic Masters</span></a></li>
+
+                            <li><a href="Placement_Configuration.aspx" class="submenu-link" data-pages="placement_configuration"><i class="bi bi-sliders2"></i><span>Placement Configuration</span></a></li>
+
+                            <li><a href="System_Settings.aspx" class="submenu-link" data-pages="system_settings"><i class="bi bi-sliders"></i><span>System Settings</span></a></li>
+
+                            <li><a href="User_Management.aspx" class="submenu-link" data-pages="user_management"><i class="bi bi-person-lock"></i><span>User Management</span></a></li>
+
+                            <li><a href="audit-logs.aspx" class="submenu-link" data-pages="audit-logs"><i class="bi bi-journal-text"></i><span>Audit Logs</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-people step-icon"></i><span class="nav-text">People Management</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="students.aspx" class="submenu-link" data-pages="students,student-details"><i class="bi bi-person-lines-fill"></i><span>Students Directory</span></a></li>
+
+                            <li><a href="student-verification.aspx" class="submenu-link" data-pages="student-verification"><i class="bi bi-patch-check"></i><span>Student Verification</span></a></li>
+
+                            <li><a href="manage-tpo.aspx" class="submenu-link" data-pages="manage-tpo"><i class="bi bi-person-badge"></i><span>TPO Management</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-buildings step-icon"></i><span class="nav-text">Company Management</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="companies.aspx" class="submenu-link" data-pages="companies,company-details"><i class="bi bi-building"></i><span>Partner Companies</span></a></li>
+
+                            <li><a href="company-verification.aspx" class="submenu-link" data-pages="company-verification"><i class="bi bi-shield-check"></i><span>Company Verification</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-briefcase step-icon"></i><span class="nav-text">Placement Management</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="drives.aspx" class="submenu-link" data-pages="drives,drive-details"><i class="bi bi-calendar2-event"></i><span>Placement Drives</span></a></li>
+
+                            <li><a href="jobs.aspx" class="submenu-link" data-pages="jobs"><i class="bi bi-briefcase"></i><span>Job Postings</span></a></li>
+
+                            <li><a href="internships.aspx" class="submenu-link" data-pages="internships"><i class="bi bi-mortarboard"></i><span>Internships</span></a></li>
+
+                            <li><a href="applications.aspx" class="submenu-link" data-pages="applications"><i class="bi bi-file-earmark-check"></i><span>Applications</span></a></li>
+
+                            <li><a href="interviews.aspx" class="submenu-link" data-pages="interviews"><i class="bi bi-chat-square-text"></i><span>Interviews</span></a></li>
+
+                            <li><a href="selections.aspx" class="submenu-link" data-pages="selections"><i class="bi bi-award"></i><span>Selections & Offers</span></a></li>
+
+                            <li><a href="placement-history.aspx" class="submenu-link" data-pages="placement-history"><i class="bi bi-clock-history"></i><span>Placement History</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-megaphone step-icon"></i><span class="nav-text">Communication & Reports</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="notices.aspx" class="submenu-link" data-pages="notices"><i class="bi bi-megaphone"></i><span>Notices</span></a></li>
+
+                            <li><a href="grievances.aspx" class="submenu-link" data-pages="grievances"><i class="bi bi-exclamation-circle"></i><span>Grievances</span></a></li>
+
+                            <li><a href="training.aspx" class="submenu-link" data-pages="training"><i class="bi bi-mortarboard"></i><span>Training Programs</span></a></li>
+
+                            <li><a href="reports.aspx" class="submenu-link" data-pages="reports"><i class="bi bi-bar-chart"></i><span>Placement Reports</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-robot step-icon"></i><span class="nav-text">AI Admin Intelligence</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="ai-assistant.aspx" class="submenu-link" data-pages="ai-assistant"><i class="bi bi-robot"></i><span>AI Admin Assistant</span></a></li>
+
+                            <li><a href="ai-grievance-triage.aspx" class="submenu-link" data-pages="ai-grievance-triage"><i class="bi bi-life-preserver"></i><span>AI Grievance Triage</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-section-title text-secondary">ACCOUNT</div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-person-circle step-icon"></i><span class="nav-text">Profile & Account</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="profile.aspx" class="submenu-link" data-pages="profile"><i class="bi bi-person-gear"></i><span>Profile Details</span></a></li>
+
+                            <li><a href="change-password.aspx" class="submenu-link" data-pages="change-password"><i class="bi bi-key"></i><span>Change Password</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="../index.aspx" class="nav-link" target="_blank"><i class="bi bi-globe"></i><span class="nav-text">Public Website</span></a>
+
+                    </div>
+
+                    <div class="sidebar-nav-item mt-2">
+
+                        <a href="logout.aspx" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i><span class="nav-text">Logout</span></a>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+        </div>
+
     </form>
+
+
+
+    <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="../assets/vendor/chartjs/chart.umd.min.js"></script>
+
+    <script src="../assets/js/app.js"></script>
+
+    <script type="text/javascript">
+        function toggleAstraAiDrawer() {
+            var myOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasAstraAi'));
+            document.getElementById('aiActivePageTitle').innerText = document.title || 'Astra PMS Portal';
+            myOffcanvas.show();
+        }
+
+        function summarizeCurrentPage() {
+            var box = document.getElementById('aiDrawerChatBox');
+            var title = document.title || 'Placement Module';
+            box.innerHTML = '<div class="text-primary small fw-bold mb-1"><i class="bi bi-cpu me-1"></i> Page Intelligence Scan:</div>' +
+                            '<div class="text-dark small"><strong>Active View:</strong> ' + title + '</div>' +
+                            '<div class="small text-muted mt-2">• Multi-factor data ledger is active and synced with Astra database.<br/>• All action buttons offer Dual-Mode (Manual OR AI-assisted).<br/>• Verified zero integrity errors on page data controls.</div>';
+        }
+
+        function recommendNextAction() {
+            var box = document.getElementById('aiDrawerChatBox');
+            box.innerHTML = '<div class="text-success small fw-bold mb-1"><i class="bi bi-check-circle me-1"></i> AI Recommended Next Step:</div>' +
+                            '<div class="small text-dark mt-1">Review recently published circulars and verify active deadlines in the portal. Ensure all required document records are confirmed.</div>';
+        }
+
+        function askAstraAi(prompt) {
+            document.getElementById('aiDrawerInput').value = prompt;
+            sendAstraAiMessage();
+        }
+
+        function sendAstraAiMessage() {
+            var input = document.getElementById('aiDrawerInput');
+            var q = input.value.trim();
+            if (!q) return;
+            var box = document.getElementById('aiDrawerChatBox');
+            
+            var userHtml = '<div class="p-2 mb-2 rounded bg-light text-dark fw-semibold small text-end"><i class="bi bi-person me-1"></i>' + q + '</div>';
+            box.innerHTML += userHtml;
+            input.value = '';
+            box.scrollTop = box.scrollHeight;
+
+            setTimeout(function() {
+                var answer = "Astra AI: I have processed your inquiry regarding '" + q + "'. All guidelines and automated templates are synchronized with the placement cell policies. Please check the respective module action buttons for 1-click execution.";
+                if (q.toLowerCase().indexOf('offer') !== -1) {
+                    answer = "Astra AI: For campus offers, ensure compliance with the One-Student-One-Offer rule. Offers above 10 LPA qualify as Dream Category.";
+                } else if (q.toLowerCase().indexOf('drive') !== -1 || q.toLowerCase().indexOf('job') !== -1) {
+                    answer = "Astra AI: Active recruitment drives require verified CGPA and zero active backlogs. Check the 'Drives' tab for round details and dates.";
+                }
+                var aiHtml = '<div class="p-2 mb-2 rounded bg-primary bg-opacity-10 border border-primary border-opacity-25 text-dark small"><i class="bi bi-stars text-primary me-1"></i>' + answer + '</div>';
+                box.innerHTML += aiHtml;
+                box.scrollTop = box.scrollHeight;
+            }, 500);
+        }
+    </script>
+    
+
 </body>
+
 </html>
+

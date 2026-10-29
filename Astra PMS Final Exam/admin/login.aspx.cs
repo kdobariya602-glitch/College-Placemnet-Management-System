@@ -1,88 +1,89 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
 
 namespace Astra_PMS_Final_Exam.admin
 {
     public partial class login : System.Web.UI.Page
     {
-        SqlConnection con;
-        SqlDataAdapter da;
-        DataSet ds;
-        SqlCommand cmd;
-        string fnm;
+        SqlConnection con; //for connection
+        SqlDataAdapter da; //for container
+        DataSet ds; //for select
+        SqlCommand cmd; //for insert, update, delete
+        string fnm, nm;
+        int i;
 
         string s = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
-        protected void Page_Load(object sender, EventArgs e)
-        {
 
-        }
         void getcon()
         {
             con = new SqlConnection(s);
             con.Open();
         }
 
-        protected void signInBtn_Click(object sender, ImageClickEventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            getcon();
-            cmd = new SqlCommand("select * from Admin_Login_tbl where Email=@Email and Password=@Password", con);
-            cmd.Parameters.AddWithValue("@Email", email.Text);
-            cmd.Parameters.AddWithValue("@Password", password.Text);
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-
-            if (dr.Read())
-            {
-                Session["admin"] = email.Text;
-
-                // Best-effort display name for the client-side UI layer (sidebar/navbar avatar).
-                // This does not affect authentication, which remains fully DB-driven above.
-                string displayName = "Admin";
-                try
-                {
-                    if (HasColumn(dr, "Name") && dr["Name"] != DBNull.Value)
-                    {
-                        displayName = dr["Name"].ToString();
-                    }
-                }
-                catch { /* ignore, fall back to default */ }
-
-                dr.Close();
-                con.Close();
-
-                string safeName = displayName.Replace("'", "\\'");
-                string safeEmail = email.Text.Replace("'", "\\'");
-
-                Response.Write("<script>" +
-                    "try{sessionStorage.setItem('pms_session', JSON.stringify({id:'admin1', name:'" + safeName + "', email:'" + safeEmail + "', role:'admin'}));}catch(e){}" +
-                    "window.location.href='dashboard.aspx';" +
-                    "</script>");
-                Response.End();
-            }
-            else
-            {
-                dr.Close();
-                con.Close();
-                Response.Write("<script>alert('Invalid credentials');</script>");
-            }
 
         }
 
-        static bool HasColumn(SqlDataReader r, string columnName)
+        protected void signInBtn_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < r.FieldCount; i++)
+            if (email.Text != "" && password.Text != "")
             {
-                if (r.GetName(i).Equals(columnName, StringComparison.OrdinalIgnoreCase)) return true;
+                getcon();
+                da = new SqlDataAdapter("select * from Admin_Login_tbl where (Email='" + email.Text + "' or Username='" + email.Text + "') and Password='" + password.Text + "'", con);
+                ds = new DataSet();
+                da.Fill(ds);
+                i = ds.Tables[0].Rows.Count;
+                if (i > 0)
+                {
+                    Session["admin"] = ds.Tables[0].Rows[0]["Email"].ToString();
+                    Session["admin_name"] = ds.Tables[0].Rows[0]["Full_Name"].ToString();
+
+                    Response.Redirect("dashboard.aspx");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Invalid Email or Password');</script>");
+                }
             }
-            return false;
+            else
+            {
+                Response.Write("<script>alert('Please enter Email and Password');</script>");
+            }
+        }
+
+        protected void resetBtn_Click(object sender, EventArgs e)
+        {
+            if (resetEmail.Text != "")
+            {
+                getcon();
+                da = new SqlDataAdapter("select * from Admin_Login_tbl where Email='" + resetEmail.Text + "' or Username='" + resetEmail.Text + "'", con);
+                ds = new DataSet();
+                da.Fill(ds);
+                i = ds.Tables[0].Rows.Count;
+                if (i > 0)
+                {
+                    Response.Write("<script>alert('Self-service password recovery is disabled for Administrator accounts. For security, please contact the Database Administrator or server IT to recover credentials.');</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Administrator account not found with this email.');</script>");
+                }
+                resetEmail.Text = "";
+                resetNewPassword.Text = "";
+                resetConfirmPassword.Text = "";
+            }
+            else
+            {
+                Response.Write("<script>alert('Please enter your registered email.');</script>");
+            }
         }
     }
 }

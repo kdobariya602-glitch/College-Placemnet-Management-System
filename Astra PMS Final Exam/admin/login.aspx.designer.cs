@@ -15,6 +15,15 @@ namespace Astra_PMS_Final_Exam.admin
     {
 
         /// <summary>
+        /// lblAuto1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto1;
+
+        /// <summary>
         /// email control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace Astra_PMS_Final_Exam.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox email;
+
+        /// <summary>
+        /// lblAuto2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto2;
 
         /// <summary>
         /// password control.
@@ -33,13 +51,49 @@ namespace Astra_PMS_Final_Exam.admin
         protected global::System.Web.UI.WebControls.TextBox password;
 
         /// <summary>
-        /// signInBtn control.
+        /// remember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton signInBtn;
+        protected global::System.Web.UI.WebControls.CheckBox remember;
+
+        /// <summary>
+        /// lblAuto3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto3;
+
+        /// <summary>
+        /// btnLoginSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnLoginSubmit;
+
+        /// <summary>
+        /// btnCtrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCtrl;
+
+        /// <summary>
+        /// lblAuto4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto4;
 
         /// <summary>
         /// resetEmail control.
@@ -51,6 +105,15 @@ namespace Astra_PMS_Final_Exam.admin
         protected global::System.Web.UI.WebControls.TextBox resetEmail;
 
         /// <summary>
+        /// lblAuto5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto5;
+
+        /// <summary>
         /// resetNewPassword control.
         /// </summary>
         /// <remarks>
@@ -60,6 +123,15 @@ namespace Astra_PMS_Final_Exam.admin
         protected global::System.Web.UI.WebControls.TextBox resetNewPassword;
 
         /// <summary>
+        /// lblAuto6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto6;
+
+        /// <summary>
         /// resetConfirmPassword control.
         /// </summary>
         /// <remarks>
@@ -67,5 +139,14 @@ namespace Astra_PMS_Final_Exam.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox resetConfirmPassword;
+
+        /// <summary>
+        /// resetBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button resetBtn;
     }
 }
