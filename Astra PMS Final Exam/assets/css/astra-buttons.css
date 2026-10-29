@@ -1,0 +1,374 @@
+/* ==========================================================================
+   ASTRA PMS - COMPREHENSIVE BUTTON, GRIDVIEW, HOVER & PAGINATION STYLESHEET
+   Unified styling for all 4 Portals: Admin, Company, TPO, and Student.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. UNIVERSAL BUTTON SPACING & MARGINS
+   Ensures adjacent buttons never touch or cram together.
+   -------------------------------------------------------------------------- */
+.btn + .btn,
+.btn + a.btn,
+a.btn + .btn,
+a.btn + a.btn,
+input[type="submit"].btn + input[type="submit"].btn,
+input[type="button"].btn + input[type="button"].btn,
+.btn + .btn-group,
+.btn-group + .btn {
+    margin-left: 0.5rem !important;
+}
+
+/* In table action columns, ensure clean spacing between buttons */
+.table td .btn + .btn,
+.table td a.btn + a.btn,
+.table td a.btn + .btn,
+.table td .btn + a.btn,
+.table td input.btn + input.btn {
+    margin-left: 0.35rem !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. BUTTON BASE & HOVER STATES
+   Smooth transitions, consistent shadows, and high contrast.
+   -------------------------------------------------------------------------- */
+.btn {
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.375rem !important;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+}
+
+/* --- PRIMARY BUTTONS --- */
+.btn-primary,
+.btn-main,
+.btn-submit {
+    background: #1D4ED8 !important;
+    background-color: #1D4ED8 !important;
+    background-image: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%) !important;
+    border: 1.5px solid #1D4ED8 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 8px rgba(29, 78, 216, 0.25) !important;
+}
+.btn-primary:hover,
+.btn-main:hover,
+.btn-submit:hover,
+.btn-primary:focus-visible {
+    background: #1E40AF !important;
+    background-color: #1E40AF !important;
+    background-image: none !important;
+    border-color: #1E3A8A !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+    box-shadow: 0 5px 14px rgba(29, 78, 216, 0.35) !important;
+}
+
+/* --- OUTLINE PRIMARY --- */
+.btn-outline-primary {
+    background-color: transparent !important;
+    border: 1.5px solid #1D4ED8 !important;
+    color: #1D4ED8 !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus-visible {
+    background-color: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25) !important;
+}
+.btn-outline-primary:hover i,
+.btn-outline-primary:hover span {
+    color: #FFFFFF !important;
+}
+
+/* --- OUTLINE SECONDARY --- */
+.btn-outline-secondary {
+    background-color: transparent !important;
+    border: 1.5px solid #94A3B8 !important;
+    color: #475569 !important;
+}
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus-visible {
+    background-color: #475569 !important;
+    border-color: #475569 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+}
+.btn-outline-secondary:hover i,
+.btn-outline-secondary:hover span {
+    color: #FFFFFF !important;
+}
+
+/* --- OUTLINE DANGER --- */
+.btn-outline-danger {
+    background-color: transparent !important;
+    border: 1.5px solid #DC2626 !important;
+    color: #DC2626 !important;
+}
+.btn-outline-danger:hover,
+.btn-outline-danger:focus-visible {
+    background-color: #DC2626 !important;
+    border-color: #DC2626 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25) !important;
+}
+.btn-outline-danger:hover i,
+.btn-outline-danger:hover span {
+    color: #FFFFFF !important;
+}
+
+/* --- OUTLINE SUCCESS --- */
+.btn-outline-success {
+    background-color: transparent !important;
+    border: 1.5px solid #16A34A !important;
+    color: #16A34A !important;
+}
+.btn-outline-success:hover,
+.btn-outline-success:focus-visible {
+    background-color: #16A34A !important;
+    border-color: #16A34A !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25) !important;
+}
+.btn-outline-success:hover i,
+.btn-outline-success:hover span {
+    color: #FFFFFF !important;
+}
+
+/* --- OUTLINE WARNING --- */
+.btn-outline-warning {
+    background-color: transparent !important;
+    border: 1.5px solid #D97706 !important;
+    color: #D97706 !important;
+}
+.btn-outline-warning:hover,
+.btn-outline-warning:focus-visible {
+    background-color: #D97706 !important;
+    border-color: #D97706 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+}
+
+/* --- SOLID SEMANTIC BUTTONS --- */
+.btn-success {
+    background: #16A34A !important;
+    border-color: #16A34A !important;
+    color: #FFFFFF !important;
+}
+.btn-success:hover {
+    background: #15803D !important;
+    border-color: #15803D !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+}
+
+.btn-danger {
+    background: #DC2626 !important;
+    border-color: #DC2626 !important;
+    color: #FFFFFF !important;
+}
+.btn-danger:hover {
+    background: #B91C1C !important;
+    border-color: #B91C1C !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. GRIDVIEW ACTION BUTTONS VISIBILITY & STYLING
+   Ensures buttons inside tables are completely visible, crisp, and styled.
+   -------------------------------------------------------------------------- */
+.table td .btn,
+.table td a.btn,
+.table td a[id*="btn"],
+.table td a[id*="lnk"],
+.table td input[type="submit"],
+.table td .btn-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    padding: 0.35rem 0.75rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    white-space: nowrap !important;
+    line-height: 1.25 !important;
+}
+
+.btn-icon {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    border-radius: 6px !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. UNIVERSAL ASP.NET GRIDVIEW PAGINATION STYLING
+   Transforms ASP.NET GridView table pagination into sleek modern buttons.
+   -------------------------------------------------------------------------- */
+.table tr.pagination,
+.table tr:last-child td[colspan] table,
+.table tr[align="center"] td table,
+.table tr td table[border="0"],
+.gridview-pager table {
+    margin: 1.25rem auto 0.75rem auto !important;
+    border-collapse: separate !important;
+    border-spacing: 8px 0 !important;
+}
+
+.table tr.pagination td,
+.table tr:last-child td[colspan] table td,
+.table tr[align="center"] td table td,
+.table tr td table[border="0"] td,
+.gridview-pager table td {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Pager Buttons (Both Links & Active Span) */
+.table tr.pagination td a,
+.table tr.pagination td span,
+.table tr:last-child td[colspan] table td a,
+.table tr:last-child td[colspan] table td span,
+.table tr[align="center"] td table td a,
+.table tr[align="center"] td table td span,
+.table tr td table[border="0"] td a,
+.table tr td table[border="0"] td span,
+.gridview-pager table td a,
+.gridview-pager table td span {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    padding: 0 12px !important;
+    border-radius: 8px !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Inactive / Number Links */
+.table tr.pagination td a,
+.table tr:last-child td[colspan] table td a,
+.table tr[align="center"] td table td a,
+.table tr td table[border="0"] td a,
+.gridview-pager table td a {
+    background-color: #FFFFFF !important;
+    border: 1.5px solid #CBD5E1 !important;
+    color: #1E293B !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+.table tr.pagination td a:hover,
+.table tr:last-child td[colspan] table td a:hover,
+.table tr[align="center"] td table td a:hover,
+.table tr td table[border="0"] td a:hover,
+.gridview-pager table td a:hover {
+    background-color: #EFF6FF !important;
+    border-color: #2563EB !important;
+    color: #2563EB !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2) !important;
+}
+
+/* Current / Active Page Number */
+.table tr.pagination td span,
+.table tr:last-child td[colspan] table td span,
+.table tr[align="center"] td table td span,
+.table tr td table[border="0"] td span,
+.gridview-pager table td span {
+    background: #1D4ED8 !important;
+    background-color: #1D4ED8 !important;
+    background-image: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%) !important;
+    border: 1.5px solid #1D4ED8 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.35) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. FILTER & SEARCH FORM ALIGNMENT
+   Guarantees input groups, dropdowns, and filter buttons sit in neat rows.
+   -------------------------------------------------------------------------- */
+.input-group .form-control,
+.input-group .input-group-text,
+.input-group .btn {
+    height: 38px !important;
+    font-size: 0.88rem !important;
+}
+.input-group-sm .form-control,
+.input-group-sm .input-group-text,
+.input-group-sm .btn {
+    height: 34px !important;
+    font-size: 0.82rem !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. SEARCH INPUT ICON SPACING & CRISP CHART TEXT RENDERING
+   -------------------------------------------------------------------------- */
+.input-group .input-group-text i.bi-search {
+    margin-right: 0.35rem !important;
+    margin-left: 0.15rem !important;
+    font-size: 0.9rem !important;
+}
+
+.input-group .input-group-text {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
+
+.input-group .form-control {
+    padding-left: 0.65rem !important;
+}
+
+/* Sharp non-blurry chart image rendering */
+img[id*="Chart"], 
+.aspnet-chart,
+img[src*="ChartImg.axd"] {
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: crisp-edges !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: inline-block !important;
+}
+
+.hover-primary {
+    transition: color 0.15s ease-in-out;
+}
+.hover-primary:hover {
+    color: #1D4ED8 !important;
+    text-decoration: underline !important;
+}
+
+/* Dashboard Compact Table Alignment & Row Height */
+.dashboard-compact-table {
+    table-layout: auto !important;
+}
+.dashboard-compact-table th,
+.dashboard-compact-table td {
+    padding: 0.45rem 0.65rem !important;
+    vertical-align: middle !important;
+    font-size: 0.84rem !important;
+    line-height: 1.25 !important;
+}
+.dashboard-compact-table tbody tr {
+    height: 48px !important;
+}
+.dashboard-compact-table .badge {
+    font-size: 0.76rem !important;
+    padding: 0.25rem 0.5rem !important;
+}
+

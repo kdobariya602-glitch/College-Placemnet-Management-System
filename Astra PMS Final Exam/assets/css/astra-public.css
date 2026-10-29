@@ -3,32 +3,33 @@
    Public site design system
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* --- brand (kept in sync with panel primary) --- */
-    --ap-blue: #1a56db;
-    --ap-blue-dark: #1544ad;
-    --ap-blue-deep: #0d1b3e; /* matches sidebar-dark */
-    --ap-ink: #0b1220;
-    --ap-sky: #38bdf8;
-    --ap-amber: #f5a524;
-    --ap-surface: #f5f7fc;
-    --ap-surface-alt: #eef2fb;
+    /* --- brand palette: Dark Blue + Light Blue + White (per design spec) --- */
+    --ap-blue: #2F80ED; /* primary light blue */
+    --ap-blue-dark: #123A63; /* secondary dark blue */
+    --ap-blue-deep: #0B1F3A; /* primary dark blue */
+    --ap-blue-soft: #EAF4FF; /* soft light blue */
+    --ap-ink: #0B1F3A;
+    --ap-sky: #2F80ED; /* alias kept for compatibility, mapped to palette light blue */
+    --ap-amber: #2F80ED; /* alias kept for compatibility, mapped to palette light blue (no yellow/orange in this design) */
+    --ap-surface: #F7FAFE;
+    --ap-surface-alt: #EAF4FF;
     --ap-card: #ffffff;
-    --ap-line: #e3e8f4;
-    --ap-text: #101828;
-    --ap-text-soft: #5b6472;
+    --ap-line: #DCE8F7;
+    --ap-text: #172033;
+    --ap-text-soft: #667085;
     --ap-text-faint: #8a93a3;
     --ap-radius-sm: 12px;
     --ap-radius: 18px;
     --ap-radius-lg: 28px;
-    --ap-shadow-sm: 0 2px 10px rgba(13, 27, 62, 0.06);
-    --ap-shadow: 0 12px 32px rgba(13, 27, 62, 0.10);
-    --ap-shadow-lg: 0 24px 60px rgba(13, 27, 62, 0.16);
-    --ap-font-display: 'Sora', sans-serif;
+    --ap-shadow-sm: 0 2px 10px rgba(11, 31, 58, 0.06);
+    --ap-shadow: 0 12px 32px rgba(11, 31, 58, 0.10);
+    --ap-shadow-lg: 0 24px 60px rgba(11, 31, 58, 0.16);
+    --ap-font-display: 'Inter', sans-serif;
     --ap-font-body: 'Inter', sans-serif;
-    --ap-font-mono: 'IBM Plex Mono', monospace;
+    --ap-font-mono: 'Inter', sans-serif; /* unified to single typeface per design spec (was IBM Plex Mono) */
 }
 
 .astra-public {
@@ -36,6 +37,7 @@
     color: var(--ap-text);
     background: var(--ap-surface);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* guards against any decorative/absolute-positioned element causing horizontal scroll on small screens */
 }
 
     .astra-public h1, .astra-public h2, .astra-public h3, .astra-public h4,
@@ -80,8 +82,8 @@
     letter-spacing: .14em;
     text-transform: uppercase;
     color: var(--ap-blue);
-    background: rgba(26,86,219,.08);
-    border: 1px solid rgba(26,86,219,.18);
+    background: rgba(47, 128, 237,.08);
+    border: 1px solid rgba(47, 128, 237,.18);
     padding: .4rem .9rem;
     border-radius: 999px;
 }
@@ -141,11 +143,11 @@
 .ap-btn-primary {
     background: linear-gradient(135deg, var(--ap-blue), var(--ap-blue-dark));
     color: #fff;
-    box-shadow: 0 10px 24px rgba(26,86,219,.28);
+    box-shadow: 0 10px 24px rgba(47, 128, 237,.28);
 }
 
     .ap-btn-primary:hover {
-        box-shadow: 0 14px 30px rgba(26,86,219,.38);
+        box-shadow: 0 14px 30px rgba(47, 128, 237,.38);
         transform: translateY(-2px);
         color: #fff;
     }
@@ -181,7 +183,7 @@
     .ap-btn-outline-primary:hover {
         background: var(--ap-blue);
         color: #fff;
-        box-shadow: 0 10px 24px rgba(26,86,219,.28);
+        box-shadow: 0 10px 24px rgba(47, 128, 237,.28);
     }
 
 .ap-btn-sm {
@@ -272,23 +274,37 @@
     }
 
         .ap-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background: var(--ap-blue);
-            transition: width .25s ease;
-        }
-
-        .ap-links a:hover::after, .ap-links a.active::after {
-            width: 100%;
+            display: none !important;
+            content: none !important;
         }
 
         .ap-links a.active {
             color: var(--ap-blue);
         }
+
+    .ap-links .dropdown-menu {
+        border: 1px solid var(--ap-line);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        padding: 0.5rem 0;
+    }
+
+    .ap-links .dropdown-menu a::after {
+        display: none !important;
+    }
+
+    .ap-links .dropdown-item {
+        font-size: 0.88rem;
+        padding: 0.55rem 1.15rem;
+        color: var(--ap-text);
+        display: flex;
+        align-items: center;
+    }
+
+    .ap-links .dropdown-item:hover {
+        background-color: rgba(47, 128, 237,0.08);
+        color: var(--ap-blue);
+    }
 
 .ap-mobile-toggle {
     border: 1px solid var(--ap-line);
@@ -321,7 +337,7 @@
 .ap-hero {
     position: relative;
     overflow: hidden;
-    background: radial-gradient(1100px 520px at 85% -10%, rgba(56,189,248,.35), transparent 60%), linear-gradient(160deg, var(--ap-ink) 0%, var(--ap-blue-deep) 45%, var(--ap-blue-dark) 100%);
+    background: radial-gradient(1100px 520px at 85% -10%, rgba(47, 128, 237,.35), transparent 60%), linear-gradient(160deg, var(--ap-ink) 0%, var(--ap-blue-deep) 45%, var(--ap-blue-dark) 100%);
     color: #fff;
     min-height: 520px;
     display: flex;
@@ -398,7 +414,7 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(160deg, rgba(13,27,62,.45) 0%, rgba(21,68,173,.30) 45%, rgba(11,20,42,.50) 100%);
+    background: linear-gradient(160deg, rgba(11,31,58,.45) 0%, rgba(18,58,99,.30) 45%, rgba(11,31,58,.50) 100%);
 }
 
 .ap-hero.has-photo .ap-grid-dots, .ap-hero.has-photo .container {
@@ -463,7 +479,7 @@
     .ap-card:hover {
         transform: translateY(-6px);
         box-shadow: var(--ap-shadow);
-        border-color: rgba(26,86,219,.25);
+        border-color: rgba(47, 128, 237,.25);
     }
 
 .ap-card-body {
@@ -477,35 +493,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(26,86,219,.12), rgba(56,189,248,.16));
+    background: linear-gradient(135deg, rgba(47, 128, 237,.12), rgba(47, 128, 237,.16));
     color: var(--ap-blue);
     font-size: 1.35rem;
     margin-bottom: 1.1rem;
 }
 
+/* Login-portal role selector (Student/Admin/TPO/Company) — all four icons now
+   share one identical blue treatment: same size, same radius, same gradient.
+   Previously TPO used a gold/orange gradient and the others each used a
+   different blue shade; unified per the "no yellow/gold, one consistent blue
+   role-icon style" requirement. */
 .ap-role-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     font-size: 1.5rem;
     margin-bottom: 1.1rem;
-    box-shadow: 0 8px 18px rgba(13,27,62,.18);
+    box-shadow: 0 8px 18px rgba(11,31,58,.18);
+    background: linear-gradient(135deg, var(--ap-blue), var(--ap-blue-dark));
 }
 
-    .ap-role-icon.student {
-        background: linear-gradient(135deg, var(--ap-blue), var(--ap-sky));
-    }
-
-    .ap-role-icon.admin {
-        background: linear-gradient(135deg, var(--ap-blue-deep), var(--ap-blue-dark));
-    }
-
+    .ap-role-icon.student,
+    .ap-role-icon.admin,
+    .ap-role-icon.tpo,
     .ap-role-icon.company {
-        background: linear-gradient(135deg, #3b7cf6, #1d3fae);
+        background: linear-gradient(135deg, var(--ap-blue), var(--ap-blue-dark));
     }
 
 /* feature grid */
@@ -590,7 +607,7 @@
 .ap-quote-mark {
     font-family: var(--ap-font-display);
     font-size: 2.6rem;
-    color: rgba(26,86,219,.2);
+    color: rgba(47, 128, 237,.2);
     line-height: 0;
     display: block;
     margin-bottom: .5rem;
@@ -609,7 +626,7 @@
 }
 
 .ap-package-chip {
-    background: rgba(26,86,219,.08);
+    background: rgba(47, 128, 237,.08);
     color: var(--ap-blue);
     font-family: var(--ap-font-mono);
     font-size: .75rem;
@@ -657,27 +674,28 @@
     border-radius: 14px;
     color: #fff;
     font-size: 1.4rem;
-    background: linear-gradient(135deg,var(--ap-blue),#38bdf8);
+    background: linear-gradient(135deg,var(--ap-blue),var(--ap-blue-dark));
 }
 
+/* Tonal Dark Blue + Light Blue variants only (no multi-colored icons) */
 .row.g-3 > div:nth-child(6n+2) .ap-logo-fallback {
-    background: linear-gradient(135deg,#f97316,#fbbf24);
+    background: linear-gradient(135deg,var(--ap-blue-dark),var(--ap-blue-deep));
 }
 
 .row.g-3 > div:nth-child(6n+3) .ap-logo-fallback {
-    background: linear-gradient(135deg,#10b981,#34d399);
+    background: linear-gradient(135deg,var(--ap-blue-deep),var(--ap-blue));
 }
 
 .row.g-3 > div:nth-child(6n+4) .ap-logo-fallback {
-    background: linear-gradient(135deg,#8b5cf6,#c084fc);
+    background: linear-gradient(135deg,var(--ap-blue),var(--ap-blue-deep));
 }
 
 .row.g-3 > div:nth-child(6n+5) .ap-logo-fallback {
-    background: linear-gradient(135deg,#ef4444,#f87171);
+    background: linear-gradient(135deg,var(--ap-blue-dark),var(--ap-blue));
 }
 
 .row.g-3 > div:nth-child(6n+6) .ap-logo-fallback {
-    background: linear-gradient(135deg,#0ea5e9,#22d3ee);
+    background: linear-gradient(135deg,var(--ap-blue-deep),var(--ap-blue-dark));
 }
 
 /* ---------- news / events ---------- */
@@ -779,7 +797,7 @@
 }
 
 .ap-status-open {
-    background: rgba(34,197,94,.12);
+    background: rgba(34, 197, 94,.12);
     color: #15803d;
 }
 
@@ -789,7 +807,7 @@
 }
 
 .ap-status-soon {
-    background: rgba(245,165,36,.14);
+    background: rgba(245, 165, 36,.14);
     color: #b45309;
 }
 
@@ -1017,13 +1035,18 @@
     width: 100%;
     font-size: .92rem;
     background: var(--ap-surface);
-    transition: border-color .2s ease, background .2s ease;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
 }
 
     .ap-form-control:focus {
         outline: none;
-        border-color: var(--ap-blue);
+        border-color: var(--ap-blue-dark);
         background: #fff;
+        box-shadow: 0 0 0 4px var(--ap-blue-soft);
+    }
+
+    .ap-form-control::placeholder {
+        color: var(--ap-text-faint);
     }
 
 .ap-form-label {

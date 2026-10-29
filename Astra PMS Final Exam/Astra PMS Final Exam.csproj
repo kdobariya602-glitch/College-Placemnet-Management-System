@@ -983,4 +983,183 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Compile Include="company\ai-assistant.aspx.cs">
+      <DependentUpon>ai-assistant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-assistant.aspx.designer.cs">
+      <DependentUpon>ai-assistant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-campus-feedback.aspx.cs">
+      <DependentUpon>ai-campus-feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-campus-feedback.aspx.designer.cs">
+      <DependentUpon>ai-campus-feedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-candidate-screener.aspx.cs">
+      <DependentUpon>ai-candidate-screener.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-candidate-screener.aspx.designer.cs">
+      <DependentUpon>ai-candidate-screener.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-internship-scope.aspx.cs">
+      <DependentUpon>ai-internship-scope.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-internship-scope.aspx.designer.cs">
+      <DependentUpon>ai-internship-scope.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-interview-questions.aspx.cs">
+      <DependentUpon>ai-interview-questions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-interview-questions.aspx.designer.cs">
+      <DependentUpon>ai-interview-questions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-job-writer.aspx.cs">
+      <DependentUpon>ai-job-writer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-job-writer.aspx.designer.cs">
+      <DependentUpon>ai-job-writer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-offer-drafter.aspx.cs">
+      <DependentUpon>ai-offer-drafter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-offer-drafter.aspx.designer.cs">
+      <DependentUpon>ai-offer-drafter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-outreach-invitation.aspx.cs">
+      <DependentUpon>ai-outreach-invitation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-outreach-invitation.aspx.designer.cs">
+      <DependentUpon>ai-outreach-invitation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-scorecard-generator.aspx.cs">
+      <DependentUpon>ai-scorecard-generator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-scorecard-generator.aspx.designer.cs">
+      <DependentUpon>ai-scorecard-generator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\ai-talent-matching.aspx.cs">
+      <DependentUpon>ai-talent-matching.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\ai-talent-matching.aspx.designer.cs">
+      <DependentUpon>ai-talent-matching.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\applicants.aspx.cs">
+      <DependentUpon>applicants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\applicants.aspx.designer.cs">
+      <DependentUpon>applicants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\employees.aspx.cs">
+      <DependentUpon>employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\employees.aspx.designer.cs">
+      <DependentUpon>employees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\feedback.aspx.cs">
+      <DependentUpon>feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\feedback.aspx.designer.cs">
+      <DependentUpon>feedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\internships.aspx.cs">
+      <DependentUpon>internships.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\internships.aspx.designer.cs">
+      <DependentUpon>internships.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\interviews.aspx.cs">
+      <DependentUpon>interviews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\interviews.aspx.designer.cs">
+      <DependentUpon>interviews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\job-details.aspx.cs">
+      <DependentUpon>job-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\job-details.aspx.designer.cs">
+      <DependentUpon>job-details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\jobs.aspx.cs">
+      <DependentUpon>jobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\jobs.aspx.designer.cs">
+      <DependentUpon>jobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\selections.aspx.cs">
+      <DependentUpon>selections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\selections.aspx.designer.cs">
+      <DependentUpon>selections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\shortlisted.aspx.cs">
+      <DependentUpon>shortlisted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\shortlisted.aspx.designer.cs">
+      <DependentUpon>shortlisted.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\talent-match.aspx.cs">
+      <DependentUpon>talent-match.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\talent-match.aspx.designer.cs">
+      <DependentUpon>talent-match.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\verification.aspx.cs">
+      <DependentUpon>verification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\verification.aspx.designer.cs">
+      <DependentUpon>verification.aspx</DependentUpon>
+    </Compile>
+    <Content Include="company\ai-assistant.aspx" />
+    <Content Include="company\ai-campus-feedback.aspx" />
+    <Content Include="company\ai-candidate-screener.aspx" />
+    <Content Include="company\ai-internship-scope.aspx" />
+    <Content Include="company\ai-interview-questions.aspx" />
+    <Content Include="company\ai-job-writer.aspx" />
+    <Content Include="company\ai-offer-drafter.aspx" />
+    <Content Include="company\ai-outreach-invitation.aspx" />
+    <Content Include="company\ai-scorecard-generator.aspx" />
+    <Content Include="company\ai-talent-matching.aspx" />
+    <Content Include="company\applicants.aspx" />
+    <Content Include="company\employees.aspx" />
+    <Content Include="company\feedback.aspx" />
+    <Content Include="company\index.aspx" />
+    <Content Include="company\internships.aspx" />
+    <Content Include="company\interviews.aspx" />
+    <Content Include="company\job-details.aspx" />
+    <Content Include="company\jobs.aspx" />
+    <Content Include="company\logout.aspx" />
+    <Content Include="company\selections.aspx" />
+    <Content Include="company\shortlisted.aspx" />
+    <Content Include="company\talent-match.aspx" />
+    <Content Include="company\verification.aspx" />
+  </ItemGroup>
 </Project>

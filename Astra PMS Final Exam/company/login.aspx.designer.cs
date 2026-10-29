@@ -15,6 +15,15 @@ namespace Astra_PMS_Final_Exam.company
     {
 
         /// <summary>
+        /// lblAuto7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto7;
+
+        /// <summary>
         /// email control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace Astra_PMS_Final_Exam.company
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox email;
+
+        /// <summary>
+        /// lblAuto8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto8;
 
         /// <summary>
         /// password control.
@@ -33,13 +51,13 @@ namespace Astra_PMS_Final_Exam.company
         protected global::System.Web.UI.WebControls.TextBox password;
 
         /// <summary>
-        /// signInBtn control.
+        /// btnLoginSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton signInBtn;
+        protected global::System.Web.UI.WebControls.LinkButton btnLoginSubmit;
 
         /// <summary>
         /// btnCtrl control.
@@ -51,6 +69,15 @@ namespace Astra_PMS_Final_Exam.company
         protected global::System.Web.UI.WebControls.Button btnCtrl;
 
         /// <summary>
+        /// lblAuto9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto9;
+
+        /// <summary>
         /// resetEmail control.
         /// </summary>
         /// <remarks>
@@ -60,6 +87,15 @@ namespace Astra_PMS_Final_Exam.company
         protected global::System.Web.UI.WebControls.TextBox resetEmail;
 
         /// <summary>
+        /// lblAuto10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto10;
+
+        /// <summary>
         /// resetNewPassword control.
         /// </summary>
         /// <remarks>
@@ -67,6 +103,15 @@ namespace Astra_PMS_Final_Exam.company
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox resetNewPassword;
+
+        /// <summary>
+        /// lblAuto11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto11;
 
         /// <summary>
         /// resetConfirmPassword control.

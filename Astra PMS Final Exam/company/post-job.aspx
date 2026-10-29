@@ -1,95 +1,190 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/company/Company_Site4.Master" AutoEventWireup="true" CodeBehind="post-job.aspx.cs" Inherits="Astra_PMS_Final_Exam.company.post_job" %>
+﻿<%@ Page Title="Post New Job" Language="C#" MasterPageFile="~/company/Company_Site4.Master" AutoEventWireup="true" CodeBehind="post-job.aspx.cs" Inherits="Astra_PMS_Final_Exam.company.post_job" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" runat="server" contentplaceholderid="ContentPlaceHolder2">
-    
-<!-- ============================= BODY START (Main Page Content) ============================= -->
 
-      <div class="page-content">
-        <div class="page-breadcrumb mb-4"><h4>Post New Job</h4><p>Create a new job posting for campus recruitment.</p></div>
-        <div class="content-card" style="max-width:800px">
-          <div class="card-body-custom">
-            <form id="postJobForm">
-              <!-- <div class="mb-3"><label class="form-label-custom">Job Title</label><input type="text" class="form-control form-control-custom" id="jobTitle" required></div> -->
-              <div class="mb-3"><label class="form-label-custom">Job Title</label><asp:TextBox runat="server" ID="jobTitle" ClientIDMode="Static" TextMode="SingleLine" CssClass="form-control form-control-custom" required="required" list="jobTitleList"></asp:TextBox><datalist id="jobTitleList"></datalist><small class="text-muted">Suggestions come from Admin &rsaquo; Job Roles.</small></div>
-              <div class="row">
-                <div class="col-md-6 mb-3"><label class="form-label-custom">Job Type</label>
-                  <!-- <select class="form-select form-control-custom" id="jobType" required>
-                    <option value="Full-time">Full-time</option>
-                    <option value="Internship">Internship</option>
-                    <option value="Contract">Contract</option>
-                  </select> -->
-<asp:DropDownList runat="server" ID="jobType" ClientIDMode="Static" CssClass="form-select form-control-custom">
-                    <asp:ListItem Text="Full-time" Value="Full-time"></asp:ListItem>
-                    <asp:ListItem Text="Internship" Value="Internship"></asp:ListItem>
-                    <asp:ListItem Text="Contract" Value="Contract"></asp:ListItem>
-                </asp:DropDownList>
-                </div>
-                <!-- <div class="col-md-6 mb-3"><label class="form-label-custom">Location</label><input type="text" class="form-control form-control-custom" id="jobLocation" required></div> -->
-                <div class="col-md-6 mb-3"><label class="form-label-custom">Location</label><asp:TextBox runat="server" ID="jobLocation" ClientIDMode="Static" TextMode="SingleLine" CssClass="form-control form-control-custom" required="required"></asp:TextBox></div>
-              </div>
-              <div class="row">
-                <!-- <div class="col-md-4 mb-3"><label class="form-label-custom">Salary Package</label><input type="text" class="form-control form-control-custom" id="jobSalary" placeholder="₹6-8 LPA" required></div> -->
-                <div class="col-md-4 mb-3"><label class="form-label-custom">Salary Package</label><asp:TextBox runat="server" ID="jobSalary" ClientIDMode="Static" TextMode="SingleLine" CssClass="form-control form-control-custom" placeholder="₹6-8 LPA" required="required"></asp:TextBox></div>
-                <!-- <div class="col-md-4 mb-3"><label class="form-label-custom">Min CGPA</label><input type="number" step="0.1" class="form-control form-control-custom" id="jobCgpa" required></div> -->
-                <div class="col-md-4 mb-3"><label class="form-label-custom">Min CGPA</label><asp:TextBox runat="server" ID="jobCgpa" ClientIDMode="Static" TextMode="Number" step="0.1" CssClass="form-control form-control-custom" required="required"></asp:TextBox></div>
-                <!-- <div class="col-md-4 mb-3"><label class="form-label-custom">Openings</label><input type="number" class="form-control form-control-custom" id="jobOpenings" value="1" required></div> -->
-                <div class="col-md-4 mb-3"><label class="form-label-custom">Openings</label><asp:TextBox runat="server" ID="jobOpenings" ClientIDMode="Static" TextMode="Number" CssClass="form-control form-control-custom" Text="1" required="required"></asp:TextBox></div>
-              </div>
-              <!-- <div class="mb-3"><label class="form-label-custom">Eligible Branches (comma separated)</label><input type="text" class="form-control form-control-custom" id="jobBranches" placeholder="Computer Science, Information Technology" required></div> -->
-              <div class="mb-3"><label class="form-label-custom">Eligible Branches (comma separated)</label><asp:TextBox runat="server" ID="jobBranches" ClientIDMode="Static" TextMode="SingleLine" CssClass="form-control form-control-custom" placeholder="Computer Science, Information Technology" required="required" list="jobBranchesList"></asp:TextBox><datalist id="jobBranchesList"></datalist><small class="text-muted">Suggestions come from Admin &rsaquo; Departments.</small></div>
-              <!-- <div class="mb-3"><label class="form-label-custom">Required Skills (comma separated)</label><input type="text" class="form-control form-control-custom" id="jobSkills" placeholder="Java, Python, SQL" required></div> -->
-              <div class="mb-3"><label class="form-label-custom">Required Skills (comma separated)</label><asp:TextBox runat="server" ID="jobSkills" ClientIDMode="Static" TextMode="SingleLine" CssClass="form-control form-control-custom" placeholder="Java, Python, SQL" required="required" list="jobSkillsList"></asp:TextBox><datalist id="jobSkillsList"></datalist><small class="text-muted">Suggestions come from Admin &rsaquo; Skills master list.</small></div>
-              <div class="row">
-                <div class="col-md-6 mb-3"><label class="form-label-custom">Qualification</label><asp:TextBox runat="server" ID="jobQualification" ClientIDMode="Static" TextMode="SingleLine" CssClass="form-control form-control-custom" placeholder="B.Tech / B.E. or equivalent"></asp:TextBox></div>
-                <div class="col-md-6 mb-3"><label class="form-label-custom">Save As</label>
-<asp:DropDownList runat="server" ID="jobStatus" ClientIDMode="Static" CssClass="form-select form-control-custom">
-                    <asp:ListItem Text="Submit for TPO Approval" Value="pending"></asp:ListItem>
-                    <asp:ListItem Text="Save as Draft" Value="draft"></asp:ListItem>
-                </asp:DropDownList>
-                <small class="text-muted">A job is only visible to students after the TPO approves it. Current status: <span id="jobCurrentStatus">—</span></small>
-                </div>
-              </div>
-              <div class="mb-3"><label class="form-label-custom">Job Description</label><!-- <textarea class="form-control form-control-custom" id="jobDescription" rows="4" required></textarea> -->
-<asp:TextBox runat="server" ID="jobDescription" ClientIDMode="Static" TextMode="MultiLine" CssClass="form-control form-control-custom" Rows="4"></asp:TextBox></div>
-              <div class="mb-3"><label class="form-label-custom">Application Deadline</label><!-- <input type="date" class="form-control form-control-custom" id="jobDeadline" required> -->
-<asp:TextBox runat="server" ID="jobDeadline" ClientIDMode="Static" TextMode="Date" CssClass="form-control form-control-custom" required="required"></asp:TextBox></div>
-              <!-- <button type="button" class="btn btn-primary-custom" onclick="Company.postJob()"><i class="bi bi-plus-lg me-1"></i>Post Job</button> -->
-              <asp:Button runat="server" ID="postJobBtn" ClientIDMode="Static" UseSubmitBehavior="false" CssClass="btn btn-primary-custom" OnClientClick="Company.postJob(); return false;" Text="Post Job" />
-            </form>
-          </div>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="page-content">
+        <!-- Breadcrumb & Header -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item"><a href="dashboard.aspx">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="jobs.aspx">Post Openings</a></li>
+                        <li class="breadcrumb-item active">Post Job</li>
+                    </ol>
+                </nav>
+                <h3 class="fw-bold mb-0">Publish Campus Job Opening</h3>
+            </div>
         </div>
-      </div>
-      
-<!-- ============================= BODY END ============================= -->
+
+                <!-- Section Navigation Tabs -->
+        <ul class="nav nav-pills mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="post-job.aspx"><i class="bi bi-plus-circle me-1"></i> Post New Job</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="jobs.aspx"><i class="bi bi-briefcase me-1"></i> Job Openings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="internships.aspx"><i class="bi bi-mortarboard me-1"></i> Internship Postings</a>
+            </li>
+        </ul>
+
+        
+        <!-- Dual Mode: AI Smart Generator Card -->
+        <div class="card border-0 shadow-sm mb-4" style="background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%); border: 1.5px solid #C7D2FE !important;">
+            <div class="card-body p-4">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="avatar-circle shadow-sm" style="width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,#1D4ED8,#7C3AED); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">
+                            <i class="bi bi-stars"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-0 text-dark">✨ AI Job Specification Drafter (Gemini Powered)</h5>
+                            <span class="text-muted small">Choose your mode: Auto-draft all requirements with AI, or type manually in the form below.</span>
+                        </div>
+                    </div>
+                    <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2 fw-semibold">
+                        <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Dual Mode Active
+                    </span>
+                </div>
+
+                <asp:Panel ID="pnlAiStatus" runat="server" Visible="false" CssClass="alert alert-success alert-dismissible fade show py-2 mb-3">
+                    <asp:Literal ID="litAiStatus" runat="server"></asp:Literal>
+                    <button type="button" class="btn-close py-2" data-bs-dismiss="alert"></button>
+                </asp:Panel>
+
+                <div class="row g-2 align-items-center">
+                    <div class="col-md-7">
+                        <asp:TextBox ID="txtAiRole" runat="server" CssClass="form-control form-control-lg bg-white" placeholder="Enter Job Role (e.g. Full Stack Developer, Data Analyst, Cloud DevOps, AI Engineer)..."></asp:TextBox>
+                    </div>
+                    <div class="col-md-3">
+                        <asp:DropDownList ID="ddlAiExp" runat="server" CssClass="form-select form-select-lg bg-white">
+                            <asp:ListItem Text="Fresher / Entry Level (0-1 Yrs)" Value="Fresher"></asp:ListItem>
+                            <asp:ListItem Text="Graduate Trainee / Intern" Value="Intern"></asp:ListItem>
+                            <asp:ListItem Text="Associate (1-2 Yrs)" Value="Associate"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Button ID="btnAiDraft" runat="server" Text="✨ AI Auto-Draft" CssClass="btn btn-primary btn-lg w-100 fw-bold shadow-sm" OnClick="btnAiDraft_Click" />
+                    </div>
+                </div>
+
+                <!-- 1-Click Role Presets -->
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-3 pt-2 border-top border-primary border-opacity-10">
+                    <span class="text-muted small fw-semibold"><i class="bi bi-bookmark-star me-1"></i>Quick Presets:</span>
+                    <button type="button" class="btn btn-sm btn-white border shadow-sm px-2 py-1 text-dark small" onclick="setAiRole('Associate Software Engineer (Full Stack)');">Software Engineer</button>
+                    <button type="button" class="btn btn-sm btn-white border shadow-sm px-2 py-1 text-dark small" onclick="setAiRole('Data Analyst & BI Specialist');">Data Analyst</button>
+                    <button type="button" class="btn btn-sm btn-white border shadow-sm px-2 py-1 text-dark small" onclick="setAiRole('Cloud & DevOps Associate');">Cloud & DevOps</button>
+                    <button type="button" class="btn btn-sm btn-white border shadow-sm px-2 py-1 text-dark small" onclick="setAiRole('AI / Machine Learning Engineer');">AI / ML Engineer</button>
+                    <button type="button" class="btn btn-sm btn-white border shadow-sm px-2 py-1 text-dark small" onclick="setAiRole('QA Automation & Test Engineer');">QA Automation</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function setAiRole(role) {
+                var el = document.getElementById('<%= txtAiRole.ClientID %>');
+                if (el) {
+                    el.value = role;
+                    el.focus();
+                }
+            }
+        </script>
+
+        <!-- Form Card -->
+        <div class="content-card border-0 shadow-sm">
+            <div class="card-header-custom p-3 border-bottom bg-white d-flex align-items-center justify-content-between">
+                <h5 class="mb-0 fw-bold"><i class="bi bi-briefcase-fill text-primary me-2"></i>Job Requirements & Eligibility Criteria</h5>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 small">Recruiter Announcement</span>
+            </div>
+            <div class="card-body-custom p-4">
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <label class="form-label fw-semibold">Job Title / Designation *</label>
+                        <asp:TextBox ID="txtJobTitle" runat="server" CssClass="form-control" placeholder="e.g. Associate Software Engineer / Data Analyst"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Employment Type</label>
+                        <asp:DropDownList ID="ddlJobType" runat="server" CssClass="form-select">
+                            <asp:ListItem Text="Full-Time" Value="Full-Time"></asp:ListItem>
+                            <asp:ListItem Text="Internship + PPO" Value="Internship + PPO"></asp:ListItem>
+                            <asp:ListItem Text="Internship" Value="Internship"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Annual CTC / Package (LPA) *</label>
+                        <asp:TextBox ID="txtPackage" runat="server" CssClass="form-control" placeholder="e.g. 10.50"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Total Vacancies *</label>
+                        <asp:TextBox ID="txtOpenings" runat="server" CssClass="form-control" Text="15"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Work Location / Mode</label>
+                        <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control" placeholder="Bengaluru / Hyderabad / Remote"></asp:TextBox>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-semibold">Minimum CGPA</label>
+                        <asp:TextBox ID="txtCGPA" runat="server" CssClass="form-control" Text="6.50"></asp:TextBox>
+                        <asp:RangeValidator ID="rvCGPA" runat="server" ControlToValidate="txtCGPA" MinimumValue="0.0" MaximumValue="10.0" Type="Double" ErrorMessage="CGPA must be 0.0 - 10.0" ForeColor="Red" Display="Dynamic" CssClass="small"></asp:RangeValidator>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-semibold">Max Backlogs Allowed</label>
+                        <asp:TextBox ID="txtBacklogs" runat="server" CssClass="form-control" Text="0"></asp:TextBox>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Application Deadline *</label>
+                        <asp:TextBox ID="txtDeadline" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Eligible Branches / Disciplines</label>
+                        <asp:TextBox ID="txtEligibleBranches" runat="server" CssClass="form-control" Text="B.Tech (CSE, IT, ECE), MCA, M.Tech"></asp:TextBox>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Key Skills Required</label>
+                        <asp:TextBox ID="txtSkills" runat="server" CssClass="form-control" placeholder="C#, ASP.NET, SQL, React, Cloud, Problem Solving"></asp:TextBox>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Detailed Job Description & Responsibilities</label>
+                        <asp:TextBox ID="txtJobDesc" runat="server" TextMode="MultiLine" Rows="4" CssClass="form-control" placeholder="Describe day-to-day responsibilities, training period details, and candidate requirements..."></asp:TextBox>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <asp:Button ID="btnPublishJob" runat="server" Text="Publish Campus Job Opening" CssClass="btn btn-primary fw-semibold px-4 py-2" OnClick="btnPublishJob_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var title = sessionStorage.getItem("astra_prefill_job_title");
+            var skills = sessionStorage.getItem("astra_prefill_job_skills");
+            var desc = sessionStorage.getItem("astra_prefill_job_desc");
+
+            if (title || skills || desc) {
+                var elTitle = document.getElementById('<%= txtJobTitle.ClientID %>');
+                var elSkills = document.getElementById('<%= txtSkills.ClientID %>');
+                var elDesc = document.getElementById('<%= txtJobDesc.ClientID %>');
+
+                if (title && elTitle && !elTitle.value) elTitle.value = title;
+                if (skills && elSkills && !elSkills.value) elSkills.value = skills;
+                if (desc && elDesc && !elDesc.value) elDesc.value = desc;
+
+                sessionStorage.removeItem("astra_prefill_job_title");
+                sessionStorage.removeItem("astra_prefill_job_skills");
+                sessionStorage.removeItem("astra_prefill_job_desc");
+
+                var alertBox = document.createElement('div');
+                alertBox.className = 'alert alert-success alert-dismissible fade show mb-3';
+                alertBox.innerHTML = '<strong><i class="bi bi-stars me-2"></i>Job Form Auto-Populated!</strong> Parameters transferred successfully from AI Job Writer. Review and publish when ready.<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+                var pageContent = document.querySelector('.page-content');
+                if (pageContent) pageContent.insertBefore(alertBox, pageContent.children[1]);
+            }
+        });
+    </script>
 </asp:Content>
-
-<asp:Content ID="Content3" runat="server" contentplaceholderid="ContentPlaceHolder3">
-    <!-- ============================= FOOTER START ============================= -->
-<div id="footerContainer"></div>
-<!-- ============================= FOOTER END ============================= -->
-  <div id="modalContainer"></div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/data.js"></script>
-  <script src="../assets/js/app.js"></script>
-  <script src="../assets/js/components.js"></script>
-  <script src="../assets/js/company.js"></script>
-  <script>
-    if (App.requireAuth('company', 'login.aspx')) {
-      Components.initLayout('company', 'post-job.aspx', App.currentUser);
-      Company.initPostJobPage();
-      // Populate suggestion lists from Admin-managed master data (Departments / Skills) - spec section 5.
-      (function fillMasterDataLists() {
-        const d = getData();
-        const branchList = document.getElementById('jobBranchesList');
-        if (branchList) branchList.innerHTML = (d.departments || []).map(x => `<option value="${x.name}">`).join('');
-        const skillList = document.getElementById('jobSkillsList');
-        if (skillList) skillList.innerHTML = (d.skillsMaster || []).map(x => `<option value="${x.name}">`).join('');
-        const titleList = document.getElementById('jobTitleList');
-        if (titleList) titleList.innerHTML = (d.jobRoles || []).map(x => `<option value="${x.title}">`).join('');
-      })();
-    }
-  </script>
-</asp:Content>
-
-

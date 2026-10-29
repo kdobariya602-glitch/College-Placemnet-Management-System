@@ -15,6 +15,15 @@ namespace Astra_PMS_Final_Exam.company
     {
 
         /// <summary>
+        /// lblAuto1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto1;
+
+        /// <summary>
         /// companyName control.
         /// </summary>
         /// <remarks>
@@ -24,31 +33,13 @@ namespace Astra_PMS_Final_Exam.company
         protected global::System.Web.UI.WebControls.TextBox companyName;
 
         /// <summary>
-        /// email control.
+        /// lblAuto5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox email;
-
-        /// <summary>
-        /// password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
-
-        /// <summary>
-        /// contact control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contact;
+        protected global::System.Web.UI.WebControls.Label lblAuto5;
 
         /// <summary>
         /// industry control.
@@ -60,6 +51,15 @@ namespace Astra_PMS_Final_Exam.company
         protected global::System.Web.UI.WebControls.TextBox industry;
 
         /// <summary>
+        /// lblAuto6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto6;
+
+        /// <summary>
         /// location control.
         /// </summary>
         /// <remarks>
@@ -67,6 +67,15 @@ namespace Astra_PMS_Final_Exam.company
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox location;
+
+        /// <summary>
+        /// lblAuto7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto7;
 
         /// <summary>
         /// website control.
@@ -78,6 +87,15 @@ namespace Astra_PMS_Final_Exam.company
         protected global::System.Web.UI.WebControls.TextBox website;
 
         /// <summary>
+        /// lblAuto8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto8;
+
+        /// <summary>
         /// description control.
         /// </summary>
         /// <remarks>
@@ -87,13 +105,67 @@ namespace Astra_PMS_Final_Exam.company
         protected global::System.Web.UI.WebControls.TextBox description;
 
         /// <summary>
-        /// registerBtn control.
+        /// lblAuto4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton registerBtn;
+        protected global::System.Web.UI.WebControls.Label lblAuto4;
+
+        /// <summary>
+        /// contact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox contact;
+
+        /// <summary>
+        /// lblAuto2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto2;
+
+        /// <summary>
+        /// email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox email;
+
+        /// <summary>
+        /// lblAuto3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuto3;
+
+        /// <summary>
+        /// password control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox password;
+
+        /// <summary>
+        /// btnRegisterSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnRegisterSubmit;
 
         /// <summary>
         /// GridView1 control.

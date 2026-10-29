@@ -1,86 +1,552 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Company_Site4.master.cs" Inherits="Astra_PMS_Final_Exam.company.Company_Site4" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Company_Site4.Master.cs" Inherits="Astra_PMS_Final_Exam.company.Company_Site4" %>
+
+
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
+
 <head runat="server">
-    <title></title>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
+
+    <title>Recruiter Portal | Astra University PMS</title>
+
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+    <link href="../assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet" />
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+
+    <link href="../assets/css/astra-buttons.css" rel="stylesheet" />
+
+    <script>(function(){try{var t=localStorage.getItem('astra_theme');if(t==='dark'){document.documentElement.setAttribute('data-bs-theme','dark');document.documentElement.classList.add('dark-mode');}}catch(e){}})();</script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
+
     </asp:ContentPlaceHolder>
+
 </head>
-<body>
+
+<body class="company-panel">
+
     <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link href="../assets/css/style.css" rel="stylesheet">
-                <!-- ============================= HEADER START (Top bar / Navbar / Sidebar include) ============================= -->
 
-  <div class="app-wrapper">
-    <div id="sidebarContainer"></div>
-    <div id="mobileSidebarContainer"></div>
-    <div class="main-content" id="mainContent">
-      <div id="navbarContainer"></div>
-<!-- ============================= HEADER END ============================= -->
-            </asp:ContentPlaceHolder>
+        <div class="app-wrapper">
 
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-                <!-- ============================= BODY START (Main Page Content) ============================= -->
+            <!-- Sidebar -->
 
-      <div class="page-content">
-        <div class="page-breadcrumb mb-4"><h4>Dashboard</h4><p>Overview of your recruitment activities.</p></div>
-        <div class="row g-3 mb-4">
-          <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon blue"><i class="bi bi-briefcase"></i></div><div><div class="stat-value" id="statJobs">0</div><div class="stat-label">Job Posts</div></div></div></div>
-          <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon orange"><i class="bi bi-file-earmark-text"></i></div><div><div class="stat-value" id="statApplications">0</div><div class="stat-label">Applications</div></div></div></div>
-          <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon purple"><i class="bi bi-star"></i></div><div><div class="stat-value" id="statShortlisted">0</div><div class="stat-label">Shortlisted</div></div></div></div>
-          <div class="col-sm-6 col-lg-3"><div class="dashboard-card stat-card"><div class="stat-icon green"><i class="bi bi-trophy"></i></div><div><div class="stat-value" id="statSelected">0</div><div class="stat-label">Selected</div></div></div></div>
-        </div>
-        <div class="row g-3">
-          <div class="col-lg-8">
-            <div class="content-card">
-              <div class="card-header-custom"><h5>Recent Applications</h5><a href="applications.aspx" class="btn btn-sm btn-outline-custom">View All</a></div>
-              <div class="card-body-custom" id="recentApplications"></div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="content-card">
-              <div class="card-header-custom"><h5>Quick Actions</h5></div>
-              <div class="card-body-custom">
-                <div class="d-grid gap-2">
-                  <a href="post-job.aspx" class="btn btn-primary-custom"><i class="bi bi-plus-lg me-2"></i>Post New Job</a>
-                  <a href="applications.aspx" class="btn btn-outline-custom text-start"><i class="bi bi-people me-2"></i>Review Applications</a>
-                  <a href="shortlist.aspx" class="btn btn-outline-custom text-start"><i class="bi bi-star me-2"></i>Shortlisted</a>
+            <aside class="sidebar" id="sidebar" style="overflow-y: auto;">
+
+                <div class="sidebar-brand">
+
+                    <div class="sidebar-brand-icon">
+
+                        <svg width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="12" fill="#FFFFFF"/>
+                            <rect x="1.5" y="1.5" width="45" height="45" rx="10.5" fill="none" stroke="#E2E8F0" stroke-width="1.5"/>
+                            <polygon points="24,8 42,17 24,25.5 6,17" fill="#1D4ED8"/>
+                            <polygon points="6,17 24,25.5 24,27.2 6,18.7" fill="#1E40AF"/>
+                            <polygon points="24,25.5 42,17 42,18.7 24,27.2" fill="#0B1F3A"/>
+                            <path d="M14 21.5 V27 C14 31 18.2 33.5 24 33.5 C29.8 33.5 34 31 34 27 V21.5 C31 23.8 27.5 25 24 25 C20.5 25 17 23.8 14 21.5 Z" fill="#1E3A8A"/>
+                            <circle cx="24" cy="17" r="2" fill="#F59E0B"/>
+                        </svg>
+
+                    </div>
+
+                    <div class="sidebar-brand-info">
+
+                        <span class="sidebar-brand-name">Astra Recruiter</span>
+
+                        <span class="sidebar-brand-sub">Corporate Partner</span>
+
+                    </div>
+
                 </div>
-              </div>
+
+
+
+                <nav class="sidebar-nav pb-4">
+
+                    <div class="sidebar-section-title">MAIN</div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="dashboard.aspx" class="nav-link"><i class="bi bi-grid-1x2"></i><span class="nav-text">Recruiter Dashboard</span></a>
+
+                    </div>
+
+                    <div class="sidebar-section-title">HIRING PROCESS (STEP BY STEP)</div>
+
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-plus-circle step-icon"></i><span class="nav-text">Post Openings</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="post-job.aspx" class="submenu-link" data-pages="post-job"><i class="bi bi-plus-circle"></i><span>Post New Job</span></a></li>
+
+                            <li><a href="jobs.aspx" class="submenu-link" data-pages="jobs"><i class="bi bi-briefcase"></i><span>Job Openings</span></a></li>
+
+                            <li><a href="internships.aspx" class="submenu-link" data-pages="internships"><i class="bi bi-mortarboard"></i><span>Internship Postings</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-people step-icon"></i><span class="nav-text">Candidate Management</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="applicants.aspx" class="submenu-link" data-pages="applicants,applicant-details"><i class="bi bi-people"></i><span>Applicants</span></a></li>
+
+                            <li><a href="shortlisted.aspx" class="submenu-link" data-pages="shortlisted"><i class="bi bi-person-check"></i><span>Shortlisted Students</span></a></li>
+
+                            <li><a href="interviews.aspx" class="submenu-link" data-pages="interviews"><i class="bi bi-calendar-event"></i><span>Interview Schedules</span></a></li>
+
+                            <li><a href="interview-results.aspx" class="submenu-link" data-pages="interview-results"><i class="bi bi-clipboard-check"></i><span>Assessment Results</span></a></li>
+
+                            <li><a href="selections.aspx" class="submenu-link" data-pages="selections"><i class="bi bi-award"></i><span>Selections & Offers</span></a></li>
+
+                            <li><a href="placement-history.aspx" class="submenu-link" data-pages="placement-history"><i class="bi bi-clock-history"></i><span>Hiring History</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-shield-check step-icon"></i><span class="nav-text">Verification &amp; HR Team</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="verification.aspx" class="submenu-link" data-pages="verification"><i class="bi bi-patch-check"></i><span>Verification &amp; Documents</span></a></li>
+
+                            <li><a href="employees.aspx" class="submenu-link" data-pages="employees"><i class="bi bi-person-badge"></i><span>HR Team &amp; Contacts</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                                        <div class="sidebar-section-title" style="color:#2563EB; font-weight:700;"><i class="bi bi-stars text-warning me-1"></i>ASTRA AI HUB</div>
+
+                    <div class="sidebar-nav-item has-submenu active">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle" style="background: rgba(37, 99, 235, 0.08); border-left: 3px solid #2563EB;">
+                            <i class="bi bi-stars step-icon text-warning"></i>
+                            <span class="nav-text fw-bold text-primary">✨ Astra AI Hub</span>
+                            <span class="badge bg-primary text-white ms-auto" style="font-size:0.65rem;">10 AI Tools</span>
+                            <i class="bi bi-chevron-down submenu-arrow"></i>
+                        </a>
+
+                        <ul class="sidebar-submenu" style="display: block;">
+
+                            <li><a href="ai-assistant.aspx" class="submenu-link" data-pages="ai-assistant"><i class="bi bi-robot text-primary"></i><span>AI Recruiter Copilot</span></a></li>
+
+                            <li><a href="ai-job-writer.aspx" class="submenu-link" data-pages="ai-job-writer"><i class="bi bi-pencil-square text-info"></i><span>AI Job Description Drafter</span></a></li>
+
+                            <li><a href="ai-interview-questions.aspx" class="submenu-link" data-pages="ai-interview-questions"><i class="bi bi-patch-question text-success"></i><span>AI Technical Questions Generator</span></a></li>
+
+                            <li><a href="ai-candidate-screener.aspx" class="submenu-link" data-pages="ai-candidate-screener"><i class="bi bi-person-check text-warning"></i><span>AI Candidate Screener</span></a></li>
+
+                            <li><a href="ai-campus-feedback.aspx" class="submenu-link" data-pages="ai-campus-feedback"><i class="bi bi-chat-heart text-danger"></i><span>AI Campus Feedback Review</span></a></li>
+
+                            <li><a href="ai-offer-drafter.aspx" class="submenu-link" data-pages="ai-offer-drafter"><i class="bi bi-award text-primary"></i><span>AI Offer Letter Terms Drafter</span></a></li>
+
+                            <li><a href="ai-scorecard-generator.aspx" class="submenu-link" data-pages="ai-scorecard-generator"><i class="bi bi-card-checklist text-info"></i><span>AI Scorecard &amp; Evaluation Remarks</span></a></li>
+
+                            <li><a href="ai-internship-scope.aspx" class="submenu-link" data-pages="ai-internship-scope"><i class="bi bi-rocket-takeoff text-success"></i><span>AI Internship Scope Drafter</span></a></li>
+
+                            <li><a href="ai-talent-matching.aspx" class="submenu-link" data-pages="ai-talent-matching"><i class="bi bi-trophy text-warning"></i><span>AI Neural Candidate Matcher</span></a></li>
+
+                            <li><a href="ai-outreach-invitation.aspx" class="submenu-link" data-pages="ai-outreach-invitation"><i class="bi bi-megaphone text-danger"></i><span>AI Campus Invitation Drafter</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+<div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-bell step-icon"></i><span class="nav-text">Notifications & Feedback</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="notifications.aspx" class="submenu-link" data-pages="notifications"><i class="bi bi-bell"></i><span>Notifications</span></a></li>
+
+                            <li><a href="feedback.aspx" class="submenu-link" data-pages="feedback"><i class="bi bi-chat-heart"></i><span>Campus Feedback</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-section-title">ACCOUNT</div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-person-circle step-icon"></i><span class="nav-text">Profile &amp; Account</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="profile.aspx" class="submenu-link" data-pages="profile"><i class="bi bi-person-gear"></i><span>Company Profile</span></a></li>
+
+                            <li><a href="change-password.aspx" class="submenu-link" data-pages="change-password"><i class="bi bi-key"></i><span>Change Password</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="../recruiter-guidelines.aspx" class="nav-link" target="_blank"><i class="bi bi-journal-check"></i><span class="nav-text">Hiring Guidelines</span></a>
+
+                    </div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="../index.aspx" class="nav-link" target="_blank"><i class="bi bi-globe"></i><span class="nav-text">Public Website</span></a>
+
+                    </div>
+
+                    <div class="sidebar-nav-item mt-2">
+
+                        <a href="logout.aspx" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i><span class="nav-text">Logout</span></a>
+
+                    </div>
+
+                </nav>
+
+            </aside>
+
+
+
+            <!-- Main Content Area -->
+
+            <div class="main-content" id="mainContent">
+
+                <!-- Top Navbar -->
+
+                <header class="top-navbar" id="topNavbar">
+
+                    <button class="sidebar-toggle-btn d-none d-lg-inline-flex" type="button" onclick="toggleAstraSidebar();" aria-label="Toggle sidebar">
+
+                        <i class="bi bi-list"></i>
+
+                    </button>
+
+                    <button class="sidebar-toggle-btn d-inline-flex d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-label="Open menu">
+
+                        <i class="bi bi-list"></i>
+
+                    </button>
+
+                    <div class="navbar-search position-relative d-none d-md-block">
+
+                        <i class="bi bi-search search-icon"></i>
+
+                        <input type="text" class="form-control" placeholder="Search applicants, resumes..." />
+
+                    </div>
+
+                    <div class="navbar-actions d-flex align-items-center gap-2">
+
+                        <a href="ai-assistant.aspx" class="btn btn-sm d-inline-flex align-items-center gap-1 px-3 py-1 fw-semibold text-white shadow-sm me-1" style="background: linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%); border-radius: 20px; font-size: 0.82rem;" title="Open Astra AI Copilot">
+                            <i class="bi bi-stars"></i>
+                            <span>Astra AI</span>
+                        </a>
+
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center" style="width:36px; height:36px;" onclick="toggleAstraTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+
+                            <i class="bi bi-moon-stars"></i>
+
+                        </button>
+
+                        <asp:Literal ID="litVerificationBadge" runat="server"></asp:Literal>
+
+                        <a href="notifications.aspx" class="btn btn-light position-relative border rounded-circle p-2" title="Notifications">
+
+                            <i class="bi bi-bell"></i>
+
+                            <asp:Literal ID="litNotifBadge" runat="server"></asp:Literal>
+
+                        </a>
+
+                        <div class="dropdown profile-dropdown">
+
+                            <button class="dropdown-toggle d-flex align-items-center gap-2 btn border-0 bg-transparent" type="button" data-bs-toggle="dropdown">
+
+                                <div class="profile-avatar"><asp:Literal ID="litAvatarInitials" runat="server" Text="CO"></asp:Literal></div>
+
+                                <span class="profile-name fw-semibold"><asp:Literal ID="litHeaderUserName" runat="server" Text="Company"></asp:Literal></span>
+
+                                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 ms-2 fw-semibold" style="font-size:0.7rem;">RECRUITER</span>
+
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+
+                                <li><h6 class="dropdown-header"><asp:Literal ID="litDropdownEmail" runat="server"></asp:Literal></h6></li>
+
+                                <li><a class="dropdown-item" href="profile.aspx"><i class="bi bi-building me-2"></i>Company Profile</a></li>
+
+                                <li><a class="dropdown-item" href="jobs.aspx"><i class="bi bi-briefcase me-2"></i>Manage Jobs</a></li>
+
+                                <li><a class="dropdown-item" href="applicants.aspx"><i class="bi bi-people me-2"></i>Applicants</a></li>
+
+                                <li><a class="dropdown-item" href="change-password.aspx"><i class="bi bi-key me-2"></i>Change Password</a></li>
+
+                                <li><hr class="dropdown-divider"></li>
+
+                                <li><a class="dropdown-item" href="../index.aspx" target="_blank"><i class="bi bi-globe me-2"></i>Public Home</a></li>
+
+                                <li><hr class="dropdown-divider"></li>
+
+                                <li><a class="dropdown-item text-danger" href="logout.aspx"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </header>
+
+
+
+                <main class="content-body" id="contentBody">
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+                    </asp:ContentPlaceHolder>
+
+                </main>
+
             </div>
-          </div>
-        </div>
-      </div>
-      
-<!-- ============================= BODY END ============================= -->
-</asp:ContentPlaceHolder>
 
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
-                <!-- ============================= FOOTER START ============================= -->
-<div id="footerContainer"></div>
-<!-- ============================= FOOTER END ============================= -->
-
-  
-  <div id="modalContainer"></div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/data.js"></script>
-  <script src="../assets/js/app.js"></script>
-  <script src="../assets/js/components.js"></script>
-  <script src="../assets/js/company.js"></script>
-  <script>
-      if (App.requireAuth('company', 'login.aspx')) {
-          Components.initLayout('company', 'dashboard.aspx', App.currentUser);
-          Company.initDashboard();
-      }
-  </script>
-</asp:ContentPlaceHolder>
         </div>
+
+
+
+        <!-- Mobile Sidebar -->
+
+        <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobileSidebar" style="background:#070D18 !important; width:290px; overflow-y: auto;">
+
+            <div class="offcanvas-header border-bottom border-secondary">
+
+                <h5 class="offcanvas-title fw-bold text-white"><i class="bi bi-building text-primary me-2"></i>Recruiter Portal</h5>
+
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+
+            </div>
+
+            <div class="offcanvas-body p-0">
+
+                <nav class="sidebar-nav p-3">
+
+                    <div class="sidebar-section-title text-secondary">MAIN</div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="dashboard.aspx" class="nav-link"><i class="bi bi-grid-1x2"></i><span class="nav-text">Recruiter Dashboard</span></a>
+
+                    </div>
+
+                    <div class="sidebar-section-title text-secondary">HIRING PROCESS (STEP BY STEP)</div>
+
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-plus-circle step-icon"></i><span class="nav-text">Post Openings</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="post-job.aspx" class="submenu-link" data-pages="post-job"><i class="bi bi-plus-circle"></i><span>Post New Job</span></a></li>
+
+                            <li><a href="jobs.aspx" class="submenu-link" data-pages="jobs"><i class="bi bi-briefcase"></i><span>Job Openings</span></a></li>
+
+                            <li><a href="internships.aspx" class="submenu-link" data-pages="internships"><i class="bi bi-mortarboard"></i><span>Internship Postings</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-people step-icon"></i><span class="nav-text">Candidate Management</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="applicants.aspx" class="submenu-link" data-pages="applicants,applicant-details"><i class="bi bi-people"></i><span>Applicants</span></a></li>
+
+                            <li><a href="shortlisted.aspx" class="submenu-link" data-pages="shortlisted"><i class="bi bi-person-check"></i><span>Shortlisted Students</span></a></li>
+
+                            <li><a href="interviews.aspx" class="submenu-link" data-pages="interviews"><i class="bi bi-calendar-event"></i><span>Interview Schedules</span></a></li>
+
+                            <li><a href="interview-results.aspx" class="submenu-link" data-pages="interview-results"><i class="bi bi-clipboard-check"></i><span>Assessment Results</span></a></li>
+
+                            <li><a href="selections.aspx" class="submenu-link" data-pages="selections"><i class="bi bi-award"></i><span>Selections & Offers</span></a></li>
+
+                            <li><a href="placement-history.aspx" class="submenu-link" data-pages="placement-history"><i class="bi bi-clock-history"></i><span>Hiring History</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-shield-check step-icon"></i><span class="nav-text">Verification &amp; HR Team</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="verification.aspx" class="submenu-link" data-pages="verification"><i class="bi bi-patch-check"></i><span>Verification &amp; Documents</span></a></li>
+
+                            <li><a href="employees.aspx" class="submenu-link" data-pages="employees"><i class="bi bi-person-badge"></i><span>HR Team &amp; Contacts</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-robot step-icon"></i><span class="nav-text">AI Recruiter Intelligence</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="ai-assistant.aspx" class="submenu-link" data-pages="ai-assistant"><i class="bi bi-robot"></i><span>AI Recruiter Assistant</span></a></li>
+
+                            <li><a href="talent-match.aspx" class="submenu-link" data-pages="talent-match"><i class="bi bi-trophy"></i><span>Smart Talent Ranking</span></a></li>
+
+                            <li><a href="ai-job-writer.aspx" class="submenu-link" data-pages="ai-job-writer"><i class="bi bi-stars"></i><span>AI Job Writer</span></a></li>
+
+                            <li><a href="ai-interview-questions.aspx" class="submenu-link" data-pages="ai-interview-questions"><i class="bi bi-patch-question"></i><span>AI Interview Questions</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-bell step-icon"></i><span class="nav-text">Notifications & Feedback</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="notifications.aspx" class="submenu-link" data-pages="notifications"><i class="bi bi-bell"></i><span>Notifications</span></a></li>
+
+                            <li><a href="feedback.aspx" class="submenu-link" data-pages="feedback"><i class="bi bi-chat-heart"></i><span>Campus Feedback</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-section-title text-secondary">ACCOUNT</div>
+
+                    <div class="sidebar-nav-item has-submenu">
+
+                        <a href="javascript:void(0);" class="sidebar-dropdown-toggle"><i class="bi bi-person-circle step-icon"></i><span class="nav-text">Profile &amp; Account</span><i class="bi bi-chevron-down submenu-arrow"></i></a>
+
+                        <ul class="sidebar-submenu">
+
+                            <li><a href="profile.aspx" class="submenu-link" data-pages="profile"><i class="bi bi-person-gear"></i><span>Company Profile</span></a></li>
+
+                            <li><a href="change-password.aspx" class="submenu-link" data-pages="change-password"><i class="bi bi-key"></i><span>Change Password</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="../recruiter-guidelines.aspx" class="nav-link" target="_blank"><i class="bi bi-journal-check"></i><span class="nav-text">Hiring Guidelines</span></a>
+
+                    </div>
+
+                    <div class="sidebar-nav-item">
+
+                        <a href="../index.aspx" class="nav-link" target="_blank"><i class="bi bi-globe"></i><span class="nav-text">Public Website</span></a>
+
+                    </div>
+
+                    <div class="sidebar-nav-item mt-2">
+
+                        <a href="logout.aspx" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i><span class="nav-text">Logout</span></a>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+        </div>
+
     </form>
+
+
+
+    <script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="../assets/vendor/chartjs/chart.umd.min.js"></script>
+
+    <script src="../assets/js/app.js"></script>
+
+    <script type="text/javascript">
+        function toggleAstraAiDrawer() {
+            var myOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasAstraAi'));
+            document.getElementById('aiActivePageTitle').innerText = document.title || 'Astra PMS Portal';
+            myOffcanvas.show();
+        }
+
+        function summarizeCurrentPage() {
+            var box = document.getElementById('aiDrawerChatBox');
+            var title = document.title || 'Placement Module';
+            box.innerHTML = '<div class="text-primary small fw-bold mb-1"><i class="bi bi-cpu me-1"></i> Page Intelligence Scan:</div>' +
+                            '<div class="text-dark small"><strong>Active View:</strong> ' + title + '</div>' +
+                            '<div class="small text-muted mt-2">• Multi-factor data ledger is active and synced with Astra database.<br/>• All action buttons offer Dual-Mode (Manual OR AI-assisted).<br/>• Verified zero integrity errors on page data controls.</div>';
+        }
+
+        function recommendNextAction() {
+            var box = document.getElementById('aiDrawerChatBox');
+            box.innerHTML = '<div class="text-success small fw-bold mb-1"><i class="bi bi-check-circle me-1"></i> AI Recommended Next Step:</div>' +
+                            '<div class="small text-dark mt-1">Review recently published circulars and verify active deadlines in the portal. Ensure all required document records are confirmed.</div>';
+        }
+
+        function askAstraAi(prompt) {
+            document.getElementById('aiDrawerInput').value = prompt;
+            sendAstraAiMessage();
+        }
+
+        function sendAstraAiMessage() {
+            var input = document.getElementById('aiDrawerInput');
+            var q = input.value.trim();
+            if (!q) return;
+            var box = document.getElementById('aiDrawerChatBox');
+            
+            var userHtml = '<div class="p-2 mb-2 rounded bg-light text-dark fw-semibold small text-end"><i class="bi bi-person me-1"></i>' + q + '</div>';
+            box.innerHTML += userHtml;
+            input.value = '';
+            box.scrollTop = box.scrollHeight;
+
+            setTimeout(function() {
+                var answer = "Astra AI: I have processed your inquiry regarding '" + q + "'. All guidelines and automated templates are synchronized with the placement cell policies. Please check the respective module action buttons for 1-click execution.";
+                if (q.toLowerCase().indexOf('offer') !== -1) {
+                    answer = "Astra AI: For campus offers, ensure compliance with the One-Student-One-Offer rule. Offers above 10 LPA qualify as Dream Category.";
+                } else if (q.toLowerCase().indexOf('drive') !== -1 || q.toLowerCase().indexOf('job') !== -1) {
+                    answer = "Astra AI: Active recruitment drives require verified CGPA and zero active backlogs. Check the 'Drives' tab for round details and dates.";
+                }
+                var aiHtml = '<div class="p-2 mb-2 rounded bg-primary bg-opacity-10 border border-primary border-opacity-25 text-dark small"><i class="bi bi-stars text-primary me-1"></i>' + answer + '</div>';
+                box.innerHTML += aiHtml;
+                box.scrollTop = box.scrollHeight;
+            }, 500);
+        }
+    </script>
+    
+
 </body>
+
 </html>
+

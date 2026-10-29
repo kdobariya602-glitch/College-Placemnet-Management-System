@@ -1,25 +1,49 @@
 /* ============================================
-   Placement Management System - Main Styles
+   Astra PMS — Main Design System (v2 redesign)
+   One reusable token + component system shared by
+   every panel (Student / Company / TPO / Admin) and
+   the public site. Presentation only — no control
+   IDs, server events or data flow are affected by
+   anything in this file.
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-    --primary-blue: #1a56db;
-    --primary-blue-dark: #1544ad;
-    --sidebar-dark: #0d1b3e;
-    --sidebar-secondary: #132a5e;
-    --bg-light: #f3f5fa;
+    /* Brand — blue / white / navy identity, refreshed */
+    --primary-blue: #2454e0;
+    --primary-blue-dark: #17359e;
+    --primary-blue-light: #eaf0ff;
+    --primary-blue-rgb: 36, 84, 224;
+    --sidebar-dark: #0B1F3A;
+    --sidebar-secondary: #091930;
+
+    /* Semantic accents — kept distinct from primary-blue so status
+       colors (danger/success/warning) never fight the brand color */
+    --accent-teal: #0f9e93;
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --info: #2563eb;
+
+    --bg-light: #f1f4fa;
     --card-bg: #ffffff;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --border-color: #e6e9f2;
-    --shadow-sm: 0 1px 3px rgba(13, 27, 62, 0.08);
-    --shadow-md: 0 4px 6px -1px rgba(13, 27, 62, 0.1), 0 2px 4px -2px rgba(13, 27, 62, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(13, 27, 62, 0.1), 0 4px 6px -4px rgba(13, 27, 62, 0.1);
-    --sidebar-width: 260px;
-    --navbar-height: 64px;
-    --transition: all 0.3s ease;
+    --text-primary: #182233;
+    --text-secondary: #667085;
+    --border-color: #e5e9f2;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+
+    --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+    --shadow-md: 0 8px 20px -6px rgba(23, 53, 158, 0.14), 0 2px 6px -2px rgba(16, 24, 40, 0.06);
+    --shadow-lg: 0 24px 48px -16px rgba(10, 23, 48, 0.22), 0 8px 20px -8px rgba(23, 53, 158, 0.14);
+
+    --sidebar-width: 264px;
+    --navbar-height: 74px;
+    --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -31,10 +55,16 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Manrope', 'Inter', sans-serif;
     background-color: var(--bg-light);
     color: var(--text-primary);
     overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 /* ========== Auth Pages ========== */
@@ -91,6 +121,7 @@ body {
 .app-wrapper {
     display: flex;
     min-height: 100vh;
+    background-color: var(--bg-light);
 }
 
 .main-content {
@@ -100,16 +131,24 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-top: var(--navbar-height) !important;
+    background-color: var(--bg-light);
 }
 
     .main-content.sidebar-collapsed {
         margin-left: 70px;
     }
 
+.content-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .page-content {
     flex: 1;
-    padding: 1.5rem;
-    margin-top: var(--navbar-height);
+    padding: 1.75rem 2rem 3rem !important;
+    margin-top: 0 !important;
 }
 
 /* ========== Sidebar ========== */
@@ -119,11 +158,13 @@ body {
     left: 0;
     width: var(--sidebar-width);
     height: 100vh;
-    background: linear-gradient(180deg, var(--sidebar-dark) 0%, var(--sidebar-secondary) 100%);
+    background: #0B1F3A;
+    background: linear-gradient(180deg, #0B1F3A 0%, #08162B 100%);
     z-index: 1040;
     transition: var(--transition);
     overflow-y: auto;
     overflow-x: hidden;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
     .sidebar.collapsed {
@@ -131,12 +172,14 @@ body {
     }
 
         .sidebar.collapsed .sidebar-brand-text,
+        .sidebar.collapsed .sidebar-brand-info,
         .sidebar.collapsed .nav-link span,
         .sidebar.collapsed .sidebar-section-title {
             opacity: 0;
             width: 0;
             overflow: hidden;
             white-space: nowrap;
+            display: none;
         }
 
         .sidebar.collapsed .nav-link {
@@ -158,71 +201,106 @@ body {
 }
 
 .sidebar-brand-icon {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 6px 14px -4px rgba(var(--primary-blue-rgb), 0.55);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     flex-shrink: 0;
 }
 
-.sidebar-brand-text {
-    color: #fff;
-    font-weight: 600;
-    font-size: 1rem;
+.sidebar-brand-text,
+.sidebar-brand-name {
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+    font-size: 1.1rem !important;
+    line-height: 1.2;
     transition: var(--transition);
     white-space: nowrap;
+    display: block;
+}
+
+.sidebar-brand-sub {
+    color: #93C5FD !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2px;
 }
 
 .sidebar-section-title {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 1rem 1.5rem 0.5rem;
+    color: #94A3B8 !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    padding: 1.15rem 1.25rem 0.4rem !important;
     transition: var(--transition);
 }
 
 .sidebar-nav {
-    padding: 0.5rem 0.75rem 1.5rem;
+    padding: 0.5rem 0.75rem 2.5rem;
 }
 
     .sidebar-nav .nav-link {
+        position: relative;
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        color: rgba(255, 255, 255, 0.7);
-        padding: 0.65rem 1rem;
-        border-radius: 8px;
-        margin-bottom: 2px;
-        font-size: 0.875rem;
+        color: #E2E8F0 !important;
+        padding: 0.65rem 1rem 0.65rem 1.15rem;
+        border-radius: var(--radius-sm);
+        margin-bottom: 3px;
+        font-size: 0.9rem;
         font-weight: 500;
         transition: var(--transition);
         text-decoration: none;
     }
 
         .sidebar-nav .nav-link i {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             width: 22px;
             text-align: center;
             flex-shrink: 0;
+            color: #93C5FD;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .sidebar-nav .nav-link:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.08);
+            color: #FFFFFF !important;
+            background: rgba(255, 255, 255, 0.12) !important;
         }
 
         .sidebar-nav .nav-link.active {
-            color: #fff;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+            color: #FFFFFF !important;
+            font-weight: 700;
+            background: #2563EB !important;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
         }
+
+            .sidebar-nav .nav-link.active::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 12%;
+                bottom: 12%;
+                width: 3.5px;
+                border-radius: var(--radius-pill);
+                background: #FFFFFF;
+            }
+
+            .sidebar-nav .nav-link.active i {
+                color: #FFFFFF !important;
+            }
 
 /* ========== Navbar ========== */
 .top-navbar {
@@ -231,16 +309,20 @@ body {
     right: 0;
     left: var(--sidebar-width);
     height: var(--navbar-height);
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    background: #ffffff;
+    border-bottom: 1px solid #E2E8F0;
     z-index: 1030;
     transition: var(--transition);
     display: flex;
     align-items: center;
-    padding: 0 1.5rem;
-    box-shadow: var(--shadow-md);
+    padding: 0 1.75rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
-    .top-navbar.expanded {
+    .top-navbar.expanded,
+    .sidebar.collapsed ~ .main-content .top-navbar,
+    .sidebar.collapsed + .main-content .top-navbar,
+    .main-content.sidebar-collapsed .top-navbar {
         left: 70px;
     }
 
@@ -250,31 +332,31 @@ body {
 }
 
     .navbar-search .form-control {
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
-        border-radius: 8px;
-        padding: 0.5rem 1rem 0.5rem 2.5rem;
+        background: var(--bg-light);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        border-radius: var(--radius-pill);
+        padding: 0.55rem 1rem 0.55rem 2.5rem;
         font-size: 0.875rem;
     }
 
         .navbar-search .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
         }
 
         .navbar-search .form-control:focus {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-            color: #fff;
-            box-shadow: none;
+            background: #fff;
+            border-color: var(--primary-blue);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 3px rgba(var(--primary-blue-rgb), 0.1);
         }
 
     .navbar-search .search-icon {
         position: absolute;
-        left: 12px;
+        left: 14px;
         top: 50%;
         transform: translateY(-50%);
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--text-secondary);
     }
 
 .navbar-actions {
@@ -285,12 +367,12 @@ body {
 }
 
 .navbar-btn {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--bg-light);
     border: none;
-    color: #fff;
+    color: var(--text-secondary);
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -299,8 +381,8 @@ body {
 }
 
     .navbar-btn:hover {
-        background: rgba(255, 255, 255, 0.25);
-        color: #fff;
+        background: var(--primary-blue-light);
+        color: var(--primary-blue);
     }
 
     .navbar-btn .badge-dot {
@@ -309,18 +391,18 @@ body {
         right: 6px;
         width: 8px;
         height: 8px;
-        background: #fbbf24;
+        background: var(--warning);
         border-radius: 50%;
-        border: 2px solid var(--primary-blue);
+        border: 2px solid #fff;
     }
 
 .sidebar-toggle-btn {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--bg-light);
     border: none;
-    color: #fff;
+    color: var(--text-secondary);
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     margin-right: 1rem;
     display: flex;
     align-items: center;
@@ -329,19 +411,21 @@ body {
 }
 
     .sidebar-toggle-btn:hover {
-        background: rgba(255, 255, 255, 0.25);
+        background: var(--primary-blue-light);
+        color: var(--primary-blue);
     }
 
 .profile-dropdown .dropdown-toggle {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--bg-light);
     border: none;
-    color: #fff;
-    border-radius: 8px;
-    padding: 0.35rem 0.75rem;
+    color: var(--text-primary);
+    border-radius: var(--radius-pill);
+    padding: 0.3rem 0.9rem 0.3rem 0.3rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.875rem;
+    font-weight: 500;
 }
 
     .profile-dropdown .dropdown-toggle::after {
@@ -349,14 +433,15 @@ body {
     }
 
 .profile-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.3);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.8rem;
 }
 
@@ -395,7 +480,7 @@ body {
 /* ========== Cards ========== */
 .dashboard-card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
     padding: 1.25rem;
@@ -405,7 +490,8 @@ body {
 
     .dashboard-card:hover {
         box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
+        border-color: rgba(var(--primary-blue-rgb), 0.25);
+        transform: translateY(-3px);
     }
 
 .stat-card {
@@ -425,39 +511,19 @@ body {
         flex-shrink: 0;
     }
 
-.stat-icon.red {
-    background: rgba(220, 38, 38, 0.1);
-    color: var(--primary-blue);
-}
-
-.stat-icon.blue {
-    background: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
-}
-
-.stat-icon.green {
-    background: rgba(34, 197, 94, 0.1);
-    color: #22c55e;
-}
-
-.stat-icon.purple {
-    background: rgba(168, 85, 247, 0.1);
-    color: #a855f7;
-}
-
-.stat-icon.orange {
-    background: rgba(249, 115, 22, 0.1);
-    color: #f97316;
-}
-
-.stat-icon.teal {
-    background: rgba(20, 184, 166, 0.1);
-    color: #14b8a6;
-}
-
+.stat-icon,
+.stat-card .stat-icon,
+.stat-icon.red,
+.stat-icon.blue,
+.stat-icon.green,
+.stat-icon.purple,
+.stat-icon.orange,
+.stat-icon.teal,
 .stat-icon.yellow {
-    background: rgba(234, 179, 8, 0.1);
-    color: #eab308;
+    background: #EFF6FF !important;
+    color: #1D4ED8 !important;
+    border: 1px solid #DBEAFE !important;
+    box-shadow: 0 2px 6px rgba(29, 78, 216, 0.08) !important;
 }
 
 .stat-card .stat-value {
@@ -483,12 +549,12 @@ body {
 }
 
 .stat-change.negative {
-    color: var(--primary-blue);
+    color: var(--danger);
 }
 
 .content-card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
     overflow: hidden;
@@ -513,37 +579,153 @@ body {
         padding: 1.25rem;
     }
 
-/* ========== Tables ========== */
-.table-custom {
-    margin-bottom: 0;
+/* ========== Tables & GridViews ========== */
+.table,
+.table-custom,
+.gridview,
+table[id*="gv"],
+table[id*="Grid"],
+table[id*="grid"] {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    vertical-align: middle !important;
+    border-collapse: collapse !important;
 }
 
-    .table-custom thead th {
-        background: var(--bg-light);
-        border-bottom: 2px solid var(--border-color);
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-        color: var(--text-secondary);
-        padding: 0.875rem 1rem;
-        white-space: nowrap;
-    }
+.table > :not(caption) > * > *,
+.table-custom > :not(caption) > * > *,
+.gridview > :not(caption) > * > *,
+table[id*="gv"] > :not(caption) > * > *,
+table[id*="Grid"] > :not(caption) > * > * {
+    vertical-align: middle !important;
+    padding: 0.85rem 1rem !important;
+}
 
-    .table-custom tbody td {
-        padding: 0.875rem 1rem;
-        vertical-align: middle;
-        font-size: 0.875rem;
-        border-bottom: 1px solid var(--border-color);
-    }
+.table thead th,
+.table th,
+.table-custom thead th,
+.table-custom th,
+.gridview th,
+table[id*="gv"] th,
+table[id*="Grid"] th {
+    background: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #1E3A8A !important;
+    padding: 0.85rem 1rem !important;
+    white-space: nowrap;
+    vertical-align: middle !important;
+}
 
-    .table-custom tbody tr {
-        transition: var(--transition);
-    }
+.table tbody td,
+.table td,
+.table-custom tbody td,
+.table-custom td,
+.gridview td,
+table[id*="gv"] td,
+table[id*="Grid"] td {
+    padding: 0.85rem 1rem !important;
+    vertical-align: middle !important;
+    font-size: 0.875rem;
+    color: #1E293B;
+    border-bottom: 1px solid #F1F5F9 !important;
+}
 
-        .table-custom tbody tr:hover {
-            background: rgba(248, 250, 252, 0.8);
-        }
+.table tbody tr:hover,
+.table-custom tbody tr:hover,
+.gridview tbody tr:hover,
+table[id*="gv"] tbody tr:hover,
+table[id*="Grid"] tbody tr:hover {
+    background: #F8FAFC !important;
+}
+
+.table .btn-group,
+.table-custom .btn-group,
+.gridview .btn-group,
+table[id*="gv"] .btn-group {
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    vertical-align: middle !important;
+    gap: 4px;
+}
+
+.table .btn-group .btn,
+.table .btn,
+.table-custom .btn,
+.gridview .btn,
+.gridview a.btn,
+table td .btn,
+table td a.btn,
+.btn-sm,
+.btn-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    padding: 0.38rem 0.65rem !important;
+    font-size: 0.82rem !important;
+    line-height: 1 !important;
+    border-radius: 6px !important;
+}
+
+.btn-icon,
+.table .btn-icon,
+.gridview .btn-icon,
+table td .btn-icon {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.table .btn i,
+.table .btn svg,
+.table-custom .btn i,
+.gridview .btn i,
+.btn i,
+.btn .bi,
+.btn .fa,
+.btn .fas,
+.btn .far,
+table td .btn i,
+table td .btn .bi,
+table td .btn .fa {
+    font-size: 0.92rem !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.table .badge,
+.table-custom .badge,
+.gridview .badge,
+table td .badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 0.35rem 0.65rem !important;
+    font-weight: 600 !important;
+    font-size: 0.78rem !important;
+    vertical-align: middle !important;
+    border-radius: 6px !important;
+    white-space: nowrap;
+    line-height: 1.2 !important;
+}
 
 .table-avatar {
     width: 36px;
@@ -556,152 +738,144 @@ body {
     justify-content: center;
     font-size: 0.75rem;
     font-weight: 600;
+    vertical-align: middle !important;
 }
 
-.table-custom th,
-.table-custom-head th {
-    background: var(--bg-light);
-    border-bottom: 2px solid var(--border-color);
+/* ========== Badges ==========
+   One consistent soft-tint pill system for every status used across
+   all panels (Applied, Shortlisted, Rejected, Interview Scheduled,
+   Selected, Placed, Pending, Active, Inactive, Closed). Class names
+   match what components.js / app.js / student.js / company.js /
+   admin.js / tpo.js already render — only the visual treatment
+   changes here, no script logic touched. */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.32em 0.8em;
     font-size: 0.75rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    color: var(--text-secondary);
-    padding: 0.875rem 1rem;
-    white-space: nowrap;
+    border-radius: var(--radius-pill);
+    line-height: 1.4;
 }
 
-.table-custom td {
-    padding: 0.875rem 1rem;
-    vertical-align: middle;
-    font-size: 0.875rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-/* Student Management table - CSS only polish, no markup change */
-.table-custom {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-    .table-custom tbody tr {
-        background: #ffffff;
+    .badge-status::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+        flex-shrink: 0;
     }
-
-        .table-custom tbody tr:nth-child(even) {
-            background: #f9fafc;
-        }
-
-        .table-custom tbody tr:hover {
-            background: rgba(26, 86, 219, 0.05);
-        }
-
-    /* Name column - blue dot indicator */
-    .table-custom tbody td:nth-child(1) {
-        font-weight: 500;
-        color: #1f2937;
-        position: relative;
-        padding-left: 2rem !important;
-    }
-
-        .table-custom tbody td:nth-child(1)::before {
-            content: "";
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
-        }
-
-    /* Skills column (last one) - pill look */
-    .table-custom tbody td:last-child span,
-    .table-custom tbody td:last-child {
-        color: #0c447c;
-    }
-
-        .table-custom tbody td:last-child span {
-            background: #e6f1fb;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            display: inline-block;
-        }
-
-/* ========== Badges ========== */
-.badge-status {
-    padding: 0.35em 0.75em;
-    font-size: 0.75rem;
-    font-weight: 500;
-    border-radius: 6px;
-}
 
 .badge-pending {
-    background: rgba(249, 115, 22, 0.1);
-    color: #ea580c;
+    background: rgba(217, 119, 6, 0.12);
+    color: var(--warning);
 }
 
-.badge-approved {
-    background: rgba(34, 197, 94, 0.1);
-    color: #16a34a;
+.badge-approved,
+.badge-active,
+.badge-placed {
+    background: rgba(22, 163, 74, 0.12);
+    color: var(--success);
 }
 
-.badge-rejected {
+.badge-rejected,
+.badge-inactive {
     background: rgba(220, 38, 38, 0.1);
-    color: var(--primary-blue);
+    color: var(--danger);
 }
 
+.badge-applied,
 .badge-shortlisted {
-    background: rgba(59, 130, 246, 0.1);
-    color: #2563eb;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--info);
 }
 
-.badge-selected {
-    background: rgba(168, 85, 247, 0.1);
-    color: #9333ea;
-}
-
-.badge-active {
-    background: rgba(34, 197, 94, 0.1);
-    color: #16a34a;
+.badge-selected,
+.badge-interview {
+    background: rgba(15, 158, 147, 0.12);
+    color: var(--accent-teal);
 }
 
 .badge-closed {
-    background: rgba(107, 114, 128, 0.1);
-    color: #6b7280;
+    background: rgba(102, 112, 133, 0.12);
+    color: var(--text-secondary);
 }
 
-/* ========== Buttons ========== */
+/* ========== Buttons ==========
+   Consistent Primary / Outline / Icon system, used everywhere via
+   asp:Button / asp:LinkButton CssClass — no control type changed. */
 .btn-primary-custom {
     background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
     border: none;
     color: #fff;
-    font-weight: 500;
-    padding: 0.5rem 1.25rem;
-    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.55rem 1.35rem;
+    border-radius: var(--radius-sm);
     transition: var(--transition);
 }
 
     .btn-primary-custom:hover {
-        background: linear-gradient(135deg, var(--primary-blue-dark), #0f3a8a);
+        background: linear-gradient(135deg, var(--primary-blue-dark), #0f2a7a);
         color: #fff;
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        box-shadow: 0 8px 18px -4px rgba(var(--primary-blue-rgb), 0.45);
+        transform: translateY(-1px);
+    }
+
+.btn-secondary-custom {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 0.55rem 1.35rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+    .btn-secondary-custom:hover {
+        background: #e9edf6;
+        color: var(--text-primary);
+    }
+
+.btn-success-custom {
+    background: var(--success);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.55rem 1.35rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+    .btn-success-custom:hover {
+        background: #128a3e;
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+.btn-danger-custom {
+    background: var(--danger);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.55rem 1.35rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+    .btn-danger-custom:hover {
+        background: #b91c1c;
+        color: #fff;
         transform: translateY(-1px);
     }
 
 .btn-outline-custom {
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    font-weight: 500;
-    padding: 0.5rem 1.25rem;
-    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.55rem 1.35rem;
+    border-radius: var(--radius-sm);
     background: var(--card-bg);
     transition: var(--transition);
 }
@@ -709,33 +883,95 @@ body {
     .btn-outline-custom:hover {
         border-color: var(--primary-blue);
         color: var(--primary-blue);
-        background: rgba(220, 38, 38, 0.05);
+        background: var(--primary-blue-light);
     }
 
 .btn-icon {
-    width: 34px;
-    height: 34px;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background: var(--card-bg);
-    color: var(--text-secondary);
-    transition: var(--transition);
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    border: 1px solid transparent !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    vertical-align: middle !important;
 }
 
-    .btn-icon:hover {
-        border-color: var(--primary-blue);
-        color: var(--primary-blue);
-        background: rgba(220, 38, 38, 0.05);
-    }
+.btn-icon i, .btn-icon svg {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+}
 
-    .btn-icon.danger:hover {
-        border-color: var(--primary-blue);
-        color: var(--primary-blue);
-    }
+.btn-icon:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
+}
+
+.btn-icon.text-primary, .btn-icon.btn-soft-primary, .btn-icon:not([class*="text-"]) {
+    background: #EFF6FF !important;
+    color: #1D4ED8 !important;
+    border-color: #BFDBFE !important;
+}
+.btn-icon.text-primary:hover, .btn-icon.btn-soft-primary:hover, .btn-icon:not([class*="text-"]):hover {
+    background: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    border-color: #1D4ED8 !important;
+}
+
+.btn-icon.text-warning, .btn-icon.btn-soft-warning {
+    background: #FEF3C7 !important;
+    color: #D97706 !important;
+    border-color: #FDE68A !important;
+}
+.btn-icon.text-warning:hover, .btn-icon.btn-soft-warning:hover {
+    background: #F59E0B !important;
+    color: #FFFFFF !important;
+    border-color: #F59E0B !important;
+}
+
+.btn-icon.text-danger, .btn-icon.danger, .btn-icon.btn-soft-danger {
+    background: #FEE2E2 !important;
+    color: #DC2626 !important;
+    border-color: #FECACA !important;
+}
+.btn-icon.text-danger:hover, .btn-icon.danger:hover, .btn-icon.btn-soft-danger:hover {
+    background: #DC2626 !important;
+    color: #FFFFFF !important;
+    border-color: #DC2626 !important;
+}
+
+.btn-icon.text-success, .btn-icon.btn-soft-success {
+    background: #DCFCE7 !important;
+    color: #16A34A !important;
+    border-color: #BBF7D0 !important;
+}
+.btn-icon.text-success:hover, .btn-icon.btn-soft-success:hover {
+    background: #16A34A !important;
+    color: #FFFFFF !important;
+    border-color: #16A34A !important;
+}
+
+.btn-icon.text-info, .btn-icon.btn-soft-info {
+    background: #E0F2FE !important;
+    color: #0284C7 !important;
+    border-color: #BAE6FD !important;
+}
+.btn-icon.text-info:hover, .btn-icon.btn-soft-info:hover {
+    background: #0284C7 !important;
+    color: #FFFFFF !important;
+    border-color: #0284C7 !important;
+}
 
 /* ========== Forms ========== */
 .form-label-custom {
@@ -747,19 +983,20 @@ body {
 
 .form-control-custom {
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 0.6rem 0.875rem;
     font-size: 0.875rem;
+    background: #fff;
     transition: var(--transition);
 }
 
     .form-control-custom:focus {
         border-color: var(--primary-blue);
-        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        box-shadow: 0 0 0 3px rgba(var(--primary-blue-rgb), 0.12);
     }
 
     .form-control-custom.is-invalid {
-        border-color: var(--primary-blue);
+        border-color: var(--danger);
     }
 
 /* ========== Breadcrumb ========== */
@@ -836,7 +1073,7 @@ body {
 
     .job-card:hover {
         box-shadow: var(--shadow-md);
-        border-color: rgba(220, 38, 38, 0.3);
+        border-color: rgba(var(--primary-blue-rgb), 0.3);
         transform: translateY(-2px);
     }
 
@@ -959,7 +1196,7 @@ body {
     }
 
     .module-card.admin .module-icon {
-        background: rgba(220, 38, 38, 0.1);
+        background: var(--primary-blue-light);
         color: var(--primary-blue);
     }
 
@@ -985,31 +1222,102 @@ body {
         border-radius: 4px;
     }
 
-/* ========== Modal ========== */
+/* ========== Modal & Backdrop Stacking Fix ========== */
+.modal {
+    z-index: 1060 !important;
+}
+
+.modal.show {
+    z-index: 1060 !important;
+    display: block !important;
+}
+
+.modal-backdrop {
+    z-index: 1040 !important;
+    opacity: 0.5 !important;
+    pointer-events: none !important;
+}
+
+.modal-backdrop.show {
+    opacity: 0.5 !important;
+    pointer-events: none !important;
+}
+
+.modal-dialog {
+    z-index: 1070 !important;
+    position: relative !important;
+    pointer-events: auto !important;
+}
+
 .modal-content {
-    border: none;
-    border-radius: 12px;
-    box-shadow: var(--shadow-lg);
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25) !important;
+    background-color: #ffffff !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    z-index: 1075 !important;
 }
 
 .modal-header {
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 1.25rem;
+    background-color: #ffffff !important;
+}
+
+.modal-body {
+    background-color: #ffffff !important;
+    pointer-events: auto !important;
 }
 
 .modal-footer {
     border-top: 1px solid var(--border-color);
     padding: 0.875rem 1.25rem;
+    background-color: #ffffff !important;
+    pointer-events: auto !important;
+}
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea,
+.modal-body button,
+.modal-footer button,
+.modal-footer input {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 1080 !important;
 }
 
 /* ========== Filter Bar ========== */
 .filter-bar {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     padding: 1rem 1.25rem;
     margin-bottom: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
 }
+
+.filter-bar select,
+.filter-bar .form-select {
+    width: auto !important;
+    min-width: 160px;
+    max-width: 280px;
+    flex: 0 1 auto;
+}
+
+.filter-bar input[type="text"],
+.filter-bar input[type="search"],
+.filter-bar .form-control {
+    width: auto !important;
+    min-width: 200px;
+    max-width: 320px;
+    flex: 1 1 200px;
+}
+
 
 /* ========== Empty State ========== */
 .empty-state {
@@ -1138,29 +1446,7 @@ body {
         color: #1a1a1a;
     }
 
-/* Buttons: keep blue base, gold on hover for consistency with index CTA buttons */
-.btn-primary-custom {
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
-    border: none;
-    color: #fff;
-}
-
-    .btn-primary-custom:hover {
-        background: linear-gradient(135deg, var(--pu-gold), var(--pu-gold-dark));
-        color: #1a1a1a;
-        transform: translateY(-1px);
-    }
-
-.btn-outline-custom:hover {
-    border-color: var(--pu-gold-dark);
-    color: var(--pu-gold-dark);
-    background: rgba(245, 180, 0, 0.08);
-}
-
-.btn-icon:hover {
-    border-color: var(--pu-gold-dark);
-    color: var(--pu-gold-dark);
-}
+/* Buttons: colours + hover are defined in assets/css/astra-buttons.css */
 
 /* Top navbar keeps blue like site header */
 .top-navbar {
@@ -1231,4 +1517,4399 @@ a:hover {
 
 .notification-item:hover {
     background: rgba(245, 180, 0, 0.06);
+}
+
+/* ============================================================
+   STUDENT PANEL — PREMIUM BLUE THEME OVERRIDE
+   Everything below is scoped to body.student-panel (set by
+   Components.initLayout('student', ...)) so Admin/TPO/Company
+   panels keep their existing look untouched (spec section 36).
+   No IDs, function names, or markup structure are changed here —
+   visual overrides only.
+   ============================================================ */
+body.student-panel {
+    --student-navy: #0B1F3A;
+    --student-navy-2: #0D1B3E;
+    --student-blue: #1A56DB;
+    --student-blue-dark: #123B99;
+    --student-blue-light: #EAF2FF;
+    --student-blue-light-2: #EFF6FF;
+    --student-bg: #F4F7FB;
+    --student-text: #1F2937;
+    --student-text-secondary: #64748B;
+    --student-border: #E2E8F0;
+}
+
+body.student-panel {
+    background-color: var(--student-bg);
+    color: var(--student-text);
+}
+
+/* ---- Sidebar: Unified High-Contrast Dark Navy ---- */
+body.student-panel .sidebar,
+body.student-panel .offcanvas-sidebar {
+    background: #0B1F3A !important;
+    background: linear-gradient(180deg, #0B1F3A 0%, #08162B 100%) !important;
+}
+
+body.student-panel .sidebar-nav .nav-link {
+    color: #E2E8F0 !important;
+}
+
+body.student-panel .sidebar-nav .nav-link i {
+    color: #93C5FD !important;
+}
+
+body.student-panel .sidebar-nav .nav-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.student-panel .sidebar-nav .nav-link:hover i {
+    color: #BAE6FD !important;
+}
+
+body.student-panel .sidebar-nav .nav-link.active,
+body.student-panel .offcanvas-sidebar .nav-link.active {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
+    font-weight: 700 !important;
+    border-left: none !important;
+}
+
+body.student-panel .sidebar-nav .nav-link.active i,
+body.student-panel .offcanvas-sidebar .nav-link.active i {
+    color: #FFFFFF !important;
+}
+
+body.student-panel .sidebar-section-title {
+    color: #94A3B8 !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.09em !important;
+}
+
+body.student-panel .sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+body.student-panel .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+/* ---- Top navbar ---- */
+body.student-panel .top-navbar {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+body.student-panel .navbar-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+/* Notification unread dot: blue, never yellow/orange */
+body.student-panel .navbar-btn .badge-dot {
+    background: #ffffff;
+    border-color: var(--student-blue-dark);
+}
+
+body.student-panel .notification-dropdown .dropdown-header .badge.bg-danger {
+    background: var(--student-blue) !important;
+}
+
+body.student-panel a:hover {
+    color: var(--student-blue-dark);
+}
+
+/* ---- Cards ---- */
+body.student-panel .dashboard-card,
+body.student-panel .content-card {
+    border-radius: 14px;
+    border-color: var(--student-border);
+}
+
+body.student-panel .dashboard-card:hover {
+    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.1);
+    transform: translateY(-2px);
+}
+
+body.student-panel .content-card .card-header-custom {
+    background: #fff;
+}
+
+/* ---- Stat icons: one unified blue design system (spec section 4) ----
+   Overrides every existing color modifier class (blue/teal/yellow/purple/
+   orange/green/red) so class names used elsewhere stay intact but every
+   icon renders as light-blue-bg + blue-icon or navy-bg + white-icon. */
+body.student-panel .stat-icon,
+body.student-panel .stat-icon.red,
+body.student-panel .stat-icon.blue,
+body.student-panel .stat-icon.green,
+body.student-panel .stat-icon.purple,
+body.student-panel .stat-icon.orange,
+body.student-panel .stat-icon.teal,
+body.student-panel .stat-icon.yellow {
+    background: var(--student-blue-light);
+    color: var(--student-blue);
+}
+
+body.student-panel .activity-icon.stat-icon {
+    background: var(--student-blue-light);
+    color: var(--student-blue);
+}
+
+/* ---- Buttons: one consistent blue system (spec section 29) ---- */
+body.student-panel .btn-primary-custom {
+    background: linear-gradient(135deg, var(--student-blue), var(--student-blue-dark));
+}
+
+body.student-panel .btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--student-blue-dark), #0B1F3A);
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+}
+
+body.student-panel .btn-outline-custom {
+    border-color: var(--student-border);
+    background: #fff;
+}
+
+body.student-panel .btn-outline-custom:hover {
+    border-color: var(--student-blue);
+    color: var(--student-blue);
+    background: var(--student-blue-light-2);
+}
+
+
+
+/* ---- Forms ---- */
+body.student-panel .form-control-custom,
+body.student-panel .form-control.form-control-custom,
+body.student-panel select.form-control-custom,
+body.student-panel textarea.form-control-custom {
+    height: 46px;
+    border-color: #CBD5E1;
+    border-radius: 9px;
+}
+
+body.student-panel textarea.form-control-custom {
+    height: auto;
+}
+
+body.student-panel .form-control-custom:focus {
+    border-color: var(--student-blue);
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* ---- Tables & job cards ---- */
+body.student-panel .table-custom tbody tr:hover {
+    background: var(--student-blue-light-2);
+}
+
+body.student-panel .job-card:hover {
+    border-color: var(--student-blue);
+    box-shadow: 0 8px 20px rgba(26, 86, 219, 0.12);
+}
+
+body.student-panel .pagination-custom .page-item.active .page-link {
+    background: linear-gradient(135deg, var(--student-blue), var(--student-blue-dark));
+    border-color: var(--student-blue);
+    color: #fff;
+}
+
+/* ---- Badges: blue-based status styling ---- */
+body.student-panel .badge-active,
+body.student-panel .badge-unread {
+    background: var(--student-blue-light);
+    color: var(--student-blue-dark);
+}
+
+body.student-panel .badge-pending {
+    background: var(--student-blue-light-2);
+    color: var(--student-text-secondary);
+}
+
+body.student-panel .badge-rejected {
+    background: #F1F5F9;
+    color: var(--student-text-secondary);
+}
+
+body.student-panel .badge-shortlisted,
+body.student-panel .badge-selected {
+    background: var(--student-blue-light);
+    color: var(--student-blue-dark);
+}
+
+body.student-panel .badge-approved {
+    background: var(--student-blue-light);
+    color: #0F7A46;
+}
+
+/* Bootstrap's default yellow alert, replaced site-wide in student.js with
+   this neutral blue variant (spec: no Bootstrap warning/yellow colors). */
+body.student-panel .alert-info-custom {
+    background: var(--student-blue-light-2);
+    border: 1px solid #BFDBFE;
+    color: var(--student-navy);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+}
+
+/* ---- Empty states (spec section 33) ---- */
+body.student-panel .empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--student-text-secondary);
+    width: 100%;
+}
+
+body.student-panel .empty-state i {
+    font-size: 2rem;
+    color: var(--student-blue);
+    background: var(--student-blue-light);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+body.student-panel .empty-state p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* ---- Notifications list: unread vs read (spec section 21) ---- */
+body.student-panel .activity-item {
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+body.student-panel .activity-item.unread {
+    background: var(--student-blue-light-2);
+    border-left: 3px solid var(--student-blue);
+}
+
+body.student-panel .activity-item.read {
+    background: #fff;
+}
+
+/* Shared App.showToast() uses Bootstrap's bg-warning (yellow) for the
+   'warning' toast type — overridden to blue for the student panel only,
+   since App.js is shared across all four panels and isn't module-aware. */
+body.student-panel .toast.bg-warning {
+    background: var(--student-blue) !important;
+    color: #fff !important;
+}
+
+/* ---- Module/role cards (used on shared landing screens) ---- */
+body.student-panel .module-card:hover {
+    border-color: var(--student-blue);
+    box-shadow: 0 8px 20px rgba(26, 86, 219, 0.15);
+}
+
+body.student-panel .module-card .module-icon {
+    background: linear-gradient(135deg, var(--student-blue), var(--student-blue-dark));
+}
+
+/* ============================================================
+   ADMIN PANEL — PROFESSIONAL DARK-BLUE THEME OVERRIDE
+   Everything below is scoped to body.admin-panel (set
+   automatically by Components.initLayout('admin', ...)) plus
+   .admin-login-page (the DB-based Admin Login screen, which
+   does not go through initLayout). Admin/TPO/Company/Student
+   panels elsewhere keep their existing look untouched.
+   No IDs, function names, database code, or markup structure
+   are changed here — visual overrides only.
+   ============================================================ */
+body.admin-panel {
+    --admin-navy: #0B1F3A;
+    --admin-navy-2: #0D1B3E;
+    --admin-blue: #1A56DB;
+    --admin-blue-dark: #123B99;
+    --admin-blue-light: #EAF2FF;
+    --admin-blue-light-2: #EFF6FF;
+    --admin-bg: #F4F7FB;
+    --admin-text: #1F2937;
+    --admin-text-secondary: #64748B;
+    --admin-border: #E2E8F0;
+}
+
+body.admin-panel {
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+}
+
+/* ---- Sidebar: Unified High-Contrast Dark Navy ---- */
+body.admin-panel .sidebar,
+body.admin-panel .offcanvas-sidebar {
+    background: #0B1F3A !important;
+    background: linear-gradient(180deg, #0B1F3A 0%, #08162B 100%) !important;
+}
+
+body.admin-panel .sidebar-nav .nav-link {
+    color: #E2E8F0 !important;
+}
+
+body.admin-panel .sidebar-nav .nav-link i {
+    color: #93C5FD !important;
+}
+
+body.admin-panel .sidebar-nav .nav-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.admin-panel .sidebar-nav .nav-link:hover i {
+    color: #BAE6FD !important;
+}
+
+body.admin-panel .sidebar-nav .nav-link.active,
+body.admin-panel .offcanvas-sidebar .nav-link.active {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
+    font-weight: 700 !important;
+    border-left: none !important;
+}
+
+body.admin-panel .sidebar-nav .nav-link.active i,
+body.admin-panel .offcanvas-sidebar .nav-link.active i {
+    color: #FFFFFF !important;
+}
+
+body.admin-panel .sidebar-section-title {
+    color: #94A3B8 !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.09em !important;
+}
+
+body.admin-panel .sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+body.admin-panel .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+/* ---- Top navbar ---- */
+body.admin-panel .top-navbar {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+body.admin-panel .navbar-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+/* Notification badge/dot: blue, never yellow/gold (spec section 5) */
+body.admin-panel .navbar-btn .badge-dot {
+    background: #ffffff;
+    border-color: var(--admin-blue-dark);
+}
+
+body.admin-panel .notification-dropdown .dropdown-header .badge.bg-danger {
+    background: var(--admin-blue) !important;
+}
+
+body.admin-panel a:hover {
+    color: var(--admin-blue-dark);
+}
+
+/* ---- Cards ---- */
+body.admin-panel .dashboard-card,
+body.admin-panel .content-card {
+    border-radius: 14px;
+    border-color: var(--admin-border);
+}
+
+body.admin-panel .dashboard-card:hover {
+    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.1);
+    transform: translateY(-2px);
+}
+
+body.admin-panel .content-card .card-header-custom {
+    background: #fff;
+}
+
+/* Decorative section-header icons (Monthly Trends, Recent Activities, Quick
+   Actions, etc.) previously used text-danger (red) purely as an accent —
+   recolored to blue so no non-palette color appears (spec section 3).
+   The Confirm Delete modal icon is a different selector and is untouched,
+   since red there flags a genuinely destructive action (spec section 30). */
+body.admin-panel .card-header-custom h5 .text-danger {
+    color: var(--admin-blue) !important;
+}
+
+/* ---- Stat icons: one unified blue design system (spec sections 7 & 9) ----
+   Overrides every existing color modifier class (red/blue/green/purple/
+   orange/teal/yellow) so class names used elsewhere (and any JS that sets
+   them) stay intact, but every stat/activity icon renders as
+   light-blue-bg + blue-icon. */
+body.admin-panel .stat-icon,
+body.admin-panel .stat-icon.red,
+body.admin-panel .stat-icon.blue,
+body.admin-panel .stat-icon.green,
+body.admin-panel .stat-icon.purple,
+body.admin-panel .stat-icon.orange,
+body.admin-panel .stat-icon.teal,
+body.admin-panel .stat-icon.yellow {
+    background: var(--admin-blue-light);
+    color: var(--admin-blue);
+}
+
+body.admin-panel .activity-icon.stat-icon {
+    background: var(--admin-blue-light);
+    color: var(--admin-blue);
+}
+
+/* Stat-change indicators (e.g. "12% this month") default to green/blue
+   globally — recolored to the admin blue palette so no green appears
+   anywhere in the Admin Panel (spec section 3). The up/down arrow icon
+   still carries the meaning, not the color. */
+body.admin-panel .stat-change.positive,
+body.admin-panel .stat-change.negative {
+    color: var(--admin-blue);
+}
+
+/* ---- Buttons: one consistent blue system (spec section 30) ---- */
+body.admin-panel .btn-primary-custom {
+    background: linear-gradient(135deg, var(--admin-blue), var(--admin-blue-dark));
+}
+
+body.admin-panel .btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--admin-blue-dark), #0B1F3A);
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+}
+
+body.admin-panel .btn-outline-custom {
+    border-color: var(--admin-border);
+    background: #fff;
+}
+
+body.admin-panel .btn-outline-custom:hover {
+    border-color: var(--admin-blue);
+    color: var(--admin-blue);
+    background: var(--admin-blue-light-2);
+}
+
+
+
+/* Delete stays red — a genuinely destructive action (spec section 30) */
+
+
+/* ---- Forms ---- */
+body.admin-panel .form-control-custom,
+body.admin-panel .form-control.form-control-custom,
+body.admin-panel select.form-control-custom,
+body.admin-panel textarea.form-control-custom {
+    height: 46px;
+    border-color: #CBD5E1;
+    border-radius: 9px;
+}
+
+body.admin-panel textarea.form-control-custom {
+    height: auto;
+}
+
+body.admin-panel .form-control-custom:focus {
+    border-color: var(--admin-blue);
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* ---- Tables ---- */
+body.admin-panel .table-custom tbody tr:hover {
+    background: var(--admin-blue-light-2);
+}
+
+body.admin-panel .pagination-custom .page-item.active .page-link {
+    background: linear-gradient(135deg, var(--admin-blue), var(--admin-blue-dark));
+    border-color: var(--admin-blue);
+    color: #fff;
+}
+
+/* ---- Badges: blue-based status styling ---- */
+body.admin-panel .badge-active,
+body.admin-panel .badge-unread {
+    background: var(--admin-blue-light);
+    color: var(--admin-blue-dark);
+}
+
+body.admin-panel .badge-pending {
+    background: var(--admin-blue-light-2);
+    color: var(--admin-text-secondary);
+}
+
+body.admin-panel .badge-rejected {
+    background: #F1F5F9;
+    color: var(--admin-text-secondary);
+}
+
+body.admin-panel .badge-shortlisted,
+body.admin-panel .badge-selected {
+    background: var(--admin-blue-light);
+    color: var(--admin-blue-dark);
+}
+
+body.admin-panel .badge-approved {
+    background: var(--admin-blue-light);
+    color: #0F7A46;
+}
+
+/* Bootstrap's default yellow alert, replaced with a neutral blue variant
+   (spec: no yellow/orange/amber anywhere in the Admin Panel). */
+body.admin-panel .alert-info-custom {
+    background: var(--admin-blue-light-2);
+    border: 1px solid #BFDBFE;
+    color: var(--admin-navy);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+}
+
+/* ---- Empty states (spec section 34) ---- */
+body.admin-panel .empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--admin-text-secondary);
+    width: 100%;
+}
+
+body.admin-panel .empty-state i {
+    font-size: 2rem;
+    color: var(--admin-blue);
+    background: var(--admin-blue-light);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+body.admin-panel .empty-state p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* ---- Notifications list: unread vs read (spec section 21) ---- */
+body.admin-panel .activity-item {
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+body.admin-panel .activity-item.unread {
+    background: var(--admin-blue-light-2);
+    border-left: 3px solid var(--admin-blue);
+}
+
+body.admin-panel .activity-item.read {
+    background: #fff;
+}
+
+/* Shared App.showToast() uses Bootstrap's bg-warning (yellow) for the
+   'warning' toast type — overridden to blue for the Admin panel only,
+   since app.js is shared across all four panels and isn't module-aware. */
+body.admin-panel .toast.bg-warning,
+body.admin-panel .toast.bg-success,
+body.admin-panel .toast.bg-info {
+    background: var(--admin-blue) !important;
+    color: #fff !important;
+}
+/* Error toasts stay red, same exception already made for the Delete button
+   and confirm-delete modal (spec section 30) — red flags a genuine failure,
+   not a decorative accent, so it isn't part of the "no random colors" rule. */
+
+/* ---- Module/role cards (used on shared landing screens) ---- */
+body.admin-panel .module-card:hover {
+    border-color: var(--admin-blue);
+    box-shadow: 0 8px 20px rgba(26, 86, 219, 0.15);
+}
+
+body.admin-panel .module-card .module-icon {
+    background: linear-gradient(135deg, var(--admin-blue), var(--admin-blue-dark));
+}
+
+/* ---- Bootstrap defaults (accordion, switches) recolored to the admin
+   blue so Settings page controls match the palette instead of Bootstrap's
+   default --bs-primary blue (spec section 3: one consistent blue system) ---- */
+body.admin-panel .accordion-button:not(.collapsed) {
+    background: var(--admin-blue-light);
+    color: var(--admin-navy);
+    box-shadow: inset 0 -1px 0 var(--admin-border);
+}
+
+body.admin-panel .accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+    border-color: var(--admin-blue);
+}
+
+body.admin-panel .form-check-input:checked {
+    background-color: var(--admin-blue);
+    border-color: var(--admin-blue);
+}
+
+body.admin-panel .form-check-input:focus {
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* ============================================================
+   TPO PANEL — PROFESSIONAL DARK-BLUE THEME OVERRIDE
+   Everything below is scoped to body.tpo-panel (set
+   automatically by Components.initLayout('tpo', ...)) plus
+   .tpo-login-page (the DB-based TPO Login screen, which does
+   not go through initLayout). Admin/Student/Company panels
+   elsewhere keep their existing look untouched.
+   No IDs, function names, database code, or markup structure
+   are changed here — visual overrides only.
+   ============================================================ */
+body.tpo-panel {
+    --tpo-navy: #0B1F3A;
+    --tpo-navy-2: #0D1B3E;
+    --tpo-blue: #1A56DB;
+    --tpo-blue-dark: #123B99;
+    --tpo-blue-light: #EAF2FF;
+    --tpo-blue-light-2: #EFF6FF;
+    --tpo-bg: #F4F7FB;
+    --tpo-text: #1F2937;
+    --tpo-text-secondary: #64748B;
+    --tpo-border: #E2E8F0;
+}
+
+body.tpo-panel {
+    background-color: var(--tpo-bg);
+    color: var(--tpo-text);
+}
+
+/* ---- Sidebar: Unified High-Contrast Dark Navy ---- */
+body.tpo-panel .sidebar,
+body.tpo-panel .offcanvas-sidebar {
+    background: #0B1F3A !important;
+    background: linear-gradient(180deg, #0B1F3A 0%, #08162B 100%) !important;
+}
+
+body.tpo-panel .sidebar-nav .nav-link {
+    color: #E2E8F0 !important;
+}
+
+body.tpo-panel .sidebar-nav .nav-link i {
+    color: #93C5FD !important;
+}
+
+body.tpo-panel .sidebar-nav .nav-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.tpo-panel .sidebar-nav .nav-link:hover i {
+    color: #BAE6FD !important;
+}
+
+body.tpo-panel .sidebar-nav .nav-link.active,
+body.tpo-panel .offcanvas-sidebar .nav-link.active {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
+    font-weight: 700 !important;
+    border-left: none !important;
+}
+
+body.tpo-panel .sidebar-nav .nav-link.active i,
+body.tpo-panel .offcanvas-sidebar .nav-link.active i {
+    color: #FFFFFF !important;
+}
+
+body.tpo-panel .sidebar-section-title {
+    color: #94A3B8 !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.09em !important;
+}
+
+body.tpo-panel .sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+body.tpo-panel .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+/* ---- Top navbar ---- */
+body.tpo-panel .top-navbar {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+body.tpo-panel .navbar-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+/* Notification badge/dot: blue, never yellow/gold (spec section 26) */
+body.tpo-panel .navbar-btn .badge-dot {
+    background: #ffffff;
+    border-color: var(--tpo-blue-dark);
+}
+
+body.tpo-panel .notification-dropdown .dropdown-header .badge.bg-danger {
+    background: var(--tpo-blue) !important;
+}
+
+body.tpo-panel a:hover {
+    color: var(--tpo-blue-dark);
+}
+
+/* ---- Cards ---- */
+body.tpo-panel .dashboard-card,
+body.tpo-panel .content-card {
+    border-radius: 14px;
+    border-color: var(--tpo-border);
+}
+
+body.tpo-panel .dashboard-card:hover {
+    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.1);
+    transform: translateY(-2px);
+}
+
+body.tpo-panel .content-card .card-header-custom {
+    background: #fff;
+}
+
+/* Decorative section-header icons (Monthly Trends, Recent Activities, Quick
+   Actions, etc.) previously used text-danger (red) purely as an accent —
+   recolored to blue so no non-palette color appears (spec section 3). */
+body.tpo-panel .card-header-custom h5 .text-danger {
+    color: var(--tpo-blue) !important;
+}
+
+/* ---- Stat icons: one unified blue design system (spec sections 8 & 34) ----
+   Overrides every existing color modifier class (red/blue/green/purple/
+   orange/teal/yellow) so class names used elsewhere (and any JS that sets
+   them) stay intact, but every stat/activity icon renders as
+   light-blue-bg + blue-icon. */
+body.tpo-panel .stat-icon,
+body.tpo-panel .stat-icon.red,
+body.tpo-panel .stat-icon.blue,
+body.tpo-panel .stat-icon.green,
+body.tpo-panel .stat-icon.purple,
+body.tpo-panel .stat-icon.orange,
+body.tpo-panel .stat-icon.teal,
+body.tpo-panel .stat-icon.yellow {
+    background: var(--tpo-blue-light);
+    color: var(--tpo-blue);
+}
+
+body.tpo-panel .activity-icon.stat-icon {
+    background: var(--tpo-blue-light);
+    color: var(--tpo-blue);
+}
+
+body.tpo-panel .stat-change.positive,
+body.tpo-panel .stat-change.negative {
+    color: var(--tpo-blue);
+}
+
+/* ---- Buttons: one consistent blue system (spec section 35) ---- */
+body.tpo-panel .btn-primary-custom {
+    background: linear-gradient(135deg, var(--tpo-blue), var(--tpo-blue-dark));
+}
+
+body.tpo-panel .btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--tpo-blue-dark), #0B1F3A);
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+}
+
+body.tpo-panel .btn-outline-custom {
+    border-color: var(--tpo-border);
+    background: #fff;
+}
+
+body.tpo-panel .btn-outline-custom:hover {
+    border-color: var(--tpo-blue);
+    color: var(--tpo-blue);
+    background: var(--tpo-blue-light-2);
+}
+
+
+
+/* Delete stays red — a genuinely destructive action (spec section 35) */
+
+
+/* ---- Forms ---- */
+body.tpo-panel .form-control-custom,
+body.tpo-panel .form-control.form-control-custom,
+body.tpo-panel select.form-control-custom,
+body.tpo-panel textarea.form-control-custom {
+    height: 46px;
+    border-color: #CBD5E1;
+    border-radius: 9px;
+}
+
+body.tpo-panel textarea.form-control-custom {
+    height: auto;
+}
+
+body.tpo-panel .form-control-custom:focus {
+    border-color: var(--tpo-blue);
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* Plain (non -custom) Bootstrap controls used on a few TPO pages (e.g. the
+   server-side asp:DropDownList status filter) get the same blue focus
+   ring instead of Bootstrap's default blue, for one consistent system. */
+body.tpo-panel .form-select:focus,
+body.tpo-panel .form-control:focus {
+    border-color: var(--tpo-blue);
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* ---- Tables ---- */
+body.tpo-panel .table-custom tbody tr:hover {
+    background: var(--tpo-blue-light-2);
+}
+
+body.tpo-panel .pagination-custom .page-item.active .page-link {
+    background: linear-gradient(135deg, var(--tpo-blue), var(--tpo-blue-dark));
+    border-color: var(--tpo-blue);
+    color: #fff;
+}
+
+/* ---- Badges: blue-based status styling ---- */
+body.tpo-panel .badge-active,
+body.tpo-panel .badge-unread {
+    background: var(--tpo-blue-light);
+    color: var(--tpo-blue-dark);
+}
+
+body.tpo-panel .badge-pending {
+    background: var(--tpo-blue-light-2);
+    color: var(--tpo-text-secondary);
+}
+
+body.tpo-panel .badge-rejected {
+    background: #F1F5F9;
+    color: var(--tpo-text-secondary);
+}
+
+body.tpo-panel .badge-shortlisted,
+body.tpo-panel .badge-selected {
+    background: var(--tpo-blue-light);
+    color: var(--tpo-blue-dark);
+}
+
+body.tpo-panel .badge-approved {
+    background: var(--tpo-blue-light);
+    color: #0F7A46;
+}
+
+/* Bootstrap's default yellow "warning" badge — used on the Student
+   Management grid for the "Below Criteria" CGPA indicator — recolored to a
+   neutral slate tone so no yellow/gold appears anywhere in the TPO Panel
+   (spec sections 3 & 12). The success/green "Eligible" badge is untouched. */
+body.tpo-panel .badge.bg-warning-subtle {
+    background: var(--tpo-blue-light-2) !important;
+    color: var(--tpo-text-secondary) !important;
+}
+
+/* Bootstrap's default yellow alert, replaced with a neutral blue variant
+   (spec: no yellow/orange/amber anywhere in the TPO Panel). */
+body.tpo-panel .alert-info-custom {
+    background: var(--tpo-blue-light-2);
+    border: 1px solid #BFDBFE;
+    color: var(--tpo-navy);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+}
+
+/* ---- Empty states (spec section 40) ---- */
+body.tpo-panel .empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--tpo-text-secondary);
+    width: 100%;
+}
+
+body.tpo-panel .empty-state i {
+    font-size: 2rem;
+    color: var(--tpo-blue);
+    background: var(--tpo-blue-light);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+body.tpo-panel .empty-state p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Plain table empty-state rows (e.g. "No interviews scheduled.") rendered
+   by tpo.js as a single centered <td> — recolored/sized to match the rest
+   of the palette instead of default Bootstrap muted text. */
+body.tpo-panel .table-custom td.text-muted,
+body.tpo-panel .table-custom tbody tr td.text-center.text-muted {
+    color: var(--tpo-text-secondary);
+}
+
+/* ---- Notifications list: unread vs read (spec section 26) ---- */
+body.tpo-panel .activity-item {
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+body.tpo-panel .activity-item.unread {
+    background: var(--tpo-blue-light-2);
+    border-left: 3px solid var(--tpo-blue);
+}
+
+body.tpo-panel .activity-item.read {
+    background: #fff;
+}
+
+/* Shared App.showToast() uses Bootstrap's bg-warning (yellow) for the
+   'warning' toast type — overridden to blue for the TPO panel only,
+   since app.js is shared across all four panels and isn't module-aware. */
+body.tpo-panel .toast.bg-warning,
+body.tpo-panel .toast.bg-success,
+body.tpo-panel .toast.bg-info {
+    background: var(--tpo-blue) !important;
+    color: #fff !important;
+}
+/* Error toasts stay red, same exception already made for the Delete button
+   and confirm-delete modal — red flags a genuine failure, not a decorative
+   accent, so it isn't part of the "no random colors" rule. */
+
+/* ---- Bootstrap defaults (accordion, switches) recolored to the TPO
+   blue so any Settings-style controls match the palette instead of
+   Bootstrap's default --bs-primary blue (spec section 3). ---- */
+body.tpo-panel .accordion-button:not(.collapsed) {
+    background: var(--tpo-blue-light);
+    color: var(--tpo-navy);
+    box-shadow: inset 0 -1px 0 var(--tpo-border);
+}
+
+body.tpo-panel .accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+    border-color: var(--tpo-blue);
+}
+
+body.tpo-panel .form-check-input:checked {
+    background-color: var(--tpo-blue);
+    border-color: var(--tpo-blue);
+}
+
+body.tpo-panel .form-check-input:focus {
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* ============================================================
+   COMPANY PANEL — PROFESSIONAL DARK-BLUE THEME OVERRIDE
+   Everything below is scoped to body.company-panel (set
+   automatically by Components.initLayout('company', ...)) plus
+   .company-login-page / .company-register-page (the DB-based
+   Company Login/Register screens, which do not go through
+   initLayout). Admin/TPO/Student panels elsewhere keep their
+   existing look untouched.
+   No IDs, function names, database code, or markup structure
+   are changed here — visual overrides only.
+   ============================================================ */
+body.company-panel {
+    --company-navy: #0B1F3A;
+    --company-navy-2: #0D1B3E;
+    --company-blue: #1A56DB;
+    --company-blue-dark: #123B99;
+    --company-blue-light: #EAF2FF;
+    --company-blue-light-2: #EFF6FF;
+    --company-bg: #F4F7FB;
+    --company-text: #1F2937;
+    --company-text-secondary: #64748B;
+    --company-border: #E2E8F0;
+}
+
+body.company-panel {
+    background-color: var(--company-bg);
+    color: var(--company-text);
+}
+
+/* ---- Sidebar: Unified High-Contrast Dark Navy ---- */
+body.company-panel .sidebar,
+body.company-panel .offcanvas-sidebar {
+    background: #0B1F3A !important;
+    background: linear-gradient(180deg, #0B1F3A 0%, #08162B 100%) !important;
+}
+
+body.company-panel .sidebar-nav .nav-link {
+    color: #E2E8F0 !important;
+}
+
+body.company-panel .sidebar-nav .nav-link i {
+    color: #93C5FD !important;
+}
+
+body.company-panel .sidebar-nav .nav-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.company-panel .sidebar-nav .nav-link:hover i {
+    color: #BAE6FD !important;
+}
+
+body.company-panel .sidebar-nav .nav-link.active,
+body.company-panel .offcanvas-sidebar .nav-link.active {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
+    font-weight: 700 !important;
+    border-left: none !important;
+}
+
+body.company-panel .sidebar-nav .nav-link.active i,
+body.company-panel .offcanvas-sidebar .nav-link.active i {
+    color: #FFFFFF !important;
+}
+
+body.company-panel .sidebar-section-title {
+    color: #94A3B8 !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.09em !important;
+}
+
+body.company-panel .sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+body.company-panel .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+/* ---- Top navbar ---- */
+body.company-panel .top-navbar {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+
+body.company-panel .navbar-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+/* Notification badge/dot: blue, never yellow/gold (spec section 7) */
+body.company-panel .navbar-btn .badge-dot {
+    background: #ffffff;
+    border-color: var(--company-blue-dark);
+}
+
+body.company-panel .notification-dropdown .dropdown-header .badge.bg-danger {
+    background: var(--company-blue) !important;
+}
+
+body.company-panel a:hover {
+    color: var(--company-blue-dark);
+}
+
+/* ---- Cards ---- */
+body.company-panel .dashboard-card,
+body.company-panel .content-card {
+    border-radius: 14px;
+    border-color: var(--company-border);
+}
+
+body.company-panel .dashboard-card:hover {
+    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.1);
+    transform: translateY(-2px);
+}
+
+body.company-panel .content-card .card-header-custom {
+    background: #fff;
+}
+
+/* Decorative section-header icons previously using text-danger (red) purely
+   as an accent — recolored to blue so no non-palette color appears (spec
+   section 3). */
+body.company-panel .card-header-custom h5 .text-danger {
+    color: var(--company-blue) !important;
+}
+
+/* ---- Stat icons: one unified blue design system (spec sections 9 & 10) ----
+   Overrides every existing color modifier class (red/blue/green/purple/
+   orange/teal/yellow) so class names used elsewhere (and any JS that sets
+   them) stay intact, but every stat/activity icon renders as
+   light-blue-bg + blue-icon. */
+body.company-panel .stat-icon,
+body.company-panel .stat-icon.red,
+body.company-panel .stat-icon.blue,
+body.company-panel .stat-icon.green,
+body.company-panel .stat-icon.purple,
+body.company-panel .stat-icon.orange,
+body.company-panel .stat-icon.teal,
+body.company-panel .stat-icon.yellow {
+    background: var(--company-blue-light);
+    color: var(--company-blue);
+}
+
+body.company-panel .activity-icon.stat-icon {
+    background: var(--company-blue-light);
+    color: var(--company-blue);
+}
+
+body.company-panel .stat-change.positive,
+body.company-panel .stat-change.negative {
+    color: var(--company-blue);
+}
+
+/* ---- Buttons: one consistent blue system (spec section 32) ---- */
+body.company-panel .btn-primary-custom {
+    background: linear-gradient(135deg, var(--company-blue), var(--company-blue-dark));
+}
+
+body.company-panel .btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--company-blue-dark), #0B1F3A);
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+}
+
+body.company-panel .btn-outline-custom {
+    border-color: var(--company-border);
+    background: #fff;
+}
+
+body.company-panel .btn-outline-custom:hover {
+    border-color: var(--company-blue);
+    color: var(--company-blue);
+    background: var(--company-blue-light-2);
+}
+
+
+
+/* Delete stays red — a genuinely destructive action (spec section 32) */
+
+
+/* ---- Forms ---- */
+body.company-panel .form-control-custom,
+body.company-panel .form-control.form-control-custom,
+body.company-panel select.form-control-custom,
+body.company-panel textarea.form-control-custom {
+    height: 46px;
+    border-color: #CBD5E1;
+    border-radius: 9px;
+}
+
+body.company-panel textarea.form-control-custom {
+    height: auto;
+}
+
+body.company-panel .form-control-custom:focus {
+    border-color: var(--company-blue);
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* Plain (non -custom) Bootstrap controls used on a few Company pages (e.g.
+   server-side asp:DropDownList status filters) get the same blue focus ring
+   instead of Bootstrap's default blue, for one consistent system. */
+body.company-panel .form-select:focus,
+body.company-panel .form-control:focus {
+    border-color: var(--company-blue);
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* ---- Tables ---- */
+body.company-panel .table-custom tbody tr:hover {
+    background: var(--company-blue-light-2);
+}
+
+body.company-panel .pagination-custom .page-item.active .page-link {
+    background: linear-gradient(135deg, var(--company-blue), var(--company-blue-dark));
+    border-color: var(--company-blue);
+    color: #fff;
+}
+
+/* ---- Badges: blue-based status styling ---- */
+body.company-panel .badge-active,
+body.company-panel .badge-unread {
+    background: var(--company-blue-light);
+    color: var(--company-blue-dark);
+}
+
+body.company-panel .badge-pending {
+    background: var(--company-blue-light-2);
+    color: var(--company-text-secondary);
+}
+
+body.company-panel .badge-rejected {
+    background: #F1F5F9;
+    color: var(--company-text-secondary);
+}
+
+body.company-panel .badge-shortlisted,
+body.company-panel .badge-selected {
+    background: var(--company-blue-light);
+    color: var(--company-blue-dark);
+}
+
+body.company-panel .badge-approved {
+    background: var(--company-blue-light);
+    color: #0F7A46;
+}
+
+/* Bootstrap's default yellow "warning" badge, recolored to a neutral slate
+   tone so no yellow/gold appears anywhere in the Company Panel (spec
+   sections 3 & 19). The success/green badges are untouched. */
+body.company-panel .badge.bg-warning-subtle {
+    background: var(--company-blue-light-2) !important;
+    color: var(--company-text-secondary) !important;
+}
+
+/* Bootstrap's default yellow alert, replaced with a neutral blue variant
+   (spec: no yellow/orange/amber anywhere in the Company Panel). */
+body.company-panel .alert-info-custom {
+    background: var(--company-blue-light-2);
+    border: 1px solid #BFDBFE;
+    color: var(--company-navy);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+}
+
+/* ---- Empty states (spec section 37) ---- */
+body.company-panel .empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--company-text-secondary);
+    width: 100%;
+}
+
+body.company-panel .empty-state i {
+    font-size: 2rem;
+    color: var(--company-blue);
+    background: var(--company-blue-light);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+body.company-panel .empty-state p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Plain table empty-state rows (e.g. "No interviews scheduled.") rendered by
+   company.js as a single centered <td> — recolored/sized to match the rest
+   of the palette instead of default Bootstrap muted text. */
+body.company-panel .table-custom td.text-muted,
+body.company-panel .table-custom tbody tr td.text-center.text-muted {
+    color: var(--company-text-secondary);
+}
+
+/* ---- Notifications list: unread vs read (spec section 26) ---- */
+body.company-panel .activity-item {
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+body.company-panel .activity-item.unread {
+    background: var(--company-blue-light-2);
+    border-left: 3px solid var(--company-blue);
+}
+
+body.company-panel .activity-item.read {
+    background: #fff;
+}
+
+/* Shared App.showToast() uses Bootstrap's bg-warning (yellow) for the
+   'warning' toast type — overridden to blue for the Company panel only,
+   since app.js is shared across all four panels and isn't module-aware. */
+body.company-panel .toast.bg-warning,
+body.company-panel .toast.bg-success,
+body.company-panel .toast.bg-info {
+    background: var(--company-blue) !important;
+    color: #fff !important;
+}
+/* Error toasts stay red — a genuine failure, not a decorative accent, so
+   it isn't part of the "no random colors" rule. */
+
+/* ---- Bootstrap defaults (accordion, switches) recolored to the Company
+   blue so any Settings-style controls match the palette instead of
+   Bootstrap's default --bs-primary blue (spec section 3). ---- */
+body.company-panel .accordion-button:not(.collapsed) {
+    background: var(--company-blue-light);
+    color: var(--company-navy);
+    box-shadow: inset 0 -1px 0 var(--company-border);
+}
+
+body.company-panel .accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+    border-color: var(--company-blue);
+}
+
+body.company-panel .form-check-input:checked {
+    background-color: var(--company-blue);
+    border-color: var(--company-blue);
+}
+
+body.company-panel .form-check-input:focus {
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+}
+
+/* ============================================================
+   COMPANY LOGIN / REGISTER (DB-based — .company-login-page /
+   .company-register-page wrap the existing markup only; no
+   control IDs, code-behind, or database logic touched). These
+   pages render on Public_Site1.Master and never get the
+   body.company-panel class from initLayout, so their own scoped
+   overrides live here.
+   ============================================================ */
+.company-login-page a.text-danger,
+.company-register-page a.text-danger {
+    color: var(--company-blue-dark, #123B99) !important;
+}
+
+.company-login-page a:hover,
+.company-register-page a:hover {
+    color: var(--company-blue-dark, #123B99) !important;
+}
+
+.company-login-page .btn-primary-custom,
+.company-register-page .btn-primary-custom {
+    background: linear-gradient(135deg, var(--company-blue, #1A56DB), var(--company-blue-dark, #123B99));
+}
+
+.company-login-page .btn-primary-custom:hover,
+.company-register-page .btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--company-blue-dark, #123B99), #0B1F3A);
+    color: #fff;
+}
+
+/* ============================================================
+   TPO LOGIN (DB-based — .tpo-login-page wraps the existing
+   markup only; no control IDs, code-behind, or database logic
+   touched). This page renders on Public_Site1.Master and never
+   gets the body.tpo-panel class from initLayout, so its own
+   scoped overrides live here.
+   ============================================================ */
+.tpo-login-page a.text-danger {
+    color: var(--tpo-blue-dark, #123B99) !important;
+}
+
+.tpo-login-page a:hover {
+    color: var(--tpo-blue-dark, #123B99) !important;
+}
+
+.tpo-login-page .btn-primary-custom {
+    background: linear-gradient(135deg, var(--tpo-blue, #1A56DB), var(--tpo-blue-dark, #123B99));
+}
+
+.tpo-login-page .btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--tpo-blue-dark, #123B99), #0B1F3A);
+    color: #fff;
+}
+
+/* ============================================================
+   ADMIN LOGIN (DB-based — .admin-login-page wraps the existing
+   markup only; no control IDs, code-behind, or database logic
+   touched). This page renders on Public_Site1.Master and never
+   gets the body.admin-panel class from initLayout, so its own
+   scoped overrides live here.
+   ============================================================ */
+.admin-login-page a.text-danger {
+    color: var(--admin-blue-dark, #123B99) !important;
+}
+
+.admin-login-page a:hover {
+    color: var(--admin-blue-dark, #123B99) !important;
+}
+
+.admin-login-page .btn-primary-custom {
+    background: linear-gradient(135deg, var(--admin-blue, #1A56DB), var(--admin-blue-dark, #123B99));
+}
+
+.admin-login-page .btn-primary-custom:hover {
+    background: linear-gradient(135deg, var(--admin-blue-dark, #123B99), #0B1F3A);
+    color: #fff;
+}
+
+
+/* ==========================================================================
+   ASTRA PMS — MASTER FINISHING & HIGH CONTRAST DESIGN PERFECTION
+   Fixes:
+   1. Clean high-contrast white topbar across all panels with crisp typography.
+   2. Ultra-high-contrast sidebar titles (#94A3B8 / #CBD5E1) and bright nav-links (#F1F5F9).
+   3. Main content padding-top (88px) to eliminate any possible top-nav clipping.
+   4. Perfect vertical centering for all GridView cells, buttons, badges, and icons.
+   ========================================================================== */
+
+/* 1. Top Navbar Perfection */
+.top-navbar,
+body.student-panel .top-navbar,
+body.admin-panel .top-navbar,
+body.tpo-panel .top-navbar,
+body.company-panel .top-navbar {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: var(--sidebar-width) !important;
+    height: 72px !important;
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    z-index: 1030 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 1.75rem !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.top-navbar.expanded,
+.sidebar.collapsed ~ .main-content .top-navbar,
+.sidebar.collapsed + .main-content .top-navbar,
+.main-content.sidebar-collapsed .top-navbar {
+    left: 70px !important;
+}
+
+@media (max-width: 991.98px) {
+    .top-navbar,
+    body.student-panel .top-navbar,
+    body.admin-panel .top-navbar,
+    body.tpo-panel .top-navbar,
+    body.company-panel .top-navbar {
+        left: 0 !important;
+    }
+}
+
+.top-navbar .profile-name,
+body.student-panel .top-navbar .profile-name,
+body.admin-panel .top-navbar .profile-name,
+body.tpo-panel .top-navbar .profile-name,
+body.company-panel .top-navbar .profile-name {
+    color: #0F172A !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    display: inline-block !important;
+}
+
+.top-navbar .profile-avatar,
+body.student-panel .top-navbar .profile-avatar,
+body.admin-panel .top-navbar .profile-avatar,
+body.tpo-panel .top-navbar .profile-avatar,
+body.company-panel .top-navbar .profile-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.top-navbar .sidebar-toggle-btn,
+body.student-panel .top-navbar .sidebar-toggle-btn,
+body.admin-panel .top-navbar .sidebar-toggle-btn,
+body.tpo-panel .top-navbar .sidebar-toggle-btn,
+body.company-panel .top-navbar .sidebar-toggle-btn {
+    background: #EFF6FF !important;
+    color: #1E293B !important;
+    border: 1px solid #BFDBFE !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 8px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.2rem !important;
+    cursor: pointer !important;
+}
+
+@media (min-width: 992px) {
+    .top-navbar .sidebar-toggle-btn.d-lg-none,
+    .top-navbar .sidebar-toggle-btn.d-inline-flex.d-lg-none {
+        display: none !important;
+    }
+    .top-navbar .sidebar-toggle-btn.d-none.d-lg-inline-flex,
+    .top-navbar .sidebar-toggle-btn.d-none.d-lg-flex {
+        display: inline-flex !important;
+    }
+}
+@media (max-width: 991.98px) {
+    .top-navbar .sidebar-toggle-btn.d-none.d-lg-inline-flex,
+    .top-navbar .sidebar-toggle-btn.d-none.d-lg-flex {
+        display: none !important;
+    }
+    .top-navbar .sidebar-toggle-btn.d-lg-none,
+    .top-navbar .sidebar-toggle-btn.d-inline-flex.d-lg-none {
+        display: inline-flex !important;
+    }
+}
+
+.top-navbar .sidebar-toggle-btn:hover {
+    background: #E2E8F0 !important;
+    color: #0F172A !important;
+}
+
+.top-navbar .navbar-search .form-control {
+    background: #F8FAFC !important;
+    border: 1px solid #BFDBFE !important;
+    color: #0F172A !important;
+    font-size: 0.9rem !important;
+    border-radius: 999px !important;
+    padding-left: 2.3rem !important;
+}
+
+.top-navbar .navbar-search .form-control::placeholder {
+    color: #64748B !important;
+    opacity: 1 !important;
+}
+
+.top-navbar .navbar-search .search-icon {
+    color: #64748B !important;
+    font-size: 0.9rem !important;
+}
+
+/* 2. Sidebar Contrast & High-Legibility */
+.sidebar,
+body.student-panel .sidebar,
+body.admin-panel .sidebar,
+body.tpo-panel .sidebar,
+body.company-panel .sidebar,
+.offcanvas-sidebar {
+    background: #0B1F3A !important;
+    background: linear-gradient(180deg, #0B1F3A 0%, #08162B 100%) !important;
+}
+
+.sidebar-brand-name {
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+    font-size: 1.15rem !important;
+    letter-spacing: -0.01em !important;
+}
+
+.sidebar-brand-sub {
+    color: #93C5FD !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.sidebar-section-title,
+body.student-panel .sidebar-section-title,
+body.admin-panel .sidebar-section-title,
+body.tpo-panel .sidebar-section-title,
+body.company-panel .sidebar-section-title {
+    color: #94A3B8 !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.09em !important;
+    padding: 1.2rem 1.25rem 0.45rem !important;
+    display: block !important;
+}
+
+.sidebar-nav .nav-link,
+body.student-panel .sidebar-nav .nav-link,
+body.admin-panel .sidebar-nav .nav-link,
+body.tpo-panel .sidebar-nav .nav-link,
+body.company-panel .sidebar-nav .nav-link {
+    color: #E2E8F0 !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+    border-radius: 8px !important;
+    margin-bottom: 3px !important;
+    padding: 0.65rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.sidebar-nav .nav-link i,
+body.student-panel .sidebar-nav .nav-link i,
+body.admin-panel .sidebar-nav .nav-link i,
+body.tpo-panel .sidebar-nav .nav-link i,
+body.company-panel .sidebar-nav .nav-link i {
+    color: #93C5FD !important;
+    font-size: 1.2rem !important;
+    width: 24px !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.sidebar-nav .nav-link:hover,
+body.student-panel .sidebar-nav .nav-link:hover,
+body.admin-panel .sidebar-nav .nav-link:hover,
+body.tpo-panel .sidebar-nav .nav-link:hover,
+body.company-panel .sidebar-nav .nav-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.sidebar-nav .nav-link:hover i,
+body.student-panel .sidebar-nav .nav-link:hover i,
+body.admin-panel .sidebar-nav .nav-link:hover i,
+body.tpo-panel .sidebar-nav .nav-link:hover i,
+body.company-panel .sidebar-nav .nav-link:hover i {
+    color: #BAE6FD !important;
+}
+
+.sidebar-nav .nav-link.active,
+body.student-panel .sidebar-nav .nav-link.active,
+body.admin-panel .sidebar-nav .nav-link.active,
+body.tpo-panel .sidebar-nav .nav-link.active,
+body.company-panel .sidebar-nav .nav-link.active,
+.offcanvas-sidebar .nav-link.active {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    background: #2563EB !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
+    border-left: none !important;
+}
+
+.sidebar-nav .nav-link.active i,
+body.student-panel .sidebar-nav .nav-link.active i,
+body.admin-panel .sidebar-nav .nav-link.active i,
+body.tpo-panel .sidebar-nav .nav-link.active i,
+body.company-panel .sidebar-nav .nav-link.active i,
+.offcanvas-sidebar .nav-link.active i {
+    color: #FFFFFF !important;
+}
+
+/* 3. Page Layout & Navbar Clearance (Zero Clipping Guaranteed) */
+.main-content {
+    flex: 1 1 auto !important;
+    margin-left: var(--sidebar-width) !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-top: 86px !important;
+    background-color: var(--bg-light, #F8FAFC) !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+@media (max-width: 991.98px) {
+    .main-content,
+    .main-content.sidebar-collapsed {
+        margin-left: 0 !important;
+    }
+}
+
+.content-body {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+.page-content {
+    flex: 1 1 auto !important;
+    padding: 1.5rem 2rem 3.5rem !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-top: 1px !important;
+    padding-bottom: 2px !important;
+}
+
+/* 4. Table & GridView Row & Icon Vertical Alignment */
+.table, .table-custom, .gridview, table {
+    vertical-align: middle !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+}
+
+.table td,
+.table-custom td,
+.gridview td,
+table.table > tbody > tr > td {
+    vertical-align: middle !important;
+    padding: 0.85rem 1rem !important;
+    line-height: 1.4 !important;
+}
+
+.table th,
+.table thead th,
+.table-custom th,
+.table-custom thead th,
+.gridview th,
+table.table > thead > tr > th,
+table.table > tbody > tr > th {
+    vertical-align: middle !important;
+    padding: 1rem 1rem 0.85rem 1rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #1E3A8A !important;
+    background: #F8FAFC !important;
+    border-bottom: 2px solid #E2E8F0 !important;
+    line-height: 1.4 !important;
+    white-space: nowrap !important;
+}
+
+.table td .btn-group,
+.table-custom .btn-group,
+.gridview .btn-group,
+table td .btn-group {
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    vertical-align: middle !important;
+    gap: 4px !important;
+}
+
+.table td .btn,
+.table td a.btn,
+.table-custom td .btn,
+.gridview td .btn,
+.btn-sm,
+.btn-icon,
+a.btn-icon,
+button.btn-icon,
+.table td a[id*="btn"],
+.table td input[type="submit"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+    gap: 0.35rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    padding: 0.42rem 0.75rem !important;
+    border-radius: 6px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    text-decoration: none !important;
+}
+
+.btn-icon,
+.table .btn-icon,
+.table td .btn-icon,
+.gridview .btn-icon,
+table td a.btn-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+}
+
+.table td .btn i,
+.table td a.btn i,
+.btn i,
+.btn-sm i,
+.btn-icon i,
+.table td i.bi,
+.table td i.fa,
+.table td i.fas,
+.table td i.far,
+i.bi,
+i.fa,
+i.fas,
+i.far,
+.btn svg {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+    font-size: 0.95rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.table td .badge,
+.table-custom td .badge,
+.gridview td .badge,
+table td .badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    gap: 4px !important;
+    padding: 0.38rem 0.7rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    line-height: 1.2 !important;
+}
+
+
+/* Universal Responsive & Zero-Clipping Guards */
+.content-card,
+.dashboard-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+.main-content {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+.page-content {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+.row {
+    min-width: 0 !important;
+}
+
+
+/* ==========================================================================
+   ASTRA PMS — MASTER UNIFIED BUTTON & COLOR SYSTEM (All Panels)
+   ========================================================================== */
+
+/* 1. Base Button Standardization */
+.btn,
+input[type="submit"].btn,
+button.btn,
+a.btn,
+.ap-btn {
+    font-family: 'Manrope', 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 0.52rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.45rem !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    vertical-align: middle !important;
+    border: 1px solid transparent !important;
+}
+
+/* 2. Small Buttons & Table Action Buttons */
+.btn-sm,
+.ap-btn-sm,
+.btn-group-sm > .btn,
+.table td .btn,
+.gridview td .btn,
+.table-custom td .btn,
+table td a.btn,
+table td input[type="submit"],
+.table td a[id*="btn"] {
+    padding: 0.38rem 0.75rem !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    gap: 0.35rem !important;
+    line-height: 1.3 !important;
+}
+
+/* 3. Large Buttons */
+.btn-lg {
+    padding: 0.72rem 1.65rem !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    gap: 0.5rem !important;
+}
+
+/* 4. Primary Buttons (Vibrant Astra Blue) */
+.btn-primary,
+.btn-primary-custom,
+.ap-btn-primary,
+.hero-cta-btn-primary,
+input[type="submit"].btn-primary,
+a.btn-primary {
+    background: #1D4ED8 !important;
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%) !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 6px rgba(29, 78, 216, 0.2) !important;
+}
+
+.btn-primary:hover,
+.btn-primary-custom:hover,
+.ap-btn-primary:hover,
+.hero-cta-btn-primary:hover,
+input[type="submit"].btn-primary:hover,
+a.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background: #1E40AF !important;
+    background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 100%) !important;
+    border-color: #1E40AF !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px rgba(29, 78, 216, 0.35) !important;
+}
+
+/* 5. Outline Primary Buttons */
+.btn-outline-primary,
+.hero-cta-btn-outline,
+a.btn-outline-primary {
+    background: #EFF6FF !important;
+    border: 1.5px solid #2563EB !important;
+    color: #1D4ED8 !important;
+    font-weight: 600 !important;
+}
+
+.btn-outline-primary:hover,
+.hero-cta-btn-outline:hover,
+a.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+    background: #2563EB !important;
+    border-color: #2563EB !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+}
+
+/* 6. Secondary / Outline Secondary Buttons */
+.btn-secondary,
+.btn-secondary-custom {
+    background: #EFF6FF !important;
+    border-color: #BFDBFE !important;
+    color: #1E3A8A !important;
+    color: #FFFFFF !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary-custom:hover {
+    background: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(71, 85, 105, 0.2) !important;
+}
+
+.btn-outline-secondary {
+    background: #FFFFFF !important;
+    border: 1px solid #BFDBFE !important;
+    color: #334155 !important;
+}
+
+.btn-outline-secondary:hover {
+    background: #EFF6FF !important;
+    border-color: #94A3B8 !important;
+    color: #0F172A !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 7. Success & Outline Success Buttons */
+.btn-success,
+.btn-success-custom {
+    background: #16A34A !important;
+    border-color: #16A34A !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 6px rgba(22, 163, 74, 0.2) !important;
+}
+
+.btn-success:hover,
+.btn-success-custom:hover {
+    background: #15803D !important;
+    border-color: #15803D !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 14px rgba(22, 163, 74, 0.3) !important;
+}
+
+.btn-outline-success {
+    background: #F0FDF4 !important;
+    border: 1.5px solid #16A34A !important;
+    color: #15803D !important;
+}
+
+.btn-outline-success:hover {
+    background: #16A34A !important;
+    border-color: #16A34A !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25) !important;
+}
+
+/* 8. Danger & Outline Danger Buttons */
+.btn-danger,
+.btn-danger-custom {
+    background: #DC2626 !important;
+    border-color: #DC2626 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.2) !important;
+}
+
+.btn-danger:hover,
+.btn-danger-custom:hover {
+    background: #B91C1C !important;
+    border-color: #B91C1C !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 14px rgba(220, 38, 38, 0.3) !important;
+}
+
+.btn-outline-danger {
+    background: #FEF2F2 !important;
+    border: 1.5px solid #DC2626 !important;
+    color: #DC2626 !important;
+}
+
+.btn-outline-danger:hover {
+    background: #DC2626 !important;
+    border-color: #DC2626 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25) !important;
+}
+
+/* 9. Light & Outline Light Buttons */
+.btn-light {
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+    color: #1E293B !important;
+}
+
+.btn-light:hover {
+    background: #FFFFFF !important;
+    border-color: #BFDBFE !important;
+    color: #0F172A !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+.btn-outline-light {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-outline-light:hover {
+    background: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+    color: #0B1F3A !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 10. Icon Action Buttons */
+.btn-icon,
+.table td .btn-icon,
+.gridview .btn-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.95rem !important;
+    line-height: 1 !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-icon:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 11. Focus Ring Consistency */
+.btn:focus,
+.btn:focus-visible,
+input[type="submit"]:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25) !important;
+}
+
+/* ==============================================================
+   ASTRA PMS - HIERARCHICAL SIDEBAR NAVIGATION & SUBMENUS
+   ============================================================== */
+.sidebar-nav-item {
+    position: relative;
+    margin-bottom: 2px;
+}
+
+.sidebar-nav-item.has-submenu {
+    position: relative;
+}
+
+.sidebar-dropdown-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    width: 100% !important;
+    padding: 0.65rem 1rem 0.65rem 1.15rem !important;
+    border-radius: var(--radius-sm) !important;
+    color: #E2E8F0 !important;
+    text-decoration: none !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.sidebar-dropdown-toggle:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.sidebar-dropdown-toggle .nav-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.submenu-arrow {
+    margin-left: auto !important;
+    font-size: 0.72rem !important;
+    color: #94A3B8 !important;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.has-submenu.open > .sidebar-dropdown-toggle .submenu-arrow {
+    transform: rotate(180deg) !important;
+    color: #60A5FA !important;
+}
+
+.has-submenu.open > .sidebar-dropdown-toggle,
+.has-submenu.active-parent > .sidebar-dropdown-toggle {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+.has-submenu.active-parent > .sidebar-dropdown-toggle {
+    border-left: 3px solid #3B82F6 !important;
+}
+
+.sidebar-submenu {
+    display: none;
+    list-style: none;
+    margin: 3px 0 6px 1.5rem !important;
+    padding: 4px 0 4px 10px !important;
+    border-left: 2px solid rgba(255, 255, 255, 0.15) !important;
+    transition: all 0.2s ease !important;
+}
+
+.has-submenu.open > .sidebar-submenu {
+    display: block !important;
+}
+
+.submenu-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.55rem !important;
+    padding: 0.42rem 0.75rem !important;
+    color: #CBD5E1 !important;
+    font-size: 0.83rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    border-radius: var(--radius-sm) !important;
+    margin-bottom: 2px !important;
+    transition: all 0.18s ease !important;
+}
+
+.submenu-link i {
+    font-size: 0.75rem !important;
+    width: 14px !important;
+    text-align: center !important;
+    color: #60A5FA !important;
+    flex-shrink: 0 !important;
+}
+
+.submenu-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    padding-left: 0.95rem !important;
+}
+
+.submenu-link.active {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    background: #2563EB !important;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4) !important;
+}
+
+.submenu-link.active i {
+    color: #FFFFFF !important;
+}
+
+/* Offcanvas Sidebar Hierarchy Consistency */
+.offcanvas .sidebar-submenu {
+    margin-left: 1.25rem !important;
+    padding-left: 8px !important;
+    border-left: 2px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.offcanvas .submenu-link {
+    padding: 0.45rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    color: #CBD5E1 !important;
+}
+
+.offcanvas .submenu-link.active {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+}
+
+/* ==============================================================
+   STANDARDIZED GRIDVIEW ACTIONS & TABLE CONSISTENCY ACROSS ALL PANELS
+   ============================================================== */
+
+/* Table responsive wrapper with clean scrolling */
+.table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Table scrollbar styling */
+.table-responsive::-webkit-scrollbar {
+    height: 6px;
+}
+.table-responsive::-webkit-scrollbar-track {
+    background: #F1F5F9;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 3px;
+}
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Ensure table cells align middle */
+.table th, .table td,
+.gridview th, .gridview td,
+table[id*="gv"] th, table[id*="gv"] td {
+    vertical-align: middle !important;
+}
+
+/* GridView Header Standardization */
+.table thead th,
+.table th,
+.gridview th,
+table[id*="gv"] th {
+    background: #F8FAFC !important;
+    color: #1E3A8A !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    padding: 0.85rem 1rem !important;
+    border-bottom: 2px solid #E2E8F0 !important;
+    white-space: nowrap !important;
+}
+
+/* GridView Data Rows */
+.table tbody td,
+.table td,
+.gridview td,
+table[id*="gv"] td {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.875rem !important;
+    color: #1E293B !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+}
+
+/* Action column alignment and width */
+.table th:last-child,
+.table td:last-child,
+.gridview th:last-child,
+.gridview td:last-child,
+table[id*="gv"] th:last-child,
+table[id*="gv"] td:last-child,
+.table th.text-end,
+.table td.text-end,
+.gridview th.text-end,
+.gridview td.text-end,
+table[id*="gv"] th.text-end,
+table[id*="gv"] td.text-end {
+    white-space: nowrap !important;
+    min-width: 120px !important;
+    text-align: right !important;
+    vertical-align: middle !important;
+}
+
+/* Action Button Group Container */
+.table td .btn-group,
+.gridview td .btn-group,
+table[id*="gv"] td .btn-group,
+.table td .action-btns,
+.gridview td .action-btns,
+table[id*="gv"] td .action-btns {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    vertical-align: middle !important;
+    gap: 4px !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+}
+
+/* Reset bootstrap btn-group clipping to give each button consistent rounded corners */
+.table td .btn-group > .btn,
+.gridview td .btn-group > .btn,
+table[id*="gv"] td .btn-group > .btn {
+    border-radius: 6px !important;
+    margin-left: 0 !important;
+}
+
+/* Standardized dimensions for ALL Action Buttons inside GridViews */
+.table td .btn,
+.table td a.btn,
+.gridview td .btn,
+.gridview td a.btn,
+table[id*="gv"] td .btn,
+table[id*="gv"] td a.btn,
+table[id*="gv"] td input[type="submit"].btn,
+table[id*="gv"] td input[type="button"].btn {
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    line-height: 30px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    padding: 0 10px !important;
+    border-radius: 6px !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    margin: 0 2px !important;
+    transition: all 0.15s ease-in-out !important;
+}
+
+/* Exact Square for pure Icon Action Buttons (buttons containing only an icon like Edit, Delete, View) */
+.table td .btn-icon,
+.gridview td .btn-icon,
+table[id*="gv"] td .btn-icon,
+.table td a.btn:empty,
+.gridview td a.btn:empty {
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    padding: 0 !important;
+}
+
+/* Explicit class for icon-only action buttons */
+.btn-action-icon {
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Buttons with text have comfortable auto width with clean padding */
+.table td .btn,
+.gridview td .btn,
+table[id*="gv"] td .btn {
+    width: auto !important;
+    max-width: none !important;
+    padding: 0 12px !important;
+}
+
+/* All icons inside action buttons have consistent sizing and weight */
+.table td .btn i,
+.table td .btn .bi,
+.table td .btn .fa,
+.gridview td .btn i,
+.gridview td .btn .bi,
+.gridview td .btn .fa,
+table[id*="gv"] td .btn i,
+table[id*="gv"] td .btn .bi,
+table[id*="gv"] td .btn .fa {
+    font-size: 0.95rem !important;
+    width: 16px !important;
+    height: 16px !important;
+    line-height: 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Spacing when icon is accompanied by text (e.g. View) */
+.table td .btn i + span,
+.gridview td .btn i + span,
+table[id*="gv"] td .btn i + span {
+    margin-left: 5px !important;
+}
+
+/* Standardized Color Schemes for Consistent Semantic Actions */
+.table td .btn-outline-primary,
+.gridview td .btn-outline-primary,
+table[id*="gv"] td .btn-outline-primary {
+    color: #1D4ED8 !important;
+    background-color: #EFF6FF !important;
+    border-color: #BFDBFE !important;
+}
+.table td .btn-outline-primary:hover,
+.gridview td .btn-outline-primary:hover,
+table[id*="gv"] td .btn-outline-primary:hover {
+    color: #FFFFFF !important;
+    background-color: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+}
+
+.table td .btn-outline-success,
+.gridview td .btn-outline-success,
+table[id*="gv"] td .btn-outline-success {
+    color: #15803D !important;
+    background-color: #F0FDF4 !important;
+    border-color: #BBF7D0 !important;
+}
+.table td .btn-outline-success:hover,
+.gridview td .btn-outline-success:hover,
+table[id*="gv"] td .btn-outline-success:hover {
+    color: #FFFFFF !important;
+    background-color: #15803D !important;
+    border-color: #15803D !important;
+}
+
+.table td .btn-outline-warning,
+.gridview td .btn-outline-warning,
+table[id*="gv"] td .btn-outline-warning {
+    color: #B45309 !important;
+    background-color: #FFFBEB !important;
+    border-color: #FDE68A !important;
+}
+.table td .btn-outline-warning:hover,
+.gridview td .btn-outline-warning:hover,
+table[id*="gv"] td .btn-outline-warning:hover {
+    color: #FFFFFF !important;
+    background-color: #B45309 !important;
+    border-color: #B45309 !important;
+}
+
+.table td .btn-outline-danger,
+.gridview td .btn-outline-danger,
+table[id*="gv"] td .btn-outline-danger {
+    color: #B91C1C !important;
+    background-color: #FEF2F2 !important;
+    border-color: #FECACA !important;
+}
+.table td .btn-outline-danger:hover,
+.gridview td .btn-outline-danger:hover,
+table[id*="gv"] td .btn-outline-danger:hover {
+    color: #FFFFFF !important;
+    background-color: #B91C1C !important;
+    border-color: #B91C1C !important;
+}
+
+.table td .btn-outline-secondary,
+.gridview td .btn-outline-secondary,
+table[id*="gv"] td .btn-outline-secondary {
+    color: #1E3A8A !important;
+    background-color: #F8FAFC !important;
+    border-color: #BFDBFE !important;
+}
+.table td .btn-outline-secondary:hover,
+.gridview td .btn-outline-secondary:hover,
+table[id*="gv"] td .btn-outline-secondary:hover {
+    color: #FFFFFF !important;
+    background-color: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+}
+
+.table td .btn-outline-info,
+.gridview td .btn-outline-info,
+table[id*="gv"] td .btn-outline-info {
+    color: #0369A1 !important;
+    background-color: #F0F9FF !important;
+    border-color: #BAE6FD !important;
+}
+.table td .btn-outline-info:hover,
+.gridview td .btn-outline-info:hover,
+table[id*="gv"] td .btn-outline-info:hover {
+    color: #FFFFFF !important;
+    background-color: #0369A1 !important;
+    border-color: #0369A1 !important;
+}
+
+/* Status Badges in Tables */
+.table td .badge,
+.gridview td .badge,
+table[id*="gv"] td .badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 0.35rem 0.65rem !important;
+    font-weight: 600 !important;
+    font-size: 0.78rem !important;
+    vertical-align: middle !important;
+    border-radius: 6px !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+}
+
+/* ==============================================================
+   PREMIUM ENTERPRISE UI ELEVATION & MODERN POLISH (ALL PANELS)
+   Enhanced Card Shadows, Glassmorphism, Micro-interactions,
+   Modern Form Controls, Refined Nav-Pills, & Table Polish
+   ============================================================== */
+
+/* 1. Body & Canvas Glow */
+body {
+    background-color: #F8FAFC !important;
+    color: #0F172A !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page-content {
+    animation: fadeInPage 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Top Navbar Polish */
+.top-navbar {
+    background: rgba(255, 255, 255, 0.94) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+.profile-dropdown .dropdown-toggle {
+    background: #EFF6FF !important;
+    border: 1px solid #E2E8F0 !important;
+    transition: all 0.2s ease !important;
+}
+.profile-dropdown .dropdown-toggle:hover {
+    background: #E2E8F0 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important;
+}
+
+/* 3. Content Cards & Containers */
+.content-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 6px 16px -4px rgba(15, 23, 42, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.content-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+    border-color: #CBD5E1;
+}
+
+.hero-banner-card {
+    background: linear-gradient(135deg, #0B1F3A 0%, #1E3A8A 50%, #2563EB 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+}
+
+.hero-banner-card h1,
+.hero-banner-card h2,
+.hero-banner-card h3,
+.hero-banner-card h4,
+.hero-banner-card h5,
+.hero-banner-card h6,
+.hero-banner-card p,
+.hero-banner-card span:not(.badge) {
+    color: #FFFFFF !important;
+}
+
+.hero-banner-card .text-white-50 {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.card-header-custom {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    padding: 1.1rem 1.4rem !important;
+}
+
+.card-header-custom h5,
+.card-header-custom h6 {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+    letter-spacing: -0.01em !important;
+}
+
+.card-body-custom {
+    padding: 1.4rem !important;
+}
+
+/* 4. KPI & Stat Cards */
+.content-card.p-3.d-flex.align-items-center,
+.stat-card {
+    border-radius: 14px !important;
+    border: 1px solid #E2E8F0 !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.content-card.p-3.d-flex.align-items-center:hover,
+.stat-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.12) !important;
+    border-color: #BFDBFE !important;
+}
+
+.stat-icon {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    min-height: 52px !important;
+    border-radius: 14px !important;
+    font-size: 1.45rem !important;
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%) !important;
+    color: #2563EB !important;
+    border: 1px solid #BFDBFE !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+}
+
+.stat-icon i,
+.stat-icon .bi {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.45rem !important;
+    line-height: 1 !important;
+    color: #2563EB !important;
+}
+
+/* 5. Sub-Page Navigation Tabs (Nav-Pills) - Unified Single-Row Responsive Layout */
+.nav-pills,
+.subpage-nav {
+    background: #FFFFFF !important;
+    padding: 0.35rem 0.5rem !important;
+    border-radius: 10px !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: 0.35rem !important;
+    margin-bottom: 1.25rem !important;
+    width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+}
+
+.nav-pills::-webkit-scrollbar,
+.subpage-nav::-webkit-scrollbar {
+    height: 3px !important;
+}
+
+.nav-pills::-webkit-scrollbar-thumb,
+.subpage-nav::-webkit-scrollbar-thumb {
+    background: #CBD5E1 !important;
+    border-radius: 3px !important;
+}
+
+.nav-pills .nav-item,
+.subpage-nav .nav-item {
+    flex-shrink: 0 !important;
+}
+
+.nav-pills .nav-link,
+.subpage-nav .nav-link {
+    color: #64748B !important;
+    font-weight: 500 !important;
+    font-size: 0.84rem !important;
+    padding: 0.42rem 0.85rem !important;
+    border-radius: 7px !important;
+    transition: all 0.15s ease !important;
+    border: 1px solid transparent !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    background: transparent !important;
+}
+
+.nav-pills .nav-link i,
+.subpage-nav .nav-link i {
+    font-size: 0.92rem !important;
+    margin-right: 0.25rem !important;
+}
+
+.nav-pills .nav-link:hover:not(.active),
+.subpage-nav .nav-link:hover:not(.active) {
+    color: #1D4ED8 !important;
+    background: #EFF6FF !important;
+}
+
+.nav-pills .nav-link.active,
+.subpage-nav .nav-link.active {
+    color: #FFFFFF !important;
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 1px 4px rgba(29, 78, 216, 0.25) !important;
+}
+
+/* Dashboard Analytics Compact Chart Styles */
+.dashboard-chart-container {
+    position: relative !important;
+    height: 190px !important;
+    max-height: 200px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.dashboard-chart-container canvas,
+canvas#adminDeptChart,
+canvas#adminRatioChart,
+canvas#tpoPipelineChart,
+canvas#tpoIndustryChart,
+canvas#recruiterFunnelChart,
+canvas#recruiterRatioChart,
+canvas#studentAppProgressChart,
+canvas#studentSkillRadarChart {
+    max-height: 190px !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* 6. Form Controls, Inputs, and Select Boxes - Standardized Across All Panels */
+.form-control,
+.form-select,
+select.form-control,
+select.form-select,
+.input-group-text {
+    border: 1px solid #BFDBFE !important;
+    border-radius: 9px !important;
+    padding: 0.5rem 0.85rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    color: #0F172A !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.2s ease !important;
+    vertical-align: middle !important;
+}
+
+/* Ensure textarea can grow naturally */
+textarea.form-control {
+    height: auto !important;
+    min-height: 80px !important;
+    max-height: none !important;
+}
+
+/* Small variants (.form-select-sm, .form-control-sm) aligned consistently to standard 38px */
+.form-control-sm,
+.form-select-sm,
+.input-group-sm > .form-control,
+.input-group-sm > .form-select,
+.input-group-sm > .input-group-text,
+.input-group-sm > .btn {
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    padding: 0.42rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    border-radius: 8px !important;
+    line-height: 1.4 !important;
+}
+
+.input-group {
+    align-items: stretch !important;
+}
+
+.input-group .form-control:not(:first-child),
+.input-group .form-select:not(:first-child) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.input-group .form-control:not(:last-child),
+.input-group .form-select:not(:last-child) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.input-group-text {
+    background-color: #F8FAFC !important;
+    color: #64748B !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #2563EB !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+    outline: none !important;
+    background-color: #FFFFFF !important;
+}
+
+.form-control::placeholder {
+    color: #94A3B8 !important;
+}
+
+.form-label {
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    color: #334155 !important;
+    margin-bottom: 0.35rem !important;
+}
+
+/* 7. Action Buttons Polish */
+.btn {
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1.1rem !important;
+    font-size: 0.875rem !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    line-height: 1.5 !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.4rem !important;
+    white-space: nowrap !important;
+}
+
+.btn-sm {
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 0.42rem 0.85rem !important;
+    font-size: 0.84rem !important;
+    border-radius: 8px !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%) !important;
+    border: 1px solid #1D4ED8 !important;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.28) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 100%) !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4) !important;
+    transform: translateY(-1px) !important;
+}
+
+.btn-primary:active {
+    transform: translateY(0) !important;
+}
+
+.btn-outline-primary {
+    border-color: #BFDBFE !important;
+    background: #EFF6FF !important;
+    color: #1D4ED8 !important;
+}
+
+.btn-outline-primary:hover {
+    background: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25) !important;
+}
+
+.btn-outline-secondary {
+    border-color: #BFDBFE !important;
+    background: #FFFFFF !important;
+    color: #1E3A8A !important;
+}
+
+.btn-outline-secondary:hover {
+    background: #EFF6FF !important;
+    color: #0F172A !important;
+    border-color: #94A3B8 !important;
+}
+
+/* 8. Table & GridView Header & Row Polish */
+.table thead th,
+.table th,
+.gridview th,
+table[id*="gv"] th {
+    background: #F8FAFC !important;
+    border-bottom: 2px solid #E2E8F0 !important;
+    font-size: 0.76rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: #1E3A8A !important;
+    padding: 0.95rem 1.15rem !important;
+}
+
+.table tbody td,
+.table td,
+.gridview td,
+table[id*="gv"] td {
+    padding: 0.95rem 1.15rem !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    font-size: 0.88rem !important;
+    color: #1E293B !important;
+}
+
+.table tbody tr:hover,
+.gridview tbody tr:hover,
+table[id*="gv"] tbody tr:hover {
+    background: #F8FAFC !important;
+}
+
+/* 9. Badges & Tags Polish */
+.badge {
+    border-radius: 8px !important;
+    padding: 0.4rem 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+}
+
+.badge.bg-success {
+    background: #DCFCE7 !important;
+    color: #15803D !important;
+    border: 1px solid #BBF7D0 !important;
+}
+
+.badge.bg-danger {
+    background: #FEE2E2 !important;
+    color: #B91C1C !important;
+    border: 1px solid #FECACA !important;
+}
+
+.badge.bg-warning,
+.badge.bg-warning.text-dark {
+    background: #FEF3C7 !important;
+    color: #92400E !important;
+    border: 1px solid #FDE68A !important;
+}
+
+.badge.bg-primary {
+    background: #DBEAFE !important;
+    color: #1D4ED8 !important;
+    border: 1px solid #BFDBFE !important;
+}
+
+.badge.bg-info {
+    background: #E0F2FE !important;
+    color: #0369A1 !important;
+    border: 1px solid #BAE6FD !important;
+}
+
+.badge.bg-secondary {
+    background: #EFF6FF !important;
+    color: #1E3A8A !important;
+    border: 1px solid #BFDBFE !important;
+}
+
+/* 10. Modals Refined Polish */
+.modal-content {
+    border: none !important;
+    border-radius: 16px !important;
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+    overflow: hidden !important;
+}
+
+.modal-header {
+    background: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 1.25rem 1.5rem !important;
+}
+
+.modal-header .modal-title {
+    font-weight: 700 !important;
+    color: #0F172A !important;
+}
+
+.modal-footer {
+    background: #F8FAFC !important;
+    border-top: 1px solid #E2E8F0 !important;
+    padding: 1rem 1.5rem !important;
+}
+
+/* ==========================================================================
+   11. STANDARDIZED FORM-SELECT & FILTER BAR CONTROLS
+   Ensures uniform height (38px standard, 34px compact), crisp borders,
+   identical padding, font size, and focus states across all panels.
+   ========================================================================== */
+.form-select,
+select.form-control,
+.form-select-sm,
+.content-card .form-select,
+.filter-card .form-select,
+.card-body-custom .form-select {
+    height: 38px !important;
+    min-height: 38px !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: #1E293B !important;
+    background-color: #FFFFFF !important;
+    border: 1px solid #BFDBFE !important;
+    border-radius: 8px !important;
+    padding: 0.45rem 2rem 0.45rem 0.75rem !important;
+    line-height: 1.5 !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.form-select:focus,
+select.form-control:focus,
+.form-select-sm:focus {
+    border-color: #2563EB !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Compact filter inputs (such as text boxes and buttons next to dropdowns) */
+.content-card .row.align-items-end .form-control,
+.content-card .row.align-items-end .form-select,
+.content-card .row.align-items-center .form-control,
+.content-card .row.align-items-center .form-select,
+.filter-card .form-control,
+.filter-card .form-select {
+    height: 38px !important;
+    min-height: 38px !important;
+    font-size: 0.875rem !important;
+    border-radius: 8px !important;
+}
+
+.content-card .row.align-items-end .btn,
+.content-card .row.align-items-center .btn,
+.filter-card .btn {
+    height: 38px !important;
+    min-height: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 0.45rem 1rem !important;
+}
+
+/* Ensure filter dropdown labels have consistent font & margin */
+.content-card .row.align-items-end label,
+.filter-card label,
+.card-body-custom label {
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    color: #1E3A8A !important;
+    margin-bottom: 0.35rem !important;
+    display: block !important;
+}
+
+/* ==========================================================================
+   12. ASTRA UNIFIED DESIGN SYSTEM — CONSISTENCY & COMPONENT REFINEMENT (v3)
+   Applies university placement standards across Admin, TPO, Student, Company.
+   ========================================================================== */
+
+/* Page Container & Spacing */
+.page-content {
+    padding: 1.75rem 2rem 2.5rem !important;
+    max-width: 100% !important;
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        padding: 1.25rem 1rem 2rem !important;
+    }
+}
+
+/* Breadcrumbs & Titles */
+.breadcrumb {
+    font-size: 0.8125rem !important;
+    margin-bottom: 0.35rem !important;
+}
+
+.breadcrumb-item a {
+    color: #64748B !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease !important;
+}
+
+.breadcrumb-item a:hover {
+    color: #1D4ED8 !important;
+}
+
+.breadcrumb-item.active {
+    color: #0F172A !important;
+    font-weight: 600 !important;
+}
+
+h2, h3, .page-title {
+    color: #0F172A !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.015em !important;
+}
+
+/* Unified Cards */
+.content-card,
+.card {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.04) !important;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+.card-header-custom,
+.card-header {
+    background-color: #FFFFFF !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 1rem 1.25rem !important;
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.card-header-custom h5,
+.card-header-custom h6,
+.card-title {
+    color: #0F172A !important;
+    font-weight: 700 !important;
+    margin-bottom: 0 !important;
+}
+
+.card-body-custom,
+.card-body {
+    padding: 1.25rem !important;
+}
+
+.card-footer-custom,
+.card-footer {
+    background-color: #F8FAFC !important;
+    border-top: 1px solid #E2E8F0 !important;
+    padding: 0.85rem 1.25rem !important;
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+/* KPI & Stat Cards */
+.kpi-card,
+.stat-card {
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 12px !important;
+    padding: 1.25rem !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.kpi-card:hover,
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px -4px rgba(15, 23, 42, 0.08) !important;
+}
+
+.kpi-value,
+.stat-card h3,
+.stat-card h4 {
+    font-size: 1.65rem !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0 !important;
+}
+
+.kpi-label,
+.stat-card .text-muted {
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    color: #64748B !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+}
+
+/* GridViews & Tables */
+.table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+.table,
+.gridview {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    border-color: #E2E8F0 !important;
+    vertical-align: middle !important;
+}
+
+.table thead th,
+.gridview th {
+    background-color: #F8FAFC !important;
+    color: #1E3A8A !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    padding: 0.85rem 1rem !important;
+    border-bottom: 1px solid #CBD5E1 !important;
+    border-top: none !important;
+    white-space: nowrap !important;
+}
+
+.table tbody td,
+.gridview td {
+    padding: 0.85rem 1rem !important;
+    color: #1E293B !important;
+    font-size: 0.875rem !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    vertical-align: middle !important;
+}
+
+.table-hover tbody tr:hover td,
+.gridview tr:hover td {
+    background-color: #F8FAFC !important;
+}
+
+/* Action Buttons in Tables */
+.table .btn-sm,
+.gridview .btn-sm {
+    height: 32px !important;
+    min-height: 32px !important;
+    font-size: 0.8125rem !important;
+    padding: 0.25rem 0.65rem !important;
+    border-radius: 6px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 600 !important;
+    gap: 0.25rem !important;
+}
+
+/* GridView Pagination */
+.gridview tr[align="right"] td,
+.gridview tr[align="center"] td,
+.table tfoot td {
+    background-color: #F8FAFC !important;
+    padding: 0.75rem 1rem !important;
+    border-top: 1px solid #E2E8F0 !important;
+}
+
+.gridview tr[align="right"] a,
+.gridview tr[align="center"] a,
+.gridview tr[align="right"] span,
+.gridview tr[align="center"] span {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    padding: 0 0.5rem !important;
+    margin: 0 2px !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    border: 1px solid #E2E8F0 !important;
+}
+
+.gridview tr[align="right"] a,
+.gridview tr[align="center"] a {
+    color: #1E3A8A !important;
+    background-color: #FFFFFF !important;
+}
+
+.gridview tr[align="right"] a:hover,
+.gridview tr[align="center"] a:hover {
+    color: #1D4ED8 !important;
+    border-color: #93C5FD !important;
+    background-color: #EFF6FF !important;
+}
+
+.gridview tr[align="right"] span,
+.gridview tr[align="center"] span {
+    color: #FFFFFF !important;
+    background-color: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+}
+
+/* Primary and Outline Buttons */
+.btn-primary {
+    background-color: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    box-shadow: 0 1px 2px rgba(29, 78, 216, 0.1) !important;
+    border-radius: 8px !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #1E40AF !important;
+    border-color: #1E40AF !important;
+    color: #FFFFFF !important;
+}
+
+.btn-outline-primary {
+    color: #1D4ED8 !important;
+    border-color: #93C5FD !important;
+    background-color: transparent !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: #EFF6FF !important;
+    border-color: #1D4ED8 !important;
+    color: #1D4ED8 !important;
+}
+
+.btn-outline-secondary {
+    color: #1E3A8A !important;
+    border-color: #BFDBFE !important;
+    background-color: transparent !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #F8FAFC !important;
+    border-color: #94A3B8 !important;
+    color: #1E293B !important;
+}
+
+.btn-outline-danger {
+    color: #DC2626 !important;
+    border-color: #FECACA !important;
+    background-color: transparent !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+}
+
+.btn-outline-danger:hover {
+    background-color: #FEF2F2 !important;
+    border-color: #DC2626 !important;
+    color: #B91C1C !important;
+}
+
+/* Status Badges */
+.badge {
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    padding: 0.35rem 0.65rem !important;
+    border-radius: 6px !important;
+    letter-spacing: 0.02em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+}
+
+.badge.bg-success,
+.badge-success,
+.status-active,
+.status-placed,
+.status-selected,
+.status-approved,
+.status-completed {
+    background-color: #ECFDF5 !important;
+    color: #047857 !important;
+    border: 1px solid #A7F3D0 !important;
+}
+
+.badge.bg-warning,
+.badge-warning,
+.status-pending,
+.status-shortlisted,
+.status-interview,
+.status-ongoing,
+.status-upcoming {
+    background-color: #FFFBEB !important;
+    color: #B45309 !important;
+    border: 1px solid #FDE68A !important;
+}
+
+.badge.bg-danger,
+.badge-danger,
+.status-rejected,
+.status-closed,
+.status-blocked,
+.status-cancelled {
+    background-color: #FEF2F2 !important;
+    color: #B91C1C !important;
+    border: 1px solid #FECACA !important;
+}
+
+.badge.bg-info,
+.badge-info,
+.status-applied,
+.status-enrolled,
+.status-eligible {
+    background-color: #EFF6FF !important;
+    color: #1D4ED8 !important;
+    border: 1px solid #BFDBFE !important;
+}
+
+.badge.bg-secondary,
+.badge-secondary {
+    background-color: #F1F5F9 !important;
+    color: #1E3A8A !important;
+    border: 1px solid #E2E8F0 !important;
+}
+
+/* ========================================================
+   GLOBAL DARK MODE DESIGN SYSTEM
+   ======================================================== */
+[data-bs-theme="dark"], body.dark-mode {
+    --bs-body-bg: #0B1120;
+    --bs-body-color: #E2E8F0;
+    background-color: #0B1120 !important;
+    color: #E2E8F0 !important;
+}
+
+/* Page structure & Containers */
+[data-bs-theme="dark"] .app-wrapper, body.dark-mode .app-wrapper,
+[data-bs-theme="dark"] .main-content, body.dark-mode .main-content,
+[data-bs-theme="dark"] .content-body, body.dark-mode .content-body,
+[data-bs-theme="dark"] .page-content, body.dark-mode .page-content {
+    background-color: #0B1120 !important;
+    color: #E2E8F0 !important;
+}
+
+/* Sidebars */
+[data-bs-theme="dark"] .sidebar, body.dark-mode .sidebar {
+    background-color: #070D18 !important;
+    border-right-color: #1E293B !important;
+}
+[data-bs-theme="dark"] .sidebar-brand, body.dark-mode .sidebar-brand {
+    border-bottom-color: #1E293B !important;
+}
+[data-bs-theme="dark"] .sidebar-brand-name, body.dark-mode .sidebar-brand-name {
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .sidebar-brand-sub, body.dark-mode .sidebar-brand-sub {
+    color: #94A3B8 !important;
+}
+[data-bs-theme="dark"] .sidebar-section-title, body.dark-mode .sidebar-section-title {
+    color: #64748B !important;
+}
+[data-bs-theme="dark"] .sidebar .nav-link, body.dark-mode .sidebar .nav-link {
+    color: #94A3B8 !important;
+}
+[data-bs-theme="dark"] .sidebar .nav-link:hover, body.dark-mode .sidebar .nav-link:hover {
+    background-color: rgba(59, 130, 246, 0.12) !important;
+    color: #60A5FA !important;
+}
+[data-bs-theme="dark"] .sidebar .nav-link.active, body.dark-mode .sidebar .nav-link.active {
+    background-color: rgba(59, 130, 246, 0.22) !important;
+    color: #93C5FD !important;
+    font-weight: 600;
+}
+
+/* Top Navigation Bar */
+[data-bs-theme="dark"] .top-header, body.dark-mode .top-header,
+[data-bs-theme="dark"] .app-header, body.dark-mode .app-header,
+[data-bs-theme="dark"] .top-navbar, body.dark-mode .top-navbar {
+    background-color: #0F172A !important;
+    border-bottom: 1px solid #1E293B !important;
+    color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .profile-name, body.dark-mode .profile-name {
+    color: #F8FAFC !important;
+}
+
+/* Cards & Content Surfaces */
+[data-bs-theme="dark"] .content-card, body.dark-mode .content-card,
+[data-bs-theme="dark"] .card, body.dark-mode .card,
+[data-bs-theme="dark"] .card-custom, body.dark-mode .card-custom,
+[data-bs-theme="dark"] .stat-card, body.dark-mode .stat-card,
+[data-bs-theme="dark"] .dashboard-card, body.dark-mode .dashboard-card,
+[data-bs-theme="dark"] .filter-card, body.dark-mode .filter-card {
+    background-color: #111C33 !important;
+    border-color: #1E293B !important;
+    color: #E2E8F0 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+}
+[data-bs-theme="dark"] .card-header, body.dark-mode .card-header,
+[data-bs-theme="dark"] .card-header-custom, body.dark-mode .card-header-custom {
+    background-color: #162442 !important;
+    border-bottom: 1px solid #1E293B !important;
+    color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .card-footer, body.dark-mode .card-footer {
+    background-color: #162442 !important;
+    border-top: 1px solid #1E293B !important;
+    color: #94A3B8 !important;
+}
+
+/* Typography & Headings */
+[data-bs-theme="dark"] h1, body.dark-mode h1,
+[data-bs-theme="dark"] h2, body.dark-mode h2,
+[data-bs-theme="dark"] h3, body.dark-mode h3,
+[data-bs-theme="dark"] h4, body.dark-mode h4,
+[data-bs-theme="dark"] h5, body.dark-mode h5,
+[data-bs-theme="dark"] h6, body.dark-mode h6,
+[data-bs-theme="dark"] .h1, body.dark-mode .h1,
+[data-bs-theme="dark"] .h2, body.dark-mode .h2,
+[data-bs-theme="dark"] .h3, body.dark-mode .h3,
+[data-bs-theme="dark"] .h4, body.dark-mode .h4,
+[data-bs-theme="dark"] .h5, body.dark-mode .h5,
+[data-bs-theme="dark"] .h6, body.dark-mode .h6 {
+    color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .text-dark, body.dark-mode .text-dark,
+[data-bs-theme="dark"] .text-black, body.dark-mode .text-black,
+[data-bs-theme="dark"] strong, body.dark-mode strong,
+[data-bs-theme="dark"] b, body.dark-mode b {
+    color: #F1F5F9 !important;
+}
+[data-bs-theme="dark"] .text-muted, body.dark-mode .text-muted,
+[data-bs-theme="dark"] .text-secondary, body.dark-mode .text-secondary {
+    color: #94A3B8 !important;
+}
+[data-bs-theme="dark"] .text-body, body.dark-mode .text-body {
+    color: #CBD5E1 !important;
+}
+[data-bs-theme="dark"] label, body.dark-mode label,
+[data-bs-theme="dark"] .form-label, body.dark-mode .form-label {
+    color: #CBD5E1 !important;
+}
+
+/* Breadcrumbs */
+[data-bs-theme="dark"] .breadcrumb-item, body.dark-mode .breadcrumb-item,
+[data-bs-theme="dark"] .breadcrumb-item a, body.dark-mode .breadcrumb-item a {
+    color: #94A3B8 !important;
+}
+[data-bs-theme="dark"] .breadcrumb-item.active, body.dark-mode .breadcrumb-item.active {
+    color: #F8FAFC !important;
+}
+
+/* Tables */
+[data-bs-theme="dark"] .table, body.dark-mode .table {
+    color: #E2E8F0 !important;
+    --bs-table-bg: #111C33 !important;
+    --bs-table-color: #E2E8F0 !important;
+    border-color: #1E293B !important;
+}
+[data-bs-theme="dark"] .table > :not(caption) > * > *, body.dark-mode .table > :not(caption) > * > * {
+    background-color: transparent !important;
+    color: #E2E8F0 !important;
+    border-bottom-color: #1E293B !important;
+}
+[data-bs-theme="dark"] .table-light, body.dark-mode .table-light,
+[data-bs-theme="dark"] thead th, body.dark-mode thead th {
+    background-color: #162442 !important;
+    color: #94A3B8 !important;
+    border-color: #1E293B !important;
+}
+[data-bs-theme="dark"] .table-hover > tbody > tr:hover,
+body.dark-mode .table-hover > tbody > tr:hover {
+    background-color: #1B2A4A !important;
+    color: #FFFFFF !important;
+}
+
+/* Form Controls & Inputs */
+[data-bs-theme="dark"] .form-control, [data-bs-theme="dark"] .form-select,
+body.dark-mode .form-control, body.dark-mode .form-select,
+[data-bs-theme="dark"] .input-group-text, body.dark-mode .input-group-text {
+    background-color: #0B1324 !important;
+    border-color: #25344F !important;
+    color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .form-control:focus, [data-bs-theme="dark"] .form-select:focus,
+body.dark-mode .form-control:focus, body.dark-mode .form-select:focus {
+    border-color: #3B82F6 !important;
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .form-control::placeholder,
+body.dark-mode .form-control::placeholder {
+    color: #64748B !important;
+}
+
+/* Modals & Dialogs */
+[data-bs-theme="dark"] .modal-content, body.dark-mode .modal-content {
+    background-color: #111C33 !important;
+    color: #F8FAFC !important;
+    border: 1px solid #25344F !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6) !important;
+}
+[data-bs-theme="dark"] .modal-header, body.dark-mode .modal-header {
+    border-bottom: 1px solid #1E293B !important;
+}
+[data-bs-theme="dark"] .modal-footer, body.dark-mode .modal-footer {
+    border-top: 1px solid #1E293B !important;
+    background-color: #162442 !important;
+}
+
+/* Dropdowns & Menus */
+[data-bs-theme="dark"] .dropdown-menu, body.dark-mode .dropdown-menu {
+    background-color: #0F1A2E !important;
+    border: 1px solid #25344F !important;
+    color: #CBD5E1 !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+}
+[data-bs-theme="dark"] .dropdown-item, body.dark-mode .dropdown-item {
+    color: #CBD5E1 !important;
+}
+[data-bs-theme="dark"] .dropdown-item:hover, body.dark-mode .dropdown-item:hover {
+    background-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .dropdown-header, body.dark-mode .dropdown-header {
+    color: #94A3B8 !important;
+}
+[data-bs-theme="dark"] .dropdown-divider, body.dark-mode .dropdown-divider {
+    border-color: #1E293B !important;
+}
+
+/* Nav tabs and pills */
+[data-bs-theme="dark"] .nav-pills .nav-link, body.dark-mode .nav-pills .nav-link {
+    color: #94A3B8 !important;
+    background-color: #0F172A !important;
+    border: 1px solid #1E293B !important;
+}
+[data-bs-theme="dark"] .nav-pills .nav-link:hover, body.dark-mode .nav-pills .nav-link:hover {
+    color: #60A5FA !important;
+    background-color: #162442 !important;
+}
+[data-bs-theme="dark"] .nav-pills .nav-link.active, body.dark-mode .nav-pills .nav-link.active {
+    color: #FFFFFF !important;
+    background-color: #2563EB !important;
+    border-color: #2563EB !important;
+}
+
+/* Background utilities override for dark mode */
+[data-bs-theme="dark"] .bg-white, body.dark-mode .bg-white,
+[data-bs-theme="dark"] .bg-light, body.dark-mode .bg-light {
+    background-color: #111C33 !important;
+    color: #E2E8F0 !important;
+}
+[data-bs-theme="dark"] .border, body.dark-mode .border,
+[data-bs-theme="dark"] .border-top, body.dark-mode .border-top,
+[data-bs-theme="dark"] .border-bottom, body.dark-mode .border-bottom,
+[data-bs-theme="dark"] .border-start, body.dark-mode .border-start,
+[data-bs-theme="dark"] .border-end, body.dark-mode .border-end {
+    border-color: #1E293B !important;
+}
+
+/* Offcanvas */
+[data-bs-theme="dark"] .offcanvas, body.dark-mode .offcanvas {
+    background-color: #070D18 !important;
+    color: #E2E8F0 !important;
+}
+
+/* Stat & KPI Values, Badges & Labels in Dark Mode */
+[data-bs-theme="dark"] .stat-title, body.dark-mode .stat-title,
+[data-bs-theme="dark"] .stat-label, body.dark-mode .stat-label {
+    color: #94A3B8 !important;
+}
+[data-bs-theme="dark"] .stat-value, body.dark-mode .stat-value,
+[data-bs-theme="dark"] .stat-number, body.dark-mode .stat-number,
+[data-bs-theme="dark"] .kpi-value, body.dark-mode .kpi-value,
+[data-bs-theme="dark"] .kpi-number, body.dark-mode .kpi-number,
+[data-bs-theme="dark"] .metric-value, body.dark-mode .metric-value,
+[data-bs-theme="dark"] .overview-number, body.dark-mode .overview-number,
+[data-bs-theme="dark"] .stat-box-pro h2, body.dark-mode .stat-box-pro h2 {
+    color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .stat-icon-wrapper, body.dark-mode .stat-icon-wrapper {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+}
+[data-bs-theme="dark"] .badge.bg-light, body.dark-mode .badge.bg-light {
+    background-color: #162442 !important;
+    color: #E2E8F0 !important;
+    border-color: #25344F !important;
+}
+[data-bs-theme="dark"] .badge.text-dark, body.dark-mode .badge.text-dark {
+    color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .list-group-item, body.dark-mode .list-group-item {
+    background-color: #111C33 !important;
+    color: #E2E8F0 !important;
+    border-color: #1E293B !important;
+}
+[data-bs-theme="dark"] .timeline-item, body.dark-mode .timeline-item {
+    border-left-color: #25344F !important;
+}
+[data-bs-theme="dark"] .border-light, body.dark-mode .border-light {
+    border-color: #1E293B !important;
+}
+[data-bs-theme="dark"] .bg-light-subtle, body.dark-mode .bg-light-subtle {
+    background-color: #111C33 !important;
+    color: #E2E8F0 !important;
+}
+[data-bs-theme="dark"] .text-body-secondary, body.dark-mode .text-body-secondary {
+    color: #94A3B8 !important;
+}
+
+
+/* ========================================================
+   GLOBAL PRINT STYLESHEET
+   ======================================================== */
+@media print {
+    .sidebar, .top-header, .app-header, .btn-no-print, .breadcrumb, .filter-card, .btn, .sidebar-brand, nav, .toast-container, .pagination {
+        display: none !important;
+    }
+    .main-content, .app-wrapper, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        width: 100% !important;
+    }
+    .content-card, .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+    }
+    .table th, .table td {
+        border: 1px solid #ddd !important;
+        padding: 8px !important;
+    }
+}
+
+/* ==============================================================
+   PROCESS-WISE SIDEBAR - collapsible groups (no numbering)
+   ============================================================== */
+.sidebar-dropdown-toggle {
+    gap: 0.7rem !important;
+}
+
+.sidebar-dropdown-toggle .step-icon {
+    font-size: 1.05rem;
+    width: 20px;
+    text-align: center;
+    color: #94A3B8;
+    flex-shrink: 0;
+}
+
+.has-submenu.open > .sidebar-dropdown-toggle .step-icon,
+.has-submenu.active-parent > .sidebar-dropdown-toggle .step-icon {
+    color: #60A5FA;
+}
+
+.submenu-link span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Desktop collapsed sidebar: show only group icons */
+.sidebar.collapsed .sidebar-dropdown-toggle {
+    justify-content: center !important;
+    padding: 0.65rem 0.5rem !important;
+}
+
+.sidebar.collapsed .sidebar-dropdown-toggle .nav-text,
+.sidebar.collapsed .sidebar-dropdown-toggle .submenu-arrow,
+.sidebar.collapsed .sidebar-submenu {
+    display: none !important;
+}
+
+/* ==========================================================================
+   12. DROPDOWN (<select>) OPTION LIST FIX
+   Problem: .form-select ne dark theme ma halku (white) text color malyo, pan browser
+   no dropdown list white background ma khule che -> white text on white = "khali dropdown".
+   Aa rules option list ne hamesha vanchi shakay tevi bane che (light + dark, badha panel).
+   ========================================================================== */
+select,
+.form-select,
+select.form-control {
+    color-scheme: light;
+}
+select option,
+select optgroup,
+.form-select option,
+.form-select optgroup,
+select.form-control option {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+}
+select option:checked,
+.form-select option:checked {
+    background-color: #DBEAFE !important;
+    color: #0F172A !important;
+}
+select option:disabled,
+.form-select option:disabled {
+    color: #94A3B8 !important;
+}
+
+[data-bs-theme="dark"] select,
+[data-bs-theme="dark"] .form-select,
+[data-bs-theme="dark"] select.form-control,
+body.dark-mode select,
+body.dark-mode .form-select,
+body.dark-mode select.form-control {
+    color-scheme: dark;
+}
+[data-bs-theme="dark"] select option,
+[data-bs-theme="dark"] select optgroup,
+[data-bs-theme="dark"] .form-select option,
+[data-bs-theme="dark"] .form-select optgroup,
+[data-bs-theme="dark"] select.form-control option,
+body.dark-mode select option,
+body.dark-mode select optgroup,
+body.dark-mode .form-select option,
+body.dark-mode .form-select optgroup,
+body.dark-mode select.form-control option {
+    background-color: #0B1324 !important;
+    color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] select option:checked,
+[data-bs-theme="dark"] .form-select option:checked,
+body.dark-mode select option:checked,
+body.dark-mode .form-select option:checked {
+    background-color: #1E3A8A !important;
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] select option:disabled,
+[data-bs-theme="dark"] .form-select option:disabled,
+body.dark-mode select option:disabled,
+body.dark-mode .form-select option:disabled {
+    color: #64748B !important;
+}
+
+/* ========================================================
+   UNIVERSAL DARK MODE HOVER CONTRAST & VISIBILITY ENGINE
+   Fixes disappearing text on hover across all 4 panels
+   ======================================================== */
+[data-bs-theme="dark"] a:hover,
+body.dark-mode a:hover,
+[data-bs-theme="dark"] body.student-panel a:hover,
+body.dark-mode.student-panel a:hover,
+body.dark-mode .student-panel a:hover,
+[data-bs-theme="dark"] body.admin-panel a:hover,
+body.dark-mode.admin-panel a:hover,
+body.dark-mode .admin-panel a:hover,
+[data-bs-theme="dark"] body.tpo-panel a:hover,
+body.dark-mode.tpo-panel a:hover,
+body.dark-mode .tpo-panel a:hover,
+[data-bs-theme="dark"] body.company-panel a:hover,
+body.dark-mode.company-panel a:hover,
+body.dark-mode .company-panel a:hover,
+[data-bs-theme="dark"] .breadcrumb-item a:hover,
+body.dark-mode .breadcrumb-item a:hover {
+    color: #93C5FD !important;
+    text-decoration: underline !important;
+}
+
+/* Sidebar Nav Hover in Dark Mode */
+[data-bs-theme="dark"] .sidebar-nav .nav-link:hover,
+body.dark-mode .sidebar-nav .nav-link:hover,
+[data-bs-theme="dark"] .sidebar .nav-link:hover,
+body.dark-mode .sidebar .nav-link:hover {
+    background-color: rgba(59, 130, 246, 0.22) !important;
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .sidebar-nav .nav-link:hover *,
+body.dark-mode .sidebar-nav .nav-link:hover *,
+[data-bs-theme="dark"] .sidebar .nav-link:hover *,
+body.dark-mode .sidebar .nav-link:hover * {
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .sidebar-nav .nav-link:hover i,
+body.dark-mode .sidebar-nav .nav-link:hover i,
+[data-bs-theme="dark"] .sidebar .nav-link:hover i,
+body.dark-mode .sidebar .nav-link:hover i {
+    color: #93C5FD !important;
+}
+
+/* Table Rows & Cells on Hover in Dark Mode */
+[data-bs-theme="dark"] .table-hover > tbody > tr:hover,
+body.dark-mode .table-hover > tbody > tr:hover,
+[data-bs-theme="dark"] .table-hover > tbody > tr:hover > *,
+body.dark-mode .table-hover > tbody > tr:hover > *,
+[data-bs-theme="dark"] .table tbody tr:hover,
+body.dark-mode .table tbody tr:hover,
+[data-bs-theme="dark"] .table tbody tr:hover > *,
+body.dark-mode .table tbody tr:hover > *,
+[data-bs-theme="dark"] .gridview tr:hover,
+body.dark-mode .gridview tr:hover,
+[data-bs-theme="dark"] .gridview tr:hover td,
+body.dark-mode .gridview tr:hover td {
+    background-color: #1E293B !important;
+    color: #FFFFFF !important;
+    --bs-table-hover-bg: #1E293B !important;
+    --bs-table-hover-color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .table-hover > tbody > tr:hover *,
+body.dark-mode .table-hover > tbody > tr:hover *,
+[data-bs-theme="dark"] .table tbody tr:hover *,
+body.dark-mode .table tbody tr:hover *,
+[data-bs-theme="dark"] .gridview tr:hover td *,
+body.dark-mode .gridview tr:hover td * {
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .table tbody tr:hover a,
+body.dark-mode .table tbody tr:hover a,
+[data-bs-theme="dark"] .gridview tr:hover a,
+body.dark-mode .gridview tr:hover a {
+    color: #93C5FD !important;
+    text-decoration: underline !important;
+}
+
+/* Buttons Hover in Dark Mode */
+[data-bs-theme="dark"] .btn-light:hover,
+body.dark-mode .btn-light:hover,
+[data-bs-theme="dark"] .btn-white:hover,
+body.dark-mode .btn-white:hover {
+    background-color: #1E293B !important;
+    border-color: #334155 !important;
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .btn-light:hover *,
+body.dark-mode .btn-light:hover *,
+[data-bs-theme="dark"] .btn-white:hover *,
+body.dark-mode .btn-white:hover * {
+    color: #FFFFFF !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary:hover,
+body.dark-mode .btn-outline-secondary:hover {
+    background-color: #334155 !important;
+    border-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .btn-outline-secondary:hover *,
+body.dark-mode .btn-outline-secondary:hover * {
+    color: #FFFFFF !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-primary:hover,
+body.dark-mode .btn-outline-primary:hover,
+[data-bs-theme="dark"] .btn-outline-custom:hover,
+body.dark-mode .btn-outline-custom:hover,
+[data-bs-theme="dark"] body.student-panel .btn-outline-custom:hover,
+body.dark-mode.student-panel .btn-outline-custom:hover,
+[data-bs-theme="dark"] body.admin-panel .btn-outline-custom:hover,
+body.dark-mode.admin-panel .btn-outline-custom:hover,
+[data-bs-theme="dark"] body.tpo-panel .btn-outline-custom:hover,
+body.dark-mode.tpo-panel .btn-outline-custom:hover,
+[data-bs-theme="dark"] body.company-panel .btn-outline-custom:hover,
+body.dark-mode.company-panel .btn-outline-custom:hover {
+    background-color: #1D4ED8 !important;
+    border-color: #2563EB !important;
+    color: #FFFFFF !important;
+}
+
+[data-bs-theme="dark"] .btn-primary:hover,
+body.dark-mode .btn-primary:hover,
+[data-bs-theme="dark"] .btn-primary-custom:hover,
+body.dark-mode .btn-primary-custom:hover {
+    background: #1D4ED8 !important;
+    border-color: #2563EB !important;
+    color: #FFFFFF !important;
+}
+
+/* Dropdowns on Hover in Dark Mode */
+[data-bs-theme="dark"] .dropdown-item:hover,
+body.dark-mode .dropdown-item:hover,
+[data-bs-theme="dark"] .dropdown-item:focus,
+body.dark-mode .dropdown-item:focus {
+    background-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .dropdown-item:hover *,
+body.dark-mode .dropdown-item:hover * {
+    color: #FFFFFF !important;
+}
+
+/* List Groups on Hover in Dark Mode */
+[data-bs-theme="dark"] .list-group-item-action:hover,
+body.dark-mode .list-group-item-action:hover,
+[data-bs-theme="dark"] .list-group-item:hover,
+body.dark-mode .list-group-item:hover {
+    background-color: #1E293B !important;
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .list-group-item-action:hover *,
+body.dark-mode .list-group-item-action:hover * {
+    color: #FFFFFF !important;
+}
+
+/* Top Navbar & User Header on Hover in Dark Mode */
+[data-bs-theme="dark"] .navbar-actions button:hover,
+body.dark-mode .navbar-actions button:hover,
+[data-bs-theme="dark"] .navbar-actions a:hover,
+body.dark-mode .navbar-actions a:hover,
+[data-bs-theme="dark"] .profile-dropdown .dropdown-toggle:hover,
+body.dark-mode .profile-dropdown .dropdown-toggle:hover {
+    color: #FFFFFF !important;
+}
+[data-bs-theme="dark"] .navbar-actions button:hover *,
+body.dark-mode .navbar-actions button:hover *,
+[data-bs-theme="dark"] .navbar-actions a:hover *,
+body.dark-mode .navbar-actions a:hover *,
+[data-bs-theme="dark"] .profile-dropdown .dropdown-toggle:hover * {
+    color: #FFFFFF !important;
+}
+
+/* Pagination Links on Hover in Dark Mode */
+[data-bs-theme="dark"] .pagination .page-link:hover,
+body.dark-mode .pagination .page-link:hover,
+[data-bs-theme="dark"] .page-item:hover .page-link,
+body.dark-mode .page-item:hover .page-link {
+    background-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    border-color: #2563EB !important;
+}
+
+
+
+/* ==========================================================================
+   Astra PMS — Modern Enhanced Hover, Color Combination & Visual Polish
+   Applied universally across all panels (Student, Company, TPO, Admin)
+   ========================================================================== */
+
+/* 1. Enhanced Interactive Card Hover Effects */
+.card, .stat-card, .metric-card, .dashboard-card {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease !important;
+}
+
+.card:hover, .stat-card:hover, .metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -6px rgba(36, 84, 224, 0.12), 0 4px 12px -2px rgba(16, 24, 40, 0.06) !important;
+    border-color: rgba(36, 84, 224, 0.28) !important;
+}
+
+/* 2. Enhanced Table Rows Hover & Contrast */
+.table tbody tr {
+    transition: background-color 0.18s ease, transform 0.15s ease !important;
+}
+
+.table-hover tbody tr:hover,
+.table tbody tr:hover {
+    background-color: rgba(36, 84, 224, 0.04) !important;
+}
+
+[data-bs-theme="dark"] .table-hover tbody tr:hover,
+[data-bs-theme="dark"] .table tbody tr:hover,
+body.dark-mode .table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 3. Button Interactions & Vibrant States */
+.btn-primary, .btn-main {
+    background: linear-gradient(135deg, #2454e0 0%, #1e40af 100%) !important;
+    border-color: #1e40af !important;
+    box-shadow: 0 4px 12px rgba(36, 84, 224, 0.25);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary:hover, .btn-main:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #172554 100%) !important;
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 18px rgba(36, 84, 224, 0.38) !important;
+}
+
+.btn-outline-primary {
+    border-color: #2454e0 !important;
+    color: #2454e0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-outline-primary:hover {
+    background: #2454e0 !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(36, 84, 224, 0.25) !important;
+}
+
+/* 4. Form Select & Dropdown Styling Polish */
+.form-select, .form-control {
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: #2454e0 !important;
+    box-shadow: 0 0 0 3px rgba(36, 84, 224, 0.15) !important;
+    outline: none;
+}
+
+/* 5. Modern Pill Badges Hover Polish */
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: transform 0.18s ease, filter 0.18s ease !important;
+}
+
+.badge:hover {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+}
+
+/* 6. ASP.NET Chart Control Responsive Container Polish */
+.asp-chart-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+[data-bs-theme="dark"] .asp-chart-wrapper,
+body.dark-mode .asp-chart-wrapper {
+    background: #1e293b !important;
+}
+
+/* 7. Action Icons in Tables Hover Glow */
+.table a.btn, .table button.btn {
+    transition: all 0.15s ease !important;
+}
+
+.table a.btn:hover, .table button.btn:hover {
+    transform: translateY(-1px) scale(1.03);
+}
+
+
+/* ==========================================================================
+   Universal Light Blue Hover Color Standard Across All Panels & Components
+   (Eliminates dull grey hover across cards, links, tabs, tables, buttons)
+   ========================================================================== */
+
+/* Universal light blue hover tint for table rows */
+.table tbody tr:hover,
+.table-hover tbody tr:hover,
+table.table > tbody > tr:hover {
+    background-color: #EBF3FF !important;
+}
+
+/* Submenu links in sidebar: light blue hover */
+.sidebar-submenu li a:hover,
+.submenu-link:hover {
+    background-color: rgba(36, 84, 224, 0.16) !important;
+    color: #93C5FD !important;
+}
+
+/* Navigation pills & tabs: vibrant light blue hover instead of dull grey #F1F5F9 */
+.nav-pills .nav-link:hover:not(.active),
+.subpage-nav .nav-link:hover:not(.active),
+.nav-tabs .nav-link:hover:not(.active) {
+    color: #1D4ED8 !important;
+    background-color: #EFF6FF !important;
+    border-color: #BFDBFE !important;
+}
+
+/* Dropdown items hover: modern light blue background */
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #EFF6FF !important;
+    color: #1D4ED8 !important;
+}
+
+/* List group hover */
+.list-group-item-action:hover,
+.list-group-item:hover {
+    background-color: #EFF6FF !important;
+    color: #1D4ED8 !important;
+}
+
+/* Secondary & light button hovers: rich solid blue on hover */
+.btn-light:hover,
+.btn-outline-secondary:hover {
+    background-color: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    border-color: #1D4ED8 !important;
+}
+
+/* Card hover glow with subtle light blue highlight */
+.content-card:hover,
+.card:hover,
+.stat-card:hover {
+    border-color: #BFDBFE !important;
+    box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.14), 0 4px 10px -2px rgba(37, 99, 235, 0.08) !important;
+}
+
+
+/* ==========================================================================
+   Complete Override: Eliminate Dull Slate/Grey Buttons & Grey Hovers
+   Transforms all secondary and outline buttons into modern Soft Sky Blue / Navy
+   ========================================================================== */
+
+/* Replace dark grey background on .btn-secondary */
+.btn-secondary,
+.btn-secondary-custom,
+html:not([data-bs-theme="dark"]):not(.dark-mode) body:not(.dark-mode) :is(.btn-secondary, .btn-secondary-custom) {
+    background: #3B82F6 !important;
+    border-color: #2563EB !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.25) !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary-custom:hover,
+html:not([data-bs-theme="dark"]):not(.dark-mode) body:not(.dark-mode) :is(.btn-secondary, .btn-secondary-custom):hover {
+    background: #1D4ED8 !important;
+    border-color: #1E40AF !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px) !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35) !important;
+}
+
+/* Replace grey borders/background on .btn-outline-secondary */
+.btn-outline-secondary,
+html:not([data-bs-theme="dark"]):not(.dark-mode) body:not(.dark-mode) :is(.btn-outline-secondary) {
+    background: #FFFFFF !important;
+    border-color: #93C5FD !important;
+    color: #1E40AF !important;
+}
+
+/* Light blue hover for ALL outline secondary buttons everywhere */
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active,
+.table td .btn-outline-secondary:hover,
+.gridview td .btn-outline-secondary:hover,
+table[id*="gv"] td .btn-outline-secondary:hover,
+html:not([data-bs-theme="dark"]):not(.dark-mode) body:not(.dark-mode) :is(.btn-outline-secondary):hover {
+    background-color: #EFF6FF !important;
+    color: #1D4ED8 !important;
+    border-color: #3B82F6 !important;
+    transform: translateY(-1.5px) !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Reset buttons and action pills hover */
+input[type="reset"]:hover,
+input[value="Reset"]:hover {
+    background-color: #EFF6FF !important;
+    color: #1D4ED8 !important;
+    border-color: #3B82F6 !important;
+}
+
+
+/* ASTRA ENHANCED GRIDVIEW & ACTION BUTTON REFINEMENTS */
+.table td.text-nowrap,
+.table th.text-nowrap,
+.gridview td.text-nowrap,
+.gridview th.text-nowrap {
+    white-space: nowrap !important;
+}
+.table td .btn,
+.gridview td .btn,
+.table td a.btn,
+.table td button {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    flex-shrink: 0 !important;
+    text-overflow: clip !important;
+    max-width: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.table td .btn i,
+.gridview td .btn i {
+    margin-right: 5px !important;
+    flex-shrink: 0 !important;
+}
+
+/* AI TABS HORIZONTAL SCROLLER */
+.ai-tabs-scroller {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 6px;
+    margin-bottom: 1.25rem;
+    scrollbar-width: thin;
+}
+.ai-tabs-scroller::-webkit-scrollbar {
+    height: 5px;
+}
+.ai-tabs-scroller::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+.ai-tabs-scroller .nav-pills {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+.ai-tabs-scroller .nav-link {
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: #FFFFFF;
+    color: #475569;
+    border: 1px solid #E2E8F0;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease-in-out;
+}
+.ai-tabs-scroller .nav-link:hover {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border-color: #BFDBFE;
+}
+.ai-tabs-scroller .nav-link.active {
+    background: #1D4ED8 !important;
+    color: #FFFFFF !important;
+    border-color: #1D4ED8 !important;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
 }
